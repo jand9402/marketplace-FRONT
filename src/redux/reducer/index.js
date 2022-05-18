@@ -1,4 +1,5 @@
-import { GET_ALL_PRODUCTS
+import { GET_ALL_PRODUCTS,
+         SEARCH_BY_NAME
         } from "../actions";
 
 
@@ -15,6 +16,11 @@ import { GET_ALL_PRODUCTS
                 return{
                   ...state,
                   products: action.payload
+                }
+              case SEARCH_BY_NAME:
+                return{
+                  ...state,
+                  products:action.payload
                 }
             //   case 'INCREMENT':
             //     return {

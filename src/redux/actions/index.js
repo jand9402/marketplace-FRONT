@@ -2,7 +2,7 @@ export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
 
 export const getProducts = () => async dispatch => {
-    return fetch('https://pf-commerce.herokuapp.com/api/products')
+    return await fetch('https://pf-commerce.herokuapp.com/api/products')
     .then((response) => response.json())
     .then((json) => {dispatch({ type: GET_ALL_PRODUCTS, payload:json.product})})
 };
