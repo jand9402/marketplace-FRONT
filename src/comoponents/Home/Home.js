@@ -36,9 +36,9 @@ export default function Home() {
         <div class='home'>
             <NavBarAll />
             <SearchBar />
-            <Link to={"/detailVisit/" + 'id'}>
+            {/* <Link to={"/detailVisit/" + 'id'}>
             <button>detalle</button>
-            </Link>
+            </Link> */}
             <div>
                 <CarruselSuperior />
             </div>
