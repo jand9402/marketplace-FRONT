@@ -56,8 +56,8 @@ export function brandFiltered(payload) {
 
 export const searchByName = (payload) => async dispatch => {
     console.log (payload)
-    return await fetch( `https://pf-commerce.herokuapp.com/api/products/?name=${payload}`)
+    return await fetch( `https://pf-commerce.herokuapp.com/api/products?name=${payload}`)
     .then(respose => respose.json())
-    .then(json => dispatch({type: SEARCH_BY_NAME, payload: json}))
+    .then(json => dispatch({type: SEARCH_BY_NAME, payload: json.product}))
     .catch(() => alert (`No se encontró ${payload}, intentelo nuevamente`) )
 }
