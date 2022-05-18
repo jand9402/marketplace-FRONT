@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {Link} from "react-router-dom";
 import Card from "./card"
-import { getProducts } from "../../redux/actions";
+import { getCategorys, getProducts } from "../../redux/actions";
 
 
 export default function Cards(){
@@ -39,6 +39,7 @@ export default function Cards(){
 
     useEffect (()=> {
         dispatch(getProducts())
+        dispatch(getCategorys())
     }, [dispatch])
     
     return (

@@ -14,7 +14,7 @@ export default function PriceDetail () {
     let test = idProducto.id
     const dispatch = useDispatch()
     const allProducts = useSelector((state) => state.products)
-    console.log(allProducts)
+    // console.log(allProducts)
 
     useEffect(() => {
         dispatch(getProducts())
