@@ -1,4 +1,5 @@
 import { GET_ALL_PRODUCTS,
+         SEARCH_BY_NAME,
          GET_CATEGORYS,
          GET_BRAND,
          CATEGORY_FILTERED,
@@ -23,6 +24,11 @@ import { GET_ALL_PRODUCTS,
                   ...state,
                   products: action.payload,
                   allProducts: action.payload
+                }
+              case SEARCH_BY_NAME:
+                return{
+                  ...state,
+                  products:action.payload
                 }
               case GET_CATEGORYS:
                 return {

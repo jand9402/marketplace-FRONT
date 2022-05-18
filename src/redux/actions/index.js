@@ -8,8 +8,8 @@ export const CATEGORY_FILTERED = 'CATEGORY_FILTERED'
 export const BRAND_FILTERED = 'BRAND_FILTERED'
 
 
-export const getProducts = () => (dispatch) => {
-    return fetch('https://pf-commerce.herokuapp.com/api/products')
+export const getProducts = () => async dispatch => {
+    return await fetch('https://pf-commerce.herokuapp.com/api/products')
     .then((response) => response.json())
     .then((json) => {dispatch({ type: GET_ALL_PRODUCTS, payload:json.product})})
 };

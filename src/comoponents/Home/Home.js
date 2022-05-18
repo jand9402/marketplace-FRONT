@@ -13,22 +13,22 @@ import { Link } from 'react-router-dom'
 export default function Home() {
     
    
-    const dispatch = useDispatch()
-    const allProducts = useSelector((state) => state.products)
-    const [currentPage, setCurrentPage] = useState(1)
-    const [productsPerPage, setproductsPerPage] = useState(8)
-    const lastProduct = currentPage * productsPerPage
-    const firstProduct = lastProduct - productsPerPage
-    const currentProduct = allProducts.slice(firstProduct, lastProduct)
+    // const dispatch = useDispatch()
+    // const allProducts = useSelector((state) => state.products)
+    // const [currentPage, setCurrentPage] = useState(1)
+    // const [productsPerPage, setproductsPerPage] = useState(8)
+    // const lastProduct = currentPage * productsPerPage
+    // const firstProduct = lastProduct - productsPerPage
+    // const currentProduct = allProducts.slice(firstProduct, lastProduct)
    
 
-    const paginado = (pageNumber) => {
-        setCurrentPage(pageNumber)
-    }
+    // const paginado = (pageNumber) => {
+    //     setCurrentPage(pageNumber)
+    // }
 
-    useEffect(() => {
-        dispatch(getProducts())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getProducts())
+    // }, [dispatch])
 
     // console.log(allProducts)
 
@@ -36,13 +36,14 @@ export default function Home() {
         <div class='home'>
             <NavBarAll />
             <SearchBar />
-            <Link to={"/detailVisit/" + 'id'}>
+            {/* <Link to={"/detailVisit/" + 'id'}>
             <button>detalle</button>
-            </Link>
+            </Link> */}
             <div>
                 <CarruselSuperior />
             </div>
-            <Paginado
+            <Cards/>
+            {/* <Paginado
                     productsPerPage={productsPerPage}
                     allProducts={allProducts.length}
                     paginado={paginado}
@@ -56,7 +57,7 @@ export default function Home() {
                 }
                 )
                 }
-            </div>
+            </div> */}
         </div>
     )
 }
