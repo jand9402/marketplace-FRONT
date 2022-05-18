@@ -1,11 +1,18 @@
 import { GET_ALL_PRODUCTS,
-         SEARCH_BY_NAME
+         SEARCH_BY_NAME,
+         GET_CATEGORYS,
+         GET_BRAND,
+         CATEGORY_FILTERED,
+         BRAND_FILTERED
         } from "../actions";
 
 
         const initialState = {
             // loading: false,
             products: [],
+            allProducts: [],
+            categorys: [],
+            brand: [],
             // login: false,
             createProduct: {},
           }
@@ -15,13 +22,46 @@ import { GET_ALL_PRODUCTS,
               case GET_ALL_PRODUCTS:
                 return{
                   ...state,
-                  products: action.payload
+                  products: action.payload,
+                  allProducts: action.payload
                 }
               case SEARCH_BY_NAME:
                 return{
                   ...state,
                   products:action.payload
                 }
+              case GET_CATEGORYS:
+                return {
+                  ...state,
+                  categorys: action.payload
+                }  
+              case GET_BRAND:
+                return {
+                  ...state,
+                  brand: action.payload
+                }
+                case CATEGORY_FILTERED:
+                        const allProducts = state.allProducts;
+                        const categoryFiltered =
+                          action.payload === "all"
+                            ? allProducts
+                            : allProducts.filter((e) => e.category)
+                            
+                        return {
+                          ...state,
+                          products: categoryFiltered,
+                        }
+                        case BRAND_FILTERED:
+                          const brandProducts = state.allProducts;
+                          const brandFiltered =
+                            action.payload === "all"
+                              ? brandProducts
+                              : brandProducts.filter((e) => e.brand)
+                              
+                          return {
+                            ...state,
+                            products: brandFiltered,
+                          }
             //   case 'INCREMENT':
             //     return {
             //       ...state,

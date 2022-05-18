@@ -50,7 +50,7 @@ export default function Home() {
                 />
             <div class="cards">
                 {currentProduct?.map((product) => {
-                    console.log(product)
+                    // console.log(product)
                     return (
                         <Cards/>
                     )
