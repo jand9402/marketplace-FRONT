@@ -30,7 +30,7 @@ export default function Home() {
         dispatch(getProducts())
     }, [dispatch])
 
-    console.log(allProducts)
+    // console.log(allProducts)
 
     return (
         <div class='home'>
@@ -49,7 +49,7 @@ export default function Home() {
                 />
             <div class="cards">
                 {currentProduct?.map((product) => {
-                    console.log(product)
+                    // console.log(product)
                     return (
                         <Cards/>
                     )
