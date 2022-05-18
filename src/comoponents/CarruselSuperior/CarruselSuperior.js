@@ -1,6 +1,7 @@
 import React from 'react'
 import './CarruselSuperior.css'
 import BannerElectro from '../../assets/banners/bannerElectro.jpg'
+import BannerDestacados from '../../assets/banners/Banner1.jpg'
 
 export default function CarruselSuperior() {
   
@@ -8,7 +9,7 @@ export default function CarruselSuperior() {
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="https://img.freepik.com/psd-gratis/logotipo-ofertas-imperdibles-brasil-3d-render_314999-351.jpg?w=2000" class="d-block w-100" alt="..."/>
+        <img src={BannerDestacados} class="d-block w-100" alt="..."/>
       </div>
       <div class="carousel-item">
         <img src={BannerElectro} class="d-block w-100" alt="bannerElectro"/>
