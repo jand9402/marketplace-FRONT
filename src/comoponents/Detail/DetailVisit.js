@@ -7,7 +7,7 @@ export default function DetailVisit () {
   return (
     <div >
       <NavBarAll/>
-      {/* <ProductDetail/> */}
+      <ProductDetail/>
       <PriceDetail />
     </div>
   )
