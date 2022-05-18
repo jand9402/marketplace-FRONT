@@ -1,0 +1,94 @@
+.contenedorLogin{
+    height: 100vh;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    display: flex;
+    /* align-items: center;
+    text-align: center; */
+    
+}
+
+.logoEnLoginPage{
+    position: fixed;
+    margin-bottom: auto;
+    margin-left: 50px;
+    margin-top: 40px;
+}
+
+.imgEnLoginPage{
+    width: 13vw;
+}
+
+.cardLogin{
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.tituloLogin{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.encabezadosInputs{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.allForm {    
+    background-color: rgb(245, 245, 243);
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+.input {
+    width: 250px;
+    height: 22px;
+    margin-bottom: 10px;
+}
+
+.inputContraseña{
+    margin-bottom: 10px;
+}
+
+.botonesLogin{
+    text-align: center;
+}
+
+.recuperarContrasena{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.noEstasRegistrado{
+    margin-bottom: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 200px;
+    background-color: rgba(23, 49, 87);
+    color: white;
+    border-radius: 15px;
+    transition: 300ms all;
+    border: none;
+    font-size: larger;
+    height: 30px;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -ms-transition: 300ms all;
+    -o-transition: 300ms all;
+}
+
+.button:hover{
+    background-color: #6d6f71;
+}
+
+.errosLoigin{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: red;
+    max-width: 250px;
+}

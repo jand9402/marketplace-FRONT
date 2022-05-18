@@ -1,0 +1,126 @@
+.contenedor{
+    height: 100vh;
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+    /* background-color: #22507b;     */
+}
+.videoLanding{
+   position: relative;
+   right: 0px;
+   top: 10vw;
+}
+
+.fila{
+    
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+   display: flex;
+   align-items: center;
+   margin: 0;
+   
+}
+
+.columna_botones{
+    margin: 0;
+}
+
+.columna_interior_botones{
+    position: relative;
+    bottom: 500px;
+    left: 200px;
+    border-radius: 15px;
+    background-color: #dbe7f4;
+    width: 20%;
+    height: 25vw;
+    align-items: center;
+    /* padding-top: 15px;
+    margin: auto; */
+    box-shadow: 8px 8px 15px 3px #000000;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.contenedor_boton{
+    float: left;
+}
+
+.boton{
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 250px;
+    background-color: #114d86;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    height: 50px;
+    border: none;
+    text-decoration: none;
+    transition: 300ms all;
+}
+
+.boton:hover{
+    background-color: #6d6f71;
+}
+
+.linksDeLanding{
+    text-decoration: none;
+}
+
+.boton_visitante{
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 250px;
+    background-color: #114d86;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    height: 50px;
+    margin-bottom: 50px;
+    border: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.boton_visitante:hover{
+    background-color: #6d6f71;
+}
+
+.encabezado{
+    margin-bottom: 50px !important;
+    margin-top: 50px !important;
+   display: flex;
+   align-items: center;
+   margin: 0;
+}
+
+.logo{
+    width: 35%;
+    margin-top: 3.5vw;
+    margin-left: 1vw;
+}
+
+.contenedor_slogan{
+    width: 60%;
+}
+
+.columna_imagen{
+    width: 60%;
+}
+
+.sologan{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+.logoLanding {
+    position: relative;
+    bottom: 1vw;
+    width: 10vw;
+}

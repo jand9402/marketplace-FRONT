@@ -1,0 +1,60 @@
+/* NAV.BAR.ALL */
+.boxNavBar {
+    width: 100%;
+    height: 70px;
+    background-color: rgb(24, 49, 87);
+}
+.ordenNavBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.logoNavBar {
+    width: 60px;
+    cursor: pointer;
+}
+
+.carritoNavBar {
+    width: 50px;
+    margin-right: 100px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* FILTERS */
+.boxFilters {
+    margin-top: 18px;
+}
+
+/* hay que eliminar la flecha */
+.selectStyle {
+    background-color: rgb(24, 49, 87);
+    width: 150px;
+    height: 30px;
+    margin-right: 50px;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-style: trebuchet;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+ }
+
+/* LOGIN.REGISTER */
+.ordenLoginRegister {
+    display: flex;
+    margin-top: 18px
+}
+.styleLogReg {
+    margin-right: 40px;
+    
+    
+}
+.styleLinkNavBar{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-style: trebuchet;
+    font-weight: 500;
+    font-size: 1rem;
+}

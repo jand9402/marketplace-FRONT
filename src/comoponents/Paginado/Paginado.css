@@ -1,0 +1,32 @@
+
+
+#menu ul li{
+    display: inline-block;
+    list-style: none;
+    height: 46px;
+    margin-top: 30px;  
+}
+
+.nav-btn{
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    background-color: rgb(255, 179, 48);
+    color: black;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    transition: 300ms all;
+    border: none;
+    margin-right: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.nav-btn:hover{
+    background-color: rgb(107, 104, 100);
+    color: white;
+}
+

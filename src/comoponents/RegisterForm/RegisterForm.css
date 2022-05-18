@@ -1,0 +1,91 @@
+.contenedorRegistro{
+    height: 100vh;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    display: flex;
+}
+
+.cardRegister{
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: auto;
+    margin-top: auto;
+    background-color: rgba(245, 245, 243);
+    width: 23vw;
+  
+}
+
+/* .contenedorForm{
+   
+} */
+.contenedorForm{
+   position: relative;
+   bottom: 1vw;
+   left: 1vw;
+   width: 21vw;
+
+}
+.logoEnLoginPageR{
+    position: fixed;
+    margin-bottom: auto;
+    margin-left: 50px;
+    margin-top: 40px;
+}
+.logoRegister{
+    width: 13vw;
+}
+
+.encabezadosRegistro{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.crearCuentaTitulo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    text-align: center;
+}
+
+.input {
+    width: 250px;
+    height: 22px;
+    margin-bottom: 10px;
+}
+
+.button {
+    width: 200px;
+    background-color: rgba(23, 49, 87);
+    color: white;
+}
+
+.buttonRegistro {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 200px;
+    background-color: rgba(23, 49, 87);
+    color: white;
+    border-radius: 15px;
+    transition: 300ms all;
+    border: none;
+    font-size: large;
+    height: 30px;
+    margin-top: 10px;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -ms-transition: 300ms all;
+    -o-transition: 300ms all;
+}
+
+.buttonRegistro:hover{
+    background-color: #6d6f71;
+}
+
+.botonRegistro{
+    text-align: center;
+}
+
+.errosRegistro{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: red;
+    max-width: 250px;
+}
