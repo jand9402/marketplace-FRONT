@@ -42,7 +42,8 @@ export default function Home() {
             <div>
                 <CarruselSuperior />
             </div>
-            <Paginado
+            <Cards/>
+            {/* <Paginado
                     productsPerPage={productsPerPage}
                     allProducts={allProducts.length}
                     paginado={paginado}
@@ -56,7 +57,7 @@ export default function Home() {
                 }
                 )
                 }
-            </div>
+            </div> */}
         </div>
     )
 }
