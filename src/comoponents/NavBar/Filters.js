@@ -1,15 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import './NavBarAll.css'
 import { brandFiltered, categoryFiltered, getBrand, getCategorys, getProducts } from "../../redux/actions";
 
 
 const Filters = () => {
     const dispatch = useDispatch();
-    const products = useSelector((state) => state.products)
+    // const products = useSelector((state) => state.products)
     const categorys = useSelector((state) => state.categorys)
     const brand = useSelector((state) => state.brand)
+
+    const [pagActual, setPagActual] = useState(1)
+    // const [cardsPorPag, setCardPorPag] = useState(5)
+    // const indiceDeCardsFinal = pagActual * cardsPorPag
+    // const indiceDeCardsPrinc = indiceDeCardsFinal - cardsPorPag
+    // const tarjetasAct = products.slice( indiceDeCardsPrinc,indiceDeCardsFinal)
+
     // console.log(products)
     // console.log(categorys)
 
@@ -23,7 +30,7 @@ const Filters = () => {
         e.preventDefault()
         dispatch(categoryFiltered(e.target.value))
         console.log(e.target.value)
-        // setCurrentPage(1)
+        setPagActual(1)
     }
 
     function handleBrandFiltered(e) {
@@ -34,13 +41,13 @@ const Filters = () => {
     }
 
     return(
-        <div class='boxFilters'>
+        <div className='boxFilters'>
              <select className='selectStyle' onChange={e => handleCategoryFiltered(e)}>
               
-              <option>Categorías</option>
+              <option value='all'>Categorías</option>
               {
                   categorys?.map(c => (
-                      <option value={c}>{c}</option>
+                      <option key={c} value={c}>{c}</option>
                   ))
               }
           </select>
@@ -53,7 +60,7 @@ const Filters = () => {
                   ))
               }
           </select>
-            <select class='selectStyle'>
+            <select className='selectStyle'>
                 <option>Precio</option>
                 <option>Menor a Mayor</option>
                 <option>Mayor a Menor</option>

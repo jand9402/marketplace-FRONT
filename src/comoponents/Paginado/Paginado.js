@@ -10,16 +10,16 @@ export default function Paginado ({productsPerPage, allProducts, paginado}){
     }
 
     return(
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-auto">
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="col-auto">
         <nav id="menu">  
             <ul>
                 {
                     pageNumbers &&
                         pageNumbers.map(page => (
                             <li key={page}>
-                            <button class="nav-btn" onClick={() => paginado(page)}>{page}</button>
+                            <button className="nav-btn" onClick={() => paginado(page)}>{page}</button>
                             </li>
                         ))    
                 }

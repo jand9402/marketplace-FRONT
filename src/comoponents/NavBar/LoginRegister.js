@@ -5,14 +5,14 @@ import './NavBarAll.css'
 const LoginRegister = () => {
 
     return(
-        <div class='ordenLoginRegister'>
+        <div className='ordenLoginRegister'>
             <div >
-                <Link to='/login' class='styleLinkNavBar'>
-                    <div class='styleLogReg'>Iniciar sesión</div>
+                <Link to='/login' className='styleLinkNavBar'>
+                    <div className='styleLogReg'>Iniciar sesión</div>
                 </Link>
             </div>
             <div>
-                <Link to='/register' class='styleLinkNavBar'>
+                <Link to='/register' className='styleLinkNavBar'>
                     <div>Crear cuenta</div>
                 </Link>
             </div>

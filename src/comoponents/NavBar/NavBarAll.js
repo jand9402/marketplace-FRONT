@@ -8,16 +8,16 @@ import CarritoNavBar from '../../assets/icons/carritoNav.png'
 const NavBarAll = () => {
 
     return(
-        <div class='boxNavBar'>
-            <nav class= 'ordenNavBar'>
-                <img class= 'logoNavBar' src={LogoNav} alt='logoNav'/>
+        <div className='boxNavBar'>
+            <nav className= 'ordenNavBar'>
+                <img className= 'logoNavBar' src={LogoNav} alt='logoNav'/>
                 <div>
                     <Filters/>
                 </div>
                 <div>
                 <LoginRegister/>   
                 </div>
-                <img class='carritoNavBar' src={CarritoNavBar} alt='carritoNav' />
+                <img className='carritoNavBar' src={CarritoNavBar} alt='carritoNav' />
             </nav>
 
         </div>
