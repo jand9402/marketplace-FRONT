@@ -42,13 +42,6 @@ export function getBrand() {
     }
 }
 
-// export const categoryFiltered = (orden) => async dispatch => {
-//     return await fetch(`https://pf-commerce.herokuapp.com/api/products?filter=${orden}`)
-//     .then(respose => respose.json())
-//     .then (json => dispatch ({type: CATEGORY_FILTERED, payload: json.products}))
-//     .catch(e=> console.log(e)) 
-// }
-
 export function categoryFiltered(payload) {
     return {
         type: CATEGORY_FILTERED,

@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import './ProductDetail.css'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import "./PriceDetail.css";
+import "./ProductDetail.css";
 import { getProducts } from "../../redux/actions";
+import PriceDetail from './PriceDetail';
 
 
 
@@ -25,6 +26,10 @@ export default function ProductDetail () {
 
   
   return ( <div>
+    <div className='boxImageAndPrice'>
+      <div>
+        <PriceDetail/>
+      </div>
     {allProducts?.map((producto) => {
                   if(producto._id === test){
                                             return (
@@ -69,6 +74,7 @@ export default function ProductDetail () {
                                         )
                
         }
+    </div>
    
   </div>
     

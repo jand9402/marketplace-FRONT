@@ -1,42 +1,55 @@
+/* ALL */
 .boxViewportDetail {
     background-color: rgb(245, 245, 243)
 }
+
+.boxImagenPrecio{
+    display: flex;
+    margin-top: 30px;
+    height: 600px;
+    background-color: blueviolet;
+}
+
+.boxImagenProducto{
+    margin-left: 390px;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 600px;
+    height: 550px;
+}
+
+.imagenDetailProd {
+    width: 600px;
+    height: 600px;
+}
 .positionButtonVolverDetai {
     position: relative;
-    left: 80vw;
-    bottom: 2vw;
-    width: 7vw
+    left: 1700px;
+    top: 15px;
 }
 .botonVolverDetail{
-    position: relative;
-    top: 3vw;
-    width: 250px;
-    background-color: #701186;
+    background-color: rgb(24, 49, 87);
     color: white;
     border-radius: 10px;
-    height: 3vw;
-    width: 7vw;
+    height: 50px;
+    width: 90px;
     border: none;
     font-style: Trebuchet;
     text-align: center;
     font-weight: 600;
-    font-size: 1.1em;
+    font-size: 1.2em;
     cursor: pointer;
 }
-
-
+.botonVolverDetail:hover{
+    background-color: #6d6f71;
+}
+/* DETALLE */
 .boxDetailProducto {
     position: relative;
     top: 2vw;
     left: 2vw;
-    /* //background-color: aquamarine; */
+    background-color: aquamarine;
     height: 36vw;
     width: 63vw;
-}
-
-.imagenDetailProd {
-    height: 25vw;
-    width: 24vw;
 }
 
 .boxDetailDescription {
@@ -156,61 +169,46 @@
     line-height : 30px;
 }
 
-/* //PRICEDETAILVISIT */
+/* //PRICEDETAIL */
 .boxMacroPrice {
-    position: relative;
-    bottom: 33vw;
-    left: 68vw;
-    background-color: rgb(57, 34, 34);
-    height: 32vw;
-    width: 23vw;
+    margin-left: 40px;
+    /* background-color: rgb(182, 87, 87); */
+    height: 550px;
+    width: 500px;
 }
 
 .princeNameProd{
-    height:8vw;
-    background-color: rgb(145, 123, 38);
+    /* background-color: rgb(145, 123, 38); */
     font-style: Trebuchet;
     text-align: left;
     font-weight: 600;
     font-size: 2em;
-    line-height : 35px;   
+    line-height : 30px;   
 }
-.princeProd{
-    height:3vw;
-    /* //background-color: rgb(141, 131, 92); */
+.princePrince{
+    /* background-color: rgb(141, 131, 92); */
+    margin-top: 20px;
     font-style: Trebuchet;
     text-align: center;
-    font-weight: 600;
-    font-size: 2.4em;
+    font-weight: 700;
+    font-size: 3em;
     line-height : 35px;   
 }
-.princeCuotProd{
-    height:2vw;
-    /* //background-color: rgb(58, 162, 135); */
-    font-style: Trebuchet;
-    text-align: center;
-    font-weight: 500;
-    font-size: 1em;
-    line-height : 35px;   
-}
-
 .boxPriceStock{
-    /* //background-color: crimson; */
+    display: flex;
+    margin-top: 60px;
+    /* background-color: crimson; */
     height: 3vw;
 }
 .princeStockName{
-    position: relative;
-    left: 1vw;
-    top: 0.2vw;
+    margin-left: 0px;
     font-style: Trebuchet;
-    font-weight: 600;
-    font-size: 1.2em;
+    font-weight: 500;
+    font-size: 1.4em;
     line-height : 35px;  
 }
 .princeStockNumber{
-    position: relative;
-    bottom: 2.5vw;
-    left: 13vw;
+    margin-left: 5px;
     font-style: Trebuchet;
     font-weight: 600;
     font-size: 2em;
@@ -239,25 +237,28 @@
     border: none; 
 }
 .princeAdvertencia{
-    /* //background-color: chocolate; */
-    height: 4vw;
-    color: #114d86;
+    margin-top: 10px;
+    /* background-color: chocolate; */
+    color:  rgb(24, 49, 87);
     text-align: center;
     font-style: Trebuchet;
     font-weight: 600;
     font-size: 1.5em;
     line-height : 23px;
 }
+/* BOTONES */
+.boxBotonesDetalle{
+    display: flex;
+    margin-top: 30px;
+    /* background-color: bisque; */
+}
 .botonIncSesDetail{
-    position: relative;
-    left: 5.5vw;
-    width: 250px;
+    margin-left: 65px;
     background-color: #114d86;
     color: white;
-    border-radius: 10px;
-    margin-top: 10px;
-    height: 3vw;
-    width: 12vw;
+    border-radius: 2px;
+    height: 50px;
+    width: 180px;
     border: none;
     font-style: Trebuchet;
     text-align: center;
@@ -266,15 +267,12 @@
     cursor: pointer;
 }
 .botonRegistroDetail{
-    position: relative;
-    left: 5.5vw;
-    width: 250px;
+    margin-left: 10px;
     background-color: #114d86;
     color: white;
-    border-radius: 10px;
-    margin-top: 10px;
-    height: 3vw;
-    width: 12vw;
+    border-radius: 2px;
+    height: 50px;
+    width: 180px;
     border: none;
     font-style: Trebuchet;
     text-align: center;

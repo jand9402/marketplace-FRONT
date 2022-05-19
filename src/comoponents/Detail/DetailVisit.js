@@ -1,6 +1,5 @@
 import ProductDetail from './ProductDetail'
-import PriceDetail from './PriceDetail'
-import './PriceDetail.css'
+// import PriceDetail from './PriceDetail'
 import NavBarAll from '../NavBar/NavBarAll'
 
 export default function DetailVisit () {
@@ -8,7 +7,7 @@ export default function DetailVisit () {
     <div >
       <NavBarAll/>
       <ProductDetail/>
-      <PriceDetail />
+      {/* <PriceDetail /> */}
     </div>
   )
 }
