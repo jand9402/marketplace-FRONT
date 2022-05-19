@@ -55,6 +55,7 @@ export default function RegisterForm () {
         }
       
         function handleSubmit (e) {
+          e.preventDefault()
           if (input.name === '' && input.email === '' && input.phoneNumber === ''  && input.password === '' && input.password2 === '') {
             window.alert('Debe completar todos los campos')
           } else if (errors.name || errors.email  || errors.phoneNumber || errors.password || errors.password2) {
@@ -70,6 +71,7 @@ export default function RegisterForm () {
               password: '',
               password2: ''
             })
+            console.log(input)
             history.push('/')
             
             

@@ -1,216 +1,174 @@
+/* ALL */
 .boxViewportDetail {
     background-color: rgb(245, 245, 243)
 }
+
+.boxImagenPrecio{
+    display: flex;
+    margin-top: 30px;
+    height: 600px;
+    /* background-color: blueviolet; */
+}
+
+.boxImagenProducto{
+    margin-left: 350px;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 600px;
+    height: 550px;
+}
+
+.imagenDetailProd {
+    width: 600px;
+    height: 600px;
+}
 .positionButtonVolverDetai {
     position: relative;
-    left: 80vw;
-    bottom: 2vw;
-    width: 7vw
+    left: 1550px;
+    top: 15px;
 }
 .botonVolverDetail{
-    position: relative;
-    top: 3vw;
-    width: 250px;
-    background-color: #701186;
+    background-color: rgb(24, 49, 87);
     color: white;
     border-radius: 10px;
-    height: 3vw;
-    width: 7vw;
+    height: 50px;
+    width: 90px;
     border: none;
     font-style: Trebuchet;
     text-align: center;
     font-weight: 600;
-    font-size: 1.1em;
+    font-size: 1.2em;
     cursor: pointer;
 }
-
-
-.boxDetailProducto {
-    position: relative;
-    top: 2vw;
-    left: 2vw;
-    /* //background-color: aquamarine; */
-    height: 36vw;
-    width: 63vw;
+.botonVolverDetail:hover{
+    background-color: #6d6f71;
 }
-
-.imagenDetailProd {
-    height: 25vw;
-    width: 24vw;
+/* DETALLE */
+.lineaDetail{
+    height: 2px;
+    background-color: rgb(57, 57, 57);
+}
+.lineaVerticalDetalle{
+    border-left: thick solid #000;
+    height:12%;
+    left: 50%;
+    position: absolute;
+}
+.boxDetailProducto {
+    display: flex;
+    background-color: rgb(245, 245, 243);
+    margin-left: 300px;
+    width: 1300px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
 .boxDetailDescription {
-    /* //background-color: chocolate; */
-    height: 10vw;
+    /* background-color: blueviolet; */
+    width: 650px;
 }
+.boxMarcModel{
+    /* background-color: beige; */
+    display: flex;
+    margin-top: 15px;
+}
+.nameMarcaModel{
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height : 30px;  
+}
+.nameContenMarcaModel{
+    margin-left: 10px;
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 400;
+    font-size: 1.2em;
+    line-height : 30px;  
+}
+.boxCaractLadoA {
+    display: flex;
+    width: 325px;
+    /* background-color:  rgb(181, 180, 180); */
+}
+ .boxDimenEstado{
+     /* background-color: cornflowerblue; */
+     display: flex;
+ }
+ .boxCardDimenEstado{
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 325px;
+    /* background-color:  rgb(119, 67, 67); */
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height : 30px;
+ }
 
-.boxTablaCaracteristicas {
-    position: relative;
-    bottom: 35.2vw;
-    left: 24vw;
-    /* //background-color: chartreuse; */
-    width: 39vw;
-    height: 25vw;
+.boxCaracteristicas {
+    /* background-color: chartreuse; */
+    width: 650px;
 }
 .detailDescripcionName{
+    margin-left: 250px;
     font-style: Trebuchet;
     text-align: left;
     font-weight: 760;
     font-size: 1.3em;
-    line-height : 30px;
-
+    line-height : 30px
 }
-.tituloDetailCaracteristicas {
-    position: relative;
-    left: 7vw;
-    /* //background-color: antiquewhite; */
-    width: 25vw;
-    font-style: Trebuchet;
-    text-align: center;
-    font-weight: 760;
-    font-size: 1.5em;
-    line-height : 30px;
-}
-
-/* //tabla */
-
-.boxTablaCarBase {
-    background-color: rgb(215, 214, 213);
-    margin: 1vw;
-    margin-top: 2vw;
-    height: 19.3vw;
-    width: 37vw;
-}
-.boxNameMarca {
-   background-color:  rgb(181, 180, 180);
-   height: 3.2vw;
-   width: 9vw;
-   font-style: Trebuchet;
-   text-align: left;
-   font-weight: 600;
-   font-size: 1.1em;
-   line-height : 30px;
-}
-/* //para después hay que arreglar unas cosas cuando traiga la info */
-.boxContDesModelo {
-    background-color:  rgb(118, 118, 118);
-}
-
-.boxNameModelo{
-    background-color:  rgb(94, 93, 93);
-    height: 3.2vw;
-    width: 9vw;
+.detailDescriptionDescription {
+    margin-top: 10px;
+    margin-left: 15px;
     font-style: Trebuchet;
     text-align: left;
-    font-weight: 600;
-    font-size: 1.1em;
-    line-height : 30px;
-}
-.boxNameDimensiones {
-    background-color:  rgb(181, 180, 180);
-    height: 3.2vw;
-    width: 9vw;
-    font-style: Trebuchet;
-    text-align: left;
-    font-weight: 600;
-    font-size: 1.1em;
-    line-height : 30px;
- }
- .boxContDesCantidad {
-    background-color:  rgb(118, 118, 118);
+    font-weight: 400;
+    font-size: 1em;
+    line-height : 20px 
 }
 
-.boxNameCantidad{
-    background-color:  rgb(94, 93, 93);
-    height: 3.2vw;
-    width: 9vw;
-    font-style: Trebuchet;
-    text-align: left;
-    font-weight: 600;
-    font-size: 1.1em;
-    line-height : 30px;
-}
- .boxNameEstado {
-    background-color:  rgb(181, 180, 180);
-    height: 3.2vw;
-    width: 9vw;
-    font-style: Trebuchet;
-    text-align: left;
-    font-weight: 600;
-    font-size: 1.1em;
-    line-height : 30px;
- }
-
-.boxContDesOtros {
-    background-color:  rgb(118, 118, 118);
-}
-
-.boxNameOtros{
-    background-color:  rgb(94, 93, 93);
-    height: 3.2vw;
-    width: 9vw;
-    font-style: Trebuchet;
-    text-align: left;
-    font-weight: 600;
-    font-size: 1.1em;
-    line-height : 30px;
-}
-
-/* //PRICEDETAILVISIT */
+/* //PRICEDETAIL */
 .boxMacroPrice {
-    position: relative;
-    bottom: 33vw;
-    left: 68vw;
-    background-color: rgb(57, 34, 34);
-    height: 32vw;
-    width: 23vw;
+    margin-left: 70px;
+    /* background-color: rgb(182, 87, 87); */
+    height: 550px;
+    width: 500px;
 }
 
 .princeNameProd{
-    height:8vw;
-    background-color: rgb(145, 123, 38);
+    /* background-color: rgb(145, 123, 38); */
     font-style: Trebuchet;
     text-align: left;
     font-weight: 600;
     font-size: 2em;
-    line-height : 35px;   
+    line-height : 30px;   
 }
-.princeProd{
-    height:3vw;
-    /* //background-color: rgb(141, 131, 92); */
+.princePrince{
+    /* background-color: rgb(141, 131, 92); */
+    margin-top: 20px;
     font-style: Trebuchet;
     text-align: center;
-    font-weight: 600;
-    font-size: 2.4em;
+    font-weight: 700;
+    font-size: 3em;
     line-height : 35px;   
 }
-.princeCuotProd{
-    height:2vw;
-    /* //background-color: rgb(58, 162, 135); */
-    font-style: Trebuchet;
-    text-align: center;
-    font-weight: 500;
-    font-size: 1em;
-    line-height : 35px;   
-}
-
 .boxPriceStock{
-    /* //background-color: crimson; */
+    display: flex;
+    margin-top: 60px;
+    /* background-color: crimson; */
     height: 3vw;
 }
 .princeStockName{
-    position: relative;
-    left: 1vw;
-    top: 0.2vw;
+    margin-left: 0px;
     font-style: Trebuchet;
-    font-weight: 600;
-    font-size: 1.2em;
+    font-weight: 500;
+    font-size: 1.4em;
     line-height : 35px;  
 }
 .princeStockNumber{
-    position: relative;
-    bottom: 2.5vw;
-    left: 13vw;
+    margin-left: 5px;
     font-style: Trebuchet;
     font-weight: 600;
     font-size: 2em;
@@ -239,25 +197,28 @@
     border: none; 
 }
 .princeAdvertencia{
-    /* //background-color: chocolate; */
-    height: 4vw;
-    color: #114d86;
+    margin-top: 10px;
+    /* background-color: chocolate; */
+    color:  rgb(24, 49, 87);
     text-align: center;
     font-style: Trebuchet;
     font-weight: 600;
     font-size: 1.5em;
     line-height : 23px;
 }
+/* BOTONES */
+.boxBotonesDetalle{
+    display: flex;
+    margin-top: 30px;
+    /* background-color: bisque; */
+}
 .botonIncSesDetail{
-    position: relative;
-    left: 5.5vw;
-    width: 250px;
-    background-color: #114d86;
+    margin-left: 65px;
+    background-color: rgb(24, 49, 87);
     color: white;
-    border-radius: 10px;
-    margin-top: 10px;
-    height: 3vw;
-    width: 12vw;
+    border-radius: 2px;
+    height: 50px;
+    width: 180px;
     border: none;
     font-style: Trebuchet;
     text-align: center;
@@ -265,20 +226,23 @@
     font-size: 1.3em;
     cursor: pointer;
 }
+.botonIncSesDetail:hover{
+    background-color: #6d6f71;
+}
 .botonRegistroDetail{
-    position: relative;
-    left: 5.5vw;
-    width: 250px;
-    background-color: #114d86;
+    margin-left: 10px;
+    background-color:rgb(24, 49, 87);
     color: white;
-    border-radius: 10px;
-    margin-top: 10px;
-    height: 3vw;
-    width: 12vw;
+    border-radius: 2px;
+    height: 50px;
+    width: 180px;
     border: none;
     font-style: Trebuchet;
     text-align: center;
     font-weight: 600;
     font-size: 1.3em;
     cursor: pointer;
+}
+.botonRegistroDetail:hover{
+    background-color: #6d6f71;
 }
