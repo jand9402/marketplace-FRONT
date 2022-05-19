@@ -59,73 +59,73 @@ export default function RegisterForm () {
 
 
   return (
-    <div class='contenedorRegistro'>
-      <div class='logoEnLoginPageR'>
+    <div className='contenedorRegistro'>
+      <div className='logoEnLoginPageR'>
         <Link to='/' id='click'>
-          <img src={LogoProv} class='logoRegister' />
+          <img src={LogoProv} className='logoRegister' />
         </Link>
       </div>
-      <div class='cardRegister'>
-        <div class='contenedorForm'>
-          <form class='allForm' onSubmit={(e) => handleSubmit(e)}>
-            <h1 class='crearCuentaTitulo'>Crear cuenta</h1>
+      <div className='cardRegister'>
+        <div className='contenedorForm'>
+          <form className='allForm' onSubmit={(e) => handleSubmit(e)}>
+            <h1 className='crearCuentaTitulo'>Crear cuenta</h1>
             <div >
-              <div class='encabezadosRegistro'>Tu nombre</div>
+              <div className='encabezadosRegistro'>Tu nombre</div>
               <input
-                class='input'
+                className='input'
                 onChange={(e) => handleChange(e)}
                 type='text'
                 value={input.nombre}
                 name='nombre'
               />
               {errors.nombre && (
-                <p class='errosRegistro'>{errors.nombre}</p>
+                <p className='errosRegistro'>{errors.nombre}</p>
               )}
             </div>
             <div>
-              <div class='encabezadosRegistro'>Correo electrónico</div>
+              <div className='encabezadosRegistro'>Correo electrónico</div>
               <input
-                class='input'
+                className='input'
                 onChange={(e) => handleChange(e)}
                 type='text'
                 value={input.user}
                 name='user'
               />
               {errors.user && (
-                <p class='errosRegistro'>{errors.user}</p>
+                <p className='errosRegistro'>{errors.user}</p>
               )}
 
             </div>
             <div>
-              <div class='encabezadosRegistro'>Contraseña</div>
+              <div className='encabezadosRegistro'>Contraseña</div>
               <input
-                class='input'
+                className='input'
                 onChange={(e) => handleChange(e)}
                 type='password'
                 value={input.password}
                 name='password'
               />
               {errors.password && (
-                <p class='errosRegistro'>{errors.password}</p>
+                <p className='errosRegistro'>{errors.password}</p>
               )}
 
             </div>
             <div>
-              <div class='encabezadosRegistro'>Vuelve a escribir la contraseña</div>
+              <div className='encabezadosRegistro'>Vuelve a escribir la contraseña</div>
               <input
-                class='input'
+                className='input'
                 onChange={(e) => handleChange(e)}
                 type='password'
                 value={input.password2}
                 name='password2'
               />
               {errors.password2 && (
-                <p class='errosRegistro'>{errors.password2}</p>
+                <p className='errosRegistro'>{errors.password2}</p>
               )}
 
             </div>
-            <div class='botonRegistro'>
-              <button class='buttonRegistro'>Registrarse</button>
+            <div className='botonRegistro'>
+              <button className='buttonRegistro'>Registrarse</button>
             </div>
           </form>
         </div>

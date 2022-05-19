@@ -5,6 +5,7 @@ import Home from './comoponents/Home/Home';
 import Login from './comoponents/Login/Login';
 import RegisterForm from './comoponents/RegisterForm/RegisterForm';
 import DetailVisit from './comoponents/Detail/DetailVisit';
+import ProductForm from './comoponents/ProductForm/ProductForm';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
            <Route exact path= '/register' component={RegisterForm}/>
            <Route exact path= '/homeVisit' component={Home}/>
            <Route exact path='/detailVisit/:id' component={DetailVisit} />
+           <Route exact path='/productForm' component={ProductForm} />
            {/* <Route exact path='/detail/:id' component={Detail}/> 
            <Route path='/create_dog' component={Create}/>  */}
          </Switch>

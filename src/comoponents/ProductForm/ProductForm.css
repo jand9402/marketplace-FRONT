@@ -1,0 +1,245 @@
+
+.viewportFormCreateProd{
+    height: 100vh;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    display: flex;
+    /* align-items: center;
+    text-align: center; */
+    
+}
+
+.logoEnCreatePage{
+    position: fixed;
+    margin-bottom: auto;
+    margin-left: 50px;
+    margin-top: 40px;
+}
+.logoProductForm{
+    width: 13vw;
+}
+.allProductForm {
+    min-width: 20vw;
+    max-width: 40vw;
+    min-height: 17vw;
+    max-height: 35vw;
+    background-color: rgb(255, 255, 255);
+    margin-top: 6vw;
+    margin-left: auto;
+    margin-right: auto;   
+}
+
+.allFormPosition{
+    position: relative;
+    height: 100%;
+    bottom: 1vw;
+    /* background-color: aqua; */
+}
+.contentForm {
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: 10px; */
+    min-width: 35%;
+    max-height: 110px;
+    justify-content: space-between;
+    /* background-color: blueviolet; */
+}
+
+.productDiv {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 200px;
+    max-height: 80px;
+    padding: 10px;
+    /* background-color: aquamarine; */
+    }
+
+    .inputProduct {
+        width: 200px;
+    }
+
+    .precioDiv {
+        display: flex;
+    flex-wrap: wrap;
+    max-width: 200px;
+    max-height: 80px;
+    padding: 10px;
+    /* background-color: aqua; */
+    }
+
+    .contentMMC {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    padding: 10px;
+    min-width: 35%;
+    max-height: 65px;
+    justify-content: space-between;
+    /* background-color: blue; */
+    }
+
+    .marcaDiv {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 200px;
+        max-height: 70px;
+        /* padding-bottom: 10px; */
+        /* background-color: aquamarine; */
+        }
+
+        .inputMarca {
+            width: 200px;
+            height: 30px;
+        }
+
+        .imputMarcaImag{
+            width: 300px;
+            height: 50px;
+        }
+
+        .contentDCE {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 5px;
+            padding: 10px;
+            min-width: 35%;
+            max-height: 70px;
+            justify-content: space-between;
+            /* background-color: burlywood; */
+        }
+
+        .dimensionDiv {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 200px;
+            min-height: 70px;
+            padding-bottom: 10px;
+            /* background-color: darkgreen; */
+            
+            }
+
+            .selectDiv {
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 200px;
+                padding-bottom: 10px;
+                /* background-color: cornflowerblue; */
+                }
+
+                .selectForm {
+                    position: relative;
+                    top: 8px;
+                    width: 200px;
+                    height: 40px;
+                }
+
+                .descuentoDiv {
+                    display: flex;
+                    flex-wrap: wrap;
+                    max-width: 200px;
+                    max-height: 82px;
+                    padding: 10px;
+                    /* background-color: rgb(22, 126, 126); */
+                }
+
+                /* VER ESTOS DOS PORQUE HECEN ESO */
+                .otroDiv {
+                    display: flex;
+                    flex-wrap: wrap;
+                    max-width: 300px;
+                    max-height: 70px;
+                    padding-bottom: 10px;
+                    /* background-color: crimson; */
+                    }
+                    .imputMarcaOtro{
+                        width: 300px;
+                        height: 20px;
+                    }
+
+                .contentID {
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-top: 5px;
+                    padding: 10px;
+                    min-width: 50%;
+                    max-height: 70px;
+                    justify-content: space-between;
+                    /* background-color: darkkhaki; */
+                }
+
+                .imagenDiv {
+                    display: flex;
+                    flex-wrap: wrap;
+                    max-width: 150px;
+                    height: 50px;
+                    padding-bottom: 10px;
+                    /* background-color: cornflowerblue; */
+                }
+
+                .area {
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding-bottom: 10px;
+                    margin-top: 20px;
+                    min-width: 50%;
+                    min-height: 15%;
+                    /* background-color: cyan; */
+                }
+
+                .inputArea {
+                    width: 550px;
+                    height: 100px;
+                }
+
+                .buttonProduct {
+                    width: 200px;
+                    height: 40px;
+                    background-color: rgba(23, 49, 87);
+                    border: none;
+                    border-radius: 10px;
+                    color: white;
+                    margin-left: 240px;
+                    margin-top: 10px;
+                    cursor: pointer;
+                }
+                .buttonProduct:hover{
+                    background-color: #716d6e;
+                }
+                .titleProduct {
+                    margin-left: 220px;
+                    margin-top:3vw ;
+                }
+
+                .selectDivCat {
+                    display: flex;
+                    flex-wrap: wrap;
+                    max-width: 200px;
+                    max-height: 40px;
+                    padding-bottom: 10px;
+                    /* background-color: darkorchid; */
+                }
+                .errosCreateName{
+                    position: relative;
+                    bottom:10px;
+                    /* background-color: blue; */
+                    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                    color: red;
+                    max-width: 250px;
+                }
+                .errosCreateOffer{
+                    position: relative;
+                    bottom: 6px;
+                    /* background-color: blue; */
+                    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                    color: red;
+                    max-width: 250px;
+                }
+                .errosCreatePrice{
+                    position: relative;
+                    bottom:10px;
+                    /* background-color: blue; */
+                    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                    color: red;
+                    max-width: 250px;
+                }

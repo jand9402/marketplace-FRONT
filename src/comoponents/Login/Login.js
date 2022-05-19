@@ -51,53 +51,53 @@ function handleSubmit (e) {
 
 
   return (
-    <div class='contenedorLogin'>
-      <div class='logoEnLoginPage'>
+    <div className='contenedorLogin'>
+      <div className='logoEnLoginPage'>
         <Link to='/' id='click'>
-          <img src={LogoProv} class='imgEnLoginPage' />
+          <img src={LogoProv} className='imgEnLoginPage' />
         </Link>
       </div>
 
-      <div class='cardLogin'>
-        <h1 class='tituloLogin'>Iniciar sesión</h1>
-        <form class='allForm' onSubmit={(e) => handleSubmit(e)}>
+      <div className='cardLogin'>
+        <h1 className='tituloLogin'>Iniciar sesión</h1>
+        <form className='allForm' onSubmit={(e) => handleSubmit(e)}>
 
           <div>
-            <div class='encabezadosInputs'>Correo electrónico</div>
+            <div className='encabezadosInputs'>Correo electrónico</div>
             <input
-              class='input'
+              className='input'
               onChange={(e) => handleChange(e)}
               type='text'
               value={input.user}
               name='user'
             />
             {errors.user && (
-              <p class='errosLoigin'>{errors.user}</p>
+              <p className='errosLoigin'>{errors.user}</p>
             )}
           </div>
-          <div class='inputContraseña'>
-            <div class='encabezadosInputs'>Contraseña</div>
+          <div className='inputContraseña'>
+            <div className='encabezadosInputs'>Contraseña</div>
             <input
               type='password'
-              class='input'
+              className='input'
               onChange={(e) => handleChange(e)}
               value={input.password}
               name='password'
             />
             {errors.password && (
-              <p class='errosLoigin'>{errors.password}</p>
+              <p className='errosLoigin'>{errors.password}</p>
             )}
           </div>
-          <div class='botonesLogin'>
-            <button class='button'>Ingresar</button>
+          <div className='botonesLogin'>
+            <button className='button'>Ingresar</button>
             <Link  to='/' id='click'>
-            <div class='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
+            <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
             </Link>
-            <div class='noEstasRegistrado'>
+            <div className='noEstasRegistrado'>
               ¿No estas registrado?
             </div>
-            <Link class='linksDeLanding' to='/register'>
-              <button class='button'>Registrarse</button>
+            <Link className='linksDeLanding' to='/register'>
+              <button className='button'>Registrarse</button>
             </Link>
           </div>
         </form>
