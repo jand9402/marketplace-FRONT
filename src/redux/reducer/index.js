@@ -3,7 +3,8 @@ import { GET_ALL_PRODUCTS,
          GET_CATEGORYS,
          GET_BRAND,
          CATEGORY_FILTERED,
-         BRAND_FILTERED
+         BRAND_FILTERED,
+         POST_USER
         } from "../actions";
 
 
@@ -56,37 +57,19 @@ import { GET_ALL_PRODUCTS,
                           const brandFiltered =
                             action.payload === "all"
                               ? brandProducts
+
+
                               : brandProducts[0].filter((e) => e.brand === action.payload)
                               console.log(brandFiltered)
+
                           return {
                             ...state,
                             products: brandFiltered,
                           }
-            //   case 'INCREMENT':
-            //     return {
-            //       ...state,
-            //     }
-            //   case 'DECREMENT':
-            //     return {
-            //       ...state,
-            //     }
-            //   case 'RESET':
-            //     return {
-            //       ...state,
-            //     }
-            //   case 'GET_POST':
-            //     return {
-            //       ...state,
-            //     }
-            //   case 'RECEIVE_POST':
-            //     return {
-            //       ...state,
-            //     }
-            //   case SEARCH_BY_NAME:
-            //     return{
-            //       ...state,
-            //       products: action.payload
-            //     }
+                          case POST_USER:
+                          return{
+                          ...state,
+                        }    
               default:
                 return {...state}
             }
