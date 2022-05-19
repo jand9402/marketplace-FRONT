@@ -57,9 +57,7 @@ import { GET_ALL_PRODUCTS,
                           const brandFiltered =
                             action.payload === "all"
                               ? brandProducts
-
-
-                              : brandProducts[0].filter((e) => e.brand === action.payload)
+                              : brandProducts.filter((e) => e.brand === action.payload)
                               console.log(brandFiltered)
 
                           return {
