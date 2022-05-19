@@ -6,6 +6,8 @@ export const GET_CATEGORYS = 'GET_CATEGORYS'
 export const GET_BRAND = 'GET_BRAND'
 export const CATEGORY_FILTERED = 'CATEGORY_FILTERED'
 export const BRAND_FILTERED = 'BRAND_FILTERED'
+export const POST_USER = 'POST_USER' 
+
 
 
 export const getProducts = () => async dispatch => {
@@ -60,4 +62,11 @@ export const searchByName = (payload) => async dispatch => {
     .then(respose => respose.json())
     .then(json => dispatch({type: SEARCH_BY_NAME, payload: json}))
     .catch(() => alert (`No se encontró ${payload}, intentelo nuevamente`) )
+}
+
+export function postUser (payload){
+    return async function (dispatch){
+        const response = await axios.post("https://pf-commerce.herokuapp.com/api/users/register",payload)
+        return response
+    }
 }
