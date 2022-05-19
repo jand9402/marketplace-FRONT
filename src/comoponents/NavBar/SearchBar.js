@@ -25,8 +25,10 @@ const SearchBar = () => {
     return (
         <div className='positionSearchBar'>
             <form onSubmit={handleSubmit} >
-                <input className= 'inputSearchBar' type='text' autoComplete= 'off' placeholder="Buscar productos" onChange={(e) =>handleSearchName(e)} />
-                <button type='submit' className='botonSearchBar' ></button> 
+
+                <input value={name} class='inputSearchBar' type='text' autoComplete= 'off' placeholder="Buscar productos" onChange={(e) =>handleSearchName(e)} />
+                <button type='submit' class='botonSearchBar' ></button> 
+
             </form>
         </div>
     )
