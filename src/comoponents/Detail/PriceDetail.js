@@ -13,8 +13,10 @@ export default function PriceDetail () {
     let idProducto = {id}
     let test = idProducto.id
     const dispatch = useDispatch()
-    const allProducts = useSelector((state) => state.products)
-    // console.log(allProducts)
+
+    let allProducts = useSelector((state) => state.products)
+   
+
 
     useEffect(() => {
         dispatch(getProducts())
@@ -24,9 +26,9 @@ export default function PriceDetail () {
   
       <div>
   {allProducts?.map((producto) => {
-    if(producto.id === test){
+    if(producto._id === test){
                               return (
-                                <div key={producto.id} class='boxMacroPrice'>
+                                <div key={producto._id}class='boxMacroPrice'>
         
         <div className='princeNameProd'>{producto.name}</div>
         <div className='princeProd'>$ {producto.price}</div>
