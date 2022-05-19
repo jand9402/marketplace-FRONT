@@ -4,7 +4,7 @@ import './ProductDetail.css'
 
 export default function ButtonsUser (){
     return(
-        <div>
+        <div className="boxBotonesDetalle">
             <div>
                 <Link to='/' id='click'>
                     <button className='botonIncSesDetail'>Comprar</button>
