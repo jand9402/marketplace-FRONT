@@ -43,6 +43,7 @@ export default function Home() {
                 <CarruselSuperior />
             </div>
             <Cards/>
+            
             {/* <Paginado
                     productsPerPage={productsPerPage}
                     allProducts={allProducts.length}

@@ -45,7 +45,7 @@ import { GET_ALL_PRODUCTS,
                         const categoryFiltered =
                           action.payload === "all"
                             ? allProducts
-                            : allProducts.filter((e) => e.category)
+                            : allProducts.filter((e) => e.category === action.payload)
                             
                         return {
                           ...state,
@@ -56,7 +56,7 @@ import { GET_ALL_PRODUCTS,
                           const brandFiltered =
                             action.payload === "all"
                               ? brandProducts
-                              : brandProducts.filter((e) => e.brand)
+                              : brandProducts.filter((e) => e.brand === action.payload)
                               
                           return {
                             ...state,
