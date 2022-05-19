@@ -37,10 +37,10 @@ const Filters = () => {
         <div class='boxFilters'>
              <select className='selectStyle' onChange={e => handleCategoryFiltered(e)}>
               
-              <option>Categorías</option>
+              <option value='all'>Categorías</option>
               {
                   categorys?.map(c => (
-                      <option value={c}>{c}</option>
+                      <option key={c} value={c}>{c}</option>
                   ))
               }
           </select>
