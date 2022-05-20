@@ -5,9 +5,10 @@ export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const GET_BRAND = 'GET_BRAND'
 export const CATEGORY_FILTERED = 'CATEGORY_FILTERED'
 export const BRAND_FILTERED = 'BRAND_FILTERED'
-export const POST_USER = 'POST_USER' 
-export const ORDER_BY_PRICE ='ORDER_BY_PRICE'
 export const LOGIN_ANSWER = 'LOGIN_ANSWER'
+export const POST_USER = 'POST_USER'
+export const ORDER_BY_PRICE = 'ORDER_BY_PRICE' 
+export const POST_PRODUCT = 'POST_PRODUCT'
 
 
 
@@ -73,8 +74,14 @@ export const orderByPrice = (payload) => async dispatch => {
 }
 
 export function postUser (payload){
-    return async function (dispatch){
+    return async function (){
         const response = await axios.post("https://pf-commerce.herokuapp.com/api/users/register",payload)
+        return response
+    }
+}
+export function postProduct (payload) {
+    return async function (dispatch) {
+        const response = await axios.post("https://pf-commerce.herokuapp.com/api/products/post", payload)
         return response
     }
 }

@@ -6,7 +6,8 @@ import { GET_ALL_PRODUCTS,
          BRAND_FILTERED,
          POST_USER,
          ORDER_BY_PRICE,
-         LOGIN_ANSWER
+         LOGIN_ANSWER,
+         POST_PRODUCT
         } from "../actions";
 
 const initialState = {
@@ -72,7 +73,12 @@ export default function rootReducer (state = initialState, action) {
           ...state,
           token: action.payload.accessToken
       }
+      case POST_PRODUCT:
+        return{
+        ...state,
+      }    
         default:
           return {...state}
   }
 }
+      

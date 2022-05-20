@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import './NavBarAll.css'
-import { brandFiltered, categoryFiltered, getBrand, getCategorys, getProducts, orderByPrice } from "../../redux/actions";
+import { brandFiltered, categoryFiltered, getBrand, getCategorys, orderByPrice } from "../../redux/actions";
 
 
 const Filters = () => {
@@ -12,6 +12,7 @@ const Filters = () => {
     const brand = useSelector((state) => state.brand)
 
     const [pagActual, setPagActual] = useState(1)
+    const [orden, setOrden] = useState('')
     // const [cardsPorPag, setCardPorPag] = useState(5)
     // const indiceDeCardsFinal = pagActual * cardsPorPag
     // const indiceDeCardsPrinc = indiceDeCardsFinal - cardsPorPag
@@ -39,6 +40,7 @@ const Filters = () => {
     function handleBrandFiltered(e) {
         e.preventDefault()
         dispatch(brandFiltered(e.target.value))
+        console.log(e.target.value) 
     }
 
     return(
