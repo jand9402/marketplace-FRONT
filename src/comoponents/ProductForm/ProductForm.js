@@ -3,18 +3,120 @@ import './ProductForm.css'
 import LogoProv from '../../assets/logo/LogoProv.png'
 import useValidateCreateProd from '../../hooks/useValidateCreateProd'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { postProduct } from '../../redux/actions'
 // import { usePostProductMutation } from '../redux/slices/products'
 
 const ProductForm = () => {
-  const { errors, input, handleChange } = useValidateCreateProd()
+  function validate (input) {
+    const errors = {}
+
+    if (!input.name) {
+      errors.name = 'Campo requerido'
+    } else if (!/^[a-zA-ZÀ-ÿ\s]{5,100}$/g.test(input.name)) {
+      errors.name = 'Ingrese más de 5 caracteres'
+    }
+    // price
+    if (!input.price) {
+      errors.price = 'Campo requerido'
+    } else if (!/^[0-9]*?$/.test(input.price)) {
+      errors.price = 'Solo números'
+    };
+
+    // offer
+    if (!input.offer) {
+      errors.offer = 'Campo requerido, seleccione una opción'
+    };
+
+    // brand
+    if (!input.brand) {
+      errors.brand = 'Campo requerido'
+    };
+
+    // model
+    if (!input.model) {
+      errors.model = 'Campo requerido'
+    };
+
+    // amount
+    if (!input.amount) {
+      errors.amount = 'Campo requerido'
+    } else if (input.amount <= 0) {
+      errors.amount = 'La cantidad debe ser mayor a 0'
+    }
+
+    // dimensions
+    if (!input.dimensions) {
+      errors.dimensions = 'Campo requerido'
+    } else if (input.dimensions <= 0) {
+      errors.dimensions = 'Las dimenciones deben ser mayores a 0'
+    }
+    //condition
+    if (!input.condition) {
+      errors.condition = 'Campo requerido, elija una opción'
+    };
+    // other
+    if (!input.other) {
+      errors.other = 'Campo requerido'
+    };
+    //image
+    if (!input.image) {
+      errors.image = 'Campo requerido'
+    };
+    //description
+    if (!input.description) {
+      errors.description = 'Campo requerido'
+    };
+    //category
+    if (!input.category) {
+      errors.category = 'Campo requerido, elija una categoría'
+    };
+
+    return errors
+  }
+  let dispatch = useDispatch()
+  // const { errors, handleChange } = useValidateCreateProd()
   const [file, setFile] = useState('')
 
   // const [createProduct] = usePostProductMutation()
   const handleFile = (e) => {
     setFile(e.target.files[0])
+    setInput({
+      ...input,
+      [e.target.name]: file
+    })
+    
+  }
+  const [errors, setErrors ] = useState({})
+
+  const [input, setInput] = useState({
+    name: '',
+    price: '',
+    offer: '',
+    brand: '',
+    model: '',
+    amount: '',
+    dimensions: '',
+    condition: '',
+    other: '',
+    image: '',
+    description: '',
+    category: ''
+  })
+
+  function handleChange (e) {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value
+    })
+    setErrors(validate( {
+      ...input,
+      [e.target.name]: e.target.value
+    }))
   }
 
-  const handleCreate = async (event) => {
+   function handleCreate  (e) {
+   e.preventDefault()
     // const product = {
     //   name: 'Nike Air Presto Mid Utility',
     //   image: file,
@@ -48,38 +150,40 @@ const ProductForm = () => {
       input.category === '' ) {
      alert ('No puede creear una nueva actividad si no completa el formulario')
   }else {
-    const formdata = new window.FormData()
-    formdata.append('name', input.name)
-    formdata.append('image', file)
-    formdata.append('brand', input.brand)
-    formdata.append('description', input.description)
-    formdata.append('price', input.price)
-    formdata.append('amount', input.amount)
-    formdata.append('condition', input.condition)
-    formdata.append('model', input.model)
-    formdata.append('offer', input.offer)
-    formdata.append('dimensions', input.dimensions)
-    formdata.append('other', input.other)
-    formdata.append('category', input.category)
-    event.preventDefault()
+    // const formdata = new window.FormData()
+    // formdata.append('name', input.name)
+    // formdata.append('image', file)
+    // formdata.append('brand', input.brand)
+    // formdata.append('description', input.description)
+    // formdata.append('price', input.price)
+    // formdata.append('amount', input.amount)
+    // formdata.append('condition', input.condition)
+    // formdata.append('model', input.model)
+    // formdata.append('offer', input.offer)
+    // formdata.append('dimensions', input.dimensions)
+    // formdata.append('other', input.other)
+    // formdata.append('category', input.category)
+    e.preventDefault()
     // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
-      .catch((error) => console.error('rejected', error))
-    console.log(formdata)
+      // .catch((error) => console.error('rejected', error))
+      dispatch(postProduct(input))
+    // console.log(formdata)
+    console.log(input)
     alert(`Has creado ${input.name}, felicitaciones`)
-    // setInput({
-    //   name: '',
-    //   price: '',
-    //   offer: '',
-    //   brand: '',
-    //   model: '',
-    //   amount: '',
-    //   dimensions: '',
-    //   condition: '',
-    //   other: '',
-    //   image: '',
-    //   description: '',
-    //   category: ''   
-    //  })
+    setInput({
+      name: '',
+      price: '',
+      offer: '',
+      brand: '',
+      model: '',
+      amount: '',
+      dimensions: '',
+      condition: '',
+      other: '',
+      image: '',
+      description: '',
+      category: ''   
+     })
   } 
 }
 
@@ -246,6 +350,8 @@ const ProductForm = () => {
             <div className='imagenDiv'>
               <label htmlFor=''><b>Imagen:</b></label>
               <input type='file' onChange={(e) => handleFile(e)} />
+                  
+             
               {/* <input
                 className='inputMarcaImag'
                 type="file"
