@@ -75,7 +75,7 @@ export const searchByName = (payload) => async dispatch => {
 
 
 export function postUser (payload){
-    return async function (dispatch){
+    return async function (){
         const response = await axios.post("https://pf-commerce.herokuapp.com/api/users/register",payload)
         return response
     }
