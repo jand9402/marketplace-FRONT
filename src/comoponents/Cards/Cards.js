@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {Link} from "react-router-dom";
 import Card from "./card"
-import { getCategorys, getProducts } from "../../redux/actions";
+import { getCategorys, getProducts} from "../../redux/actions";
+
 
 export default function Cards(){
 
@@ -70,15 +71,18 @@ const [currentPage, setCurrentPage] = useState(0)
         <div>
             <div className="categoriasHome" >Categorías</div>
             <div className="ordenCards">
+
                 { filteredCountries().map((p)=> {
                     return(
                         <div key={p._id}>
-                        <Link to= {'/detailVisit/'+ p._id}  className= "sinlineaCountCards">
-                           <Card image={p.image} name={p.name} price={p.price} />
-                        </Link>
+                        
+                           <Card id={p._id} image={p.image} name={p.name} price={p.price} />
+                       
+
                     </div>
                 )} 
                 )}
+                
             </div>
             <div>
             {allProducts.length && <div className="ordenNextPrev">

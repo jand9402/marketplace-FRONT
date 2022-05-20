@@ -1,3 +1,4 @@
+
 import { GET_ALL_PRODUCTS,
          SEARCH_BY_NAME,
          GET_CATEGORIES,
@@ -9,6 +10,8 @@ import { GET_ALL_PRODUCTS,
          LOGIN_ANSWER,
          POST_PRODUCT
         } from "../actions";
+import { ADD_TO_CAR } from "../../comoponents/Cards/card";
+
 
 const initialState = {
   // loading: false,
@@ -18,6 +21,7 @@ const initialState = {
   brand: [],
   // login: false,
   createProduct: {},
+  car: [],
   token: "",
 }
           
@@ -25,16 +29,19 @@ export default function rootReducer (state = initialState, action) {
   switch (action.type) {
     case GET_ALL_PRODUCTS:
       return{
+
         ...state,
         products: action.payload,
         allProducts: action.payload
       }
     case SEARCH_BY_NAME:
+
       return{
         ...state,
-        products:action.payload
+        products: action.payload
       }
     case GET_CATEGORIES:
+
       return {
         ...state,
         categorys: action.payload
@@ -44,6 +51,7 @@ export default function rootReducer (state = initialState, action) {
         ...state,
         brand: action.payload
       }
+
       case CATEGORY_FILTERED:
         const allProducts = state.allProducts;
         const categoryFiltered = action.payload === "all" ? allProducts : allProducts.filter((e) => e.category === action.payload)
@@ -77,8 +85,29 @@ export default function rootReducer (state = initialState, action) {
         return{
         ...state,
       }    
-        default:
-          return {...state}
+        case ADD_TO_CAR:
+      let products = state.allProducts
+      let newCarItem = products.find(product => product._id === action.payload)
+      console.log(newCarItem)
+      return {
+        ...state,
+        car: [...state.car, newCarItem]
+      }
+      
+      
+    // case REMOVE_ONE:
+    //   return{
+    //   }
+    // case REMOVE_ALL:
+    //   return{
+    //   }
+    // case CLEAR_CAR:
+    //   return{
+
+    //   }
+    default:
+      return { ...state }
   }
 }
       
+
