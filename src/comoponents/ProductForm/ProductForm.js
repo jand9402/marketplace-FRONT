@@ -78,7 +78,7 @@ const ProductForm = () => {
   // const { errors, handleChange } = useValidateCreateProd()
   const [file, setFile] = useState('')
 
-  // const [createProduct] = usePostProductMutation()
+  // const [createProduct] = postProduct()
   const handleFile = (e) => {
     setFile(e.target.files[0])
     setInput({
@@ -116,7 +116,7 @@ const ProductForm = () => {
   }
 
    function handleCreate  (e) {
-   e.preventDefault()
+  //  e.preventDefault()
     // const product = {
     //   name: 'Nike Air Presto Mid Utility',
     //   image: file,
@@ -150,40 +150,39 @@ const ProductForm = () => {
       input.category === '' ) {
      alert ('No puede creear una nueva actividad si no completa el formulario')
   }else {
-    // const formdata = new window.FormData()
-    // formdata.append('name', input.name)
-    // formdata.append('image', file)
-    // formdata.append('brand', input.brand)
-    // formdata.append('description', input.description)
-    // formdata.append('price', input.price)
-    // formdata.append('amount', input.amount)
-    // formdata.append('condition', input.condition)
-    // formdata.append('model', input.model)
-    // formdata.append('offer', input.offer)
-    // formdata.append('dimensions', input.dimensions)
-    // formdata.append('other', input.other)
-    // formdata.append('category', input.category)
-    e.preventDefault()
+    const formdata = new window.FormData()
+    formdata.append('name', input.name)
+    formdata.append('image', file)
+    formdata.append('brand', input.brand)
+    formdata.append('description', input.description)
+    formdata.append('price', input.price)
+    formdata.append('amount', input.amount)
+    formdata.append('condition', input.condition)
+    formdata.append('model', input.model)
+    formdata.append('offer', input.offer)
+    formdata.append('dimensions', input.dimensions)
+    formdata.append('other', input.other)
+    formdata.append('category', input.category)
+    // e.preventDefault()
     // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
-      // .catch((error) => console.error('rejected', error))
-      dispatch(postProduct(input))
-    // console.log(formdata)
-    console.log(input)
+    //   .catch((error) => console.error('rejected', error))
+    dispatch(postProduct(formdata))
+    console.log(formdata)
     alert(`Has creado ${input.name}, felicitaciones`)
-    setInput({
-      name: '',
-      price: '',
-      offer: '',
-      brand: '',
-      model: '',
-      amount: '',
-      dimensions: '',
-      condition: '',
-      other: '',
-      image: '',
-      description: '',
-      category: ''   
-     })
+    // setInput({
+    //   name: '',
+    //   price: '',
+    //   offer: '',
+    //   brand: '',
+    //   model: '',
+    //   amount: '',
+    //   dimensions: '',
+    //   condition: '',
+    //   other: '',
+    //   image: '',
+    //   description: '',
+    //   category: ''   
+    //  })
   } 
 }
 

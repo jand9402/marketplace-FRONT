@@ -1,12 +1,12 @@
 import './LoginForm.css'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import LogoProv from '../../assets/logo/LogoProv.png'
-import { useState } from 'react'
-// import useValidateLogin from '../hooks/useValidateLogin'
+import { postLogin, loginUser } from '../../redux/actions'
 
 export default function Login () {
-//   const { handleChange, handleSubmit, errors, input } = useValidateLogin()
+
 function validate(input){
 const expresiones = {
     password: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/, // tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.
@@ -20,6 +20,10 @@ const expresiones = {
   }
   return errors
 }
+
+const dispatch = useDispatch()
+const token = useSelector(state => state.token)
+const history = useHistory()
 
 const [errors, setErrors] = useState({})
 const [input, setInput] = useState({
@@ -45,10 +49,18 @@ function handleSubmit (e) {
     window.alert('Debe completar todos los campos')
   } else {
     e.preventDefault()
+    dispatch(postLogin(input))
+    console.log(input)
     window.alert('Inicio exitoso')
+    history.push('/homeVisit')
   }
 }
 
+if(token){
+  localStorage.setItem(
+    'token', token
+  )
+}
 
   return (
     <div className='contenedorLogin'>

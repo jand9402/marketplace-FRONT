@@ -6,38 +6,57 @@ import Card from "./card"
 import { getCategorys, getProducts} from "../../redux/actions";
 
 
-
 export default function Cards(){
 
-    const allProducts = useSelector(state => state.products)
+    // const allProducts = useSelector(state => state.products)
     // console.log(allProducts)
     // console.log(allProducts)
-    const dispatch = useDispatch()
-    // const [pagActual, setPagActual] = useState(1)
-    // const [cardsPorPag, setCardPorPag] = useState(5)
-    // const indiceDeCardsFinal = pagActual * cardsPorPag
-    // const indiceDeCardsPrinc = indiceDeCardsFinal - cardsPorPag
-    // const tarjetasAct = allProducts?.slice( indiceDeCardsPrinc,indiceDeCardsFinal)
+ const dispatch = useDispatch()
+//     const [pagActual, setPagActual] = useState(1)
+//     const [cardsPorPag, setCardPorPag] = useState(5)
+//     const indiceDeCardsFinal = pagActual * cardsPorPag
+//     const indiceDeCardsPrinc = indiceDeCardsFinal - cardsPorPag
+//     const tarjetasAct = allProducts?.slice( indiceDeCardsPrinc,indiceDeCardsFinal)
 
-//     const handleNextPage = () =>{
-//         if(tarjetasAct.length > pagActual + cardsPorPag){
-//             setPagActual(pagActual+cardsPorPag)
-//         }
-//         if(tarjetasAct.length>1){
-//             setCardPorPag(cardsPorPag+1) 
-//         }
-//     }
-
-//     const handlePrevPage= () =>{    
-//        if(pagActual>0){
-//            setPagActual(pagActual-cardsPorPag)  
-//            setCardPorPag(cardsPorPag-1)      
-//        }  
-//        if(pagActual>0){
-//         setPagActual(pagActual-(cardsPorPag-1))
-//         setCardPorPag(cardsPorPag-1)      
-//     }
+    
+// const paginado = (numeroDePag) => {
+//     setPagActual(numeroDePag)
 // }
+const [currentPage, setCurrentPage] = useState(0)
+
+    const [numberPage, setNumberPage] = useState(1)
+
+    const allProducts = useSelector(state => state.products)
+    
+    const [offset, setOffset] = useState(5)
+
+  
+    const filteredCountries = () =>{
+        
+        return allProducts.slice(currentPage,currentPage+offset)
+    }
+
+    const handleNextPage = () =>{
+        if(allProducts.length > currentPage + offset){
+            setCurrentPage(currentPage+offset)
+        }
+        if(allProducts.length>1){
+            setNumberPage(numberPage+1) 
+        }
+    }
+
+    const handlePrevPage= () =>{    
+       if(currentPage>0){
+           setCurrentPage(currentPage-offset)  
+           setNumberPage(numberPage-1)      
+       }  
+       if(currentPage>0){
+        setCurrentPage(currentPage-(offset-1))
+        setNumberPage(numberPage-1)      
+    }
+}
+
+
 
     useEffect (()=> {
         dispatch(getProducts())
@@ -48,20 +67,26 @@ export default function Cards(){
     return (
         <div>
             <div className="categoriasHome" >Categorías</div>
-            <button >Prev</button>
             <div className="ordenCards">
-                { allProducts  && allProducts.map((p)=> {
-                return(
-                    <div key={p._id}>
-                       
-                           <Card id={p._id} image={p.image} name={p.name} price={p.price} />
+
+                { filteredCountries().map((p)=> {
+                    return(
+                        <div key={p._id}>
                         
+                           <Card image={p.image} name={p.name} price={p.price} />
+                       
+
                     </div>
                 )} 
                 )}
                 
             </div>
-            <button >Netx</button>
+            <div>
+            {allProducts.length && <div className="ordenNextPrev">
+                <div  onClick={handlePrevPage}><button className="buttonPrevCard"></button></div>
+                <div onClick={handleNextPage}><button className="buttonNextCard"></button></div>
+            </div>}
+           </div>    
         </div>
     )
 
