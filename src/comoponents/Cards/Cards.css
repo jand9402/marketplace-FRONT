@@ -3,7 +3,7 @@
     width: 300px;
     height: 380px;
     margin-bottom: 20px;
-    margin-left: 150px;
+    margin-left: 75px;
     align-items: center;
     justify-content: space-between;
     align-items: center;
@@ -49,10 +49,11 @@
 /* CARDS */
 .ordenCards {
     text-decoration: none;
-    width: 90%;
+    margin-left: 60px;
+    width: 1800px;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 340px 340px 340px 340px 340px;
+    grid-template-columns: 340px 340px 340px 340px 80px;
 }
 .sinlineaCountCards {
     text-decoration: none;
@@ -60,9 +61,40 @@
 .categoriasHome {
     position: relative;
     left: 150px;
+    width: 500px;
     margin-top: 50px;
     font-style: Trebuchet;
     font-weight: 700;
     font-size: 1.8em;
     line-height : 15px;
+}
+
+/* PAGINADO */
+.ordenNextPrev {
+    display: flex;
+    position: relative;
+    bottom: 250px;
+}
+
+.buttonPrevCard {
+    margin-left: 80px;
+    background-image: url("../../assets/icons/botonPrev.png");
+    background-repeat:no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    width: 60px;
+    height:60px;
+}
+.buttonNextCard {
+    margin-left: 1650px;
+    background-image: url("../../assets/icons/botonNext.png");
+    background-repeat:no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    width: 60px;
+    height:60px;
 }

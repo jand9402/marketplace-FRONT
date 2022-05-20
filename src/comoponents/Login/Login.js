@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import LogoProv from '../../assets/logo/LogoProv.png'
-import { postLogin } from '../../redux/actions'
+import { postLogin, loginUser } from '../../redux/actions'
 
 export default function Login () {
 
@@ -57,7 +57,7 @@ function handleSubmit (e) {
 }
 
 if(token){
-  sessionStorage.setItem(
+  localStorage.setItem(
     'token', token
   )
 }
