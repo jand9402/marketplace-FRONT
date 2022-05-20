@@ -6,6 +6,7 @@ import Login from './comoponents/Login/Login';
 import RegisterForm from './comoponents/RegisterForm/RegisterForm';
 import Detail from './comoponents/Detail/Detail';
 import ProductForm from './comoponents/ProductForm/ProductForm';
+import ShoppingCar from './comoponents/ShoppingCar/ShoppingCar';
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
            <Route exact path= '/homeVisit' component={Home}/>
            <Route exact path='/detailVisit/:id' component={Detail} />
            <Route exact path='/productForm' component={ProductForm} />
-           {/* <Route exact path='/detail/:id' component={Detail}/> 
-           <Route path='/create_dog' component={Create}/>  */}
+           <Route exact path='/shoppingCar' component={ShoppingCar} />
+           
          </Switch>
        </div>
     </BrowserRouter>

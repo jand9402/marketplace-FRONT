@@ -12,6 +12,8 @@ export const POST_PRODUCT = 'POST_PRODUCT'
 
 
 
+
+
 export const getProducts = () => async dispatch => {
     return await fetch('https://pf-commerce.herokuapp.com/api/products')
     .then((response) => response.json())
@@ -87,3 +89,6 @@ export function postProduct (payload) {
     }
 }
 
+
+export function removeFromCar () {}
+export function clearCar () {}
