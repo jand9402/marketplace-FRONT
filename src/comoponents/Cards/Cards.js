@@ -73,7 +73,7 @@ const [currentPage, setCurrentPage] = useState(0)
                     return(
                         <div key={p._id}>
                         
-                           <Card image={p.image} name={p.name} price={p.price} />
+                           <Card id={p._id} image={p.image} name={p.name} price={p.price} />
                        
 
                     </div>
