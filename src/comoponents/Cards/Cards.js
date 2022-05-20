@@ -9,7 +9,7 @@ import { getCategorys, getProducts } from "../../redux/actions";
 export default function Cards(){
 
     const allProducts = useSelector(state => state.products)
-    console.log(allProducts)
+    // console.log(allProducts)
     // console.log(allProducts)
     const dispatch = useDispatch()
     // const [pagActual, setPagActual] = useState(1)

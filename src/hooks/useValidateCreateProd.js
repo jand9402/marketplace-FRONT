@@ -86,16 +86,16 @@ const useValidateCreateProd = () => {
   })
 
   function handleChange (e) {
-    e.preventDefault()
-    setInput((prevInput) => {
-      const newInput = {
-        ...prevInput,
-        [e.target.name]: e.target.value
-      }
-      const validations = validate(newInput)
-      setErrors(validations)
-      return newInput
-    })
+    // e.preventDefault()
+    // setInput((prevInput) => {
+    //   const newInput = {
+    //     ...prevInput,
+    //     [e.target.name]: e.target.value
+    //   }
+    //   const validations = validate(newInput)
+    //   setErrors(validations)
+    //   return newInput
+    // })
   };
 
 
