@@ -76,10 +76,10 @@ export default function rootReducer (state = initialState, action) {
           ...state,
         }
       case LOGIN_ANSWER:
-        localStorage.setItem("token", action.payload.accessToken)
+        localStorage.setItem("authorization", action.payload)
         return{
           ...state,
-          token: action.payload.accessToken
+          token: action.payload
       }
       case POST_PRODUCT:
         return{
