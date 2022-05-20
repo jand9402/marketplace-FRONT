@@ -87,9 +87,11 @@ export function postProduct (payload) {
 }
 
 export function postLogin(payload){
+    console.log(payload)
     try{
         return async function(dispatch){
             let login = await axios.post( "https://pf-commerce.herokuapp.com/api/users/login", payload)
+                
             if(login.data){
                 alert('Iniciaste sesion con exito!')
                 return dispatch(
@@ -102,9 +104,10 @@ export function postLogin(payload){
         console.log("Error", e.response.data);
     }
 }
-// const loginUser = createAsyncThunk(
-//     "users/login",
-//     async ({ email, password }, thunkAPI) => {
+
+
+// export const loginUser = (
+//     "users/login", async ({ email, password }, thunkAPI) => {
 //       try {
 //         const response = await fetch(
 //           "https://pf-commerce.herokuapp.com/api/users/login",

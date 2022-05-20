@@ -55,6 +55,9 @@ const [currentPage, setCurrentPage] = useState(0)
     }
 }
 
+// useEffect (()=> {
+//     currentPage(1)
+// },[filteredCountries])
 
 
     useEffect (()=> {

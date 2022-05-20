@@ -43,6 +43,7 @@ function handleChange (e) {
 }
 
 function handleSubmit (e) {
+  e.preventDefault()
   if (input.user === '' && input.password === '') {
     window.alert('Debe completar todos los campos')
   } else if (errors.user || errors.password) {
@@ -56,11 +57,11 @@ function handleSubmit (e) {
   }
 }
 
-if(token){
-  localStorage.setItem(
-    'token', token
-  )
-}
+// if(token){
+//   localStorage.setItem(
+//     'token', token
+//   )
+// }
 
   return (
     <div className='contenedorLogin'>
