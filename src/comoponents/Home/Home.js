@@ -16,29 +16,10 @@ export default function Home() {
         <div className='home'>
             <NavBarAll />
             <SearchBar />
-            {/* <Link to={"/detailVisit/" + 'id'}>
-            <button>detalle</button>
-            </Link> */}
             <div>
                 <CarruselSuperior />
             </div>
             <Cards/>
-            
-            {/* <Paginado
-                    productsPerPage={productsPerPage}
-                    allProducts={allProducts.length}
-                    paginado={paginado}
-                />
-            <div class="cards">
-                {currentProduct?.map((product) => {
-                    // console.log(product)
-                    return (
-                        <Cards/>
-                    )
-                }
-                )
-                }
-            </div> */}
         </div>
     )
 }
