@@ -1,12 +1,13 @@
 import axios from 'axios';
-
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
-export const GET_CATEGORYS = 'GET_CATEGORYS'
+export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const GET_BRAND = 'GET_BRAND'
 export const CATEGORY_FILTERED = 'CATEGORY_FILTERED'
 export const BRAND_FILTERED = 'BRAND_FILTERED'
 export const POST_USER = 'POST_USER' 
+export const ORDER_BY_PRICE ='ORDER_BY_PRICE'
+export const LOGIN_ANSWER = 'LOGIN_ANSWER'
 
 
 
@@ -23,7 +24,7 @@ export function getCategorys() {
         let categoria = [...new Set(categorys)];
         // console.log(categoria)
         return dispatch({
-            type: GET_CATEGORYS,
+            type: GET_CATEGORIES,
             payload: categoria
         })
     }
@@ -64,6 +65,12 @@ export const searchByName = (payload) => async dispatch => {
     .catch(() => alert (`No se encontró ${payload}, intentelo nuevamente`) )
 }
 
+export const orderByPrice = (payload) => async dispatch => {
+    console.log (payload)
+    return fetch( `https://pf-commerce.herokuapp.com/api/products?order=${payload}`)
+    .then(respose => respose.json())
+    .then(json => dispatch({type: ORDER_BY_PRICE, payload: json}))
+}
 
 export function postUser (payload){
     return async function (dispatch){
@@ -72,3 +79,20 @@ export function postUser (payload){
     }
 }
 
+export function postLogin(payload){
+    try{
+        return async function(dispatch){
+            let login = await axios.post( "https://pf-commerce.herokuapp.com/api/users/login", payload)
+            if(login.data){
+                alert('Iniciaste sesion con exito!')
+                return dispatch(
+                    {
+                        type: "LOGIN_ANSWER",
+                        payload: login.data
+                    })
+                }
+            }
+    }catch(e) {
+        console.log("Error", e.response.data);
+    }
+}
