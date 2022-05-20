@@ -23,8 +23,7 @@ export default function Card ({id, image, name, price}) {
             <div className="nameCardProd">{name}</div>
             <div className="priceCardProd" >${price}</div>
             </Link>
-            <button onClick={() => addToCar(id)}>Agregar al carrito</button>
-            <img src={CarritoCard} className="carritoCards"/>
+            <button className="boton_carrito_card" onClick={() => addToCar(id)}></button>
         </div>
     )
 }
