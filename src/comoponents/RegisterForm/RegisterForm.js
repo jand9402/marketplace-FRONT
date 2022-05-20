@@ -71,7 +71,6 @@ export default function RegisterForm () {
               password: '',
               password2: ''
             })
-            console.log(input)
             history.push('/')
             
             
