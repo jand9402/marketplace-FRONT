@@ -56,12 +56,11 @@ useEffect (()=> {
         <div>
             <div className="categoriasHome" >Categorías</div>
             <div className="ordenCards">
-
                 { currentCards.map((p)=> {
                     return(
-                        <div key={p._id}>
-                            <Card id={p._id} image={p.image} name={p.name} price={p.price} />
-                        </div> 
+                    <div key={p._id}>
+                        <Card id={p._id} image={p.image} name={p.name} price={p.price} />
+                    </div> 
                     )} 
                 )}                
             </div>
@@ -74,5 +73,4 @@ useEffect (()=> {
            <Paginado productsPerPage={productsPerPage}  allProducts={allProducts.length} paginado = {paginado}/>  
         </div>
     )
-
 }
