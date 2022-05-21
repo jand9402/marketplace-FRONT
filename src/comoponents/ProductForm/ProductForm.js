@@ -223,6 +223,7 @@ const ProductForm = () => {
                 type='number'
                 value={input.price}
                 name='price'
+                className='inputProduct'
                 onChange={(e) => handleChange(e)}
               />
             {errors.price && (
@@ -231,9 +232,9 @@ const ProductForm = () => {
             </div>
 
             <div className='descuentoDiv'>
-              {/* <label htmlFor=''><b>Con descuento:</b></label> */}
+              <label htmlFor=''><b>Con descuento:</b></label>
               <select onChange={(e) => handleChange(e)} className='selectForm' name='offer' id=''>
-                <option disabled selected key='' value=''>Con descuento</option>
+                {/* <option disabled selected key='' value=''>Con descuento</option> */}
                 <option key='true' value='true'>Sí</option>
                 <option key='false' value='false'>No</option>
               </select>
@@ -294,9 +295,9 @@ const ProductForm = () => {
 
           <div className='contentDCE'>
             <div className='selectDivCat'>
-              {/* <label htmlFor=''><b>Categoría:</b></label> */}
-              <select name='category' id='' onChange={(e) => handleChange(e)}  >
-                <option disabled selected  value='' >Categoría</option>
+              <label htmlFor=''><b>Categoría:</b></label>
+              <select name='category' id='' onChange={(e) => handleChange(e)} className='inputMarca' >
+                {/* <option disabled selected  value='' >Categoría</option> */}
                 <option value='art'>Arte</option>
                 <option value='Bookstore and haberdashery'>Librería y mercería</option>
                 <option value='cards'>Autos, Motos, y Otros</option>
@@ -331,9 +332,9 @@ const ProductForm = () => {
             </div>
 
             <div className='selectDiv'>
-              {/* <label htmlFor=''><b>Condición:</b></label> */}
+              <label htmlFor=''><b>Condición:</b></label>
               <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
-                <option disabled selected  value=''>Condición</option>
+                {/* <option disabled selected  value=''>Condición</option> */}
                 <option  value='new'>Nuevo</option>
                 <option value='used'>Usado</option>
               </select>

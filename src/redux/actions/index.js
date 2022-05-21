@@ -87,7 +87,7 @@ export function postProduct (payload) {
         return response
     }
 }
-export function removeFromCar () {}
+
 export function clearCar () {}
 
 export function postLogin(payload){
