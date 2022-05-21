@@ -57,6 +57,7 @@
 
     .inputProduct {
         width: 200px;
+        margin-bottom: 5px;
     }
 
     .precioDiv {
@@ -91,6 +92,8 @@
         .inputMarca {
             width: 200px;
             height: 30px;
+            margin-bottom: 5px;
+            /* margin-right: 10px; */
         }
 
         .imputMarcaImag{
@@ -129,9 +132,9 @@
 
                 .selectForm {
                     position: relative;
-                    top: 8px;
+                    /* top: 8px; */
                     width: 200px;
-                    height: 40px;
+                    height: 30px;
                 }
 
                 .descuentoDiv {
@@ -154,7 +157,8 @@
                     }
                     .imputMarcaOtro{
                         width: 300px;
-                        height: 20px;
+                        height: 30px;
+                        margin-bottom: 5px;
                     }
 
                 .contentID {
@@ -164,6 +168,7 @@
                     padding: 10px;
                     min-width: 50%;
                     max-height: 70px;
+                    margin-top: 20px;
                     justify-content: space-between;
                     /* background-color: darkkhaki; */
                 }
