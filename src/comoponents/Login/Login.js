@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import LogoProv from '../../assets/logo/LogoProv.png'
-import { postLogin, loginUser } from '../../redux/actions'
+import { postLogin} from '../../redux/actions'
 
 export default function Login () {
 
@@ -23,11 +23,12 @@ const expresiones = {
 
 const dispatch = useDispatch()
 const token = useSelector(state => state.token)
+console.log(token)
 const history = useHistory()
 
 const [errors, setErrors] = useState({})
 const [input, setInput] = useState({
-  user: '',
+  email: '',
   password: ''
 })
 
@@ -43,9 +44,10 @@ function handleChange (e) {
 }
 
 function handleSubmit (e) {
-  if (input.user === '' && input.password === '') {
+  e.preventDefault()
+  if (input.email === '' && input.password === '') {
     window.alert('Debe completar todos los campos')
-  } else if (errors.user || errors.password) {
+  } else if (errors.email || errors.password) {
     window.alert('Debe completar todos los campos')
   } else {
     e.preventDefault()
@@ -56,11 +58,11 @@ function handleSubmit (e) {
   }
 }
 
-if(token){
-  localStorage.setItem(
-    'token', token
-  )
-}
+// if(token){
+//   sessionStorage.setItem(
+//     'authorization', token
+//   )
+// }
 
   return (
     <div className='contenedorLogin'>
@@ -80,11 +82,11 @@ if(token){
               className='input'
               onChange={(e) => handleChange(e)}
               type='text'
-              value={input.user}
-              name='user'
+              value={input.email}
+              name='email'
             />
             {errors.user && (
-              <p className='errosLoigin'>{errors.user}</p>
+              <p className='errosLoigin'>{errors.email}</p>
             )}
           </div>
           <div className='inputContraseña'>
