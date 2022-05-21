@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import './ProductForm.css'
 import LogoProv from '../../assets/logo/LogoProv.png'
-import useValidateCreateProd from '../../hooks/useValidateCreateProd'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { postProduct } from '../../redux/actions'
-// import { usePostProductMutation } from '../redux/slices/products'
 
 const ProductForm = () => {
   function validate (input) {
@@ -190,7 +188,7 @@ const ProductForm = () => {
     <div className='viewportFormCreateProd'>
       <div className='logoEnCreatePage'>
         <Link to='/homeVisit' id='click'>
-          <img src={LogoProv} className='logoProductForm' />
+          <img src={LogoProv} className='logoProductForm' alt='logoPag' />
         </Link>
       </div>
 

@@ -13,8 +13,8 @@ const expresiones = {
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   }
   const errors = {}
-  if (!expresiones.correo.test(input.user)) {
-    errors.user = 'Debe ingresar un correo válido (nombre@proveedor.com)'
+  if (!expresiones.correo.test(input.email)) {
+    errors.email = 'Debe ingresar un correo válido (nombre@proveedor.com)'
   } else if (!expresiones.password.test(input.password)) {
     errors.password = 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.'
   }
@@ -22,8 +22,8 @@ const expresiones = {
 }
 
 const dispatch = useDispatch()
-const token = useSelector(state => state.token)
-console.log(token)
+// const token = useSelector(state => state.token)
+// console.log(token)
 const history = useHistory()
 
 const [errors, setErrors] = useState({})
@@ -52,7 +52,6 @@ function handleSubmit (e) {
   } else {
     e.preventDefault()
     dispatch(postLogin(input))
-    console.log(input)
     window.alert('Inicio exitoso')
     history.push('/homeVisit')
   }
@@ -85,7 +84,7 @@ function handleSubmit (e) {
               value={input.email}
               name='email'
             />
-            {errors.user && (
+            {errors.email && (
               <p className='errosLoigin'>{errors.email}</p>
             )}
           </div>
@@ -103,7 +102,7 @@ function handleSubmit (e) {
             )}
           </div>
           <div className='botonesLogin'>
-            <button className='button'>Ingresar</button>
+            <button type='submit' className='button'>Ingresar</button>
             <Link  to='/' id='click'>
             <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
             </Link>

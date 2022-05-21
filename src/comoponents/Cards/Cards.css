@@ -6,7 +6,6 @@
     margin-left: 75px;
     align-items: center;
     justify-content: space-between;
-    align-items: center;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     transition: transform 0.4s;
     transform-style: preserve-3d;
@@ -15,13 +14,15 @@
     transform:scale(1.05)
 }
 .imageTamaño {
+    /* background-color: aqua; */
     margin-left: 22px;
     width: 240px;
-    height: 240px;
+    height: 230px;
 }
 .nameCardProd {
     color: rgb(62, 62, 62);
     /* background-color: rgb(32, 155, 149); */
+    height: 75px;
     margin-left: 5px;
     margin-right: auto;
     font-style: Trebuchet;
@@ -33,11 +34,12 @@
     color: rgb(28, 28, 28);
     /* background-color: rgb(32, 155, 149); */
     margin-top: 15px;
-    margin-left: 90px;
-    margin-right: auto;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
     font-style: Trebuchet;
     font-weight: 700;
-    font-size: 2.5em;
+    font-size: 2.2em;
     line-height : 15px;
 }
 .carritoCards {
@@ -49,7 +51,7 @@
 /* CARDS */
 .ordenCards {
     text-decoration: none;
-    margin-left: 60px;
+    margin-left: 50px;
     width: 1800px;
     margin-top: 20px;
     display: grid;
@@ -60,7 +62,7 @@
 }
 .categoriasHome {
     position: relative;
-    left: 150px;
+    left: 140px;
     width: 500px;
     margin-top: 50px;
     font-style: Trebuchet;
