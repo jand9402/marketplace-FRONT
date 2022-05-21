@@ -11,6 +11,8 @@ import { GET_ALL_PRODUCTS,
          POST_PRODUCT
         } from "../actions";
 import { ADD_TO_CAR } from "../../comoponents/Cards/card";
+import { REMOVE_ALL_FROM_CAR, REMOVE_ONE_FROM_CAR } from "../../comoponents/CarItem/CarItem";
+import { CLEAR_CAR } from "../../comoponents/ShoppingCar/ShoppingCar";
 
 
 const initialState = {
@@ -88,23 +90,43 @@ export default function rootReducer (state = initialState, action) {
         case ADD_TO_CAR:
       let products = state.allProducts
       let newCarItem = products.find(product => product._id === action.payload)
-      console.log(newCarItem)
+      // console.log(newCarItem)
+      let itemInCar = state.car.find(item => item._id === newCarItem._id)
+
+
+      return itemInCar?{
+        ...state,
+        car: state.car.map(item => item._id === newCarItem._id?{
+          ...item, quantity: item.quantity +1}:item
+          )
+      } : {
+        ...state,
+        car: [...state.car, {...newCarItem, quantity: 1}]
+      }
+    case REMOVE_ONE_FROM_CAR:
+      let carProducts = state.car
+      let itemToDelete = carProducts.find(item => item._id === action.payload)
+
+      return itemToDelete.quantity > 1? {
+        ...state,
+        car: state.car.map(item => item._id === action.payload ?{
+          ...item, quantity: item.quantity - 1}:item
+          )
+      }:{
+        ...state,
+        car: state.car.filter((item) => item._id !== action.payload)
+      }
+      case REMOVE_ALL_FROM_CAR:
       return {
         ...state,
-        car: [...state.car, newCarItem]
+        car: state.car.filter((item) => item._id !== action.payload)
       }
-      
-      
-    // case REMOVE_ONE:
-    //   return{
-    //   }
-    // case REMOVE_ALL:
-    //   return{
-    //   }
-    // case CLEAR_CAR:
-    //   return{
 
-    //   }
+    case CLEAR_CAR:
+      return{
+        ...state,
+        car: []
+      }
     default:
       return { ...state }
   }

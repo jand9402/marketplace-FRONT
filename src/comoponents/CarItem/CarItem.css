@@ -1,0 +1,19 @@
+.en_car{
+    font-size: medium;
+    padding-bottom: 20px;
+}
+
+.row_en_car{
+    border-bottom: solid 2px black;
+    
+}
+
+.contenedor_car{
+    margin-top: 5%;
+    padding-left: 20%;
+    padding-right: 30%;
+}
+
+.price_en_carrito{
+    font-size: medium;
+}
