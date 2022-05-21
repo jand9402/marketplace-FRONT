@@ -89,8 +89,6 @@ export function postProduct (payload) {
 }
 
 
-
-export function removeFromCar () {}
 export function clearCar () {}
 
 export function postLogin(payload){
