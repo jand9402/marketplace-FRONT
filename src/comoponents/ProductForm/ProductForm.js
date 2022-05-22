@@ -15,61 +15,60 @@ const ProductForm = () => {
       errors.name = 'Ingrese más de 5 caracteres'
     }
     // price
-    if (!input.price) {
+    else if (!input.price) {
       errors.price = 'Campo requerido'
     } else if (!/^[0-9]*?$/.test(input.price)) {
       errors.price = 'Solo números'
-    };
+    }
 
     // offer
-    if (!input.offer) {
+    else if (!input.offer) {
       errors.offer = 'Campo requerido, seleccione una opción'
-    };
+    }
 
     // brand
-    if (!input.brand) {
+    else if (!input.brand) {
       errors.brand = 'Campo requerido'
-    };
+    }
 
     // model
-    if (!input.model) {
+    else if (!input.model) {
       errors.model = 'Campo requerido'
-    };
+    }
 
     // amount
-    if (!input.amount) {
+    else if (!input.amount) {
       errors.amount = 'Campo requerido'
     } else if (input.amount <= 0) {
       errors.amount = 'La cantidad debe ser mayor a 0'
     }
-
+     //category
+     else if (!input.category) {
+      errors.category = 'Campo requerido, elija una categoría'
+    }
     // dimensions
-    if (!input.dimensions) {
+    else if (!input.dimensions) {
       errors.dimensions = 'Campo requerido'
     } else if (input.dimensions <= 0) {
       errors.dimensions = 'Las dimenciones deben ser mayores a 0'
     }
     //condition
-    if (!input.condition) {
+    else if (!input.condition) {
       errors.condition = 'Campo requerido, elija una opción'
-    };
+    }
     // other
-    if (!input.other) {
+    else if (!input.other) {
       errors.other = 'Campo requerido'
-    };
-    //image
-    if (!input.image) {
-      errors.image = 'Campo requerido'
-    };
+    }
+    // //image
+    // else if (!input.image) {
+    //   errors.image = 'Campo requerido'
+    // }
     //description
-    if (!input.description) {
+    else if (!input.description) {
       errors.description = 'Campo requerido'
-    };
-    //category
-    if (!input.category) {
-      errors.category = 'Campo requerido, elija una categoría'
-    };
-
+    }
+  
     return errors
   }
   let dispatch = useDispatch()

@@ -227,24 +227,30 @@
                 .errosCreateName{
                     position: relative;
                     bottom:10px;
+                    margin-top: 7px;
                     /* background-color: blue; */
                     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                     color: red;
                     max-width: 250px;
+                    line-height : 15px;
                 }
                 .errosCreateOffer{
                     position: relative;
                     bottom: 6px;
+                    margin-top: 7px;
                     /* background-color: blue; */
                     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                     color: red;
                     max-width: 250px;
+                    line-height : 15px;
                 }
                 .errosCreatePrice{
                     position: relative;
                     bottom:10px;
+                    margin-top: 7px;
                     /* background-color: blue; */
                     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                     color: red;
                     max-width: 250px;
+                    line-height : 15px;
                 }
