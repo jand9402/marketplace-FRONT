@@ -6,6 +6,7 @@ import LogoNav from '../../assets/logo/log.png'
 import CarritoNavBar from '../../assets/icons/carritoNav.png'
 
 
+
 const NavBarAll = () => {
 const[detail, setDetail] = useState(false)
     
@@ -21,6 +22,7 @@ return(
                 </div>
                 <img className='carritoNavBar' src={CarritoNavBar} alt='carritoNav' />
             </nav>
+
 
         </div>
     )
