@@ -87,46 +87,127 @@ export default function rootReducer (state = initialState, action) {
         return{
         ...state,
       }    
-        case ADD_TO_CAR:
-      let products = state.allProducts
-      let newCarItem = products.find(product => product._id === action.payload)
-      // console.log(newCarItem)
-      let itemInCar = state.car.find(item => item._id === newCarItem._id)
 
 
-      return itemInCar?{
-        ...state,
-        car: state.car.map(item => item._id === newCarItem._id?{
-          ...item, quantity: item.quantity +1}:item
-          )
-      } : {
-        ...state,
-        car: [...state.car, {...newCarItem, quantity: 1}]
-      }
-    case REMOVE_ONE_FROM_CAR:
-      let carProducts = state.car
-      let itemToDelete = carProducts.find(item => item._id === action.payload)
+      // case ADD_TO_CAR:
+      //   let products = state.allProducts
+      //   let newCarItem = products.find(product => product._id === action.payload)
+      //   // console.log(newCarItem)
+      //   let itemInCar = state.car.find(item => item._id === newCarItem._id)
+  
+  
+      //   return itemInCar?{
+      //     ...state,
+      //     car: state.car.map(item => item._id === newCarItem._id?{
+      //       ...item, quantity: item.quantity +1}:item
+      //       )
+      //   } : {
+      //     ...state,
+      //     car: [...state.car, {...newCarItem, quantity: 1}]
+      //   }
+      // case REMOVE_ONE_FROM_CAR:
+      //   let carProducts = state.car
+      //   let itemToDelete = carProducts.find(item => item._id === action.payload)
+  
+      //   return itemToDelete.quantity > 1? {
+      //     ...state,
+      //     car: state.car.map(item => item._id === action.payload ?{
+      //       ...item, quantity: item.quantity - 1}:item
+      //       )
+      //   }:{
+      //     ...state,
+      //     car: state.car.filter((item) => item._id !== action.payload)
+      //   }
+      //   case REMOVE_ALL_FROM_CAR:
+      //   return {
+      //     ...state,
+      //     car: state.car.filter((item) => item._id !== action.payload)
+      //   }
+  
+      // case CLEAR_CAR:
+      //   return{
+      //     ...state,
+      //     car: []
+      //   }
 
-      return itemToDelete.quantity > 1? {
-        ...state,
-        car: state.car.map(item => item._id === action.payload ?{
-          ...item, quantity: item.quantity - 1}:item
-          )
-      }:{
-        ...state,
-        car: state.car.filter((item) => item._id !== action.payload)
-      }
-      case REMOVE_ALL_FROM_CAR:
-      return {
-        ...state,
-        car: state.car.filter((item) => item._id !== action.payload)
-      }
 
-    case CLEAR_CAR:
-      return{
-        ...state,
-        car: []
-      }
+
+
+
+
+    //     case ADD_TO_CAR:
+    //   let products = state.allProducts
+    //   let newCarItem = products.find(product => product._id === action.payload)
+    //   // console.log(newCarItem)
+    //   let itemInCar = state.car.find(item => item._id === newCarItem._id)
+
+    //   let aux = itemInCar?{
+    //     ...state,
+    //     car: state.car.map(item => item._id === newCarItem._id?{
+    //       ...item, quantity: item.quantity +1}:item
+    //       )
+    //   } : {
+    //     ...state,
+    //     car: [...state.car, {...newCarItem, quantity: 1}]
+    //   }
+    //   localStorage.setItem("itemCar", JSON.stringify(aux))
+    //   let info = JSON.parse(localStorage.itemCar)
+
+    //   console.log(JSON.parse(localStorage.itemCar))
+
+    //   return {
+    //     ...state,
+    //    car: info.car
+    //   }
+
+    //   // return itemInCar?{
+    //   //   ...state,
+    //   //   car: state.car.map(item => item._id === newCarItem._id?{
+    //   //     ...item, quantity: item.quantity +1}:item
+    //   //     )
+    //   // } : {
+    //   //   ...state,
+    //   //   car: [...state.car, {...newCarItem, quantity: 1}]
+    //   // }
+    // case REMOVE_ONE_FROM_CAR:
+    //   let carProducts = state.car
+    //   let itemToDelete = carProducts.find(item => item._id === action.payload)
+
+    //   let aux2 = itemToDelete.quantity > 1? {
+    //     ...state,
+    //     car: state.car.map(item => item._id === action.payload ?{
+    //       ...item, quantity: item.quantity - 1}:item
+    //       )
+    //   }:{
+    //     ...state,
+    //     car: state.car.filter((item) => item._id !== action.payload)
+    //   }
+    //   localStorage.setItem("itemCar", JSON.stringify(aux2))
+    //   let info2 = JSON.parse(localStorage.itemCar)
+
+    //   return{
+    //     ...state,
+    //     car: info2.car
+    //   }
+    //   case REMOVE_ALL_FROM_CAR:
+
+    //   let aux4 = { ...state,
+    //     car: state.car.filter((item) => item._id !== action.payload)}
+    //     localStorage.setItem("itemCar", JSON.stringify(aux4))
+    //   let info4 = JSON.parse(localStorage.itemCar)
+    //   return {
+    //    ...state,
+    //    car: info4.car
+    //   }
+
+    // case CLEAR_CAR:
+    //   let aux3 = [0]
+    //   localStorage.setItem("itemCar", JSON.stringify(aux3))
+    //   let info3 = JSON.parse(localStorage.itemCar)
+    //   return{
+    //     ...state,
+    //     car: info3
+    //   }
     default:
       return { ...state }
   }
