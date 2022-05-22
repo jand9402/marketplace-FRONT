@@ -8,17 +8,21 @@ import CarritoNavBar from '../../assets/icons/carritoNav.png'
 const NavBarAll = () => {
 
     return(
+      
         <div className='boxNavBar'>
-            <nav className= 'ordenNavBar'>
-                <img className= 'logoNavBar' src={LogoNav} alt='logoNav'/>
-                <div>
-                    <Filters/>
-                </div>
-                <div>
-                <LoginRegister/>   
-                </div>
-                <img className='carritoNavBar' src={CarritoNavBar} alt='carritoNav' />
-            </nav>
+            
+ <nav className= 'ordenNavBar'>
+ <img className= 'logoNavBar' src={LogoNav} alt='logoNav'/>
+ <div>
+     <Filters/>
+ </div>
+ <div>
+ <LoginRegister/>   
+ </div>
+ <img className='carritoNavBar' src={CarritoNavBar} alt='carritoNav' />
+</nav>
+            
+           
 
         </div>
     )
