@@ -7,19 +7,10 @@ import { brandFiltered, categoryFiltered, getBrand, getCategorys, orderByPrice }
 
 const Filters = () => {
     const dispatch = useDispatch();
-    // const products = useSelector((state) => state.products)
     const categorys = useSelector((state) => state.categorys)
     const brand = useSelector((state) => state.brand)
 
     const [pagActual, setPagActual] = useState(1)
-    const [orden, setOrden] = useState('')
-    // const [cardsPorPag, setCardPorPag] = useState(5)
-    // const indiceDeCardsFinal = pagActual * cardsPorPag
-    // const indiceDeCardsPrinc = indiceDeCardsFinal - cardsPorPag
-    // const tarjetasAct = products.slice( indiceDeCardsPrinc,indiceDeCardsFinal)
-
-    // console.log(products)
-    // console.log(categorys)
 
     useEffect(() => {
         dispatch(getCategorys())

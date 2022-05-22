@@ -58,7 +58,7 @@ function handleChange (e) {
      history.push('/')
     }
     if(localStorage.getItem('authorization', token)) {
-      history.push('/homeVisit')
+      history.push('/home')
     } 
   }
 }
@@ -68,7 +68,7 @@ function handleChange (e) {
     <div className='contenedorLogin'>
       <div className='logoEnLoginPage'>
         <Link to='/' id='click'>
-          <img src={LogoProv} className='imgEnLoginPage' />
+          <img src={LogoProv} className='imgEnLoginPage' alt='logoLogin' />
         </Link>
       </div>
 

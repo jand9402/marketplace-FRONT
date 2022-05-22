@@ -21,7 +21,7 @@ export default function ProductDetail (){
     return(
         <div className="boxViewportDetail">
             <div className="positionButtonVolverDetai">
-                <Link to='/homeVisit' id='click'>
+                <Link to='/home' id='click'>
                     <button className="botonVolverDetail">VOLVER</button>
                 </Link>
             </div>
