@@ -9,6 +9,7 @@ export const LOGIN_ANSWER = 'LOGIN_ANSWER'
 export const POST_USER = 'POST_USER'
 export const ORDER_BY_PRICE = 'ORDER_BY_PRICE' 
 export const POST_PRODUCT = 'POST_PRODUCT'
+export const DETAIL_DELETE = 'DETAIL_DELETE'
 
 
 
@@ -113,4 +114,10 @@ export function postLogin(payload){
     }catch(e) {
         console.log("Error", e.response.data);
     }
+}
+
+export const deletepreviousdetail = () => {
+    return ({
+        type:DETAIL_DELETE
+    })
 }
