@@ -1,66 +1,76 @@
 import "./Cards.css";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {Link} from "react-router-dom";
 import Card from "./card"
-import { getCategorys, getProducts } from "../../redux/actions";
+import { getCategorys, getProducts} from "../../redux/actions";
+import Paginado from "../Paginado/Paginado";
 
 
 export default function Cards(){
+    
+const dispatch = useDispatch()
+const allProducts = useSelector(state => state.products)
+const [currentPage, setCurrentPage] = useState(1)
+const [productsPerPage] = useState(5)
+const indexOfLastCard = currentPage * productsPerPage
+const indexOfFirstCard = indexOfLastCard - productsPerPage
+const currentCards = allProducts.slice(indexOfFirstCard,indexOfLastCard)
 
-    const allProducts = useSelector(state => state.products)
-    // console.log(allProducts)
-    // console.log(allProducts)
-    const dispatch = useDispatch()
-    // const [pagActual, setPagActual] = useState(1)
-    // const [cardsPorPag, setCardPorPag] = useState(5)
-    // const indiceDeCardsFinal = pagActual * cardsPorPag
-    // const indiceDeCardsPrinc = indiceDeCardsFinal - cardsPorPag
-    // const tarjetasAct = allProducts?.slice( indiceDeCardsPrinc,indiceDeCardsFinal)
+const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber)
+}
 
 //     const handleNextPage = () =>{
-//         if(tarjetasAct.length > pagActual + cardsPorPag){
-//             setPagActual(pagActual+cardsPorPag)
+//         if(allProducts.length > currentPage + cardsPerPage){
+//             setCurrentPage(currentPage+cardsPerPage)
 //         }
-//         if(tarjetasAct.length>1){
-//             setCardPorPag(cardsPorPag+1) 
+//         if(allProducts.length>1){
+//             setNumberPage(numberPage+1) 
 //         }
 //     }
 
 //     const handlePrevPage= () =>{    
-//        if(pagActual>0){
-//            setPagActual(pagActual-cardsPorPag)  
-//            setCardPorPag(cardsPorPag-1)      
+//        if(currentPage >0){
+//            setCurrentPage(currentPage-cardsPerPage)  
+//            setNumberPage(numberPage-1)      
 //        }  
-//        if(pagActual>0){
-//         setPagActual(pagActual-(cardsPorPag-1))
-//         setCardPorPag(cardsPorPag-1)      
+//        if(currentPage>0){
+//         setCurrentPage(currentPage-(cardsPerPage-1))
+//         setNumberPage(numberPage-1)      
 //     }
 // }
 
-    useEffect (()=> {
-        dispatch(getProducts())
-        dispatch(getCategorys())
-    }, [dispatch])
+useEffect (()=> {
+    paginado (1)
+},[allProducts])
+
+
+useEffect (()=> {
+    dispatch(getProducts())
+    dispatch(getCategorys())
+}, [dispatch])
     
 
     return (
+        
         <div>
-            <div className="categoriasHome" >Categorías</div>
-            <button >Prev</button>
+            <div className="categoriasHome">Nuestros productos</div>
             <div className="ordenCards">
-                { allProducts  && allProducts.map((p)=> {
-                return(
+                { currentCards.map((p)=> {
+                    return(
                     <div key={p._id}>
-                        <Link to= {'/detailVisit/'+ p._id}  className= "sinlineaCountCards">
-                           <Card image={p.image} name={p.name} price={p.price} />
-                        </Link>
-                    </div>
-                )} 
-                )}
+                        <Card id={p._id} image={p.image} name={p.name} price={p.price} />
+                    </div> 
+                    )} 
+                )}                
             </div>
-            <button >Netx</button>
+            {/* <div>
+            {allProducts.length && <div className="ordenNextPrev">
+                <div  onClick={handlePrevPage}><button className="buttonPrevCard"></button></div>
+                <div onClick={handleNextPage}><button className="buttonNextCard"></button></div>
+            </div>}
+           </div>   */}
+           <Paginado productsPerPage={productsPerPage}  allProducts={allProducts.length} paginado = {paginado}/>  
         </div>
     )
-
 }

@@ -5,6 +5,12 @@ import LogoProv from '../../assets/logo/LogoProv.png'
 import Videofondo from '../../assets/video/videoLanding2.mp4'
 
 export default function Landing () {
+    let locaS = []
+    let otro = 'otro'
+    localStorage.setItem("itemCar", JSON.stringify(locaS))
+    localStorage.setItem("otra", JSON.stringify(otro))
+
+    console.log(localStorage)
     return (
       <div className='contenedor'>
         <div className='fila'>
@@ -15,7 +21,7 @@ export default function Landing () {
             <div className='columna_interior_botones'>
               <div className='encabezado'>
                 <div className='logo'>
-                  <img className='logoLanding' src={LogoProv} />
+                  <img className='logoLanding' src={LogoProv} alt='logoLanding'/>
                 </div>
                 <div className='contenedor_slogan'>
                   <h3 className='sologan'>Aqui va el slogan</h3>
@@ -32,7 +38,7 @@ export default function Landing () {
                 </button>
               </Link>
   
-              <Link className='linksDeLanding' to='/homeVisit'>
+              <Link className='linksDeLanding' to='/home'>
                 <button className='boton_visitante'>Visitante</button>
               </Link>
             </div>

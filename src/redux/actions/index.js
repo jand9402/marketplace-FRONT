@@ -12,6 +12,8 @@ export const POST_PRODUCT = 'POST_PRODUCT'
 
 
 
+
+
 export const getProducts = () => async dispatch => {
     return await fetch('https://pf-commerce.herokuapp.com/api/products')
     .then((response) => response.json())
@@ -86,19 +88,28 @@ export function postProduct (payload) {
     }
 }
 
+export function locaLSatorage (){
+    let productsInLocalStorage = localStorage.getItem('itemCar')
+    productsInLocalStorage = JSON.parse(productsInLocalStorage)
+    console.log(productsInLocalStorage)
+    return productsInLocalStorage
+}
+
 export function postLogin(payload){
+    // console.log(payload)
     try{
         return async function(dispatch){
-            let login = await axios.post( "https://pf-commerce.herokuapp.com/api/users/login", payload)
+            let login = await axios.post( "https://pf-commerce.herokuapp.com/api/users/login", payload) 
+            console.log(login)
             if(login.data){
-                alert('Iniciaste sesion con exito!')
+                // localStorage.setItem("authorization", login.data)
+                alert('Sesión iniciada con exito!')
                 return dispatch(
                     {
-                        type: "LOGIN_ANSWER",
+                        type: LOGIN_ANSWER,
                         payload: login.data
                     })
-                }
-            }
+                }}
     }catch(e) {
         console.log("Error", e.response.data);
     }

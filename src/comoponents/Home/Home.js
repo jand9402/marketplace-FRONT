@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import { useEffect, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux'
 import NavBarAll from '../NavBar/NavBarAll.js'
@@ -16,29 +16,15 @@ export default function Home() {
         <div className='home'>
             <NavBarAll />
             <SearchBar />
-            {/* <Link to={"/detailVisit/" + 'id'}>
-            <button>detalle</button>
-            </Link> */}
+
+            <Link to={"/shoppingCar"}>
+            <button>carrito</button>
+            </Link>
+
             <div>
                 <CarruselSuperior />
             </div>
             <Cards/>
-            
-            {/* <Paginado
-                    productsPerPage={productsPerPage}
-                    allProducts={allProducts.length}
-                    paginado={paginado}
-                />
-            <div class="cards">
-                {currentProduct?.map((product) => {
-                    // console.log(product)
-                    return (
-                        <Cards/>
-                    )
-                }
-                )
-                }
-            </div> */}
         </div>
     )
 }

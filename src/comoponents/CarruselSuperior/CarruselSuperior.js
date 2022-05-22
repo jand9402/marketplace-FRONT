@@ -2,6 +2,7 @@ import React from 'react'
 import './CarruselSuperior.css'
 import BannerElectro from '../../assets/banners/bannerElectro.jpg'
 import BannerDestacados from '../../assets/banners/Banner1.jpg'
+import BannerDeportes from '../../assets/banners/banner3.jpg'
 
 export default function CarruselSuperior() {
   
@@ -16,7 +17,7 @@ export default function CarruselSuperior() {
         <img src={BannerElectro} className="d-block w-100" alt="bannerElectro"/>
       </div>
       <div className="carousel-item">
-        <img src="https://www.oleoshop.com/imagenes/poridentidad?identidad=0e88ff79-60eb-4a95-aa58-7ce7f5294a71&ancho=850&alto=" className="d-block w-100" alt="..."/>
+        <img src={BannerDeportes} className="d-block w-100" alt="..."/>
       </div>
     </div>
     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

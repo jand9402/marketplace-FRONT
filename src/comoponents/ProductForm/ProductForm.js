@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import './ProductForm.css'
 import LogoProv from '../../assets/logo/LogoProv.png'
-import useValidateCreateProd from '../../hooks/useValidateCreateProd'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { postProduct } from '../../redux/actions'
-// import { usePostProductMutation } from '../redux/slices/products'
 
 const ProductForm = () => {
   function validate (input) {
@@ -17,61 +15,60 @@ const ProductForm = () => {
       errors.name = 'Ingrese más de 5 caracteres'
     }
     // price
-    if (!input.price) {
+    else if (!input.price) {
       errors.price = 'Campo requerido'
     } else if (!/^[0-9]*?$/.test(input.price)) {
       errors.price = 'Solo números'
-    };
+    }
 
     // offer
-    if (!input.offer) {
+    else if (!input.offer) {
       errors.offer = 'Campo requerido, seleccione una opción'
-    };
+    }
 
     // brand
-    if (!input.brand) {
+    else if (!input.brand) {
       errors.brand = 'Campo requerido'
-    };
+    }
 
     // model
-    if (!input.model) {
+    else if (!input.model) {
       errors.model = 'Campo requerido'
-    };
+    }
 
     // amount
-    if (!input.amount) {
+    else if (!input.amount) {
       errors.amount = 'Campo requerido'
     } else if (input.amount <= 0) {
       errors.amount = 'La cantidad debe ser mayor a 0'
     }
-
+     //category
+     else if (!input.category) {
+      errors.category = 'Campo requerido, elija una categoría'
+    }
     // dimensions
-    if (!input.dimensions) {
+    else if (!input.dimensions) {
       errors.dimensions = 'Campo requerido'
     } else if (input.dimensions <= 0) {
       errors.dimensions = 'Las dimenciones deben ser mayores a 0'
     }
     //condition
-    if (!input.condition) {
+    else if (!input.condition) {
       errors.condition = 'Campo requerido, elija una opción'
-    };
+    }
     // other
-    if (!input.other) {
+    else if (!input.other) {
       errors.other = 'Campo requerido'
-    };
-    //image
-    if (!input.image) {
-      errors.image = 'Campo requerido'
-    };
+    }
+    // //image
+    // else if (!input.image) {
+    //   errors.image = 'Campo requerido'
+    // }
     //description
-    if (!input.description) {
+    else if (!input.description) {
       errors.description = 'Campo requerido'
-    };
-    //category
-    if (!input.category) {
-      errors.category = 'Campo requerido, elija una categoría'
-    };
-
+    }
+  
     return errors
   }
   let dispatch = useDispatch()
@@ -116,21 +113,6 @@ const ProductForm = () => {
   }
 
    function handleCreate  (e) {
-  //  e.preventDefault()
-    // const product = {
-    //   name: 'Nike Air Presto Mid Utility',
-    //   image: file,
-    //   brand: 'Nike',
-    //   description: 'Con el Nike Air Presto Mid Utility, no te preocupes por el cambio de los días soleados a los meses de invierno',
-    //   price: 1000,
-    //   amount: 50,
-    //   condition: 'used',
-    //   model: 'nikeAir',
-    //   offer: true,
-    //   dimensions: 28,
-    //   other: 'Confeccionado con una tela elástica en la parte superior diseñada para mantenerte seco, ofrece una mayor resistencia.',
-    //   category: 'sport and fitness'
-    // }
   //   event.preventDefault()
   //   if (Object.values(errors).length > 0) {
   //     alert ('Complete toda la información requerida')    
@@ -189,18 +171,14 @@ const ProductForm = () => {
   return (
     <div className='viewportFormCreateProd'>
       <div className='logoEnCreatePage'>
-        <Link to='/homeVisit' id='click'>
-          <img src={LogoProv} className='logoProductForm' />
+        <Link to='/home' id='click'>
+          <img src={LogoProv} className='logoProductForm' alt='logoPag' />
         </Link>
       </div>
-
       <div className='allProductForm'>
-
         <form onSubmit={(e) => handleCreate(e)} className='allFormPosition'>
           <h1 className='titleProduct'>Nuevo producto</h1>
-
           <div className='contentForm'>
-
             <div className='productDiv'>
               <label htmlFor=''><b>Nombre del producto:</b></label>
               <input
@@ -214,10 +192,9 @@ const ProductForm = () => {
             {errors.name && (
               <p className='errosCreateName'>{errors.name}</p>
             )}
-            </div>
-
-            <div className='precioDiv'>
-              <label htmlFor=''><b>Precio:</b></label>
+          </div>
+          <div className='precioDiv'>
+            <label htmlFor=''><b>Precio:</b></label>
               <input
                 autoComplete='off'
                 type='number'
@@ -229,12 +206,11 @@ const ProductForm = () => {
             {errors.price && (
               <p className='errosCreatePrice'>{errors.price}</p>
             )}
-            </div>
-
-            <div className='descuentoDiv'>
-              <label htmlFor=''><b>Con descuento:</b></label>
-              <select onChange={(e) => handleChange(e)} className='selectForm' name='offer' id=''>
-                {/* <option disabled selected key='' value=''>Con descuento</option> */}
+          </div>
+          <div className='descuentoDiv'>
+            <label htmlFor=''><b>Con descuento:</b></label>
+            <select onChange={(e) => handleChange(e)} className='selectForm' name='offer' id=''>
+                <option disabled selected key='' value=''>Con descuento</option>
                 <option key='true' value='true'>Sí</option>
                 <option key='false' value='false'>No</option>
               </select>
@@ -243,10 +219,7 @@ const ProductForm = () => {
             )}
             </div>
           </div>
-
-
           <div className='contentMMC'>
-
             <div className='marcaDiv'>
               <label htmlFor=''><b>Marca:</b></label>
               <input
@@ -260,44 +233,41 @@ const ProductForm = () => {
             {errors.brand && (
               <p className='errosCreateName'>{errors.brand}</p>
             )}
-            </div>
-
-            <div className='marcaDiv'>
-              <label htmlFor=''><b>Modelo:</b></label>
-              <input
-                autoComplete='off'
-                type='text'
-                className='inputMarca'
-                value={input.model}
-                name='model'
-                onChange={(e) => handleChange(e)}
-              />
+          </div>
+          <div className='marcaDiv'>
+            <label htmlFor=''><b>Modelo:</b></label>
+            <input
+            autoComplete='off'
+            type='text'
+            className='inputMarca'
+            value={input.model}
+            name='model'
+            onChange={(e) => handleChange(e)}
+            />
             {errors.model && (
               <p className='errosCreateName'>{errors.model}</p>
             )}
-            </div>
-
-            <div className='marcaDiv'>
-              <label htmlFor=''><b>Cantidad:</b></label>
-              <input
-                autoComplete='off'
-                type='number'
-                className='inputMarca'
-                value={input.amount}
-                name='amount'
-                onChange={(e) => handleChange(e)}
+          </div>
+          <div className='marcaDiv'>
+            <label htmlFor=''><b>Cantidad:</b></label>
+            <input
+            autoComplete='off'
+            type='number'
+            className='inputMarca'
+            value={input.amount}
+            name='amount'
+            onChange={(e) => handleChange(e)}
               />
             {errors.amount && (
               <p className='errosCreateName'>{errors.amount}</p>
             )}
             </div>
           </div>
-
           <div className='contentDCE'>
             <div className='selectDivCat'>
               <label htmlFor=''><b>Categoría:</b></label>
               <select name='category' id='' onChange={(e) => handleChange(e)} className='inputMarca' >
-                {/* <option disabled selected  value='' >Categoría</option> */}
+                <option disabled selected  value='' >Categoría</option>
                 <option value='art'>Arte</option>
                 <option value='Bookstore and haberdashery'>Librería y mercería</option>
                 <option value='cards'>Autos, Motos, y Otros</option>
@@ -314,91 +284,70 @@ const ProductForm = () => {
             {errors.category && (
               <p className='errosCreateOffer'>{errors.category}</p>
             )}
-            </div>
-
-            <div className='dimensionDiv'>
-              <label htmlFor=''><b>Dimensiones:</b></label>
-              <input
-                autoComplete='off'
-                type='number'
-                className='inputMarca'
-                value={input.dimensions}
-                name='dimensions'
-                onChange={(e) => handleChange(e)}
+          </div>
+          <div className='dimensionDiv'>
+            <label htmlFor=''><b>Dimensiones:</b></label>
+            <input
+            autoComplete='off'
+            type='number'
+            className='inputMarca'
+            value={input.dimensions}
+            name='dimensions'
+            onChange={(e) => handleChange(e)}
               />
-              {errors.dimensions && (
+            {errors.dimensions && (
               <p className='errosCreateName'>{errors.dimensions}</p>
             )}
-            </div>
-
-            <div className='selectDiv'>
-              <label htmlFor=''><b>Condición:</b></label>
-              <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
-                {/* <option disabled selected  value=''>Condición</option> */}
-                <option  value='new'>Nuevo</option>
-                <option value='used'>Usado</option>
-              </select>
+          </div>
+          <div className='selectDiv'>
+            <label htmlFor=''><b>Condición:</b></label>
+            <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
+              <option disabled selected  value=''>Condición</option>
+              <option  value='new'>Nuevo</option>
+              <option value='used'>Usado</option>
+            </select>
             {errors.condition && (
               <p className='errosCreateOffer'>{errors.condition}</p>
             )}
-            </div>
-
           </div>
-
-          <div className='contentID'>
-
-            <div className='imagenDiv'>
-              <label htmlFor=''><b>Imagen:</b></label>
-              <input type='file' onChange={(e) => handleFile(e)} />
-                  
-             
-              {/* <input
-                className='inputMarcaImag'
-                type="file"
-                id="image" name="image"
-                accept="image/png, image/jpeg, image/jpg"
-                value={input.image}
-                onChange={(e) => handleChangeFile(e)}
-              /> */}
-            </div>
-
-            <div className='otroDiv'>
-              <label htmlFor=''><b>Otro:</b></label>
-              <input
-                autoComplete='off'
-                type='text'
-                className='imputMarcaOtro'
-                value={input.other}
-                name='other'
-                onChange={(e) => handleChange(e)}
-              />
+        </div>
+        <div className='contentID'>
+          <div className='imagenDiv'>
+            <label htmlFor=''><b>Imagen:</b></label>
+            <input type='file' onChange={(e) => handleFile(e)} />
+          </div>
+          <div className='otroDiv'>
+            <label htmlFor=''><b>Otro:</b></label>
+            <input
+            autoComplete='off'
+            type='text'
+            className='imputMarcaOtro'
+            value={input.other}
+            name='other'
+            onChange={(e) => handleChange(e)}
+            />
             {errors.other && (
               <p className='errosCreateName'>{errors.other}</p>
             )}
-            </div>
-
-
           </div>
-
-          <div className='area'>
-            <label htmlFor=''><b>Descripción:</b></label>
-            <input
-                name='description'
-                value={input.description}
-                id=''
-                className='inputArea'
-                onChange={(e) => handleChange(e)}
-              />
+        </div>
+        <div className='area'>
+          <label htmlFor=''><b>Descripción:</b></label>
+          <input
+          name='description'
+          value={input.description}
+          id=''
+          className='inputArea'
+          onChange={(e) => handleChange(e)}
+          />
           {errors.description && (
             <p className='errosCreateOffer'>{errors.description}</p>
           )}
-          </div>
-
-          <button type='submit' className='buttonProduct'>Crear</button>
-
-        </form>
-      </div>
+        </div>
+        <button type='submit' className='buttonProduct'>Crear</button>
+      </form>
     </div>
+  </div>
   )
 }
 

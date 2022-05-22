@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import LogoProv from '../../assets/logo/LogoProv.png'
-import { postLogin } from '../../redux/actions'
+import { postLogin} from '../../redux/actions'
 
 export default function Login () {
 
@@ -13,8 +13,8 @@ const expresiones = {
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   }
   const errors = {}
-  if (!expresiones.correo.test(input.user)) {
-    errors.user = 'Debe ingresar un correo válido (nombre@proveedor.com)'
+  if (!expresiones.correo.test(input.email)) {
+    errors.email = 'Debe ingresar un correo válido (nombre@proveedor.com)'
   } else if (!expresiones.password.test(input.password)) {
     errors.password = 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.'
   }
@@ -23,11 +23,12 @@ const expresiones = {
 
 const dispatch = useDispatch()
 const token = useSelector(state => state.token)
+// console.log(token)
 const history = useHistory()
 
 const [errors, setErrors] = useState({})
 const [input, setInput] = useState({
-  user: '',
+  email: '',
   password: ''
 })
 
@@ -42,31 +43,32 @@ function handleChange (e) {
   }))
 }
 
-function handleSubmit (e) {
-  if (input.user === '' && input.password === '') {
+ async function handleSubmit (e) {
+  e.preventDefault()
+  if (input.email === '' && input.password === '') {
     window.alert('Debe completar todos los campos')
-  } else if (errors.user || errors.password) {
+  } else if (errors.email || errors.password) {
     window.alert('Debe completar todos los campos')
   } else {
     e.preventDefault()
-    dispatch(postLogin(input))
-    console.log(input)
-    window.alert('Inicio exitoso')
-    history.push('/homeVisit')
+    try{
+      await dispatch(postLogin(input))
+    }catch (error){
+     alert(error)
+     history.push('/')
+    }
+    if(localStorage.getItem('authorization', token)) {
+      history.push('/home')
+    } 
   }
 }
 
-if(token){
-  sessionStorage.setItem(
-    'token', token
-  )
-}
 
   return (
     <div className='contenedorLogin'>
       <div className='logoEnLoginPage'>
         <Link to='/' id='click'>
-          <img src={LogoProv} className='imgEnLoginPage' />
+          <img src={LogoProv} className='imgEnLoginPage' alt='logoLogin' />
         </Link>
       </div>
 
@@ -80,11 +82,11 @@ if(token){
               className='input'
               onChange={(e) => handleChange(e)}
               type='text'
-              value={input.user}
-              name='user'
+              value={input.email}
+              name='email'
             />
-            {errors.user && (
-              <p className='errosLoigin'>{errors.user}</p>
+            {errors.email && (
+              <p className='errosLoigin'>{errors.email}</p>
             )}
           </div>
           <div className='inputContraseña'>
@@ -101,7 +103,7 @@ if(token){
             )}
           </div>
           <div className='botonesLogin'>
-            <button className='button'>Ingresar</button>
+            <button type='submit' className='button'>Ingresar</button>
             <Link  to='/' id='click'>
             <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
             </Link>

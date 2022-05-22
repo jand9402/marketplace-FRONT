@@ -13,22 +13,18 @@ export default function Paginado ({productsPerPage, allProducts, paginado}){
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-auto">
-        <nav id="menu">  
-            <ul>
-                {
-                    pageNumbers &&
-                        pageNumbers.map(page => (
+                    <nav id="menu">
+                        <ul>
+                            { pageNumbers && pageNumbers.map(page => (
                             <li key={page}>
-                            <button className="nav-btn" onClick={() => paginado(page)}>{page}</button>
+                                <button className="nav-btn" onClick={() => paginado(page)}>{page}</button>
                             </li>
-                        ))    
-                }
-            </ul>
-            
-            
-        </nav>
-        </div>
-        </div>
+                            ))
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
     )
 }

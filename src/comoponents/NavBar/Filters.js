@@ -7,6 +7,7 @@ import { brandFiltered, categoryFiltered, getBrand, getCategorys, getProducts, o
 
 const Filters = () => {
     const dispatch = useDispatch();
+
     // const products = useSelector((state) => state.products)
     let categorys = useSelector((state) => state.categorys)
 
@@ -37,6 +38,7 @@ const Filters = () => {
 
     // console.log(products)
     console.log(arrCategory)
+
 
     useEffect(() => {
         dispatch(getProducts)
