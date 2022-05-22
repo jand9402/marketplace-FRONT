@@ -88,7 +88,12 @@ export function postProduct (payload) {
     }
 }
 
-export function clearCar () {}
+export function locaLSatorage (){
+    let productsInLocalStorage = localStorage.getItem('itemCar')
+    productsInLocalStorage = JSON.parse(productsInLocalStorage)
+    console.log(productsInLocalStorage)
+    return productsInLocalStorage
+}
 
 export function postLogin(payload){
     // console.log(payload)

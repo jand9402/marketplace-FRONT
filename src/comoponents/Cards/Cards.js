@@ -7,7 +7,7 @@ import Paginado from "../Paginado/Paginado";
 
 
 export default function Cards(){
-
+    
 const dispatch = useDispatch()
 const allProducts = useSelector(state => state.products)
 const [currentPage, setCurrentPage] = useState(1)
@@ -52,6 +52,7 @@ useEffect (()=> {
     
 
     return (
+        
         <div>
             <div className="categoriasHome">Nuestros productos</div>
             <div className="ordenCards">

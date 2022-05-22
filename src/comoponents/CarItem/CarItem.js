@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { locaLSatorage } from "../../redux/actions";
 import './CarItem.css'
 export const REMOVE_ALL_FROM_CAR = 'REMOVE_ALL_FROM_CAR'
 export const REMOVE_ONE_FROM_CAR = 'REMOVE_ONE_FROM_CAR'
@@ -10,23 +12,76 @@ export const ADD_TO_CAR = 'ADD_TO_CAR'
 export default function CarItem({ data }) {
     const { _id, name, image, price, quantity } = data
     const dispatch = useDispatch()
+    let history = useHistory()
+    console.log(data)
 
-    const removeFromCar = (payload, all = false) => {
-        if(all){return dispatch({
-            type: REMOVE_ALL_FROM_CAR,
-            payload
-        })}else{return dispatch({
-            type: REMOVE_ONE_FROM_CAR,
-            payload
-        })
+    const removeFromCar = (_id, all = false) => {
+        if(all){ 
+            let todos = JSON.parse(localStorage.itemCar)
+            console.log(todos)
+    
+            function addQuantity(_id){
+                todos.map(item => {
+                    if(item._id === _id){
+                        item.quantity = 0
+                    }
+                }
+                )
+                return todos 
+            }
+            
+            let producto = addQuantity(_id)
+    
+            localStorage.setItem("itemCar", JSON.stringify(producto))
+            console.log(JSON.parse(localStorage.itemCar))
+            history.push('/shoppingCar')
+        console.log(locaLSatorage)}
+            else{
+                let todos = JSON.parse(localStorage.itemCar)
+                console.log(todos)
+        
+                function addQuantity(_id){
+                    todos.map(item => {
+                        if(item._id === _id){
+                           if(item.quantity > 0) item.quantity = item.quantity -1 
+                        }
+                    }
+                    )
+                    return todos 
+                }
+                
+                let producto = addQuantity(_id)
+        
+                localStorage.setItem("itemCar", JSON.stringify(producto))
+                console.log(JSON.parse(localStorage.itemCar))
+                history.push('/shoppingCar')
         }
     }
-    const addToCar = (payload) => {
-        return dispatch({
-            type: ADD_TO_CAR,
-            payload
-        })
+    const allProducts = useSelector(state => state.products)
+
+    const addToCar = (_id) => {
+
+        let todos = JSON.parse(localStorage.itemCar)
+        console.log(todos)
+
+        function addQuantity(_id){
+            todos.map(item => {
+                if(item._id === _id){
+                    item.quantity += 1
+                }
+            }
+            )
+            return todos 
+        }
+        
+        let producto = addQuantity(_id)
+
+        localStorage.setItem("itemCar", JSON.stringify(producto))
+        console.log(JSON.parse(localStorage.itemCar))
+        history.push('/shoppingCar')
     }
+
+    
 
     return (
       
