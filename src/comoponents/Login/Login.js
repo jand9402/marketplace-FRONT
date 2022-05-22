@@ -1,29 +1,34 @@
 import './LoginForm.css'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import LogoProv from '../../assets/logo/LogoProv.png'
-import { useState } from 'react'
-// import useValidateLogin from '../hooks/useValidateLogin'
+import { postLogin} from '../../redux/actions'
 
 export default function Login () {
-//   const { handleChange, handleSubmit, errors, input } = useValidateLogin()
+
 function validate(input){
 const expresiones = {
     password: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/, // tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   }
   const errors = {}
-  if (!expresiones.correo.test(input.user)) {
-    errors.user = 'Debe ingresar un correo válido (nombre@proveedor.com)'
+  if (!expresiones.correo.test(input.email)) {
+    errors.email = 'Debe ingresar un correo válido (nombre@proveedor.com)'
   } else if (!expresiones.password.test(input.password)) {
     errors.password = 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.'
   }
   return errors
 }
 
+const dispatch = useDispatch()
+// const token = useSelector(state => state.token)
+// console.log(token)
+const history = useHistory()
+
 const [errors, setErrors] = useState({})
 const [input, setInput] = useState({
-  user: '',
+  email: '',
   password: ''
 })
 
@@ -39,65 +44,73 @@ function handleChange (e) {
 }
 
 function handleSubmit (e) {
-  if (input.user === '' && input.password === '') {
+  e.preventDefault()
+  if (input.email === '' && input.password === '') {
     window.alert('Debe completar todos los campos')
-  } else if (errors.user || errors.password) {
+  } else if (errors.email || errors.password) {
     window.alert('Debe completar todos los campos')
   } else {
     e.preventDefault()
+    dispatch(postLogin(input))
     window.alert('Inicio exitoso')
+    history.push('/homeVisit')
   }
 }
 
+// if(token){
+//   sessionStorage.setItem(
+//     'authorization', token
+//   )
+// }
 
   return (
-    <div class='contenedorLogin'>
-      <div class='logoEnLoginPage'>
+    <div className='contenedorLogin'>
+      <div className='logoEnLoginPage'>
         <Link to='/' id='click'>
-          <img src={LogoProv} class='imgEnLoginPage' />
+          <img src={LogoProv} className='imgEnLoginPage' />
         </Link>
       </div>
 
-      <div class='cardLogin'>
-        <h1 class='tituloLogin'>Iniciar sesión</h1>
-        <form class='allForm' onSubmit={(e) => handleSubmit(e)}>
+      <div className='cardLogin'>
+        <h1 className='tituloLogin'>Iniciar sesión</h1>
+        <form className='allForm' onSubmit={(e) => handleSubmit(e)}>
 
           <div>
-            <div class='encabezadosInputs'>Correo electrónico</div>
+            <div className='encabezadosInputs'>Correo electrónico</div>
             <input
-              class='input'
+              className='input'
               onChange={(e) => handleChange(e)}
               type='text'
-              value={input.user}
-              name='user'
+              value={input.email}
+              name='email'
             />
-            {errors.user && (
-              <p class='errosLoigin'>{errors.user}</p>
+            {errors.email && (
+              <p className='errosLoigin'>{errors.email}</p>
             )}
           </div>
-          <div class='inputContraseña'>
-            <div class='encabezadosInputs'>Contraseña</div>
+          <div className='inputContraseña'>
+            <div className='encabezadosInputs'>Contraseña</div>
             <input
               type='password'
-              class='input'
+              className='input'
               onChange={(e) => handleChange(e)}
               value={input.password}
               name='password'
             />
             {errors.password && (
-              <p class='errosLoigin'>{errors.password}</p>
+              <p className='errosLoigin'>{errors.password}</p>
             )}
           </div>
-          <div class='botonesLogin'>
-            <button class='button'>Ingresar</button>
+          <div className='botonesLogin'>
+            <button type='submit' className='button'>Ingresar</button>
             <Link  to='/' id='click'>
-            <div class='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
+            <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
             </Link>
-            <div class='noEstasRegistrado'>
+            <div className='noEstasRegistrado'>
               ¿No estas registrado?
             </div>
-            <Link class='linksDeLanding' to='/register'>
-              <button class='button'>Registrarse</button>
+            <Link className='linksDeLanding' to='/register'>
+              <button className='button'>Registrarse</button>
             </Link>
           </div>
         </form>

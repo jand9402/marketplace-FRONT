@@ -1,0 +1,248 @@
+/* ALL */
+.boxViewportDetail {
+    background-color: rgb(245, 245, 243)
+}
+
+.boxImagenPrecio{
+    display: flex;
+    margin-top: 30px;
+    height: 600px;
+    /* background-color: blueviolet; */
+}
+
+.boxImagenProducto{
+    margin-left: 350px;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 600px;
+    height: 550px;
+}
+
+.imagenDetailProd {
+    width: 600px;
+    height: 600px;
+}
+.positionButtonVolverDetai {
+    position: relative;
+    left: 1550px;
+    top: 15px;
+}
+.botonVolverDetail{
+    background-color: rgb(24, 49, 87);
+    color: white;
+    border-radius: 10px;
+    height: 50px;
+    width: 90px;
+    border: none;
+    font-style: Trebuchet;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.botonVolverDetail:hover{
+    background-color: #6d6f71;
+}
+/* DETALLE */
+.lineaDetail{
+    height: 2px;
+    background-color: rgb(57, 57, 57);
+}
+.lineaVerticalDetalle{
+    border-left: thick solid #000;
+    height:12%;
+    left: 50%;
+    position: absolute;
+}
+.boxDetailProducto {
+    display: flex;
+    background-color: rgb(245, 245, 243);
+    margin-left: 300px;
+    width: 1300px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
+}
+
+.boxDetailDescription {
+    /* background-color: blueviolet; */
+    width: 650px;
+}
+.boxMarcModel{
+    /* background-color: beige; */
+    display: flex;
+    margin-top: 15px;
+}
+.nameMarcaModel{
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height : 30px;  
+}
+.nameContenMarcaModel{
+    margin-left: 10px;
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 400;
+    font-size: 1.2em;
+    line-height : 30px;  
+}
+.boxCaractLadoA {
+    display: flex;
+    width: 325px;
+    /* background-color:  rgb(181, 180, 180); */
+}
+ .boxDimenEstado{
+     /* background-color: cornflowerblue; */
+     display: flex;
+ }
+ .boxCardDimenEstado{
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 325px;
+    /* background-color:  rgb(119, 67, 67); */
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height : 30px;
+ }
+
+.boxCaracteristicas {
+    /* background-color: chartreuse; */
+    width: 650px;
+}
+.detailDescripcionName{
+    margin-left: 250px;
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 760;
+    font-size: 1.3em;
+    line-height : 30px
+}
+.detailDescriptionDescription {
+    margin-top: 10px;
+    margin-left: 15px;
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 400;
+    font-size: 1em;
+    line-height : 20px 
+}
+
+/* //PRICEDETAIL */
+.boxMacroPrice {
+    margin-left: 70px;
+    /* background-color: rgb(182, 87, 87); */
+    height: 550px;
+    width: 500px;
+}
+
+.princeNameProd{
+    /* background-color: rgb(145, 123, 38); */
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 600;
+    font-size: 2em;
+    line-height : 30px;   
+}
+.princePrince{
+    /* background-color: rgb(141, 131, 92); */
+    margin-top: 20px;
+    font-style: Trebuchet;
+    text-align: center;
+    font-weight: 700;
+    font-size: 3em;
+    line-height : 35px;   
+}
+.boxPriceStock{
+    display: flex;
+    margin-top: 60px;
+    /* background-color: crimson; */
+    height: 3vw;
+}
+.princeStockName{
+    margin-left: 0px;
+    font-style: Trebuchet;
+    font-weight: 500;
+    font-size: 1.4em;
+    line-height : 35px;  
+}
+.princeStockNumber{
+    margin-left: 5px;
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 2em;
+    line-height : 35px;  
+}
+.boxPriceCatidad{
+    /* //background-color: rgb(120, 20, 220); */
+    height: 3vw;
+}
+.princeCantName{
+    position: relative;
+    left: 3vw;
+    top: 0.2vw;
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height : 35px;  
+}
+.princeCantNumber{
+    position: relative;
+    bottom: 2vw;
+    left: 10vw;
+    font-style: Trebuchet;
+    font-weight: 500;
+    font-size: 1.1em;
+    border: none; 
+}
+.princeAdvertencia{
+    margin-top: 10px;
+    /* background-color: chocolate; */
+    color:  rgb(24, 49, 87);
+    text-align: center;
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1.5em;
+    line-height : 23px;
+}
+/* BOTONES */
+.boxBotonesDetalle{
+    display: flex;
+    margin-top: 30px;
+    /* background-color: bisque; */
+}
+.botonIncSesDetail{
+    margin-left: 65px;
+    background-color: rgb(24, 49, 87);
+    color: white;
+    border-radius: 2px;
+    height: 50px;
+    width: 180px;
+    border: none;
+    font-style: Trebuchet;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+.botonIncSesDetail:hover{
+    background-color: #6d6f71;
+}
+.botonRegistroDetail{
+    margin-left: 10px;
+    background-color:rgb(24, 49, 87);
+    color: white;
+    border-radius: 2px;
+    height: 50px;
+    width: 180px;
+    border: none;
+    font-style: Trebuchet;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+.botonRegistroDetail:hover{
+    background-color: #6d6f71;
+}

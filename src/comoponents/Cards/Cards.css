@@ -1,0 +1,125 @@
+.boxCard {
+    background-color: #FAFBFD;
+    width: 300px;
+    height: 380px;
+    margin-bottom: 20px;
+    margin-left: 75px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+}
+.boxCard:hover{
+    transform:scale(1.05)
+}
+.imageTamaño {
+    /* background-color: aqua; */
+    margin-left: 22px;
+    width: 240px;
+    height: 230px;
+}
+.nameCardProd {
+    color: rgb(62, 62, 62);
+    /* background-color: rgb(32, 155, 149); */
+    height: 75px;
+    margin-left: 5px;
+    margin-right: auto;
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1em;
+    line-height : 15px;
+}
+.priceCardProd {
+    color: rgb(28, 28, 28);
+    /* background-color: rgb(32, 155, 149); */
+    margin-top: 15px;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    font-style: Trebuchet;
+    font-weight: 700;
+    font-size: 2.2em;
+    line-height : 15px;
+}
+.carritoCards {
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+/* CARDS */
+.ordenCards {
+    text-decoration: none;
+    margin-left: 50px;
+    width: 1800px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 340px 340px 340px 340px 80px;
+}
+.sinlineaCountCards {
+    text-decoration: none;
+}
+.categoriasHome {
+    position: relative;
+    left: 140px;
+    width: 500px;
+    margin-top: 50px;
+    font-style: Trebuchet;
+    font-weight: 700;
+    font-size: 1.8em;
+    line-height : 15px;
+}
+
+/* PAGINADO */
+.ordenNextPrev {
+    display: flex;
+    position: relative;
+    bottom: 250px;
+}
+
+.buttonPrevCard {
+    margin-left: 80px;
+    background-image: url("../../assets/icons/botonPrev.png");
+    background-repeat:no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    width: 60px;
+    height:60px;
+}
+.buttonNextCard {
+    margin-left: 1650px;
+    background-image: url("../../assets/icons/botonNext.png");
+    background-repeat:no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    width: 60px;
+    height:60px;
+}
+
+.boton_carrito_card{
+    background-color: red;
+    background-image: url("../../assets/icons/CarritoCards.png");
+    background-repeat:no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    height: 50px;
+    width: 50px;
+    transition: 300ms all;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -ms-transition: 300ms all;
+    -o-transition: 300ms all;
+}
+
+.boton_carrito_card:hover{
+    background-color: rgb(177, 173, 173);
+}
+
+
