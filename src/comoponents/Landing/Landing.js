@@ -21,7 +21,7 @@ export default function Landing () {
             <div className='columna_interior_botones'>
               <div className='encabezado'>
                 <div className='logo'>
-                  <img className='logoLanding' src={LogoProv} />
+                  <img className='logoLanding' src={LogoProv} alt='logoLanding'/>
                 </div>
                 <div className='contenedor_slogan'>
                   <h3 className='sologan'>Aqui va el slogan</h3>
@@ -38,7 +38,7 @@ export default function Landing () {
                 </button>
               </Link>
   
-              <Link className='linksDeLanding' to='/homeVisit'>
+              <Link className='linksDeLanding' to='/home'>
                 <button className='boton_visitante'>Visitante</button>
               </Link>
             </div>

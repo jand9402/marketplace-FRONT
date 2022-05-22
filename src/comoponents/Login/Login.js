@@ -22,7 +22,7 @@ const expresiones = {
 }
 
 const dispatch = useDispatch()
-// const token = useSelector(state => state.token)
+const token = useSelector(state => state.token)
 // console.log(token)
 const history = useHistory()
 
@@ -43,7 +43,7 @@ function handleChange (e) {
   }))
 }
 
-function handleSubmit (e) {
+ async function handleSubmit (e) {
   e.preventDefault()
   if (input.email === '' && input.password === '') {
     window.alert('Debe completar todos los campos')
@@ -51,23 +51,24 @@ function handleSubmit (e) {
     window.alert('Debe completar todos los campos')
   } else {
     e.preventDefault()
-    dispatch(postLogin(input))
-    window.alert('Inicio exitoso')
-    history.push('/homeVisit')
+    try{
+      await dispatch(postLogin(input))
+    }catch (error){
+     alert(error)
+     history.push('/')
+    }
+    if(localStorage.getItem('authorization', token)) {
+      history.push('/home')
+    } 
   }
 }
 
-// if(token){
-//   sessionStorage.setItem(
-//     'authorization', token
-//   )
-// }
 
   return (
     <div className='contenedorLogin'>
       <div className='logoEnLoginPage'>
         <Link to='/' id='click'>
-          <img src={LogoProv} className='imgEnLoginPage' />
+          <img src={LogoProv} className='imgEnLoginPage' alt='logoLogin' />
         </Link>
       </div>
 

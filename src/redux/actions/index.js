@@ -101,12 +101,13 @@ export function postLogin(payload){
         return async function(dispatch){
             let login = await axios.post( "https://pf-commerce.herokuapp.com/api/users/login", payload) 
             console.log(login)
-            if(login.data.token){
-                alert('Iniciaste sesion con exito!')
+            if(login.data){
+                // localStorage.setItem("authorization", login.data)
+                alert('Sesión iniciada con exito!')
                 return dispatch(
                     {
                         type: LOGIN_ANSWER,
-                        payload: login.data.token
+                        payload: login.data
                     })
                 }}
     }catch(e) {
