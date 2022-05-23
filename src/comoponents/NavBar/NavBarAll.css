@@ -22,6 +22,14 @@
     cursor: pointer;
 }
 
+.carritoConCosas{
+    position: fixed;
+    height: 25px;
+    margin-left: -10px;
+    margin-top: -20px;
+    cursor: pointer;
+}
+
 /* FILTERS */
 .boxFilters {
     margin-top: 18px;
@@ -59,7 +67,13 @@
     font-size: 1rem;
 }
 
+
+.botonParaNada{
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+
 .arregloProvisorioNav2 {
     /* background-color: blueviolet; */
     width: 1300px;
+
 }

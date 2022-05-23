@@ -4,14 +4,25 @@ import LoginRegister from "./LoginRegister";
 import './NavBarAll.css'
 import LogoNav from '../../assets/logo/log.png'
 import CarritoNavBar from '../../assets/icons/carritoNav.png'
+
+import { Link, useHistory } from "react-router-dom";
+import IconoCarrito from "./IconoCarrito";
+
 import VenderUser from './VenderUser'
 import { useSelector } from "react-redux";
 
 
 
+
 const NavBarAll = () => {
 const[detail, setDetail] = useState(false)
+
+let history = useHistory()
+
+
+
 const token = useSelector (state => state.token)
+
     
 return(
         <div className='boxNavBar'>
@@ -25,7 +36,15 @@ return(
                     localStorage.getItem('authorization', token)? <VenderUser/> : <LoginRegister/>
                     }
                 </div>
+                <Link to="/shoppingCar">
                 <img className='carritoNavBar' src={CarritoNavBar} alt='carritoNav' />
+                {
+                   JSON.parse(localStorage.itemCar.length>2)? <IconoCarrito className="iconoDmiracion" />
+                    :<button className="botonParaNada"></button>
+                    
+
+                }
+                </Link>
             </nav>
 
 

@@ -16,11 +16,6 @@ export default function Home() {
         <div className='home'>
             <NavBarAll />
             <SearchBar />
-
-            <Link to={"/shoppingCar"}>
-            <button>carrito</button>
-            </Link>
-
             <div>
                 <CarruselSuperior />
             </div>

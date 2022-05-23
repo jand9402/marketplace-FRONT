@@ -42,16 +42,19 @@ export default function PriceDetail () {
             </div>
           </div>
           )}
+          
         })}
         {
+
           localStorage.getItem('authorization', token) ? <div className="princeAdvertencia">Puedes comprar este producto o agregarlo al carrito y seguir viendo otros</div> :
           <div className="princeAdvertencia">Para comprar debe iniciar sesión, si no tiene cuenta puede crearse una</div>
         }
         {
          localStorage.getItem('authorization', token) ? 
-         <ButtonsUser/>
-         :<ButtonsVisit/>
+         <ButtonsUser id={idProducto.id}/>
+           :<ButtonsVisit id={idProducto.id}/>
         }
+
         
     </div>
       
