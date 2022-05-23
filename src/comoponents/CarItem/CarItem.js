@@ -77,8 +77,8 @@ export default function CarItem({ data }) {
         let producto = addQuantity(_id)
 
         localStorage.setItem("itemCar", JSON.stringify(producto))
-        console.log(JSON.parse(localStorage.itemCar))
         history.push('/shoppingCar')
+        
     }
 
     

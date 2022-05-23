@@ -4,11 +4,16 @@ import LoginRegister from "./LoginRegister";
 import './NavBarAll.css'
 import LogoNav from '../../assets/logo/log.png'
 import CarritoNavBar from '../../assets/icons/carritoNav.png'
+import { Link, useHistory } from "react-router-dom";
+import IconoCarrito from "./IconoCarrito";
 
 
 
 const NavBarAll = () => {
 const[detail, setDetail] = useState(false)
+let history = useHistory()
+
+
     
 return(
         <div className='boxNavBar'>
@@ -20,7 +25,15 @@ return(
                 <div>
                     <LoginRegister/>   
                 </div>
+                <Link to="/shoppingCar">
                 <img className='carritoNavBar' src={CarritoNavBar} alt='carritoNav' />
+                {
+                   JSON.parse(localStorage.itemCar.length>2)? <IconoCarrito className="iconoDmiracion" />
+                    :<button className="botonParaNada"></button>
+                    
+
+                }
+                </Link>
             </nav>
 
 

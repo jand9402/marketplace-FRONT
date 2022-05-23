@@ -1,0 +1,45 @@
+.botones_carrito{
+    align-items: center;
+}
+
+.btn-primary{
+    margin-right: 5px;
+        background-color: rgb(24, 49, 87);
+        color: white;
+        border-radius: 10px;
+        border: none;
+        font-style: Trebuchet;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1.2em;
+        cursor: pointer;
+}
+
+
+.btn-primary:hover{
+    background-color: #6d6f71;
+}
+
+.btn-secondary{
+    margin-left: 5px;
+    background-color: rgb(24, 49, 87);
+        color: white;
+        border-radius: 10px;
+        border: none;
+        font-style: Trebuchet;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1.2em;
+        cursor: pointer;
+}
+
+.btn-secondary:hover{
+    background-color: #6d6f71;
+}
+
+.contenedor_botones_car{
+margin-top: 3%;
+  text-align: center;
+}
+
+
