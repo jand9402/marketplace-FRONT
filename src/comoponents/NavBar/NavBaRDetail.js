@@ -6,6 +6,8 @@ import LogoNav from '../../assets/logo/log.png'
 import CarritoNavBar from '../../assets/icons/carritoNav.png'
 import VenderUser from './VenderUser'
 import { useSelector } from "react-redux";
+import IconoCarrito from "./IconoCarrito";
+import { Link } from "react-router-dom";
 
 
 
@@ -22,7 +24,14 @@ return(
                     localStorage.getItem('authorization', token)? <VenderUser/> : <LoginRegister/>
                     }
                 </div>
+                <Link to="/shoppingCar">
                 <img className='carritoNavBar' src={CarritoNavBar} alt='carritoNav' />
+                {
+                   JSON.parse(localStorage.itemCar.length>2)? <IconoCarrito className="iconoDmiracion" />
+                    :<button className="botonParaNada"></button>
+                    
+                }
+                </Link>
             </nav>
 
 
