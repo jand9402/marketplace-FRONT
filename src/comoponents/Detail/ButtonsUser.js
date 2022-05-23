@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import './ProductDetail.css'
 
 
 export default function ButtonsUser ({id}){
     const allProducts = useSelector(state => state.products)
-
+    const history = useHistory()
     
 function handleCompar(e){
     alert('vas a comprar')
@@ -28,6 +28,8 @@ function handleCompar(e){
                     }
                 }) 
             }else{ 
+                alert('Producto agregado')
+                history.push('/detailVisit/' + id)
                 newCarItem.quantity = 1
                 agregado.push(newCarItem)
             }
@@ -41,9 +43,9 @@ function handleCompar(e){
     
     return(
         <div className="boxBotonesDetalle">
+            <button> - </button><button>+</button>
             <div>
                     <button className='botonIncSesDetail' onClick={(e) =>handleCompar(e)}>Comprar</button>
-               
             </div>
             <div>
                     <button className='botonRegistroDetail' onClick={() => addToCar(id)}>Agregar al carrito</button>
