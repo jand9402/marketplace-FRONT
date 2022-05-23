@@ -6,6 +6,7 @@ import { getProducts } from "../../redux/actions";
 import PriceDetail from "./PriceDetail";
 import DescriptionProduct from "./DescriptionProduct";
 import './ProductDetail.css'
+import { deletepreviousdetail } from "../../redux/actions";
 
 export default function ProductDetail (){
     let {id} = useParams()
@@ -17,6 +18,10 @@ export default function ProductDetail (){
     useEffect(() => {
         dispatch(getProducts())
     }, [dispatch])
+    
+    // useEffect (() => {
+    //     return dispatch(deletepreviousdetail())
+    //  }, [dispatch])
    
     return(
         <div className="boxViewportDetail">
