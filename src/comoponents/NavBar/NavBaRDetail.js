@@ -9,17 +9,14 @@ import { useSelector } from "react-redux";
 
 
 
-const NavBarAll = () => {
-const[detail, setDetail] = useState(false)
+const NavBarDetail = () => {
 const token = useSelector (state => state.token)
     
 return(
         <div className='boxNavBar'>
             <nav className= 'ordenNavBar'>
                 <img className= 'logoNavBar' src={LogoNav} alt='logoNav'/>
-                <div>
-                    <Filters/>
-                </div>
+                <div className="arregloProvisorioNav2"></div>
                 <div>
                     {
                     localStorage.getItem('authorization', token)? <VenderUser/> : <LoginRegister/>
@@ -34,4 +31,4 @@ return(
 
 }
 
-export default NavBarAll
+export default NavBarDetail
