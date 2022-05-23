@@ -6,10 +6,12 @@ import { getCategorys, getProducts} from "../../redux/actions";
 import Paginado from "../Paginado/Paginado";
 
 
+
 export default function Cards(){
     
 const dispatch = useDispatch()
 const allProducts = useSelector(state => state.products)
+let categorys = useSelector((state) => state.categorys)
 const [currentPage, setCurrentPage] = useState(1)
 const [productsPerPage] = useState(5)
 const indexOfLastCard = currentPage * productsPerPage
