@@ -9,6 +9,7 @@ export const LOGIN_ANSWER = 'LOGIN_ANSWER'
 export const POST_USER = 'POST_USER'
 export const ORDER_BY_PRICE = 'ORDER_BY_PRICE' 
 export const POST_PRODUCT = 'POST_PRODUCT'
+export const DETAIL_DELETE = 'DETAIL_DELETE'
 
 
 
@@ -101,15 +102,22 @@ export function postLogin(payload){
         return async function(dispatch){
             let login = await axios.post( "https://pf-commerce.herokuapp.com/api/users/login", payload) 
             console.log(login)
-            if(login.data.token){
-                alert('Iniciaste sesion con exito!')
+            if(login.data){
+                // localStorage.setItem("authorization", login.data)
+                alert('Sesión iniciada con exito!')
                 return dispatch(
                     {
                         type: LOGIN_ANSWER,
-                        payload: login.data.token
+                        payload: login.data
                     })
                 }}
     }catch(e) {
         console.log("Error", e.response.data);
     }
+}
+
+export const deletepreviousdetail = () => {
+    return ({
+        type:DETAIL_DELETE
+    })
 }

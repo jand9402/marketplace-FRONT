@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import "./ProductDetail.css";
 import { getProducts } from "../../redux/actions";
 import ButtonsVisit from "./ButtonsVisit";
-// import ButtonsUser from "./ButtonsUser";
+import ButtonsUser from "./ButtonsUser";
 
 export default function PriceDetail () {
 
@@ -15,6 +15,7 @@ export default function PriceDetail () {
     const dispatch = useDispatch()
 
     let allProducts = useSelector((state) => state.products) 
+    const token = useSelector(state => state.token)
 
     useEffect(() => {
         dispatch(getProducts())
@@ -41,10 +42,20 @@ export default function PriceDetail () {
             </div>
           </div>
           )}
+          
         })}
-        <div className="princeAdvertencia">Para comprar debe iniciar sesión, si no tiene cuenta puede crearse una</div>
-        <ButtonsVisit/>
-        {/* <ButtonsUser/> */}
+        {
+
+          localStorage.getItem('authorization', token) ? <div className="princeAdvertencia">Puedes comprar este producto o agregarlo al carrito y seguir viendo otros</div> :
+          <div className="princeAdvertencia">Para comprar debe iniciar sesión, si no tiene cuenta puede crearse una</div>
+        }
+        {
+         localStorage.getItem('authorization', token) ? 
+         <ButtonsUser id={idProducto.id}/>
+           :<ButtonsVisit id={idProducto.id}/>
+        }
+
+        
     </div>
       
     )

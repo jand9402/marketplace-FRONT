@@ -14,7 +14,6 @@ export default function DescriptionProduct () {
     let test = idProducto.id
     const dispatch = useDispatch()
     let allProducts = useSelector((state) => state.products)
-    console.log('hola')
     
 
     useEffect(() => {
