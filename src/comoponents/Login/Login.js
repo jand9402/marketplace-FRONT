@@ -9,14 +9,14 @@ export default function Login () {
 
 function validate(input){
 const expresiones = {
-    password: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/, // tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.
+    password: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, // tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   }
   const errors = {}
   if (!expresiones.correo.test(input.email)) {
     errors.email = 'Debe ingresar un correo válido (nombre@proveedor.com)'
   } else if (!expresiones.password.test(input.password)) {
-    errors.password = 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.'
+    errors.password = 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un número, al menos una minúscula y al menos una mayúscula. NO puede tener otros símbolos.'
   }
   return errors
 }
@@ -66,19 +66,15 @@ function handleChange (e) {
 
   return (
     <div className='contenedorLogin'>
-      <div className='logoEnLoginPage'>
-        <Link to='/' id='click'>
-          <img src={LogoProv} className='imgEnLoginPage' alt='logoLogin' />
-        </Link>
-      </div>
-
+      <div className='contImagAndForm'>
+        <div className='illutrationLogin'>soy una imagen</div>
       <div className='cardLogin'>
-        <h1 className='tituloLogin'>Iniciar sesión</h1>
+        <div className='tituloLogin'>Bienvenidos</div>
         <form className='allForm' onSubmit={(e) => handleSubmit(e)}>
 
           <div>
-            <div className='encabezadosInputs'>Correo electrónico</div>
             <input
+              placeholder='Correo electrónico'
               className='input'
               onChange={(e) => handleChange(e)}
               type='text'
@@ -89,9 +85,9 @@ function handleChange (e) {
               <p className='errosLoigin'>{errors.email}</p>
             )}
           </div>
-          <div className='inputContraseña'>
-            <div className='encabezadosInputs'>Contraseña</div>
+          <div className='orderinputContraseña'>
             <input
+            placeholder='Contraseña'
               type='password'
               className='input'
               onChange={(e) => handleChange(e)}
@@ -108,7 +104,7 @@ function handleChange (e) {
             <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
             </Link>
             <div className='noEstasRegistrado'>
-              ¿No estas registrado?
+              ¿No estás registrado?
             </div>
             <Link className='linksDeLanding' to='/register'>
               <button className='button'>Registrarse</button>
@@ -116,6 +112,8 @@ function handleChange (e) {
           </div>
         </form>
       </div>
+      </div>
+
     </div>
   )
 }
