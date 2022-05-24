@@ -47,12 +47,7 @@
     height: 2px;
     background-color: rgb(57, 57, 57);
 }
-.lineaVerticalDetalle{
-    border-left: thick solid #000;
-    height:12%;
-    left: 50%;
-    position: absolute;
-}
+
 .boxDetailProducto {
     display: flex;
     background-color: rgb(245, 245, 243);
@@ -64,6 +59,7 @@
 .boxDetailDescription {
     /* background-color: blueviolet; */
     width: 650px;
+    border-left-style: double;
 }
 .boxMarcModel{
     /* background-color: beige; */
@@ -72,6 +68,7 @@
 }
 .nameMarcaModel{
     font-style: Trebuchet;
+    margin-left: 15px;
     text-align: left;
     font-weight: 600;
     font-size: 1.2em;
@@ -122,6 +119,7 @@
 .detailDescriptionDescription {
     margin-top: 10px;
     margin-left: 15px;
+    margin-right: 15px;
     font-style: Trebuchet;
     text-align: left;
     font-weight: 400;

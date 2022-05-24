@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./landingStyles.css";
 import LogoProv from '../../assets/logo/LogoProv.png'
 import Videofondo from '../../assets/video/videoLanding2.mp4'
+import RegisterForm from '../RegisterForm/RegisterForm';
 
 export default function Landing () {
     let locaS = []
     let otro = 'otro'
     localStorage.setItem("itemCar", JSON.stringify(locaS))
     localStorage.setItem("otra", JSON.stringify(otro))
+
+    const [register, setRegister] = useState('')
+
+    function handleRegister (e){
+      setRegister(<RegisterForm/>)
+    }
 
     console.log(localStorage)
     return (
@@ -32,12 +39,12 @@ export default function Landing () {
                   Iniciar sesión
                 </button>
               </Link>
-              <Link className='linksDeLanding' to='/register'>
-                <button className='boton'>
+              {/* <Link className='linksDeLanding' to='/register'> */}
+                <button onClick={handleRegister} className='boton'>
                   Registrarse
                 </button>
-              </Link>
-  
+              {/* </Link>
+   */}
               <Link className='linksDeLanding' to='/home'>
                 <button className='boton_visitante'>Visitante</button>
               </Link>
