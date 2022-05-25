@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CardProducts from "./cardProduct";
 import { getProducts } from "../../../redux/actions";
-import Paginado from "../../Paginado/Paginado";
+import PaginadoCardAdmin from "./paginadoCardAdm";
 
 
 
@@ -34,7 +34,7 @@ useEffect (()=> {
     return (
         
         <div>
-            {/* <div className="categoriasHome">Nuestros productos</div> */}
+            <div className="tituloCardsAdminProducts">Productos disponibles</div>
             <div className="ordenCardsProdAdmin">
                 { currentCards.map((p)=> {
                     return(
@@ -50,7 +50,10 @@ useEffect (()=> {
                 <div onClick={handleNextPage}><button className="buttonNextCard"></button></div>
             </div>}
            </div>   */}
-           <Paginado productsPerPage={productsPerPage}  allProducts={allProducts.length} paginado = {paginado}/>  
+           <div className='ordenPagCarAdmin' >
+
+           <PaginadoCardAdmin productsPerPage={productsPerPage}  allProducts={allProducts.length} paginado = {paginado}/>  
+           </div>
         </div>
     )
 }
