@@ -7,6 +7,9 @@ import RegisterForm from './comoponents/RegisterForm/RegisterForm';
 import Detail from './comoponents/Detail/Detail';
 import ProductForm from './comoponents/ProductForm/ProductForm';
 import ShoppingCar from './comoponents/ShoppingCar/ShoppingCar';
+import Sesion from './comoponents/Admin/sesion'
+import SesionProductAdmin from './comoponents/Admin/sesionProductAdmin';
+import SesionVentasAdmin from './comoponents/Admin/sesionVentasAdmin';
 
 function App() {
   return (
@@ -20,7 +23,9 @@ function App() {
            <Route exact path='/detailVisit/:id' component={Detail} />
            <Route exact path='/productForm' component={ProductForm} />
            <Route exact path='/shoppingCar' component={ShoppingCar} />
-           
+           <Route exact path='/admin' component={Sesion}/>
+           <Route exact path='/adminProducts' component={SesionProductAdmin}/>
+           <Route exact path='/adminVentas' component={SesionVentasAdmin}/>
          </Switch>
        </div>
     </BrowserRouter>
