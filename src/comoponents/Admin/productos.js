@@ -5,7 +5,7 @@ export default function Productos () {
     return(
         <div className="boxProductsInSesion">
             <div className="orderProdAndName">
-                <Link to='/adminProducts' id= 'click'>
+                <Link to='/admin/products' id= 'click'>
                 <button className="buttonProductosS"></button>
                 </Link>
                 <div className="nameProductsSesion">Mis productos</div>

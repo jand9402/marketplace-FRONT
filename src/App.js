@@ -24,8 +24,8 @@ function App() {
            <Route exact path='/productForm' component={ProductForm} />
            <Route exact path='/shoppingCar' component={ShoppingCar} />
            <Route exact path='/admin' component={Sesion}/>
-           <Route exact path='/adminProducts' component={SesionProductAdmin}/>
-           <Route exact path='/adminVentas' component={SesionVentasAdmin}/>
+           <Route exact path='/admin/products' component={SesionProductAdmin}/>
+           <Route exact path='/admin/ventas' component={SesionVentasAdmin}/>
          </Switch>
        </div>
     </BrowserRouter>

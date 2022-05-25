@@ -1,0 +1,58 @@
+.contenedorSesionProductAdmin{
+    background-color: #f7f5f4;
+    height: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    display: flex;
+    /* align-items: center;
+    text-align: center; */    
+}
+.boxCardProductAdmin {
+    display: flex;
+    background-color: #FAFBFD;
+    width: 800px;
+    height: 200px;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+}
+/* .boxCard:hover{
+    transform:scale(1.05)
+} */
+.imageCardAdmin {
+    margin-left: 22px;
+    width: 200px;
+    height: 190px;
+}
+
+.ordenCardsProdAdmin{
+    text-decoration: none;
+}
+
+.boxNamePriceProdAdm {
+    width: 450px;
+    margin-right: 20px;
+}
+
+.productAdminName {
+    color: rgb(62, 62, 62);
+    /* background-color: rgb(32, 155, 149); */
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1.3em;
+    line-height : 20px;
+}
+.productAdminPrice {
+    color: rgb(28, 28, 28);
+    /* background-color: rgb(32, 155, 149); */
+    margin-top: 15px;
+    line-height: 100px;
+    font-style: Trebuchet;
+    font-weight: 700;
+    font-size: 1.5em;
+    line-height : 15px;
+}
