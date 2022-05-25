@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import LogoProv from '../../assets/logo/LogoProv.png'
 import { postLogin} from '../../redux/actions'
+import NavBarDetail from '../NavBar/NavBaRDetail'
 
 export default function Login () {
 
@@ -64,6 +65,8 @@ function handleChange (e) {
 }
 
   return (
+    <div>
+      <NavBarDetail/>
     <div className='contenedorLogin'>
       <div className='contImagAndForm'>
         <div className='illutrationLogin'></div>
@@ -102,17 +105,18 @@ function handleChange (e) {
             <Link  to='/' id='click'>
             <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
             </Link>
-            <div className='noEstasRegistrado'>
+            {/* <div className='noEstasRegistrado'>
               ¿No estás registrado?
             </div>
             <Link className='linksDeLanding' to='/register'>
               <button className='button'>Registrarse</button>
-            </Link>
+            </Link> */}
           </div>
         </form>
       </div>
       </div>
 
+    </div>
     </div>
   )
 }

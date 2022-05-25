@@ -10,9 +10,7 @@ export const POST_USER = 'POST_USER'
 export const ORDER_BY_PRICE = 'ORDER_BY_PRICE' 
 export const POST_PRODUCT = 'POST_PRODUCT'
 export const DETAIL_DELETE = 'DETAIL_DELETE'
-
-
-
+export const GET_DETAIL ='GET_DETAIL'
 
 
 export const getProducts = () => async dispatch => {
@@ -20,6 +18,13 @@ export const getProducts = () => async dispatch => {
     .then((response) => response.json())
     .then((json) => {dispatch({ type: GET_ALL_PRODUCTS, payload:json.product})})
 };
+
+export const getDetail = (payload) => async dispatch => {
+    return await fetch(`https://pf-commerce.herokuapp.com/api/products/detail/${payload}`)
+    .then(respose => respose.json())
+    .then (json => dispatch({type:GET_DETAIL, payload:json.product}))
+    .catch(e => console.log(e))
+}
 
 export function getCategorys() {
     return async (dispatch) => {

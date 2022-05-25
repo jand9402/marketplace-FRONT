@@ -92,44 +92,6 @@
 }
 
 /* DELET */
-:root {
-    --color-green: #018f67;
-    --color-red: rgb(208, 33, 33);
-    --color-button: #fdffff;
-    --color-black: #000;
-}
-.switch-button {
-    display: inline-block;
-}
-.switch-button .switch-button__checkbox {
-    display: none;
-}
-.switch-button .switch-button__label {
-    background-color: var(--color-red);
-    margin-left: 40px;
-    width: 50px;
-    height: 30px;
-    border-radius: 20px;
-    display: inline-block;
-    position: relative;
-}
-.switch-button .switch-button__label:before {
-    transition: .1s;
-    display: block;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: var(--color-button);
-    content: '';
-    border-radius: 50%;
-    box-shadow: inset 0px 0px 0px 1px var(--color-black);
-}
-.switch-button .switch-button__checkbox:checked + .switch-button__label {
-    background-color: var(--color-green);
-}
-.switch-button .switch-button__checkbox:checked + .switch-button__label:before {
-    transform: translateX(1.3rem);
-}
 
 /* PAGINADO */
 #menu ul li{

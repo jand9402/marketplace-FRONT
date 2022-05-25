@@ -10,6 +10,7 @@ import ShoppingCar from './comoponents/ShoppingCar/ShoppingCar';
 import Sesion from './comoponents/Admin/sesion'
 import SesionProductAdmin from './comoponents/Admin/sesionProductAdmin';
 import SesionVentasAdmin from './comoponents/Admin/sesionVentasAdmin';
+import DetailProductAdmin from './comoponents/Admin/detailProductAdmin/detailProductAdmin';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
            <Route exact path='/admin' component={Sesion}/>
            <Route exact path='/admin/products' component={SesionProductAdmin}/>
            <Route exact path='/admin/ventas' component={SesionVentasAdmin}/>
+           <Route exact path='/admin/products/detail/:id' component={DetailProductAdmin}/>
          </Switch>
        </div>
     </BrowserRouter>

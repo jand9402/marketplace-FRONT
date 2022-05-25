@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { postUser } from '../../redux/actions';
+import NavBarDetail from '../NavBar/NavBaRDetail';
 
 
 
@@ -76,6 +77,9 @@ export default function RegisterForm () {
 
 
   return (
+    <div>
+      <NavBarDetail/>
+
     <div className='contenedorRegistro'>
       <div className='contImagAndFormR'>
         <div className='illutrationRegiter'></div>
@@ -155,6 +159,7 @@ export default function RegisterForm () {
         </div>
       </div>
       </div>
+    </div>
     </div>
 
   )

@@ -9,7 +9,8 @@ import { GET_ALL_PRODUCTS,
          ORDER_BY_PRICE,
          LOGIN_ANSWER,
          POST_PRODUCT,
-         DETAIL_DELETE
+         DETAIL_DELETE,
+         GET_DETAIL
         } from "../actions";
 import { ADD_TO_CAR } from "../../comoponents/Cards/card";
 import { REMOVE_ALL_FROM_CAR, REMOVE_ONE_FROM_CAR } from "../../comoponents/CarItem/CarItem";
@@ -20,6 +21,7 @@ const initialState = {
   // loading: false,
   products: [],
   allProducts: [],
+  detail: {},
   categorys: [],
   brand: [],
   // login: false,
@@ -91,7 +93,12 @@ export default function rootReducer (state = initialState, action) {
       case DETAIL_DELETE:
         return {
           ...state,
-          products: []
+          detail: {}
+        }
+      case GET_DETAIL: 
+        return {
+          ...state,
+          detail: action.payload
         } 
 
 

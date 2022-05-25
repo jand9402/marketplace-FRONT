@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import './cardsProducts.css'
 
@@ -11,12 +12,12 @@ export default function CardProducts({ id, image, name, price }) {
                 <div className="productAdminName">{name}</div>
                 <div className="productAdminPrice">${price}</div>
             </div>
+            
             <div className="orderDeletAndButton">
-                <div className="switch-button">
-                    <input type="checkbox" name="switch-button" id="switch-label" className="switch-button__checkbox"/>
-                    <label for="switch-label" class="switch-button__label"></label>
-                </div>
+                <button className="buttonDetailProductAdmin">Eliminar</button>
+                <Link to={'/admin/products/detail/' + id}  id= 'click'>
                 <button className="buttonDetailProductAdmin">Ver detalle</button>
+                </Link>
             </div>
         </div>
     )
