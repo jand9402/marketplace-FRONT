@@ -56,3 +56,68 @@
     font-size: 1.5em;
     line-height : 15px;
 }
+
+.orderDeletAndButton{
+    margin-right: 20px;
+    width: 130px;
+}
+.buttonDetailProductAdmin {
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    width: 130px;
+    height: 40px;
+    background-color:#114d86;
+    color: white;
+    border-radius: 10px;
+    transition: 300ms all;
+    border: none;
+    font-size: large;
+    margin-top: 10px;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -ms-transition: 300ms all;
+    -o-transition: 300ms all;
+}
+
+.buttonDetailProductAdmin:hover{
+    background-color: #6d6f71;
+}
+
+/* DELET */
+:root {
+    --color-green: #018f67;
+    --color-red: rgb(208, 33, 33);
+    --color-button: #fdffff;
+    --color-black: #000;
+}
+.switch-button {
+    display: inline-block;
+}
+.switch-button .switch-button__checkbox {
+    display: none;
+}
+.switch-button .switch-button__label {
+    background-color: var(--color-red);
+    margin-left: 40px;
+    width: 50px;
+    height: 30px;
+    border-radius: 20px;
+    display: inline-block;
+    position: relative;
+}
+.switch-button .switch-button__label:before {
+    transition: .1s;
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-button);
+    content: '';
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 0px 1px var(--color-black);
+}
+.switch-button .switch-button__checkbox:checked + .switch-button__label {
+    background-color: var(--color-green);
+}
+.switch-button .switch-button__checkbox:checked + .switch-button__label:before {
+    transform: translateX(1.3rem);
+}

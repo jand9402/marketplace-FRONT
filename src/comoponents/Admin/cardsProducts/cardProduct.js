@@ -11,7 +11,13 @@ export default function CardProducts({ id, image, name, price }) {
                 <div className="productAdminName">{name}</div>
                 <div className="productAdminPrice">${price}</div>
             </div>
-            <button>Ver detalle</button>
+            <div className="orderDeletAndButton">
+                <div className="switch-button">
+                    <input type="checkbox" name="switch-button" id="switch-label" className="switch-button__checkbox"/>
+                    <label for="switch-label" class="switch-button__label"></label>
+                </div>
+                <button className="buttonDetailProductAdmin">Ver detalle</button>
+            </div>
         </div>
     )
 }
