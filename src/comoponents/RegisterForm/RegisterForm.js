@@ -13,7 +13,7 @@ export default function RegisterForm () {
   function validate (input) {
     const expresiones = {
       nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-      password: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/, // tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.
+      password: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, // tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.
       celular: /^\(?(\d{3})\)?[-]?(\d{3})[-]?(\d{4})$/,
       correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
     }
@@ -25,7 +25,7 @@ export default function RegisterForm () {
     } else if (!expresiones.celular.test(input.phoneNumber)) {
       errors.phoneNumber = 'Debe ingresar un numero valido.'
     } else if (!expresiones.password.test(input.password)) {
-      errors.password = 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.'
+      errors.password = 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un número, al menos una minúscula y al menos una mayúscula. NO puede tener otros símbolos.'
     } else if (input.password !== input.password2) {
       errors.password2 = 'Las contraseñas deben ser iguales'
     }
@@ -77,18 +77,15 @@ export default function RegisterForm () {
 
   return (
     <div className='contenedorRegistro'>
-      <div className='logoEnLoginPageR'>
-        <Link to='/' id='click'>
-          <img src={LogoProv} className='logoRegister' alt='logoRegster' />
-        </Link>
-      </div>
+      <div className='contImagAndFormR'>
+        <div className='illutrationRegiter'></div>
       <div className='cardRegister'>
         <div className='contenedorForm'>
           <form className='allForm' onSubmit={(e) => handleSubmit(e)}>
             <h1 className='crearCuentaTitulo'>Crear cuenta</h1>
             <div >
-              <div className='encabezadosRegistro'>Tu nombre</div>
               <input
+                placeholder='Nombre de usuario'
                 className='input'
                 onChange={(e) => handleChange(e)}
                 type='text'
@@ -100,8 +97,8 @@ export default function RegisterForm () {
               )}
             </div>
             <div>
-              <div className='encabezadosRegistro'>Correo electrónico</div>
               <input
+                placeholder='Correo electrónico'
                 className='input'
                 onChange={(e) => handleChange(e)}
                 type='text'
@@ -113,8 +110,8 @@ export default function RegisterForm () {
               )}
             </div>
             <div>
-              <div className='encabezadosRegistro'>Numero Celular</div>
               <input
+                placeholder='Número de celular'
                 className='input'
                 onChange={(e) => handleChange(e)}
                 type='text'
@@ -126,8 +123,8 @@ export default function RegisterForm () {
               )}
             </div>
             <div>
-              <div className='encabezadosRegistro'>Contraseña</div>
               <input
+              placeholder='Contraseña'
               className='input'
               onChange={(e) => handleChange(e)}
               type='password'
@@ -139,8 +136,8 @@ export default function RegisterForm () {
               )}
             </div>
             <div>
-              <div className='encabezadosRegistro'>Vuelve a escribir la contraseña</div>
               <input
+                placeholder='Repita la contraseña'
                 className='input'
                 onChange={(e) => handleChange(e)}
                 type='password'
@@ -156,6 +153,7 @@ export default function RegisterForm () {
             </div>
           </form>
         </div>
+      </div>
       </div>
     </div>
 

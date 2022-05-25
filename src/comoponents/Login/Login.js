@@ -55,7 +55,7 @@ function handleChange (e) {
       await dispatch(postLogin(input))
     }catch (error){
      alert("No se encuentra registrado, o tiene un error en el e-mail o contraseña")
-     history.push('/')
+     history.push('/home')
     }
     if(localStorage.getItem('authorization', token)) {
       history.push('/home')
@@ -63,11 +63,10 @@ function handleChange (e) {
   }
 }
 
-
   return (
     <div className='contenedorLogin'>
       <div className='contImagAndForm'>
-        <div className='illutrationLogin'>soy una imagen</div>
+        <div className='illutrationLogin'></div>
       <div className='cardLogin'>
         <div className='tituloLogin'>Bienvenidos</div>
         <form className='allForm' onSubmit={(e) => handleSubmit(e)}>
