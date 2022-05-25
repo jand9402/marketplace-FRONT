@@ -67,56 +67,46 @@ function handleChange (e) {
   return (
     <div>
       <NavBarDetail/>
-    <div className='contenedorLogin'>
-      <div className='contImagAndForm'>
-        <div className='illutrationLogin'></div>
-      <div className='cardLogin'>
-        <div className='tituloLogin'>Bienvenidos</div>
-        <form className='allForm' onSubmit={(e) => handleSubmit(e)}>
-
-          <div>
-            <input
+      <div className='contenedorLogin'>
+        <div className='contImagAndForm'>
+          <div className='illutrationLogin'></div>
+          <div className='cardLogin'>
+            <div className='tituloLogin'>Bienvenidos</div>
+            <form className='allForm' onSubmit={(e) => handleSubmit(e)}>
+              <input
               placeholder='Correo electrónico'
               className='input'
               onChange={(e) => handleChange(e)}
               type='text'
               value={input.email}
               name='email'
-            />
-            {errors.email && (
+              />
+              {errors.email && (
               <p className='errosLoigin'>{errors.email}</p>
-            )}
+              )}
+              <div className='orderinputContraseña'>
+                <input
+                placeholder='Contraseña'
+                type='password'
+                className='input'
+                onChange={(e) => handleChange(e)}
+                value={input.password}
+                name='password'
+                />
+                {errors.password && (
+                <p className='errosLoigin'>{errors.password}</p>
+                )}
+              </div>
+              <div className='botonesLogin'>
+                <button type='submit' className='button'>Ingresar</button>
+                <Link  to='/' id='click'>
+                  <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
+                </Link>
+              </div>
+            </form>
           </div>
-          <div className='orderinputContraseña'>
-            <input
-            placeholder='Contraseña'
-              type='password'
-              className='input'
-              onChange={(e) => handleChange(e)}
-              value={input.password}
-              name='password'
-            />
-            {errors.password && (
-              <p className='errosLoigin'>{errors.password}</p>
-            )}
-          </div>
-          <div className='botonesLogin'>
-            <button type='submit' className='button'>Ingresar</button>
-            <Link  to='/' id='click'>
-            <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
-            </Link>
-            {/* <div className='noEstasRegistrado'>
-              ¿No estás registrado?
-            </div>
-            <Link className='linksDeLanding' to='/register'>
-              <button className='button'>Registrarse</button>
-            </Link> */}
-          </div>
-        </form>
+        </div>
       </div>
-      </div>
-
-    </div>
     </div>
   )
 }

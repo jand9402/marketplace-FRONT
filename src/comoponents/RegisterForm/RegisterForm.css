@@ -21,7 +21,6 @@
     width: 650px;
     height: 600px;
 }
-
 .cardRegister{
     margin-left: auto;
     margin-right: auto; 
@@ -30,20 +29,11 @@
     /* background-color: rgba(245, 245, 243); */
   
 }
-
-/* .contenedorForm{
-   
-} */
 .contenedorForm{
     margin-left: auto;
     margin-right: auto; 
     margin-bottom: auto;
     margin-top: auto;
-   /* position: relative;
-   bottom: 1vw;
-   left: 1vw;
-   width: 21vw; */
-
 }
 .logoEnLoginPageR{
     position: fixed;
@@ -54,12 +44,9 @@
 .logoRegister{
     width: 13vw;
 }
-
 .encabezadosRegistro{
     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
-
 }
-
 .crearCuentaTitulo{
     margin-bottom: 10px;
     color: white;
@@ -68,19 +55,11 @@
     font-weight: 700;
     font-size: 3rem;
 }
-
-/* .input {
-    width: 250px;
-    height: 22px;
-    margin-bottom: 10px;
-} */
-
 .button {
     width: 200px;
     background-color: rgba(23, 49, 87);
     color: white;
 }
-
 .buttonRegistro {
     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
     width: 130px;
@@ -97,15 +76,12 @@
     -ms-transition: 300ms all;
     -o-transition: 300ms all;
 }
-
 .buttonRegistro:hover{
     background-color: #6d6f71;
 }
-
 .botonRegistro{
     text-align: center;
 }
-
 .errosRegistro{
     margin-top: 5px;
     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
@@ -113,4 +89,3 @@
     max-width: 300px;
     line-height : 17px;
 }
-

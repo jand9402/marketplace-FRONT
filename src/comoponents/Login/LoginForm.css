@@ -9,7 +9,6 @@
     text-align: center; */
     
 }
-
 .imgEnLoginPage{
     width: 13vw;
 }
@@ -28,14 +27,12 @@
     width: 650px;
     height: 600px;
 }
-
 .cardLogin{
     margin-left: auto;
     margin-right: auto; 
     margin-bottom: auto;
     margin-top: auto;
 }
-
 .tituloLogin{
     margin-bottom: 10px;
     color: white;
@@ -44,16 +41,13 @@
     font-weight: 700;
     font-size: 3rem;
 }
-
 .encabezadosInputs{
     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
 }
-
 .allForm {    
     margin-left: auto;
     margin-right: auto;  
 }
-
 .input {
     width: 300px;
     height: 40px;
@@ -61,22 +55,18 @@
     border: none;
     border-radius: 10px;
 }
-
 .orderinputContraseña{
     margin-bottom: 10px;
 }
-
 .botonesLogin{
     text-align: center;
     margin-top: 30px;
 }
-
 .recuperarContrasena{
     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
     margin-bottom: 20px;
     margin-top: 5px;
 }
-
 .noEstasRegistrado{
     margin-bottom: 5px;
     color: white;
@@ -84,7 +74,6 @@
     font-weight: 500;
     font-size: 1.3rem;
 }
-
 .button {
     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
     width: 130px;
@@ -100,12 +89,11 @@
     -ms-transition: 300ms all;
     -o-transition: 300ms all;
 }
-
 .button:hover{
     background-color: #6d6f71;
 }
-
 .errosLoigin{
+    margin-top: 7px;
     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
     color:  #ced6de;
     max-width: 300px;

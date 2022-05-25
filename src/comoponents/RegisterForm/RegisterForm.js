@@ -1,13 +1,10 @@
 import React from 'react'
 import './RegisterForm.css'
-import LogoProv from '../../assets/logo/LogoProv.png'
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { postUser } from '../../redux/actions';
 import NavBarDetail from '../NavBar/NavBaRDetail';
-
-
 
 export default function RegisterForm () { 
 
@@ -75,33 +72,28 @@ export default function RegisterForm () {
     }
   }
 
-
   return (
     <div>
       <NavBarDetail/>
-
-    <div className='contenedorRegistro'>
-      <div className='contImagAndFormR'>
-        <div className='illutrationRegiter'></div>
-      <div className='cardRegister'>
-        <div className='contenedorForm'>
-          <form className='allForm' onSubmit={(e) => handleSubmit(e)}>
-            <h1 className='crearCuentaTitulo'>Crear cuenta</h1>
-            <div >
-              <input
+      <div className='contenedorRegistro'>
+        <div className='contImagAndFormR'>
+          <div className='illutrationRegiter'></div>
+          <div className='cardRegister'>
+            <div className='contenedorForm'>
+              <form className='allForm' onSubmit={(e) => handleSubmit(e)}>
+                <h1 className='crearCuentaTitulo'>Crear cuenta</h1>
+                <input
                 placeholder='Nombre de usuario'
                 className='input'
                 onChange={(e) => handleChange(e)}
                 type='text'
                 value={input.name}
                 name='name'
-              />
-              {errors.name && (
-              <p className='errosRegistro'>{errors.name}</p>
-              )}
-            </div>
-            <div>
-              <input
+                />
+                {errors.name && (
+                <p className='errosRegistro'>{errors.name}</p>
+                )}
+                <input
                 placeholder='Correo electrónico'
                 className='input'
                 onChange={(e) => handleChange(e)}
@@ -112,21 +104,17 @@ export default function RegisterForm () {
               {errors.email && (
                 <p className='errosRegistro'>{errors.email}</p>
               )}
-            </div>
-            <div>
               <input
-                placeholder='Número de celular'
-                className='input'
-                onChange={(e) => handleChange(e)}
-                type='text'
-                value={input.phoneNumber}
-                name='phoneNumber'
+              placeholder='Número de celular'
+              className='input'
+              onChange={(e) => handleChange(e)}
+              type='text'
+              value={input.phoneNumber}
+              name='phoneNumber'
               />
               {errors.phoneNumber && (
                 <p className='errosRegistro'>{errors.phoneNumber}</p>
               )}
-            </div>
-            <div>
               <input
               placeholder='Contraseña'
               className='input'
@@ -138,29 +126,24 @@ export default function RegisterForm () {
               {errors.password && (
                 <p className='errosRegistro'>{errors.password}</p>
               )}
-            </div>
-            <div>
               <input
-                placeholder='Repita la contraseña'
-                className='input'
-                onChange={(e) => handleChange(e)}
-                type='password'
-                value={input.password2}
-                name='password2'
+              placeholder='Repita la contraseña'
+              className='input'
+              onChange={(e) => handleChange(e)}
+              type='password'
+              value={input.password2}
+              name='password2'
               />
               {errors.password2 && (
                 <p className='errosRegistro'>{errors.password2}</p>
               )}
-            </div>
-            <div className='botonRegistro'>
-              <button className='buttonRegistro'>Registrarse</button>
-            </div>
-          </form>
+              <div className='botonRegistro'>
+                <button className='buttonRegistro'>Registrarse</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-      </div>
     </div>
-    </div>
-
-  )
-}
+  </div>
+)}
