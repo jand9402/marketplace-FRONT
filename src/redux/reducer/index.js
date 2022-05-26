@@ -10,7 +10,7 @@ import { GET_ALL_PRODUCTS,
          LOGIN_ANSWER,
          POST_PRODUCT,
 
-         NAV_BAR_NEW
+         NAV_BAR_NEW,
 
          DETAIL_DELETE
 
@@ -135,7 +135,7 @@ export default function rootReducer (state = initialState, action) {
         //         let bInt = b.price || 0
         //         return action.payload === 'menor' ? aInt - bInt : bInt - aInt
 
-      }   
+         
       case DETAIL_DELETE:
         return {
           ...state,

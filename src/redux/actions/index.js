@@ -135,7 +135,7 @@ export function navBarNew(payload) {
         type: NAV_BAR_NEW,
         payload
     }
-
+}
 export const deletepreviousdetail = () => {
     return ({
         type:DETAIL_DELETE
