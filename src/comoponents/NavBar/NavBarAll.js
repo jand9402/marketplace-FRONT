@@ -7,14 +7,18 @@ import CarritoNavBar from '../../assets/icons/carritoNav.png'
 
 
 
+
 const NavBarAll = () => {
 const[detail, setDetail] = useState(false)
+
     
 return(
         <div className='boxNavBar'>
+            
             <nav className= 'ordenNavBar'>
                 <img className= 'logoNavBar' src={LogoNav} alt='logoNav'/>
                 <div>
+                    
                     <Filters/>
                 </div>
                 <div>

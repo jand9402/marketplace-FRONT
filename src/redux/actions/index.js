@@ -9,6 +9,7 @@ export const LOGIN_ANSWER = 'LOGIN_ANSWER'
 export const POST_USER = 'POST_USER'
 export const ORDER_BY_PRICE = 'ORDER_BY_PRICE' 
 export const POST_PRODUCT = 'POST_PRODUCT'
+export const NAV_BAR_NEW = 'NAV_BAR_NEW'
 
 
 
@@ -68,12 +69,19 @@ export const searchByName = (payload) => async dispatch => {
     .catch(() => alert (`No se encontró ${payload}, intentelo nuevamente`) )
 }
 
-export const orderByPrice = (payload) => async dispatch => {
-    console.log (payload)
-    return fetch( `https://pf-commerce.herokuapp.com/api/products?order=${payload}`)
-    .then(respose => respose.json())
-    .then(json => dispatch({type: ORDER_BY_PRICE, payload: json}))
-}
+// export const orderByPrice = (payload) => async dispatch => {
+//     // console.log (payload)
+//     return fetch( `https://pf-commerce.herokuapp.com/api/products?order=${payload}`)
+//     .then(respose => respose.json())
+//     .then(json => dispatch({type: ORDER_BY_PRICE, payload: json}))
+// }
+
+// export function orderByPrice(payload) {
+//     return {
+//         type: ORDER_BY_PRICE,
+//         payload
+//     }
+// }
 
 export function postUser (payload){
     return async function (){
@@ -112,5 +120,12 @@ export function postLogin(payload){
                 }}
     }catch(e) {
         console.log("Error", e.response.data);
+    }
+}
+
+export function navBarNew(payload) {
+    return {
+        type: NAV_BAR_NEW,
+        payload
     }
 }
