@@ -5,12 +5,12 @@ import LogoProv from '../../assets/logo/LogoProv.png'
 import Videofondo from '../../assets/video/videoLanding2.mp4'
 
 export default function Landing () {
-    let locaS = []
-    let otro = 'otro'
-    localStorage.setItem("itemCar", JSON.stringify(locaS))
-    localStorage.setItem("otra", JSON.stringify(otro))
+    // let locaS = []
+    // let otro = 'otro'
+    // localStorage.setItem("itemCar", JSON.stringify(locaS))
+    // localStorage.setItem("otra", JSON.stringify(otro))
 
-    console.log(localStorage)
+    // console.log(localStorage)
     return (
       <div className='contenedor'>
         <div className='fila'>

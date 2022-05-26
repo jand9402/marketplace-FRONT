@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import './ProductDetail.css'
+import swal from 'sweetalert'
 
 
 export default function ButtonsUser ({id}){
     const allProducts = useSelector(state => state.products)
     const history = useHistory()
+    const [contador, setContador] = useState(0)
     
 function handleCompar(e){
     alert('vas a comprar')
+}
+
+function handleContador(e){
+if(e.target.value === "mas"){
+    setContador(contador + 1)
+}else{
+    if(contador>0){
+        setContador(contador-1)
+    }
+}
 }
     
     const addToCar = (id) => {
@@ -22,15 +34,28 @@ function handleCompar(e){
         function addOrCreate(producto) {
             let agregado = infoFromLocalStorage
             if (producto) {
+                swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Producto agregado',
+                    showConfirmButton: false,
+                    timer: 900
+                  })
                 agregado.map(item =>{
                     if (item._id === newCarItem._id) {
-                        item.quantity += 1
+                        item.quantity += contador
                     }
                 }) 
             }else{ 
-                alert('Producto agregado')
+                swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Producto agregado',
+                    showConfirmButton: false,
+                    timer: 900
+                  })
                 history.push('/detailVisit/' + id)
-                newCarItem.quantity = 1
+                newCarItem.quantity = contador
                 agregado.push(newCarItem)
             }
             return agregado
@@ -38,12 +63,14 @@ function handleCompar(e){
         let producto = addOrCreate(itemInCar)
     
         localStorage.setItem("itemCar", JSON.stringify(producto))
+        setContador(0)
        
     }
     
     return(
         <div className="boxBotonesDetalle">
-            <button> - </button><button>+</button>
+            <button className="botones_contador_detail_menos" onClick={(e) => handleContador(e)} value="menos"> - </button><div className="contador_carrito">{contador}</div><button className="botones_contador_detail_mas" onClick={(e) => handleContador(e)} value="mas">+</button>
+           <br/>
             <div>
                     <button className='botonIncSesDetail' onClick={(e) =>handleCompar(e)}>Comprar</button>
             </div>

@@ -12,6 +12,16 @@ import Cards from '../Cards/Cards'
 
 export default function Home() { 
 
+    function inicioLocalStorage (){
+        if(!localStorage.itemCar)
+    {let locaS = []
+    let otro = 'otro'
+    localStorage.setItem("itemCar", JSON.stringify(locaS))
+    localStorage.setItem("otra", JSON.stringify(otro))}
+    }
+    console.log(localStorage.itemCar)
+    inicioLocalStorage()
+    
     return (
         <div className='home'>
             <NavBarAll />
