@@ -18,6 +18,8 @@ const indexOfLastCard = currentPage * productsPerPage
 const indexOfFirstCard = indexOfLastCard - productsPerPage
 const currentCards = allProducts.slice(indexOfFirstCard,indexOfLastCard)
 
+// let filtrado = useSelector((state) => state.allProducts)
+
 const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
 }

@@ -9,7 +9,7 @@ export const ADD_TO_CAR = 'ADD_TO_CAR'
 
 
 export default function Card({ id, image, name, price }) {
-
+    
     const dispatch = useDispatch()
     const allProducts = useSelector(state => state.products)
     const history = useHistory()
@@ -55,6 +55,8 @@ export default function Card({ id, image, name, price }) {
         console.log(JSON.parse(localStorage.itemCar))
 
     }
+
+   
 
     return (
         <div className="boxCard">

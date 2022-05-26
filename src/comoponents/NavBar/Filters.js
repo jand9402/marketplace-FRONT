@@ -2,14 +2,16 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import './NavBarAll.css'
-import { brandFiltered, categoryFiltered, getBrand, getCategorys, getProducts, orderByPrice } from "../../redux/actions";
+import { brandFiltered, categoryFiltered, getBrand, getCategorys, getProducts } from "../../redux/actions";
 
 
-const Filters = () => {
+export default  function Filters  ()  {
     const dispatch = useDispatch();
 
     // const products = useSelector((state) => state.products)
     let categorys = useSelector((state) => state.categorys)
+
+    let filtrado = useSelector((state) => state.allProducts)
 
     let arrCategory = []
 
@@ -37,34 +39,32 @@ const Filters = () => {
     // const tarjetasAct = products.slice( indiceDeCardsPrinc,indiceDeCardsFinal)
 
     // console.log(products)
-    console.log(arrCategory)
+    // console.log(arrCategory)
 
 
     useEffect(() => {
-        dispatch(getProducts)
+        dispatch(getProducts())
         dispatch(getCategorys())
         dispatch(getBrand())
     }, [dispatch])
 
-    function handleOrder (e) {
-        e.preventDefault()
-        dispatch(orderByPrice(e.target.value))
-    }
+    // function handleOrder (e) {
+    //     dispatch(orderByPrice(e.target.value))
+    //     setPagActual(1)
+    //     setOrden(`Ordenado ${e.target.value}`)
+    // }
 
     function handleCategoryFiltered(e) {
-        e.preventDefault()
         dispatch(categoryFiltered(e.target.value))
         setPagActual(1)
     }
 
     function handleBrandFiltered(e) {
-        e.preventDefault()
         dispatch(brandFiltered(e.target.value))
         console.log(e.target.value) 
     }
 
     function handleClick(e) {
-        e.preventDefault();
         dispatch(getProducts())
         setPagActual(1)
     }
@@ -90,20 +90,19 @@ const Filters = () => {
           </select>
           <select className='selectStyle' onChange={e => handleBrandFiltered(e)}>
               <option>Marca</option>
-              { brand?.map(b => (
-                <option value={b}>{b}</option>
+              { brand.map(b => (
+                <option key={b} value={b}>{b}</option>
                 ))
               }
           </select>
           {/* rompe cuando se setea PRECIO, tenemos que saber cual es la value para todos */}
-          <select onChange={handleOrder} className='selectStyle'>
+          {/* <select onChange={handleOrder} className='selectStyle'>
               <option value='1'>Precio</option>
-              <option value='1'>Menor a Mayor</option>
-              <option value='-1'>Mayor a Menor</option>
-            </select>
+              <option value='menor'>Menor a Mayor</option>
+              <option value='mayor'>Mayor a Menor</option>
+            </select> */}
         </div>
     )
 
 }
 
-export default Filters

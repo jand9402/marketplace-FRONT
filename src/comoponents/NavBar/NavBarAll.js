@@ -14,8 +14,10 @@ import { useSelector } from "react-redux";
 
 
 
+
 const NavBarAll = () => {
 const[detail, setDetail] = useState(false)
+
 
 let history = useHistory()
 
@@ -23,12 +25,15 @@ let history = useHistory()
 
 const token = useSelector (state => state.token)
 
+
     
 return(
         <div className='boxNavBar'>
+            
             <nav className= 'ordenNavBar'>
                 <img className= 'logoNavBar' src={LogoNav} alt='logoNav'/>
                 <div>
+                    
                     <Filters/>
                 </div>
                 <div>
