@@ -113,10 +113,7 @@ const ProductForm = () => {
   }
 
    function handleCreate  (e) {
-  //   event.preventDefault()
-  //   if (Object.values(errors).length > 0) {
-  //     alert ('Complete toda la información requerida')    
-  // }else
+  
    if(
       input.name === '' && 
       input.image === '' &&
@@ -145,26 +142,11 @@ const ProductForm = () => {
     formdata.append('dimensions', input.dimensions)
     formdata.append('other', input.other)
     formdata.append('category', input.category)
-    // e.preventDefault()
-    // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
-    //   .catch((error) => console.error('rejected', error))
+   
     dispatch(postProduct(formdata))
     console.log(formdata)
     alert(`Has creado ${input.name}, felicitaciones`)
-    // setInput({
-    //   name: '',
-    //   price: '',
-    //   offer: '',
-    //   brand: '',
-    //   model: '',
-    //   amount: '',
-    //   dimensions: '',
-    //   condition: '',
-    //   other: '',
-    //   image: '',
-    //   description: '',
-    //   category: ''   
-    //  })
+    
   } 
 }
 

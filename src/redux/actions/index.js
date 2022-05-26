@@ -76,6 +76,8 @@ export const orderByPrice = (payload) => async dispatch => {
     .then(json => dispatch({type: ORDER_BY_PRICE, payload: json}))
 }
 
+
+
 export function postUser (payload){
     return async function (){
         const response = await axios.post("https://pf-commerce.herokuapp.com/api/users/register",payload)

@@ -21,12 +21,7 @@ export default function CarItem({ data }) {
             console.log(todos)
     
             function addQuantity(_id){
-                todos.map(item => {
-                    if(item._id === _id){
-                        item.quantity = 0
-                    }
-                }
-                )
+                todos= todos.filter(item => item._id !== _id)
                 return todos 
             }
             
@@ -35,7 +30,7 @@ export default function CarItem({ data }) {
             localStorage.setItem("itemCar", JSON.stringify(producto))
             console.log(JSON.parse(localStorage.itemCar))
             history.push('/shoppingCar')
-        console.log(locaLSatorage)}
+        console.log(producto)}
             else{
                 let todos = JSON.parse(localStorage.itemCar)
                 console.log(todos)
@@ -43,7 +38,12 @@ export default function CarItem({ data }) {
                 function addQuantity(_id){
                     todos.map(item => {
                         if(item._id === _id){
-                           if(item.quantity > 0) item.quantity = item.quantity -1 
+                           if(item.quantity > 1){ 
+                               item.quantity = item.quantity -1
+                            } else if(item.quantity === 1){
+                                todos = todos.filter(item => item._id !== _id)
+                                return todos 
+                            }
                         }
                     }
                     )
@@ -85,21 +85,24 @@ export default function CarItem({ data }) {
 
     return (
       
-        <div className="contenedor_car">
-        <div className="row row_en_car">
-            <div className="col">
-                <img className="imageTamaño" src={image} alt='imagencard' />
+        
+        <div className="container">
+            <div className="row">
+            <div className='col'>
+                <img className='imagenCarrito' src={image} alt='imagencard' />
             </div>
-            <div className="col">
-                <div className="nameCardProd">{name}</div>
-                <div className="priceCardProd price_en_carrito" >${price}.00 x {quantity} = ${price*quantity}.00</div>
+            <div className='col'>
+                <div className='nameEnCarrito'>{name}</div>
+                <div className='priceEnCarrito'>${price}.00 x {quantity} = ${price*quantity}.00</div>
             </div>
-            <div className="col">
-                <button onClick={() => removeFromCar(_id)}> - </button><button onClick={() => addToCar(_id)}>+</button>
-                <button onClick={() => removeFromCar(_id, true)}>Eliminar todos</button>
+            <div className='col'>
+                <button  className='botonRemover' onClick={() => removeFromCar(_id)}> - </button><button className='botonAgregar' onClick={() => addToCar(_id)}>+</button>
+                <button className='botonEliminar' onClick={() => removeFromCar(_id, true)}>Eliminar todos</button>
+                <div><button className='comprarEsteProducto'>Comprar este producto</button></div>
+            </div>
             </div>
         </div>
-        </div>
+        
     )
 }
 

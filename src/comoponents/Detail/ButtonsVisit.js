@@ -2,46 +2,76 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import './ProductDetail.css'
+import swal from 'sweetalert'
+import { useState } from "react";
 
 
 export default function ButtonsVisit ({id}){
     const allProducts = useSelector(state => state.products)
     const history = useHistory()
+    const [contador, setContador] = useState(0)
+    
 function handleCompar(e){
-    alert('Debes estar registrado para poder comprar ¿te deseas registrar?')
+    alert('vas a comprar')
 }
 
-const addToCar = (id) => {
-
-    let newCarItem = allProducts.find(allProducts => allProducts._id === id)
-     let infoFromLocalStorage = JSON.parse(localStorage.itemCar)
-
-    let itemInCar = infoFromLocalStorage.find(item => item._id === newCarItem._id)
-
-    function addOrCreate(producto) {
-        let agregado = infoFromLocalStorage
-        if (producto) {
-            agregado.map(item =>{
-                if (item._id === newCarItem._id) {
-                    item.quantity += 1
-                }
-            }) 
-        }else{ 
-            alert('Producto agregado')
-                history.push('/detailVisit/' + id)
-            newCarItem.quantity = 1
-            agregado.push(newCarItem)
-        }
-        return agregado
+function handleContador(e){
+if(e.target.value === "mas"){
+    setContador(contador + 1)
+}else{
+    if(contador>0){
+        setContador(contador-1)
     }
-    let producto = addOrCreate(itemInCar)
-
-    localStorage.setItem("itemCar", JSON.stringify(producto))
-    console.log(JSON.parse(localStorage.itemCar))
 }
+}
+    
+    const addToCar = (id) => {
+    
+        let newCarItem = allProducts.find(allProducts => allProducts._id === id)
+         let infoFromLocalStorage = JSON.parse(localStorage.itemCar)
+    
+        let itemInCar = infoFromLocalStorage.find(item => item._id === newCarItem._id)
+    
+        function addOrCreate(producto) {
+            let agregado = infoFromLocalStorage
+            if (producto) {
+                swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Producto agregado',
+                    showConfirmButton: false,
+                    timer: 900
+                  })
+                agregado.map(item =>{
+                    if (item._id === newCarItem._id) {
+                        item.quantity += contador
+                    }
+                }) 
+            }else{ 
+                swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Producto agregado',
+                    showConfirmButton: false,
+                    timer: 900
+                  })
+                history.push('/detailVisit/' + id)
+                newCarItem.quantity = contador
+                agregado.push(newCarItem)
+            }
+            return agregado
+        }
+        let producto = addOrCreate(itemInCar)
+    
+        localStorage.setItem("itemCar", JSON.stringify(producto))
+        setContador(0)
+       
+    }
 
     return(
         <div className="boxBotonesDetalle">
+              <button className="botones_contador_detail_menos" onClick={(e) => handleContador(e)} value="menos"> - </button><div className="contador_carrito">{contador}</div><button className="botones_contador_detail_mas" onClick={(e) => handleContador(e)} value="mas">+</button>
+           <br/>
             <div>
                 <Link to='/home' id='click'>
                     <button className='botonIncSesDetail' onClick={(e) =>handleCompar(e)}>Comprar</button>
