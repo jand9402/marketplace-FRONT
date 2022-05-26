@@ -4,7 +4,6 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
     width: 100% !important;
-    display: flex;
     /* align-items: center;
     text-align: center; */    
 }
@@ -122,5 +121,5 @@
     color: white;
 }
 .ordenPagCarAdmin{
-    margin-left: 480px;
+    margin-right: 150px;
 }

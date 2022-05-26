@@ -1,75 +1,122 @@
-
-.viewportFormCreateProd{
+.overLayCreateProduct{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* .viewportFormCreateProd{
+    background-color: rgba(71, 71, 71, 0.1);
     height: 100vh;
     padding-left: 0 !important;
     padding-right: 0 !important;
     width: 100% !important;
     display: flex;
-    /* align-items: center;
-    text-align: center; */
-    
-}
-
-.logoEnCreatePage{
-    position: fixed;
-    margin-bottom: auto;
-    margin-left: 50px;
-    margin-top: 40px;
-}
-.logoProductForm{
-    width: 13vw;
-}
+} */
 .allProductForm {
-    min-width: 20vw;
-    max-width: 40vw;
-    min-height: 17vw;
-    max-height: 35vw;
-    background-color: rgb(255, 255, 255);
-    margin-top: 6vw;
-    margin-left: auto;
-    margin-right: auto;   
+    width: 700px;
+    min-height: 600px;
+    background-color: rgba(23, 49, 87);
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    margin-bottom: auto;    */
 }
-
-.allFormPosition{
+.titleProduct {
+    width: 362px;
+    color: white;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+.botonCerrarCreateForm{
     position: relative;
-    height: 100%;
-    bottom: 1vw;
-    /* background-color: aqua; */
+    bottom:50px;
+    left: 650px;
 }
 .contentForm {
     display: flex;
     flex-wrap: wrap;
     /* padding: 10px; */
-    min-width: 35%;
-    max-height: 110px;
     justify-content: space-between;
-    /* background-color: blueviolet; */
+    background-color: blueviolet;
 }
-
+.boxColumnas1y2{
+    display: flex;
+}
+.boxColumna1PF{
+    /* background-color: chartreuse; */
+    width: 350px;
+}
+.boxColumna2PF{
+    /* background-color: rgb(70, 113, 28); */
+    width: 350px;
+}
 .productDiv {
     display: flex;
     flex-wrap: wrap;
-    max-width: 200px;
-    max-height: 80px;
+    width: 350px;
+    max-height: 105px;
     padding: 10px;
     /* background-color: aquamarine; */
-    }
-
-    .inputProduct {
-        width: 200px;
-        margin-bottom: 5px;
-    }
-
-    .precioDiv {
-        display: flex;
+}
+.productDiv2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 350px;
+    max-height: 105px;
+    padding: 10px;
+    /* background-color: rgb(51, 114, 93); */
+}
+.marcaDiv {
+    display: flex;
     flex-wrap: wrap;
     max-width: 200px;
-    max-height: 80px;
-    padding: 10px;
-    /* background-color: aqua; */
-    }
+    max-height: 70px;
+    /* padding-bottom: 10px; */
+    background-color: rgb(61, 143, 115);
+}
 
-    .contentMMC {
+.titlesNNO{
+    color: white;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.inputsProductForm {
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    /* width: 200px;
+    margin-bottom: 5px; */
+}
+  
+.descuentoDiv {
+    display: flex;
+    flex-wrap: wrap;
+    width: 220px;
+    height: 82px;
+    background-color: rgb(22, 126, 126);
+}
+.precioDiv {
+    display: flex;
+    flex-wrap: wrap;
+    width: 220px;
+    max-height: 105px;
+    background-color: aqua;
+}
+
+.contentMMC {
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
@@ -78,16 +125,9 @@
     max-height: 65px;
     justify-content: space-between;
     /* background-color: blue; */
-    }
+}
 
-    .marcaDiv {
-        display: flex;
-        flex-wrap: wrap;
-        max-width: 200px;
-        max-height: 70px;
-        /* padding-bottom: 10px; */
-        /* background-color: aquamarine; */
-        }
+   
 
         .inputMarca {
             width: 200px;
@@ -137,15 +177,7 @@
                     height: 30px;
                 }
 
-                .descuentoDiv {
-                    display: flex;
-                    flex-wrap: wrap;
-                    max-width: 200px;
-                    max-height: 82px;
-                    padding: 10px;
-                    /* background-color: rgb(22, 126, 126); */
-                }
-
+               
                 /* VER ESTOS DOS PORQUE HECEN ESO */
                 .otroDiv {
                     display: flex;
@@ -194,13 +226,13 @@
 
                 .inputArea {
                     width: 550px;
-                    height: 100px;
+                    height: 50px;
                 }
 
                 .buttonProduct {
                     width: 200px;
                     height: 40px;
-                    background-color: rgba(23, 49, 87);
+                    background-color: #ef3d52;;
                     border: none;
                     border-radius: 10px;
                     color: white;
@@ -211,10 +243,7 @@
                 .buttonProduct:hover{
                     background-color: #716d6e;
                 }
-                .titleProduct {
-                    margin-left: 220px;
-                    margin-top:3vw ;
-                }
+              
 
                 .selectDivCat {
                     display: flex;
@@ -224,15 +253,22 @@
                     padding-bottom: 10px;
                     /* background-color: darkorchid; */
                 }
-                .errosCreateName{
-                    position: relative;
-                    bottom:10px;
-                    margin-top: 7px;
-                    /* background-color: blue; */
-                    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                    color: red;
-                    max-width: 250px;
-                    line-height : 15px;
+                .errosCreateLarge{
+                    background-color: black;
+                    text-align: center;
+                    margin-top: 5px;
+                    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+                    color:  #ced6de;
+                    width: 300px;
+                    line-height : 17px;
+                }
+                .errosCreateSmall{
+                    background-color: black;
+                    margin-top: 2px;
+                    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+                    color:  #ced6de;
+                    width: 220px;
+                    line-height : 17px;
                 }
                 .errosCreateOffer{
                     position: relative;

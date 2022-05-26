@@ -34,7 +34,6 @@ useEffect (()=> {
     return (
         
         <div>
-            <div className="tituloCardsAdminProducts">Productos disponibles</div>
             <div className="ordenCardsProdAdmin">
                 { currentCards.map((p)=> {
                     return(
