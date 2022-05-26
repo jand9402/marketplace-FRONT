@@ -9,7 +9,11 @@ export const LOGIN_ANSWER = 'LOGIN_ANSWER'
 export const POST_USER = 'POST_USER'
 export const ORDER_BY_PRICE = 'ORDER_BY_PRICE' 
 export const POST_PRODUCT = 'POST_PRODUCT'
+
 export const NAV_BAR_NEW = 'NAV_BAR_NEW'
+
+export const DETAIL_DELETE = 'DETAIL_DELETE'
+
 
 
 
@@ -123,9 +127,16 @@ export function postLogin(payload){
     }
 }
 
+
 export function navBarNew(payload) {
     return {
         type: NAV_BAR_NEW,
         payload
     }
+
+export const deletepreviousdetail = () => {
+    return ({
+        type:DETAIL_DELETE
+    })
+
 }

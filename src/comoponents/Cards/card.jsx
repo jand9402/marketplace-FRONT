@@ -1,7 +1,7 @@
 import React from "react";
 import './Cards.css'
 import CarritoCard from '../../assets/icons/CarritoCards.png'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 export const ADD_TO_CAR = 'ADD_TO_CAR'
@@ -10,7 +10,7 @@ export default function Card({ id, image, name, price }) {
     
     const dispatch = useDispatch()
     const allProducts = useSelector(state => state.products)
-
+    const history = useHistory()
     const addToCar = (id) => {
 
         let newCarItem = allProducts.find(allProducts => allProducts._id === id)
@@ -27,6 +27,8 @@ export default function Card({ id, image, name, price }) {
                     }
                 }) 
             }else{ 
+                alert('Producto agregado')
+                history.push('/home')
                 newCarItem.quantity = 1
                 agregado.push(newCarItem)
             }
@@ -36,6 +38,7 @@ export default function Card({ id, image, name, price }) {
 
         localStorage.setItem("itemCar", JSON.stringify(producto))
         console.log(JSON.parse(localStorage.itemCar))
+
     }
 
    

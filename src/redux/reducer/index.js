@@ -9,7 +9,11 @@ import { GET_ALL_PRODUCTS,
         //  ORDER_BY_PRICE,
          LOGIN_ANSWER,
          POST_PRODUCT,
+
          NAV_BAR_NEW
+
+         DETAIL_DELETE
+
         } from "../actions";
 import { ADD_TO_CAR } from "../../comoponents/Cards/card";
 import { REMOVE_ALL_FROM_CAR, REMOVE_ONE_FROM_CAR } from "../../comoponents/CarItem/CarItem";
@@ -96,6 +100,7 @@ export default function rootReducer (state = initialState, action) {
       case POST_PRODUCT:
         return{
         ...state,
+
       }    
       case NAV_BAR_NEW:
         return {
@@ -129,6 +134,13 @@ export default function rootReducer (state = initialState, action) {
         //         let aInt = a.price || 0
         //         let bInt = b.price || 0
         //         return action.payload === 'menor' ? aInt - bInt : bInt - aInt
+
+      }   
+      case DETAIL_DELETE:
+        return {
+          ...state,
+          products: []
+        } 
 
 
         //     })

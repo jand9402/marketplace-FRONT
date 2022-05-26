@@ -54,7 +54,7 @@ function handleChange (e) {
     try{
       await dispatch(postLogin(input))
     }catch (error){
-     alert(error)
+     alert("No se encuentra registrado, o tiene un error en el e-mail o contraseña")
      history.push('/')
     }
     if(localStorage.getItem('authorization', token)) {

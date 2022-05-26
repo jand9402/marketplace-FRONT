@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './NavBarAll.css'
 
 const VenderUser = () => {
 
+const token = useSelector(state => state.token)
+
+function handleLogOut (){
+    localStorage.removeItem('authorization', token)
+}
     return(
         <div className='ordenLoginRegister'>
             <div >
@@ -13,8 +19,13 @@ const VenderUser = () => {
             </div>
             <div>
                 <Link to='/home' className='styleLinkNavBar'>
-                    <div>Nombre de usuario</div>
+                    <div className='styleLogReg'>Mi espacio</div>
                 </Link>
+            </div>
+            <div>
+                <Link to='/home' className='styleLinkNavBar'>
+                    <div onClick={handleLogOut}>Cerrar sesión</div>
+                </Link> 
             </div>
         </div>
     )
