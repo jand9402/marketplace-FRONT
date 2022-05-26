@@ -2,7 +2,7 @@ import React from 'react'
 import './RegisterForm.css'
 import { useHistory } from "react-router-dom";
 import { useState } from 'react'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { postUser } from '../../redux/actions';
 import NavBarDetail from '../NavBar/NavBaRDetail';
 
