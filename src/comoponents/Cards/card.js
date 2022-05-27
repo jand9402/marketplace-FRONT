@@ -43,7 +43,7 @@ export default function Card({ id, image, name, price }) {
                     showConfirmButton: false,
                     timer: 900
                   })
-                history.push('/home')
+                history.push('/')
                 newCarItem.quantity = 1
                 agregado.push(newCarItem)
             }

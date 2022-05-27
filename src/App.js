@@ -11,6 +11,8 @@ import Sesion from './comoponents/Admin/sesion'
 import SesionProductAdmin from './comoponents/Admin/sesionProductAdmin';
 import SesionVentasAdmin from './comoponents/Admin/sesionVentasAdmin';
 import DetailProductAdmin from './comoponents/Admin/detailProductAdmin/detailProductAdmin';
+import MiSesion from './comoponents/RegisteredUser/MiSesion';
+import DetailUsers from './comoponents/Admin/detailUsers';
 
 function App() {
   return (
@@ -26,8 +28,10 @@ function App() {
            <Route exact path='/shoppingCar' component={ShoppingCar} />
            <Route exact path='/admin' component={Sesion}/>
            <Route exact path='/admin/products' component={SesionProductAdmin}/>
-           <Route exact path='/admin/ventas' component={SesionVentasAdmin}/>
            <Route exact path='/admin/products/detail/:id' component={DetailProductAdmin}/>
+           <Route exact path='/admin/ventas' component={SesionVentasAdmin}/>
+           <Route exact path= '/admin/usuarios' component={DetailUsers}/>
+           <Route exact path='/miSesion' component={MiSesion}/>
          </Switch>
        </div>
     </BrowserRouter>

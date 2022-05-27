@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './NavBarAll.css'
 
-const VenderUser = () => {
+const MiSesionUser = () => {
 
 const token = useSelector(state => state.token)
 
@@ -12,14 +12,14 @@ function handleLogOut (){
 }
     return(
         <div className='ordenLoginRegister'>
-            <div >
+            {/* <div >
                 <Link to='/productForm' className='styleLinkNavBar'>
                     <div className='styleLogReg'>Vender</div>
                 </Link>
-            </div>
+            </div> */}
             <div>
-                <Link to='/' className='styleLinkNavBar'>
-                    <div className='styleLogReg'>Mi espacio</div>
+                <Link to='/miSesion' className='styleLinkNavBar'>
+                    <div className='styleLogReg'>Mi sesión</div>
                 </Link>
             </div>
             <div>
@@ -29,7 +29,6 @@ function handleLogOut (){
             </div>
         </div>
     )
-
 }
 
-export default VenderUser;
+export default MiSesionUser;

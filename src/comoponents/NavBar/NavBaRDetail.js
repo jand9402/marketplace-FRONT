@@ -4,7 +4,7 @@ import LoginRegister from "./LoginRegister";
 import './NavBarAll.css'
 import LogoNav from '../../assets/logo/log.png'
 import CarritoNavBar from '../../assets/icons/carritoNav.png'
-import VenderUser from './VenderUser'
+import MiSesionUser from './MiSesionUser'
 import { useSelector } from "react-redux";
 import IconoCarrito from "./IconoCarrito";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ return(
                 <div className="arregloProvisorioNav2"></div>
                 <div>
                     {
-                    localStorage.getItem('authorization', token)? <VenderUser/> : <LoginRegister/>
+                    localStorage.getItem('authorization', token)? <MiSesionUser/> : <LoginRegister/>
                     }
                 </div>
                 <Link to="/shoppingCar">

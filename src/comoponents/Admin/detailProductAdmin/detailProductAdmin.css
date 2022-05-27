@@ -38,6 +38,11 @@
     font-size: 1.7em;
     line-height : 30px
 }
+.editarProdButton{
+    position: relative;
+    left: 750px;
+    bottom: 30px;
+}
 .cajasDetailAdmin {
     display: flex;
 }

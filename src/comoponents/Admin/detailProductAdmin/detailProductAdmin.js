@@ -29,6 +29,7 @@ useEffect (() => {
                     <img  className="imageDetailAdmin" src={detail.image} alt="imageDetailAdmin"/>
                     <div className="boxNBMCDCO">
                         <div className="detailProductName">Detalle del producto</div>
+                        <button className="editarProdButton">Editar producto</button>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">NOMBRE:</div>
                             <div className="descriptionDetailAdmin">{detail.name}</div>
