@@ -24,7 +24,7 @@ const expresiones = {
 
 const dispatch = useDispatch()
 const token = useSelector(state => state.token)
-// console.log(token)
+console.log(token)
 const history = useHistory()
 
 const [errors, setErrors] = useState({})
@@ -62,6 +62,7 @@ function handleChange (e) {
       history.push('/')
     } 
   }
+  console.log(input)
 }
 
   return (

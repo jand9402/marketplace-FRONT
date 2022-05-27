@@ -11,7 +11,8 @@ import { GET_ALL_PRODUCTS,
          POST_PRODUCT,
          DETAIL_DELETE,
          GET_DETAIL,
-         NAV_BAR_NEW
+         NAV_BAR_NEW,
+         GET_USERS
         } from "../actions";
 import { ADD_TO_CAR } from "../../comoponents/Cards/card";
 import { REMOVE_ALL_FROM_CAR, REMOVE_ONE_FROM_CAR } from "../../comoponents/CarItem/CarItem";
@@ -29,7 +30,8 @@ const initialState = {
   createProduct: {},
   car: [],
   token: "",
-  navBarNew: []
+  navBarNew: [],
+  users: []
 }
           
 export default function rootReducer (state = initialState, action) {
@@ -143,6 +145,11 @@ export default function rootReducer (state = initialState, action) {
           ...state,
           detail: action.payload
         } 
+      case GET_USERS:
+        return {
+          ...state,
+          users: action.payload
+      }
 
 
         //     })

@@ -9,11 +9,10 @@ export const LOGIN_ANSWER = 'LOGIN_ANSWER'
 export const POST_USER = 'POST_USER'
 export const ORDER_BY_PRICE = 'ORDER_BY_PRICE' 
 export const POST_PRODUCT = 'POST_PRODUCT'
-
 export const NAV_BAR_NEW = 'NAV_BAR_NEW'
-
 export const DETAIL_DELETE = 'DETAIL_DELETE'
 export const GET_DETAIL ='GET_DETAIL'
+export const GET_USERS = 'GET_USERS'
 
 
 
@@ -120,13 +119,13 @@ export function postLogin(payload){
         return async function(dispatch){
             let login = await axios.post( "https://pf-commerce.herokuapp.com/api/users/login", payload) 
             console.log(login)
-            if(login.data){
+            if(login.data.token){
                 // localStorage.setItem("authorization", login.data)
                 alert('Sesión iniciada con exito!')
                 return dispatch(
                     {
                         type: LOGIN_ANSWER,
-                        payload: login.data
+                        payload: login.data.token
                     })
                 }}
     }catch(e) {
@@ -147,3 +146,21 @@ export const deletepreviousdetail = () => {
     })
 
 }
+export function getUsers(token){
+    console.log(token)
+    return async function(dispatch){
+      let allusers = await axios.get(`https://pf-commerce.herokuapp.com/api/users/`, {
+        headers:{
+          'authorization': `${token}`
+        }
+      })
+      if(allusers){
+          return dispatch({
+          type: "GET_USERS",
+          payload: allusers.data,
+        });
+      }else{
+        alert('No se encontraron usuarios')
+      }
+    }
+  }
