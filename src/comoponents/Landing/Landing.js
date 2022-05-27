@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./landingStyles.css";
 import LogoProv from '../../assets/logo/LogoProv.png'
 import Videofondo from '../../assets/video/videoLanding2.mp4'
+import RegisterForm from '../RegisterForm/RegisterForm';
 
 export default function Landing () {
     // let locaS = []
@@ -32,12 +33,12 @@ export default function Landing () {
                   Iniciar sesión
                 </button>
               </Link>
-              <Link className='linksDeLanding' to='/register'>
+              {/* <Link className='linksDeLanding' to='/register'> */}
                 <button className='boton'>
                   Registrarse
                 </button>
-              </Link>
-  
+              {/* </Link>
+   */}
               <Link className='linksDeLanding' to='/home'>
                 <button className='boton_visitante'>Visitante</button>
               </Link>

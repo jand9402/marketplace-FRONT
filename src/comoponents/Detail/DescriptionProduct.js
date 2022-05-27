@@ -53,7 +53,7 @@ export default function DescriptionProduct () {
                   </div>
                   <div>
                     <div className='nameMarcaModel'>Otros:</div>
-                    <div>{producto.other}</div>
+                    <div className='detailDescriptionDescription'>{producto.other}</div>
                   </div>
               </div>
             </div>

@@ -26,19 +26,12 @@ export default function PriceDetail () {
       {allProducts?.map((producto) => {
         if(producto._id === test){
           return (
-          <div key={producto._id}>
+          <div className="orderNameyotros" key={producto._id}>
             <div className="princeNameProd">{producto.name}</div>
             <div className="princePrince">${producto.price}</div>
             <div className="boxPriceStock">
               <div className="princeStockName">Stock disponible:</div>
               <div className="princeStockNumber">{producto.amount}</div>
-            </div>
-            <div>
-              <div>Cantidad:</div>
-              <select>
-                <option> X unidades </option>
-                <option>Soy un map</option>
-              </select>
             </div>
           </div>
           )}

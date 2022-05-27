@@ -1,30 +1,39 @@
 .contenedorRegistro{
-    height: 100vh;
+    background-color: #f7f5f4;
+    height: 92.5vh;
     padding-left: 0 !important;
     padding-right: 0 !important;
     width: 100% !important;
     display: flex;
 }
-
+.contImagAndFormR{
+    display: flex;
+    background-color: rgba(23, 49, 87);
+    width: 1100px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: auto;
+    margin-top: auto;
+}
+.illutrationRegiter{
+    background-image: url('../../assets/Login/LOGIN1.jpg');
+    width: 650px;
+    height: 600px;
+}
 .cardRegister{
     margin-left: auto;
     margin-right: auto; 
     margin-bottom: auto;
     margin-top: auto;
-    background-color: rgba(245, 245, 243);
-    width: 23vw;
+    /* background-color: rgba(245, 245, 243); */
   
 }
-
-/* .contenedorForm{
-   
-} */
 .contenedorForm{
-   position: relative;
-   bottom: 1vw;
-   left: 1vw;
-   width: 21vw;
-
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: auto;
+    margin-top: auto;
 }
 .logoEnLoginPageR{
     position: fixed;
@@ -35,57 +44,48 @@
 .logoRegister{
     width: 13vw;
 }
-
 .encabezadosRegistro{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
 }
-
 .crearCuentaTitulo{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-    text-align: center;
-}
-
-.input {
-    width: 250px;
-    height: 22px;
     margin-bottom: 10px;
+    color: white;
+    text-align: center;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
 }
-
 .button {
     width: 200px;
     background-color: rgba(23, 49, 87);
     color: white;
 }
-
 .buttonRegistro {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    width: 200px;
-    background-color: rgba(23, 49, 87);
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    width: 130px;
+    height: 40px;
+    background-color:#ef3d52;
     color: white;
     border-radius: 15px;
     transition: 300ms all;
     border: none;
     font-size: large;
-    height: 30px;
     margin-top: 10px;
     -webkit-transition: 300ms all;
     -moz-transition: 300ms all;
     -ms-transition: 300ms all;
     -o-transition: 300ms all;
 }
-
 .buttonRegistro:hover{
     background-color: #6d6f71;
 }
-
 .botonRegistro{
     text-align: center;
 }
-
 .errosRegistro{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: red;
-    max-width: 250px;
+    margin-top: 5px;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    color:  #ced6de;
+    max-width: 300px;
+    line-height : 17px;
 }
