@@ -131,8 +131,11 @@
 .boxMacroPrice {
     margin-left: 70px;
     /* background-color: rgb(182, 87, 87); */
-    height: 550px;
     width: 500px;
+}
+.orderNameyotros{
+    /* background-color: blue; */
+    margin-top: 50px;
 }
 
 .princeNameProd{
