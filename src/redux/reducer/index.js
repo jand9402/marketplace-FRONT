@@ -6,11 +6,12 @@ import { GET_ALL_PRODUCTS,
          CATEGORY_FILTERED,
          BRAND_FILTERED,
          POST_USER,
-         ORDER_BY_PRICE,
+        //  ORDER_BY_PRICE,
          LOGIN_ANSWER,
          POST_PRODUCT,
          DETAIL_DELETE,
-         GET_DETAIL
+         GET_DETAIL,
+         NAV_BAR_NEW
         } from "../actions";
 import { ADD_TO_CAR } from "../../comoponents/Cards/card";
 import { REMOVE_ALL_FROM_CAR, REMOVE_ONE_FROM_CAR } from "../../comoponents/CarItem/CarItem";
@@ -28,6 +29,7 @@ const initialState = {
   createProduct: {},
   car: [],
   token: "",
+  navBarNew: []
 }
           
 export default function rootReducer (state = initialState, action) {
@@ -49,33 +51,41 @@ export default function rootReducer (state = initialState, action) {
 
       return {
         ...state,
-        categorys: action.payload
+        categorys: action.payload,
       }
     case GET_BRAND:
       return {
         ...state,
-        brand: action.payload
+        brand: action.payload,
       }
 
       case CATEGORY_FILTERED:
-        const allProducts = state.allProducts;
-        const categoryFiltered = action.payload === "all" ? allProducts : allProducts.filter((e) => e.category === action.payload)
+        let allProducts = state.allProducts;
+        // allProducts.sort 
+        const categoryFiltered = action.payload === "all" ? allProducts : allProducts.sort((a, b) => {
+          if (a.price > b.price) return 1
+          if (b.price > a.price) return -1
+          return 0
+        }).filter((e) => e.category === action.payload)
+        console.log(state.products)
         return {
           ...state,
-          products: categoryFiltered
+          products: categoryFiltered,
+          // allProducts: categoryFiltered
         }
       case BRAND_FILTERED:
         const brandProducts = state.allProducts;
         const brandFiltered = action.payload === "all" ? brandProducts : brandProducts.filter((e) => e.brand === action.payload)
         return {
           ...state,
-          products: brandFiltered
+          products: brandFiltered,
+          // allProducts: brandFiltered
         }
-      case ORDER_BY_PRICE:
-        return{
-          ...state,
-          products: action.payload
-        }  
+      // case ORDER_BY_PRICE:
+      //   return{
+      //     ...state,
+      //     products: action.payload
+      //   }  
       case POST_USER:
         return{
           ...state,
@@ -89,8 +99,41 @@ export default function rootReducer (state = initialState, action) {
       case POST_PRODUCT:
         return{
         ...state,
-      }   
-      case DETAIL_DELETE:
+
+      }    
+      case NAV_BAR_NEW:
+        return {
+          ...state,
+          navBarNew: action.payload
+        }
+
+        // case ORDER_BY_PRICE:
+        //   const productoFiltrado = state.products
+        //   let sortScore = action.payload === 'menor' ? productoFiltrado.sort((a, b) => {
+        //     if (a.price > b.price) return 1
+        //     if (b.price > a.price) return -1
+        //     return 0
+        //   }) :
+        //   productoFiltrado.sort((a, b) => {
+        //     if (a.price > b.price) return -1
+        //     if (b.price > a.price) return 1
+        //     return 0
+        //   })
+        //   console.log(state.products)
+        //         return {
+        //             ...state,
+        //             products: sortScore,
+        //             // allProducts: sortScore
+        //         }
+
+        // case ORDER_BY_PRICE:
+        //     let sortedWeight = []
+
+        //     sortedWeight = state.allProducts.sort(function (a, b) {
+        //         let aInt = a.price || 0
+        //         let bInt = b.price || 0
+        //         return action.payload === 'menor' ? aInt - bInt : bInt - aInt
+        case DETAIL_DELETE:
         return {
           ...state,
           detail: {}
@@ -102,6 +145,12 @@ export default function rootReducer (state = initialState, action) {
         } 
 
 
+        //     })
+        //     console.log(sortedWeight)
+        //     return {
+        //       ...state,
+        //       products: sortedWeight
+        //   }
       // case ADD_TO_CAR:
       //   let products = state.allProducts
       //   let newCarItem = products.find(product => product._id === action.payload)

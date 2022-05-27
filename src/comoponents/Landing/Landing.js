@@ -6,18 +6,12 @@ import Videofondo from '../../assets/video/videoLanding2.mp4'
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 export default function Landing () {
-    let locaS = []
-    let otro = 'otro'
-    localStorage.setItem("itemCar", JSON.stringify(locaS))
-    localStorage.setItem("otra", JSON.stringify(otro))
+    // let locaS = []
+    // let otro = 'otro'
+    // localStorage.setItem("itemCar", JSON.stringify(locaS))
+    // localStorage.setItem("otra", JSON.stringify(otro))
 
-    const [register, setRegister] = useState('')
-
-    function handleRegister (e){
-      setRegister(<RegisterForm/>)
-    }
-
-    console.log(localStorage)
+    // console.log(localStorage)
     return (
       <div className='contenedor'>
         <div className='fila'>
@@ -40,7 +34,7 @@ export default function Landing () {
                 </button>
               </Link>
               {/* <Link className='linksDeLanding' to='/register'> */}
-                <button onClick={handleRegister} className='boton'>
+                <button className='boton'>
                   Registrarse
                 </button>
               {/* </Link>

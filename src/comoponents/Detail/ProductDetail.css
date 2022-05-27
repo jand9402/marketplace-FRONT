@@ -244,3 +244,42 @@
 .botonRegistroDetail:hover{
     background-color: #6d6f71;
 }
+
+.contador_carrito{
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: x-large;
+    padding-top: 7px;
+}
+
+.botones_contador_detail_mas{
+    background-color: rgb(24, 49, 87);
+    color: white;
+    height: 50px;
+    border: none;
+    font-style: Trebuchet;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.botones_contador_detail_mas:hover{
+    background-color: #6d6f71;
+}
+
+.botones_contador_detail_menos{
+    background-color: rgb(24, 49, 87);
+    color: white;
+    height: 50px;
+    border: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-style: Trebuchet;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.botones_contador_detail_menos:hover{
+    background-color: #6d6f71;
+}

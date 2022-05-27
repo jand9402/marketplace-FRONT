@@ -4,10 +4,12 @@ import CarritoCard from '../../assets/icons/CarritoCards.png'
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import swal from "sweetalert"
 export const ADD_TO_CAR = 'ADD_TO_CAR'
 
-export default function Card({ id, image, name, price }) {
 
+export default function Card({ id, image, name, price }) {
+    
     const dispatch = useDispatch()
     const allProducts = useSelector(state => state.products)
     const history = useHistory()
@@ -21,13 +23,26 @@ export default function Card({ id, image, name, price }) {
         function addOrCreate(producto) {
             let agregado = infoFromLocalStorage
             if (producto) {
+                swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Producto agregado',
+                    showConfirmButton: false,
+                    timer: 900
+                  })
                 agregado.map(item =>{
                     if (item._id === newCarItem._id) {
                         item.quantity += 1
                     }
                 }) 
             }else{ 
-                alert('Producto agregado')
+                swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Producto agregado',
+                    showConfirmButton: false,
+                    timer: 900
+                  })
                 history.push('/home')
                 newCarItem.quantity = 1
                 agregado.push(newCarItem)
@@ -40,6 +55,8 @@ export default function Card({ id, image, name, price }) {
         console.log(JSON.parse(localStorage.itemCar))
 
     }
+
+   
 
     return (
         <div className="boxCard">

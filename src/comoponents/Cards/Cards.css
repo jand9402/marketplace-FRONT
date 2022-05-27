@@ -1,7 +1,7 @@
 .boxCard {
     background-color: #FAFBFD;
-    width: 300px;
-    height: 380px;
+    width: 320px;
+    height: 410px;
     margin-bottom: 20px;
     margin-left: 75px;
     align-items: center;
@@ -9,6 +9,8 @@
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     transition: transform 0.4s;
     transform-style: preserve-3d;
+    /* padding: 10px; */
+    padding-left: 20px;
 }
 .boxCard:hover{
     transform:scale(1.05)
@@ -23,8 +25,8 @@
     color: rgb(62, 62, 62);
     /* background-color: rgb(32, 155, 149); */
     height: 75px;
-    margin-left: 5px;
-    margin-right: auto;
+    margin-left: 10px;
+    margin-right: 10px;
     font-style: Trebuchet;
     font-weight: 600;
     font-size: 1em;
@@ -59,6 +61,7 @@
 }
 .sinlineaCountCards {
     text-decoration: none;
+    margin-bottom: 50px;
 }
 .categoriasHome {
     position: relative;
