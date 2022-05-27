@@ -18,12 +18,12 @@ function handleLogOut (){
                 </Link>
             </div>
             <div>
-                <Link to='/home' className='styleLinkNavBar'>
+                <Link to='/' className='styleLinkNavBar'>
                     <div className='styleLogReg'>Mi espacio</div>
                 </Link>
             </div>
             <div>
-                <Link to='/home' className='styleLinkNavBar'>
+                <Link to='/' className='styleLinkNavBar'>
                     <div onClick={handleLogOut}>Cerrar sesión</div>
                 </Link> 
             </div>

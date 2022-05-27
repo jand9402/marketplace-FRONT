@@ -18,31 +18,11 @@ const indexOfLastCard = currentPage * productsPerPage
 const indexOfFirstCard = indexOfLastCard - productsPerPage
 const currentCards = allProducts.slice(indexOfFirstCard,indexOfLastCard)
 
-// let filtrado = useSelector((state) => state.allProducts)
 
 const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
 }
 
-//     const handleNextPage = () =>{
-//         if(allProducts.length > currentPage + cardsPerPage){
-//             setCurrentPage(currentPage+cardsPerPage)
-//         }
-//         if(allProducts.length>1){
-//             setNumberPage(numberPage+1) 
-//         }
-//     }
-
-//     const handlePrevPage= () =>{    
-//        if(currentPage >0){
-//            setCurrentPage(currentPage-cardsPerPage)  
-//            setNumberPage(numberPage-1)      
-//        }  
-//        if(currentPage>0){
-//         setCurrentPage(currentPage-(cardsPerPage-1))
-//         setNumberPage(numberPage-1)      
-//     }
-// }
 
 useEffect (()=> {
     paginado (1)

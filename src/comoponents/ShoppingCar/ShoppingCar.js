@@ -29,7 +29,7 @@ export default function ShoppingCar () {
     <div className='row'>
     
     <div className='divVolver'>
-    <Link to='/home'>
+    <Link to='/'>
     <button className='botonVolverCarrito'>Volver</button>
     </Link>
     </div>
@@ -54,7 +54,7 @@ export default function ShoppingCar () {
 </div>:<div className="container containerVacioCarrito">
         
         <div className='elCarritoVacio'>El carrito esta vacio</div>
-        <Link to='/home'>
+        <Link to='/'>
         <button className='irAComprar'>Volver a la tienda</button>
         </Link>
         <div className='carritoVacio'>

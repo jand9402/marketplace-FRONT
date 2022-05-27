@@ -6,7 +6,6 @@ import { getProducts } from "../../redux/actions";
 import PriceDetail from "./PriceDetail";
 import DescriptionProduct from "./DescriptionProduct";
 import './ProductDetail.css'
-import { deletepreviousdetail } from "../../redux/actions";
 
 export default function ProductDetail (){
     let {id} = useParams()
@@ -26,7 +25,7 @@ export default function ProductDetail (){
     return(
         <div className="boxViewportDetail">
             <div className="positionButtonVolverDetai">
-                <Link to='/home' id='click'>
+                <Link to='/' id='click'>
                     <button className="botonVolverDetail">VOLVER</button>
                 </Link>
             </div>

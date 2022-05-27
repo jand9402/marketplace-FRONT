@@ -8,11 +8,16 @@ import { useState } from "react";
 
 export default function ButtonsVisit ({id}){
     const allProducts = useSelector(state => state.products)
+    const token = useSelector(state=> state.token)
     const history = useHistory()
     const [contador, setContador] = useState(0)
     
 function handleCompar(e){
-    alert('vas a comprar')
+    if(!token){
+        alert('No ha inicado su sesión o no tienen una')
+    } else{
+        alert('vas a comprar')
+    }
 }
 
 function handleContador(e){
@@ -73,7 +78,7 @@ if(e.target.value === "mas"){
               <button className="botones_contador_detail_menos" onClick={(e) => handleContador(e)} value="menos"> - </button><div className="contador_carrito">{contador}</div><button className="botones_contador_detail_mas" onClick={(e) => handleContador(e)} value="mas">+</button>
            <br/>
             <div>
-                <Link to='/home' id='click'>
+                <Link to={'/detailVisit/' + id} id='click'>
                     <button className='botonIncSesDetail' onClick={(e) =>handleCompar(e)}>Comprar</button>
                 </Link>
             </div>
