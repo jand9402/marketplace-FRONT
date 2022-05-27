@@ -28,70 +28,59 @@ useEffect (() => {
                 <div className="boxDetaiQuePuedoModificar">
                     <img  className="imageDetailAdmin" src={detail.image} alt="imageDetailAdmin"/>
                     <div className="boxNBMCDCO">
-                        <div>Detalle del producto</div>
+                        <div className="detailProductName">Detalle del producto</div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">NOMBRE:</div>
                             <div className="descriptionDetailAdmin">{detail.name}</div>
-                            <button>Editar</button>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">MARCA:</div>
                             <div className="descriptionDetailAdmin">{detail.brand}</div>
-                            <button>Editar</button>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">MODELO:</div>
                             <div className="descriptionDetailAdmin">{detail.model}</div>
-                            <button>Editar</button>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">CATEGORÍA:</div>
                             <div className="descriptionDetailAdmin">{detail.category}</div>
-                            <button>Editar</button>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">MEMORIA INTERNA</div>
                             <div className="descriptionDetailAdmin">nu gb</div>
                             {/* <div>{detail.dimensions.$numberDecimal}</div> */}
-                            <button>Editar</button>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">CÁMARA FRONTAL:</div>
                             {/* <div className="namesAllDetailAdmin">{detail.condision}</div> */}
                             <div className="descriptionDetailAdmin">nu px</div>
-                            <button>Editar</button>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">CÁMARA TRASERA:</div>
                             {/* <div>{detail.other}</div> */}
-                            <div>nu px </div>
-                            <button>Editar</button>
+                            <div className="descriptionDetailAdmin">nu px </div>
                         </div>
                         <div>
                             <div className="namesAllDetailAdmin">DESCRIPCIÓN:</div>
                             <div className="descriptionDetailAdminDes">{detail.description}</div>
-                            <button>Editar</button>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">PRECIO:</div>
-                            <div className="descriptionDetailAdminDes">{detail.price}</div>
-                            <button>Editar</button>
+                            <div className="descriptionDetailAdmin">US$ {detail.price}</div>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">DESCUENTO:</div>
                             {/* <div className="descriptionDetailAdminDes">{detail.offer}</div> */}
-                            <div className="descriptionDetailAdminDes">5%</div>
-                            <button>Editar</button>
+                            <div className="descriptionDetailAdmin">5%</div>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">CANTIDAD:</div>
-                            <div className="descriptionDetailAdminDes">{detail.amount}</div>
-                            <button>Editar</button>
+                            <div className="descriptionDetailAdmin">{detail.amount}</div>
                         </div>
                     </div>
                 </div>
                 <div className="boxDetaiQueNoPuedoModificar">
-                    lo que no se puede modificar
+                    <div className="detailProductName">Valoración del producto</div>
                 </div>
             </div>
         </div>

@@ -66,7 +66,9 @@
     flex-wrap: wrap;
     width: 350px;
     max-height: 105px;
-    padding: 10px;
+   margin-bottom: 10px;
+    padding-left: 25px;
+    /* margin-left: 25px; */
     /* background-color: aquamarine; */
 }
 .productDiv2 {
@@ -74,7 +76,8 @@
     flex-wrap: wrap;
     width: 350px;
     max-height: 105px;
-    padding: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
     /* background-color: rgb(51, 114, 93); */
 }
 .marcaDiv {
@@ -173,7 +176,7 @@
                 .selectForm {
                     position: relative;
                     /* top: 8px; */
-                    width: 200px;
+                    width: 300px;
                     height: 30px;
                 }
 
@@ -254,7 +257,7 @@
                     /* background-color: darkorchid; */
                 }
                 .errosCreateLarge{
-                    background-color: black;
+                    /* background-color: black; */
                     text-align: center;
                     margin-top: 5px;
                     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
@@ -262,14 +265,14 @@
                     width: 300px;
                     line-height : 17px;
                 }
-                .errosCreateSmall{
+                /* .errosCreateSmall{
                     background-color: black;
                     margin-top: 2px;
                     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
                     color:  #ced6de;
                     width: 220px;
                     line-height : 17px;
-                }
+                } */
                 .errosCreateOffer{
                     position: relative;
                     bottom: 6px;

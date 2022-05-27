@@ -198,24 +198,25 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                              onChange={(e) => handleChange(e)}
                              />
                              {errors.model && (
-                             <p className='errosCreateName'>{errors.model}</p>
+                             <p className='errosCreateLarge'>{errors.model}</p>
                              )}
                          </div>
-                         <div className='imagenDiv'>
-                             <label htmlFor=''><b>Imagen:</b></label>
-                             <input type='file' onChange={(e) => handleFile(e)} />
+                         <div className='productDiv'>
+                           <label className="titlesNNO" htmlFor=''><b>Tamaño de pantalla:</b></label>
+                           {/* ES UN INPUT, QUE PERMITE DECIMALES */}
+                           <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
+                             <option disabled selected  value=''>px</option>
+                             <option  value='new'>Nuevo</option>
+                             <option value='used'>Usado</option>
+                          </select>
+                          {errors.condition && (
+                          <p className='errosCreateLarge'>{errors.condition}</p>
+                          )}
+                        </div>
+                         <div className='productDiv'>
+                             <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
+                             <input  type='file' onChange={(e) => handleFile(e)} />
                          </div>
-                 <div className='productDiv'>
-                     <label htmlFor=''><b>Cámara frontal:</b></label>
-                     <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
-                         <option disabled selected  value=''>px</option>
-                         <option  value='new'>Nuevo</option>
-                         <option value='used'>Usado</option>
-                     </select>
-                     {errors.condition && (
-                     <p className='errosCreateOffer'>{errors.condition}</p>
-                     )}
-                 </div>
                  <div className='productDiv'>
                      <label className='titlesNNO'>Precio:</label>
                      <input
@@ -232,7 +233,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                      )}
                  </div>
                  <div className='productDiv'>
-                     <label htmlFor=''><b>Cantidad:</b></label>
+                     <label className='titlesNNO' htmlFor=''><b>Cantidad:</b></label>
                      <input
                      autoComplete='off'
                      type='number'
@@ -242,29 +243,33 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                      onChange={(e) => handleChange(e)}
                      />
                      {errors.amount && (
-                     <p className='errosCreateName'>{errors.amount}</p>
+                     <p className='errosCreateLarge'>{errors.amount}</p>
                      )}
                  </div>
              </div>
              <div className="boxColumna2PF">
                  <div className='productDiv'>
-                     <label htmlFor=''><b>Marca:</b></label>
-                     <input
-                     autoComplete='off'
-                     type='text'
-                     className='inputsProductForm'
-                     value={input.brand}
-                     name='brand'
-                     onChange={(e) => handleChange(e)}
-                     />
+                     <label className='titlesNNO' htmlFor=''><b>Marca:</b></label>
+                     <select  name='brand' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
+                         <option disabled selected  value=''>Marca</option>
+                         <option value='ALCATEL'>Alcatel</option>
+                         <option value='APPLE'>Apple</option>
+                         <option value='ASUS'>Asus</option>
+                         <option value='HUAWEI'>Huawei</option>
+                         <option value='LG'>LG</option>
+                         <option value='MOTOROLA'>Motorola</option>
+                         <option value='NOKIA'>Nokia</option>
+                         <option value='SAMSUNG'>Samsung</option>
+                         <option value='SONY'>Sony</option>
+                     </select>
                      {errors.brand && (
-                     <p className='errosCreateName'>{errors.brand}</p>
+                     <p className='errosCreateLarge'>{errors.brand}</p>
                      )}
                  </div>
                  <div className='productDiv'>
-                     <label htmlFor=''><b>Categoría:</b></label>
-                     <select name='category' id='' onChange={(e) => handleChange(e)} className='inputMarca' >
-                         <option disabled selected  value='' >Categoría</option>
+                     <label className='titlesNNO' htmlFor=''><b>Línea:</b></label>
+                     <select  name='category' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
+                         <option disabled selected  value='' >Línea:</option>
                          <option value='art'>Arte</option>
                          <option value='Bookstore and haberdashery'>Librería y mercería</option>
                          <option value='cards'>Autos, Motos, y Otros</option>
@@ -279,11 +284,11 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                          <option value='technology'>Tecnología</option>
                      </select>
                      {errors.category && (
-                     <p className='errosCreateOffer'>{errors.category}</p>
+                     <p className='errosCreateLarge'>{errors.category}</p>
                      )}
                  </div>
                  <div className='productDiv'>
-                     <label htmlFor=''><b>Memoria interna:</b></label>
+                     <label className='titlesNNO' htmlFor=''><b>Memoria interna:</b></label>
                      <input
                      autoComplete='off'
                      type='number'
@@ -293,7 +298,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                      onChange={(e) => handleChange(e)}
                      />
                      {errors.dimensions && (
-                     <p className='errosCreateName'>{errors.dimensions}</p>
+                     <p className='errosCreateLarge'>{errors.dimensions}</p>
                      )}
                  </div>
                  <div className='productDiv'>
@@ -307,7 +312,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                      onChange={(e) => handleChange(e)}
                      />
                      {errors.other && (
-                     <p className='errosCreateName'>{errors.other}</p>
+                     <p className='errosCreateLarge'>{errors.other}</p>
                      )}
                  </div>
                  <div className='productDiv'>
@@ -331,7 +336,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                          <option key='70' value='70'>70%</option>
                      </select>
                      {errors.offer && (
-                     <p className='errosCreateOffer'>{errors.offer}</p>
+                     <p className='errosCreateLarge'>{errors.offer}</p>
                      )}
                  </div>
                  
@@ -345,7 +350,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                      onChange={(e) => handleChange(e)}
                      />
                      {errors.description && (
-                     <p className='errosCreateOffer'>{errors.description}</p>
+                     <p className='errosCreateLarge'>{errors.description}</p>
                      )}
                  </div>
              </div>

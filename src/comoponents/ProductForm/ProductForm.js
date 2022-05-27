@@ -233,7 +233,7 @@ const ProductForm = () => {
           
           <div className='contentMMC'>
             <div className='marcaDiv'>
-              <label htmlFor=''><b>Marca:</b></label>
+              <label className='titlesNNO' htmlFor=''><b>Marca:</b></label>
               <input
                 autoComplete='off'
                 type='text'
