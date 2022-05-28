@@ -2,7 +2,7 @@ import "./Cards.css";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./card"
-import { getCategorys, getProducts} from "../../redux/actions";
+import { getCategorys, getProducts, getCountries} from "../../redux/actions";
 import Paginado from "../Paginado/Paginado";
 
 
@@ -11,6 +11,7 @@ export default function Cards(){
     
 const dispatch = useDispatch()
 const allProducts = useSelector(state => state.products)
+const countries = useSelector(state => state.countries)
 let categorys = useSelector((state) => state.categorys)
 const [currentPage, setCurrentPage] = useState(1)
 const [productsPerPage] = useState(5)
@@ -34,7 +35,7 @@ useEffect (()=> {
     dispatch(getCategorys())
 }, [dispatch])
     
-
+console.log(countries)
     return (
         
         <div>
