@@ -61,8 +61,8 @@ export default function Card({ id, image, name, price }) {
     return (
         <div className="boxCard">
             <Link to={'/detailVisit/' + id} className="sinlineaCountCards">
-                <img className="imageTamaño" src={image} alt='imagencard' />
                 <div className="nameCardProd">{name}</div>
+                <img className="imageTamaño" src={image} alt='imagencard'/>
                 <div className="priceCardProd" >${price}</div>
             </Link>
             <button className="boton_carrito_card" onClick={() => addToCar(id)}></button>
