@@ -9,6 +9,7 @@ export const LOGIN_ANSWER = 'LOGIN_ANSWER'
 export const POST_USER = 'POST_USER'
 export const ORDER_BY_PRICE = 'ORDER_BY_PRICE' 
 export const POST_PRODUCT = 'POST_PRODUCT'
+export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES'
 
 export const NAV_BAR_NEW = 'NAV_BAR_NEW'
 
@@ -21,6 +22,12 @@ export const getProducts = () => async dispatch => {
     return await fetch('https://pf-commerce.herokuapp.com/api/products')
     .then((response) => response.json())
     .then((json) => {dispatch({ type: GET_ALL_PRODUCTS, payload:json.product})})
+};
+
+export const getCountries = () => async dispatch => {
+    return await fetch('https://restcountries.com/v3.1/all')
+    .then((response) => response.json())
+    .then((json) => {dispatch({ type: GET_ALL_COUNTRIES, payload:json})})
 };
 
 export const getDetail = (payload) => async dispatch => {
@@ -147,3 +154,26 @@ export const deletepreviousdetail = () => {
     })
 
 }
+
+
+// {
+//     "orderProducts":[{
+//         "product":"6291880941a1cbc7252f51bd",
+//         "image":"https://thumbs.dreamstime.com/z/maqueta-del-artilugio-tel%C3%A9fono-celular-104748796.jpg",
+//         "price":120,
+//         "quantity":5
+//     }],
+//     "deliveryAddress":{
+//         "fullName":"Jairo",
+//         "address":"carrera 5",
+//         "country":"Colombia",
+//         "province":"Antioquia",
+//         "city":"Medellin",
+//         "street":"street",
+//         "postalCode":"055450"
+//     },
+// "paymentMethod":
+//     "itemsPrice":5,
+//     "shippingPrice":5,
+//     "totalPrice":10
+//   }
