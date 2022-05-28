@@ -7,7 +7,7 @@ export default function CardProducts({ id, image, name, price }) {
 
     return (
         <div className="boxCardProductAdmin">
-            <img className="imageCardAdmin" src={image} alt='imageCardAdmin' />
+            <img className="imageCardAdmin" src={image[0]} alt='imageCardAdmin' />
             <div className="boxNamePriceProdAdm ">
                 <div className="productAdminName">{name}</div>
                 <div className="productAdminPrice">${price}</div>

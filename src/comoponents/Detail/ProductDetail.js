@@ -34,7 +34,7 @@ export default function ProductDetail (){
                     if (producto._id === test){
                         return(
                             <div className="boxImagenProducto">
-                                <img className="imagenDetailProd" src={producto.image} alt='imagenProducto'/>
+                                <img className="imagenDetailProd" src={producto.image[0]} alt='imagenProducto'/>
                             </div>
                         )
                     }
@@ -44,6 +44,7 @@ export default function ProductDetail (){
             <div>
                 <DescriptionProduct/>
             </div>
+            <div> soy las valoraciones del usuario</div>
             <div>Soy los productos similares-por categoría-</div>
         </div>
     )

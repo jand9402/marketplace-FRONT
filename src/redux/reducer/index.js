@@ -23,7 +23,7 @@ const initialState = {
   // loading: false,
   products: [],
   allProducts: [],
-  detail: {},
+  detail: [],
   categorys: [],
   brand: [],
   // login: false,
@@ -138,7 +138,7 @@ export default function rootReducer (state = initialState, action) {
         case DETAIL_DELETE:
         return {
           ...state,
-          detail: {}
+          detail: []
         }
       case GET_DETAIL: 
         return {
