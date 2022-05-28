@@ -9,7 +9,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
     
         if (!input.name) {
           errors.name = 'Campo requerido'
-        } else if (!/^[a-zA-ZÀ-ÿ\s]{5,100}$/g.test(input.name)) {
+        } else if (!/^[A-Za-z0-9\s]{5,100}$/g.test(input.name)) {
           errors.name = 'Ingrese más de 5 caracteres'
         }
         // brand
@@ -21,8 +21,12 @@ export default function ModalFormCreate ({estado, setEstado} ) {
             errors.model = 'Campo requerido'
         }
         //category
-        else if (!input.category) {
-            errors.category = 'Campo requerido, elija una categoría'
+        else if (!input.categories) {
+            errors.categories = 'Campo requerido, elija una categoría'
+        }
+        // display hay que hacer una expresion para numeros decimales...
+        else if (!input.screenSize) {
+            errors.screenSize = 'Campo requerido'
         }
         //image
         // dimensions
@@ -34,10 +38,6 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         //condition
         else if (!input.condition) {
             errors.condition = 'Campo requerido, elija una opción'
-        }
-        // other
-        else if (!input.other) {
-            errors.other = 'Campo requerido'
         }
         // price
         else if (!input.price) {
@@ -85,16 +85,15 @@ export default function ModalFormCreate ({estado, setEstado} ) {
       const [input, setInput] = useState({
         name: '',
         price: '',
-        offer: '',
         brand: '',
         model: '',
-        amount: '',
-        dimensions: '',
+        amountInStock: '',
+        screenSize: '',
         condition: '',
-        other: '',
+        internalMemory: '',
         image: '',
         description: '',
-        category: ''
+        categories: []
       })
     
       function handleChange (e) {
@@ -125,7 +124,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
           input.offer === '' && 
           input.dimensions === '' &&
           input.other === '' &&
-          input.category === '' ) {
+          input.categories === '' ) {
          alert ('No puede creear una nueva actividad si no completa el formulario')
       }else {
         const formdata = new window.FormData()
@@ -140,7 +139,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         formdata.append('offer', input.offer)
         formdata.append('dimensions', input.dimensions)
         formdata.append('other', input.other)
-        formdata.append('category', input.category)
+        formdata.append('category', input.categories)
         // e.preventDefault()
         // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
         //   .catch((error) => console.error('rejected', error))
@@ -202,16 +201,27 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                              )}
                          </div>
                          <div className='productDiv'>
-                           <label className="titlesNNO" htmlFor=''><b>Tamaño de pantalla:</b></label>
+                           <label className="titlesNNO" htmlFor=''><b>Display:</b></label>
+                           <input
+                             autoComplete='off'
+                             type='text'
+                             className='inputsProductForm'
+                             value={input.screenSize}
+                             name='screenSize'
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.screenSize && (
+                             <p className='errosCreateLarge'>{errors.screenSize}</p>
+                             )}
                            {/* ES UN INPUT, QUE PERMITE DECIMALES */}
-                           <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
-                             <option disabled selected  value=''>px</option>
+                           {/* <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
+                             <option disabled selected  value=''>"</option>
                              <option  value='new'>Nuevo</option>
                              <option value='used'>Usado</option>
                           </select>
                           {errors.condition && (
                           <p className='errosCreateLarge'>{errors.condition}</p>
-                          )}
+                          )} */}
                         </div>
                          <div className='productDiv'>
                              <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
@@ -267,24 +277,13 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                      )}
                  </div>
                  <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Línea:</b></label>
-                     <select  name='category' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
+                     <label className='titlesNNO' htmlFor=''><b>Categoría/s:</b></label>
+                     <select  name='categories' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
                          <option disabled selected  value='' >Línea:</option>
-                         <option value='art'>Arte</option>
-                         <option value='Bookstore and haberdashery'>Librería y mercería</option>
-                         <option value='cards'>Autos, Motos, y Otros</option>
-                         <option value='motorcycle and others'>Motos y Otros</option>
-                         <option value='beauty and personal care'>Belleza y Cuidado personal</option>
-                         <option value='sports and fitness'>Deportes y fitness</option>
-                         <option value='home appliances'>Electrodomésticos</option>
-                         <option value='home furniture and garden'>Hogar, muebles y jardín</option>
-                         <option value='fashion'>Moda</option>
-                         <option value='kids'>Niños</option>
-                         <option value='other'>Otras categorías</option>
-                         <option value='technology'>Tecnología</option>
+                         <option value='art'>No se aún</option>
                      </select>
-                     {errors.category && (
-                     <p className='errosCreateLarge'>{errors.category}</p>
+                     {errors.categories && (
+                     <p className='errosCreateLarge'>{errors.categories}</p>
                      )}
                  </div>
                  <div className='productDiv'>

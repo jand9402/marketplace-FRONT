@@ -12,6 +12,7 @@ export default function Card({ id, image, name, price }) {
     
     const dispatch = useDispatch()
     const allProducts = useSelector(state => state.products)
+    console.log(allProducts)
     const history = useHistory()
     const addToCar = (id) => {
 
@@ -43,7 +44,7 @@ export default function Card({ id, image, name, price }) {
                     showConfirmButton: false,
                     timer: 900
                   })
-                history.push('/home')
+                history.push('/')
                 newCarItem.quantity = 1
                 agregado.push(newCarItem)
             }
@@ -61,8 +62,8 @@ export default function Card({ id, image, name, price }) {
     return (
         <div className="boxCard">
             <Link to={'/detailVisit/' + id} className="sinlineaCountCards">
-                <img className="imageTamaño" src={image} alt='imagencard' />
                 <div className="nameCardProd">{name}</div>
+                <img className="imageTamaño" src={image[0]} alt='imagencard'/>
                 <div className="priceCardProd" >${price}</div>
             </Link>
             <button className="boton_carrito_card" onClick={() => addToCar(id)}></button>

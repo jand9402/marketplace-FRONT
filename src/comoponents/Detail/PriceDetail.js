@@ -31,7 +31,7 @@ export default function PriceDetail () {
             <div className="princePrince">${producto.price}</div>
             <div className="boxPriceStock">
               <div className="princeStockName">Stock disponible:</div>
-              <div className="princeStockNumber">{producto.amount}</div>
+              <div className="princeStockNumber">{producto.amountInStock}</div>
             </div>
           </div>
           )}

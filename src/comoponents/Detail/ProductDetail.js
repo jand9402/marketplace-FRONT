@@ -6,7 +6,6 @@ import { getProducts } from "../../redux/actions";
 import PriceDetail from "./PriceDetail";
 import DescriptionProduct from "./DescriptionProduct";
 import './ProductDetail.css'
-import { deletepreviousdetail } from "../../redux/actions";
 
 export default function ProductDetail (){
     let {id} = useParams()
@@ -26,7 +25,7 @@ export default function ProductDetail (){
     return(
         <div className="boxViewportDetail">
             <div className="positionButtonVolverDetai">
-                <Link to='/home' id='click'>
+                <Link to='/' id='click'>
                     <button className="botonVolverDetail">VOLVER</button>
                 </Link>
             </div>
@@ -35,7 +34,7 @@ export default function ProductDetail (){
                     if (producto._id === test){
                         return(
                             <div className="boxImagenProducto">
-                                <img className="imagenDetailProd" src={producto.image} alt='imagenProducto'/>
+                                <img className="imagenDetailProd" src={producto.image[0]} alt='imagenProducto'/>
                             </div>
                         )
                     }
@@ -45,6 +44,7 @@ export default function ProductDetail (){
             <div>
                 <DescriptionProduct/>
             </div>
+            <div> soy las valoraciones del usuario</div>
             <div>Soy los productos similares-por categoría-</div>
         </div>
     )

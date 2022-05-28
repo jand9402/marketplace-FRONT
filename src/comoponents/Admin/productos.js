@@ -8,7 +8,9 @@ export default function Productos () {
                 <Link to='/admin/products' id= 'click'>
                 <button className="buttonProductosS"></button>
                 </Link>
+                <Link to='/admin/products' id= 'click' className="sinLineaVPU">
                 <div className="nameProductsSesion">Mis productos</div>
+                </Link>
             </div>
         </div>
     )

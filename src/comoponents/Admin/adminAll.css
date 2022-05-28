@@ -11,10 +11,10 @@
 
 .orederSesionAdmin{
     /* background-color: aqua; */
-    width: 1400px;
+    width: 1640px;
     height: 700px;
     display: flex;
-    margin-left: 110px;
+    margin-left: 0px;
     margin-right: auto; 
     margin-bottom: auto;
     margin-top: auto;
@@ -55,11 +55,10 @@
     margin-bottom: auto;
     margin-top: 70px;
     /* background-color: black; */
-    width: 600px;
+    width: 500px;
 }
 .buttonProductosS{
-    margin-left: 50px;
-    background-image: url('../../assets/admin/buttonProducts.jpg');
+    background-image: url('../../assets/admin/buttonProducts2.jpg');
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     border: none;
     border-radius: 50%;
@@ -76,8 +75,20 @@
 
 /* VENTAS */
 .buttonVentasS{
-    margin-left: 50px;
     background-image: url('../../assets/admin/buttonVentas.jpg');
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+}
+.sinLineaVPU{
+    text-decoration: none;
+}
+
+/* USERS */
+.buttonUsersS{
+    background-image: url('../../assets/admin/buttonUsers.jpg');
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     border: none;
     border-radius: 50%;

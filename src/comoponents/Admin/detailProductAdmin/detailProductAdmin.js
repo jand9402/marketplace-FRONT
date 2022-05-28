@@ -3,7 +3,7 @@ import { getProducts, getDetail } from "../../../redux/actions";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deletepreviousdetail } from "../../../redux/actions";
-import NavBarAll from '../../NavBar/NavBaRDetail'
+import NavBarDetailAdmin from "../../NavBar/navBarDetaiAdmin";
 import './detailProductAdmin.css'
 
 export default function DetailProductAdmin () {
@@ -23,12 +23,13 @@ useEffect (() => {
     
     return (
         <div>
-            <NavBarAll/>
+            <NavBarDetailAdmin/>
             <div key={id} className='contenedorDetailAdmin'>
                 <div className="boxDetaiQuePuedoModificar">
                     <img  className="imageDetailAdmin" src={detail.image} alt="imageDetailAdmin"/>
                     <div className="boxNBMCDCO">
                         <div className="detailProductName">Detalle del producto</div>
+                        <button className="editarProdButton">Editar producto</button>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">NOMBRE:</div>
                             <div className="descriptionDetailAdmin">{detail.name}</div>
@@ -42,23 +43,20 @@ useEffect (() => {
                             <div className="descriptionDetailAdmin">{detail.model}</div>
                         </div>
                         <div className="cajasDetailAdmin">
-                            <div className="namesAllDetailAdmin">CATEGORÍA:</div>
-                            <div className="descriptionDetailAdmin">{detail.category}</div>
+                            <div className="namesAllDetailAdmin">ESTADO:</div>
+                            <div className="descriptionDetailAdmin">{detail.condition}</div>
                         </div>
                         <div className="cajasDetailAdmin">
-                            <div className="namesAllDetailAdmin">MEMORIA INTERNA</div>
-                            <div className="descriptionDetailAdmin">nu gb</div>
-                            {/* <div>{detail.dimensions.$numberDecimal}</div> */}
+                            <div className="namesAllDetailAdmin">CATEGORÍA/S:</div>
+                            <div className="descriptionDetailAdmin">{detail.categories}</div>
                         </div>
                         <div className="cajasDetailAdmin">
-                            <div className="namesAllDetailAdmin">CÁMARA FRONTAL:</div>
-                            {/* <div className="namesAllDetailAdmin">{detail.condision}</div> */}
-                            <div className="descriptionDetailAdmin">nu px</div>
+                            <div className="namesAllDetailAdmin">DISPLAY:</div>
+                            {/* <div className="descriptionDetailAdmin">{detail.screenSize.$numberDecimal}" </div> */}
                         </div>
                         <div className="cajasDetailAdmin">
-                            <div className="namesAllDetailAdmin">CÁMARA TRASERA:</div>
-                            {/* <div>{detail.other}</div> */}
-                            <div className="descriptionDetailAdmin">nu px </div>
+                            <div className="namesAllDetailAdmin">MEMORIA INTERNA:</div>
+                            <div className="descriptionDetailAdmin">{detail.internalMemory} GB </div>
                         </div>
                         <div>
                             <div className="namesAllDetailAdmin">DESCRIPCIÓN:</div>
@@ -69,13 +67,8 @@ useEffect (() => {
                             <div className="descriptionDetailAdmin">US$ {detail.price}</div>
                         </div>
                         <div className="cajasDetailAdmin">
-                            <div className="namesAllDetailAdmin">DESCUENTO:</div>
-                            {/* <div className="descriptionDetailAdminDes">{detail.offer}</div> */}
-                            <div className="descriptionDetailAdmin">5%</div>
-                        </div>
-                        <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">CANTIDAD:</div>
-                            <div className="descriptionDetailAdmin">{detail.amount}</div>
+                            <div className="descriptionDetailAdmin">{detail.amountInStock} uds.</div>
                         </div>
                     </div>
                 </div>

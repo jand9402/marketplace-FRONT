@@ -18,8 +18,9 @@
 }
 
 .imagenDetailProd {
-    width: 600px;
-    height: 600px;
+    margin-top: 5px;
+    margin-left: 70px;
+    width: 450px;
 }
 .positionButtonVolverDetai {
     position: relative;
@@ -103,6 +104,18 @@
     font-size: 1.1em;
     line-height : 30px;
  }
+ .boxCardCategories{
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 650px;
+    /* background-color:  rgb(119, 67, 67); */
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height : 30px;
+ }
 
 .boxCaracteristicas {
     /* background-color: chartreuse; */
@@ -130,12 +143,13 @@
 /* //PRICEDETAIL */
 .boxMacroPrice {
     margin-left: 70px;
+    margin-top: 60px;
     /* background-color: rgb(182, 87, 87); */
     width: 500px;
+    height: 450px;
 }
 .orderNameyotros{
-    /* background-color: blue; */
-    margin-top: 50px;
+    background-color: rgb(245, 245, 243)
 }
 
 .princeNameProd{
@@ -157,7 +171,7 @@
 }
 .boxPriceStock{
     display: flex;
-    margin-top: 60px;
+    margin-top: 50px;
     /* background-color: crimson; */
     height: 3vw;
 }
@@ -218,8 +232,9 @@
     background-color: rgb(24, 49, 87);
     color: white;
     border-radius: 2px;
-    height: 50px;
-    width: 180px;
+    height: 60px;
+    width: 150px;
+    border-radius: 5px;
     border: none;
     font-style: Trebuchet;
     text-align: center;
@@ -235,14 +250,16 @@
     background-color:rgb(24, 49, 87);
     color: white;
     border-radius: 2px;
-    height: 50px;
-    width: 180px;
+    height: 60px;
+    width: 150px;
+    border-radius: 5px;
     border: none;
     font-style: Trebuchet;
     text-align: center;
     font-weight: 600;
-    font-size: 1.3em;
+    font-size: 1.2em;
     cursor: pointer;
+    line-height: 25px;
 }
 .botonRegistroDetail:hover{
     background-color: #6d6f71;

@@ -1,20 +1,22 @@
 
-import {
-  GET_ALL_PRODUCTS,
-  GET_ALL_COUNTRIES,
-  SEARCH_BY_NAME,
-  GET_CATEGORIES,
-  GET_BRAND,
-  CATEGORY_FILTERED,
-  BRAND_FILTERED,
-  POST_USER,
-  //  ORDER_BY_PRICE,
-  LOGIN_ANSWER,
-  POST_PRODUCT,
-  DETAIL_DELETE,
-  GET_DETAIL,
-  NAV_BAR_NEW
-} from "../actions";
+
+import { GET_ALL_PRODUCTS,
+        GET_ALL_COUNTRIES,
+         SEARCH_BY_NAME,
+         GET_CATEGORIES,
+         GET_BRAND,
+         CATEGORY_FILTERED,
+         BRAND_FILTERED,
+         POST_USER,
+        //  ORDER_BY_PRICE,
+         LOGIN_ANSWER,
+         POST_PRODUCT,
+         DETAIL_DELETE,
+         GET_DETAIL,
+         NAV_BAR_NEW,
+         GET_USERS
+        } from "../actions";
+
 import { ADD_TO_CAR } from "../../comoponents/Cards/card";
 import { REMOVE_ALL_FROM_CAR, REMOVE_ONE_FROM_CAR } from "../../comoponents/CarItem/CarItem";
 import { CLEAR_CAR } from "../../comoponents/ShoppingCar/ShoppingCar";
@@ -24,7 +26,7 @@ const initialState = {
   // loading: false,
   products: [],
   allProducts: [],
-  detail: {},
+  detail: [],
   categorys: [],
   brand: [],
   // login: false,
@@ -32,6 +34,7 @@ const initialState = {
   car: [],
   token: "",
   navBarNew: [],
+  users: [],
   countries: []
 }
 
@@ -87,37 +90,45 @@ export default function rootReducer(state = initialState, action) {
       const brandFiltered = action.payload === "all" ? brandProducts : brandProducts.filter((e) => e.brand === action.payload)
       return {
         ...state,
-        products: brandFiltered,
-      } 
-    case POST_USER:
-      return {
-        ...state,
+        products: brandFiltered
+
+
+      }    
+      case NAV_BAR_NEW:
+        return {
+          ...state,
+          navBarNew: action.payload
+        }
+        case DETAIL_DELETE:
+        return {
+          ...state,
+          detail: []
+        }
+      case GET_DETAIL: 
+        return {
+          ...state,
+          detail: action.payload
+        } 
+      case GET_USERS:
+        return {
+          ...state,
+          users: action.payload
       }
-    case LOGIN_ANSWER:
-      localStorage.setItem("authorization", action.payload)
-      return {
-        ...state,
-        token: action.payload
-      }
-    case POST_PRODUCT:
-      return {
-        ...state,
-      }
-    case NAV_BAR_NEW:
-      return {
-        ...state,
-        navBarNew: action.payload
-      }
-    case DETAIL_DELETE:
-      return {
-        ...state,
-        detail: {}
-      }
-    case GET_DETAIL:
-      return {
-        ...state,
-        detail: action.payload
-      }
+//     case POST_USER:
+//       return {
+//         ...state,
+//       }
+//     case LOGIN_ANSWER:
+//       localStorage.setItem("authorization", action.payload)
+//       return {
+//         ...state,
+//         token: action.payload
+//       }
+//     case POST_PRODUCT:
+//       return {
+//         ...state,
+//       }
+
     default:
       return { ...state }
   }

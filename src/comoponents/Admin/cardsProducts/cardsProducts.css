@@ -90,7 +90,6 @@
     background-color: #6d6f71;
 }
 
-/* DELET */
 
 /* PAGINADO */
 #menu ul li{
@@ -119,7 +118,4 @@
 .nav-btn:hover{
     background-color: rgb(107, 104, 100);
     color: white;
-}
-.ordenPagCarAdmin{
-    margin-right: 150px;
 }
