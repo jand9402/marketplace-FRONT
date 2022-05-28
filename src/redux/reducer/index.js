@@ -35,7 +35,9 @@ const initialState = {
   token: "",
   navBarNew: [],
   users: [],
-  countries: []
+  countries: [],
+  userData: localStorage.getItem('userData')?
+  localStorage.getItem('userData'): null,
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -94,11 +96,6 @@ export default function rootReducer(state = initialState, action) {
 
 
       }    
-      case NAV_BAR_NEW:
-        return {
-          ...state,
-          navBarNew: action.payload
-        }
         case DETAIL_DELETE:
         return {
           ...state,
@@ -114,20 +111,21 @@ export default function rootReducer(state = initialState, action) {
           ...state,
           users: action.payload
       }
-//     case POST_USER:
-//       return {
-//         ...state,
-//       }
-//     case LOGIN_ANSWER:
-//       localStorage.setItem("authorization", action.payload)
-//       return {
-//         ...state,
-//         token: action.payload
-//       }
-//     case POST_PRODUCT:
-//       return {
-//         ...state,
-//       }
+    case POST_USER:
+      return {
+        ...state,
+      }
+    case LOGIN_ANSWER:
+      localStorage.setItem("authorization", action.payload.token)
+      localStorage.setItem("userData", JSON.stringify(action.payload.rest))
+      return {
+        ...state,
+        token: action.payload
+      }
+    case POST_PRODUCT:
+      return {
+        ...state,
+      }
 
     default:
       return { ...state }
