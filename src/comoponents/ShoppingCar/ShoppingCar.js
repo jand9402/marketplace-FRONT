@@ -47,9 +47,9 @@ export default function ShoppingCar () {
     }
     </div>
     <div className="divContinuarCompra">
-    {/* <Link to=""> */}
+     <Link to="/CheckOut"> 
         <button className="continuarCompra">Continuar con la compra</button>
-        {/* </Link> */}
+         </Link> 
     </div>
 </div>:<div className="container containerVacioCarrito">
         
