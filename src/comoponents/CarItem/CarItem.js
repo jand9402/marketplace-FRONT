@@ -89,7 +89,7 @@ export default function CarItem({ data }) {
         <div className="container">
             <div className="row">
             <div className='col'>
-                <img className='imagenCarrito' src={image} alt='imagencard' />
+                <img className='imagenCarrito' src={image[0]} alt='imagencard' />
             </div>
             <div className='col'>
                 <div className='nameEnCarrito'>{name}</div>
