@@ -1,12 +1,12 @@
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import Landing from './comoponents/Landing/Landing';
-import Home from './comoponents/Home/Home';
-import Login from './comoponents/Login/Login';
-import RegisterForm from './comoponents/RegisterForm/RegisterForm';
-import Detail from './comoponents/Detail/Detail';
-import ProductForm from './comoponents/ProductForm/ProductForm';
-import ShoppingCar from './comoponents/ShoppingCar/ShoppingCar';
+import Landing from './components/Landing/Landing';
+import Home from './components/Home/Home';
+import Login from './components/Login/Login';
+import RegisterForm from './components/RegisterForm/RegisterForm';
+import Detail from './components/Detail/Detail';
+import ProductForm from './components/ProductForm/ProductForm';
+import ShoppingCar from './components/ShoppingCar/ShoppingCar';
 
 function App() {
   return (

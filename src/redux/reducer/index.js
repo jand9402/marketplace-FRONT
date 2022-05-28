@@ -15,9 +15,9 @@ import { GET_ALL_PRODUCTS,
          DETAIL_DELETE
 
         } from "../actions";
-import { ADD_TO_CAR } from "../../comoponents/Cards/card";
-import { REMOVE_ALL_FROM_CAR, REMOVE_ONE_FROM_CAR } from "../../comoponents/CarItem/CarItem";
-import { CLEAR_CAR } from "../../comoponents/ShoppingCar/ShoppingCar";
+import { ADD_TO_CAR } from "../../components/Cards/card";
+import { REMOVE_ALL_FROM_CAR, REMOVE_ONE_FROM_CAR } from "../../components/CarItem/CarItem";
+import { CLEAR_CAR } from "../../components/ShoppingCar/ShoppingCar";
 
 
 const initialState = {
@@ -30,6 +30,9 @@ const initialState = {
   createProduct: {},
   car: [],
   token: "",
+  userData: localStorage.getItem('userData')
+  ? localStorage.getItem('userData')
+  : null,
   navBarNew: []
 }
           
@@ -92,7 +95,8 @@ export default function rootReducer (state = initialState, action) {
           ...state,
         }
       case LOGIN_ANSWER:
-        localStorage.setItem("authorization", action.payload)
+        localStorage.setItem("authorization", action.payload.token)
+        localStorage.setItem("userData", JSON.stringify(action.payload.rest))
         return{
           ...state,
           token: action.payload
@@ -107,6 +111,7 @@ export default function rootReducer (state = initialState, action) {
           ...state,
           navBarNew: action.payload
         }
+
 
         // case ORDER_BY_PRICE:
         //   const productoFiltrado = state.products

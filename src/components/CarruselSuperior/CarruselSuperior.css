@@ -1,0 +1,19 @@
+.carousel-item{
+    max-height: 300px;
+    max-width: 100%;
+}
+
+.carousel{
+    margin-left: 5%;
+    margin-right: 5%;
+    /* height: 100px; */
+    /* height: 300px; */
+    padding-top: 20px;
+    padding-bottom: 20px; 
+    background-color: red;
+   
+}
+
+/* .divCarousel {
+    height: 100px;
+} */

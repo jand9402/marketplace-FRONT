@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 // import { useEffect, useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import NavBarAll from '../NavBar/NavBarAll.js'
 import SearchBar from '../NavBar/SearchBar.js'
 import CarruselSuperior from '../CarruselSuperior/CarruselSuperior.js'
@@ -12,6 +12,8 @@ import Cards from '../Cards/Cards'
 
 export default function Home() { 
 
+    
+
     function inicioLocalStorage (){
         if(!localStorage.itemCar)
     {let locaS = []
@@ -21,6 +23,7 @@ export default function Home() {
     }
     console.log(localStorage.itemCar)
     inicioLocalStorage()
+    
     
     return (
         <div className='home'>
