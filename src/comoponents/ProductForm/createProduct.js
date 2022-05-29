@@ -3,67 +3,72 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { postProduct } from "../../../redux/actions";
 
-export default function ModalFormCreate ({estado, setEstado} ) {
-    function validate (input) {
-        const errors = {}
+export function validate (input) {
+    const errors = {}
+  
+    if (!input.name) {
+      errors.name = 'Campo requerido'
+    }
+    // } else if (!/^[A-Za-z0-9\s]{5,100}$/g.test(input.name)) {
+    //   errors.name = 'Ingrese más de 5 caracteres'
+    // }
+    // brand
+    else if (!input.brand) {
+        errors.brand = 'Campo requerido'
+    }  
+    // model
+    else if (!input.model) {
+        errors.model = 'Campo requerido'
+    }
+    //category
+    else if (!input.categories.lenght) {
+        errors.categories = 'Debe seleccionar al menos una categoría '
+    }
+    // display hay que hacer una expresion para numeros decimales...No lo hace!
+    else if (!input.screenSize) {
+        errors.screenSize = 'Campo requerido'
+    }else if (!/^[1-9]\d*(\.\d+)?$/g.test(input.screenSize)) {
+        errors.screenSize = "Requiere un numero decimal"
+    }
+    //image
+    // dimensions
+    else if (!input.internalMemory) {
+        errors.internalMemory = 'Campo requerido'
+    } else if (input.internalMemory <= 0) {
+        errors.internalMemory = 'La memoria interna deben ser mayor a 0'
+    }
+    //condition
+    else if (!input.condition) {
+        errors.condition = 'Campo requerido, elija una opción'
+    }
+    // price
+    else if (!input.price) {
+      errors.price = 'Campo requerido'
+     }
+    // } else if (!/^[1-9]*?$/.test(input.price)) {
+    //   errors.price = 'El precio no puede ser menor a 1'
+    // }   
+    // amount
+    else if (!input.amountInStock) {
+      errors.amountInStock = 'Campo requerido'
+    } else if (input.amountInStock <= 0) {
+      errors.amountInStock = 'La cantidad debe ser mayor a 0'
+    }
+
+    // //image
+    // else if (!input.image) {
+    //   errors.image = 'Campo requerido'
+    // }
+    //description
+    else if (!input.description) {
+      errors.description = 'Campo requerido'
+    }
+  
+    return errors
+  }
+
+export default function CreateProduct () {
     
-        if (!input.name) {
-          errors.name = 'Campo requerido'
-        } else if (!/^[A-Za-z0-9\s]{5,100}$/g.test(input.name)) {
-          errors.name = 'Ingrese más de 5 caracteres'
-        }
-        // brand
-        else if (!input.brand) {
-            errors.brand = 'Campo requerido'
-        }  
-        // model
-        else if (!input.model) {
-            errors.model = 'Campo requerido'
-        }
-        //category
-        else if (!input.categories) {
-            errors.categories = 'Campo requerido, elija una categoría'
-        }
-        // display hay que hacer una expresion para numeros decimales...
-        else if (!input.screenSize) {
-            errors.screenSize = 'Campo requerido'
-        }
-        //image
-        // dimensions
-        else if (!input.internalMemory) {
-            errors.internalMemory = 'Campo requerido'
-        } else if (input.internalMemory <= 0) {
-            errors.internalMemory = 'La memoria interna deben ser mayor a 0'
-        }
-        //condition
-        else if (!input.condition) {
-            errors.condition = 'Campo requerido, elija una opción'
-        }
-        // price
-        else if (!input.price) {
-          errors.price = 'Campo requerido'
-         }
-        // } else if (!/^[1-9]*?$/.test(input.price)) {
-        //   errors.price = 'El precio no puede ser menor a 1'
-        // }   
-        // amount
-        else if (!input.amountInStock) {
-          errors.amountInStock = 'Campo requerido'
-        } else if (input.amountInStock <= 0) {
-          errors.amountInStock = 'La cantidad debe ser mayor a 0'
-        }
-    
-        // //image
-        // else if (!input.image) {
-        //   errors.image = 'Campo requerido'
-        // }
-        //description
-        else if (!input.description) {
-          errors.description = 'Campo requerido'
-        }
-      
-        return errors
-      }
       let dispatch = useDispatch()
       // const { errors, handleChange } = useValidateCreateProd()
       const [file, setFile] = useState('')
@@ -102,7 +107,6 @@ export default function ModalFormCreate ({estado, setEstado} ) {
           ...input,
           [e.target.name]: e.target.value
         }))
-        console.log(input)
       }
     
        function handleCreate  (e) {
@@ -137,9 +141,9 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         formdata.append('dimensions', input.internalMemory)
         formdata.append('other', input.screenSize)
         formdata.append('category', input.categories)
-        // // e.preventDefault()
-        // // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
-        // //   .catch((error) => console.error('rejected', error))
+        // e.preventDefault()
+        // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
+        //   .catch((error) => console.error('rejected', error))
         dispatch(postProduct(formdata))
         console.log(formdata)
         alert(`Has creado ${input.name}, felicitaciones`)
@@ -161,7 +165,6 @@ export default function ModalFormCreate ({estado, setEstado} ) {
     }
     return(
         <>
-        {estado && 
         <div className="overLayCreateProduct">
             <div className='allProductForm'>
                 <form onSubmit={(e) => handleCreate(e)}>
@@ -214,7 +217,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                         </div>
                          <div className='productDiv'>
                              <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
-                             <input  type='file' name="image" onChange={(e) => handleFile(e)} />
+                             <input  type='file' onChange={(e) => handleFile(e)} />
                          </div>
                  <div className='productDiv'>
                      <label className='titlesNNO'>Precio:</label>
@@ -319,7 +322,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         <button type='submit' className='buttonProduct'>Crear</button>
       </form>
     </div>
-  </div> }
+  </div> 
         </>
     )
 }
