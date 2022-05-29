@@ -78,3 +78,8 @@
     width: 1300px;
 
 }
+
+.sesion {
+    position: relative;
+    /* left: 50px; */
+}

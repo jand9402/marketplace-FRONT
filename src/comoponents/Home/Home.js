@@ -28,7 +28,7 @@ export default function Home() {
     return (
         <div className='home'>
             <NavBarAll />
-            <SearchBar />
+            {/* <SearchBar /> */}
             <div>
                 <CarruselSuperior />
             </div>
