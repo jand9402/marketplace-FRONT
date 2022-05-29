@@ -10,11 +10,11 @@ export default function CarruselSuperior() {
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src={BannerDestacados} class="d-block w-100" alt="..."/>
+        <img src={BannerDestacados} className="d-block w-100" alt="..."/>
 
       </div>
       <div className="carousel-item">
-        <img src={BannerElectro} className="d-block w-100" alt="bannerElectro"/>
+        <img src={BannerElectro}  className="d-block w-100" alt="bannerElectro"/>
       </div>
       <div className="carousel-item">
         <img src={BannerDeportes} className="d-block w-100" alt="..."/>

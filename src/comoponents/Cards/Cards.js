@@ -35,7 +35,7 @@ useEffect (()=> {
     dispatch(getCategorys())
 }, [dispatch])
     
-console.log(countries)
+// console.log(countries)
     return (
         
         <div>

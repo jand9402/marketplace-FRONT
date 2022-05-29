@@ -20,7 +20,7 @@ export const GET_USERS = 'GET_USERS'
 export const getProducts = () => async dispatch => {
     return await fetch('https://pf-commerce.herokuapp.com/api/products')
     .then((response) => response.json())
-    .then((json) => {dispatch({ type: GET_ALL_PRODUCTS, payload:json.product})})
+    .then((json) => {dispatch({ type: GET_ALL_PRODUCTS, payload:json.products})})
 };
 
 export const getCountries = () => async dispatch => {

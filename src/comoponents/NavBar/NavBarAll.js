@@ -12,6 +12,7 @@ import IconoCarrito from "./IconoCarrito";
 
 import  MiSesionUser from './MiSesionUser'
 import { useSelector } from "react-redux";
+import SearchBar from "./SearchBar";
 
 
 
@@ -38,7 +39,8 @@ return(
                     
                     <Filters/>
                 </div>
-                <div>
+                    <SearchBar/>
+                <div className="sesion">
                     {
                     localStorage.getItem('authorization', token)? <MiSesionUser/> : <LoginRegister/>
                     }

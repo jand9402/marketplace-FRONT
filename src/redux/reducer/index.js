@@ -33,6 +33,9 @@ const initialState = {
   createProduct: {},
   car: [],
   token: "",
+  userData: localStorage.getItem('userData')
+  ? localStorage.getItem('userData')
+  : null,
   navBarNew: [],
   users: [],
   countries: []
@@ -87,7 +90,11 @@ export default function rootReducer(state = initialState, action) {
       }
     case BRAND_FILTERED:
       const brandProducts = state.allProducts;
-      const brandFiltered = action.payload === "all" ? brandProducts : brandProducts.filter((e) => e.brand === action.payload)
+      const brandFiltered = action.payload === "all" ? brandProducts : brandProducts.sort((a, b) => {
+        if (a.price > b.price) return 1
+        if (b.price > a.price) return -1
+        return 0
+      }).filter((e) => e.brand === action.payload)
       return {
         ...state,
         products: brandFiltered
@@ -114,20 +121,21 @@ export default function rootReducer(state = initialState, action) {
           ...state,
           users: action.payload
       }
-//     case POST_USER:
-//       return {
-//         ...state,
-//       }
-//     case LOGIN_ANSWER:
-//       localStorage.setItem("authorization", action.payload)
-//       return {
-//         ...state,
-//         token: action.payload
-//       }
-//     case POST_PRODUCT:
-//       return {
-//         ...state,
-//       }
+    case POST_USER:
+      return {
+        ...state,
+      }
+    case LOGIN_ANSWER:
+      localStorage.setItem("authorization", action.payload)
+      localStorage.setItem("userData", JSON.stringify(action.payload.rest))
+      return {
+        ...state,
+        token: action.payload
+      }
+    case POST_PRODUCT:
+      return {
+        ...state,
+      }
 
     default:
       return { ...state }
