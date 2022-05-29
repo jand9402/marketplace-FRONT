@@ -91,10 +91,8 @@ useEffect (() => {
             state= {stateModalPut}
             changeState = {setStateModalPut}
             >
-                <div>
-                    {/* ACÁ VA EL EDITAR PRODUCTO -EL PUT- */}
-                    <EditProduct/>
-                </div>
+                {/* ACÁ VA EL EDITAR PRODUCTO -EL PUT- */}
+                <EditProduct/>
             </Modal>
         </div>
     )
