@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deletepreviousdetail } from "../../../redux/actions";
 import NavBarDetailAdmin from "../../NavBar/navBarDetaiAdmin";
+import Modal from "../Modales/Modal";
 import './detailProductAdmin.css'
 
 export default function DetailProductAdmin () {
@@ -75,6 +76,7 @@ useEffect (() => {
                 <div className="boxDetaiQueNoPuedoModificar">
                     <div className="detailProductName">Valoración del producto</div>
                 </div>
+            <Modal/>
             </div>
         </div>
     )
