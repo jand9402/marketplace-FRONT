@@ -7,13 +7,17 @@ import './NavBarAll.css'
 
 const token = useSelector(state => state.token)
 const userData = useSelector(state => state.userData)
+
 console.log (userData)
-let data =JSON.parse(userData)
+let data = JSON.parse(userData)
 console.log(data)
 
 function handleLogOut (){
     localStorage.removeItem('authorization', token)
     localStorage.removeItem("userData", userData)
+    localStorage.removeItem("itemCar")
+    localStorage.removeItem("order")
+
 }
     return(
         <div className='ordenLoginRegister'>
