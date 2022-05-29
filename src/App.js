@@ -14,6 +14,7 @@ import MiSesion from './comoponents/RegisteredUser/MiSesion';
 import DetailUsers from './comoponents/Admin/detailUsers';
 import FormCheckOut from './comoponents/FormCheckOut/FormCheckOut';
 import BuysUser from './comoponents/Admin/buysUser';
+import CreateProduct from './comoponents/ProductForm/createProduct';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
            <Route exact path='/miSesion' component={MiSesion}/>
            <Route exact path='/CheckOut' component={FormCheckOut}/>
 
+           <Route exact path='/createProductPrueba' component={CreateProduct}/>
          </Switch>
        </div>
     </BrowserRouter>

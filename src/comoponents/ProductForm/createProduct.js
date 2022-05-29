@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { postProduct } from "../../../redux/actions";
+import { postProduct } from "../../redux/actions/index"
 
 export function validate (input) {
     const errors = {}
@@ -21,16 +21,16 @@ export function validate (input) {
         errors.model = 'Campo requerido'
     }
     //category
-    else if (!input.categories.lenght) {
-        errors.categories = 'Debe seleccionar al menos una categoría '
-    }
-    // display hay que hacer una expresion para numeros decimales...No lo hace!
+    // else if (!input.categories.lenght) {
+    //     errors.categories = 'Debe seleccionar al menos una categoría '
+    // }
     else if (!input.screenSize) {
         errors.screenSize = 'Campo requerido'
-    }else if (!/^[1-9]\d*(\.\d+)?$/g.test(input.screenSize)) {
-        errors.screenSize = "Requiere un numero decimal"
     }
     //image
+    else if (input.image.length < 3) {
+      errors.image = 'Debe seleccionar 3 imágenes'
+    }
     // dimensions
     else if (!input.internalMemory) {
         errors.internalMemory = 'Campo requerido'
@@ -72,8 +72,11 @@ export default function CreateProduct () {
       let dispatch = useDispatch()
       // const { errors, handleChange } = useValidateCreateProd()
       const [file, setFile] = useState('')
+      const [categorias, setCategorias] = useState('')
     
       // const [createProduct] = postProduct()
+
+    
       const handleFile = (e) => {
         setFile(e.target.files[0])
         setInput({
@@ -93,10 +96,18 @@ export default function CreateProduct () {
         screenSize: '',
         condition: '',
         internalMemory: '',
-        image: '',
+        image: [],
         description: '',
-        categories: []
+        // categories: []
       })
+
+      // function hadleCategories (e) {
+      //   setCategorias({
+      //     ...categorias,
+      //     categories: [ e.target.value.split(",")]
+      //   }
+      //    )
+      // }
     
       function handleChange (e) {
         setInput({
@@ -107,6 +118,7 @@ export default function CreateProduct () {
           ...input,
           [e.target.name]: e.target.value
         }))
+        console.log(input)
       }
     
        function handleCreate  (e) {
@@ -124,8 +136,9 @@ export default function CreateProduct () {
           input.condition === '' &&
           input.model === '' &&
           input.internalMemory === '' &&
-          input.screenSize === '' &&
-          input.categories === '' ) {
+          input.screenSize === '' 
+          // input.categories
+           === '' ) {
          alert ('No puede creear una nueva actividad si no completa el formulario')
       }else {
         const formdata = new window.FormData()
@@ -141,12 +154,12 @@ export default function CreateProduct () {
         formdata.append('dimensions', input.internalMemory)
         formdata.append('other', input.screenSize)
         formdata.append('category', input.categories)
-        // e.preventDefault()
+        e.preventDefault()
         // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
         //   .catch((error) => console.error('rejected', error))
         dispatch(postProduct(formdata))
-        console.log(formdata)
         alert(`Has creado ${input.name}, felicitaciones`)
+        console.log(formdata)
         // setInput({
         //   name: '',
         //   price: '',
@@ -169,7 +182,7 @@ export default function CreateProduct () {
             <div className='allProductForm'>
                 <form onSubmit={(e) => handleCreate(e)}>
                     <h1 className='titleProduct'>Nuevo producto</h1>
-                    <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button>
+                    {/* <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button> */}
                     <div className="boxColumnas1y2" >
                         <div className="boxColumna1PF">
                             <div className='productDiv'>
@@ -185,26 +198,29 @@ export default function CreateProduct () {
                                 {errors.name && (
                                 <p className='errosCreateLarge'>{errors.name}</p>
                                 )}
-                         </div>
-                         <div className='productDiv2'>
-                             <label className='titlesNNO' htmlFor=''><b>Modelo:</b></label>
+                            </div>
+                            <div className='productDiv2'>
+                              <label className='titlesNNO' htmlFor=''><b>Modelo:</b></label>
+                              <input
+                              autoComplete='off'
+                              type='text'
+                              className='inputsProductForm'
+                              value={input.model}
+                              name='model'
+                              onChange={(e) => handleChange(e)}
+                              />
+                              {errors.model && (
+                              <p className='errosCreateLarge'>{errors.model}</p>
+                              )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className="titlesNNO" htmlFor=''><b>Display:</b></label>
                              <input
                              autoComplete='off'
-                             type='text'
-                             className='inputsProductForm'
-                             value={input.model}
-                             name='model'
-                             onChange={(e) => handleChange(e)}
-                             />
-                             {errors.model && (
-                             <p className='errosCreateLarge'>{errors.model}</p>
-                             )}
-                         </div>
-                         <div className='productDiv'>
-                           <label className="titlesNNO" htmlFor=''><b>Display:</b></label>
-                           <input
-                             autoComplete='off'
-                             type='text'
+                             type='number'
+                             step="0.01" 
+                             min="0" 
+                             max="10"
                              className='inputsProductForm'
                              value={input.screenSize}
                              name='screenSize'
@@ -213,11 +229,13 @@ export default function CreateProduct () {
                              {errors.screenSize && (
                              <p className='errosCreateLarge'>{errors.screenSize}</p>
                              )}
-                           {/* ES UN INPUT, QUE PERMITE DECIMALES */}
-                        </div>
-                         <div className='productDiv'>
+                           </div>
+                           <div className='productDiv'>
                              <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
-                             <input  type='file' onChange={(e) => handleFile(e)} />
+                             <input  type='file' multiple name="image" onChange={handleFile} />
+                             {errors.image && (
+                             <p className='errosCreateLarge'>{errors.image}</p>
+                             )}
                          </div>
                  <div className='productDiv'>
                      <label className='titlesNNO'>Precio:</label>
@@ -270,13 +288,13 @@ export default function CreateProduct () {
                  </div>
                  <div className='productDiv'>
                      <label className='titlesNNO' htmlFor=''><b>Categoría/s:</b></label>
-                     <select  name='categories' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
+                     {/* <select  name='categories' id='' onChange={hadleCategories}  className='selectForm' >
                          <option disabled selected  value='' >Línea:</option>
                          <option value='art'>No se aún</option>
-                     </select>
-                     {errors.categories && (
+                     </select> */}
+                     {/* {errors.categories && (
                      <p className='errosCreateLarge'>{errors.categories}</p>
-                     )}
+                     )} */}
                  </div>
                  <div className='productDiv'>
                      <label className='titlesNNO' htmlFor=''><b>Memoria interna:</b></label>
