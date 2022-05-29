@@ -4,7 +4,7 @@ import LoginRegister from "./LoginRegister";
 import './NavBarAll.css'
 import LogoNav from '../../assets/logo/log.png'
 import CarritoNavBar from '../../assets/icons/carritoNav.png'
-import MiSesionUser from './MiSesionUser'
+import MiSesion from "./MiSesion";
 import { useSelector } from "react-redux";
 import IconoCarrito from "./IconoCarrito";
 import { Link } from "react-router-dom";
@@ -18,7 +18,7 @@ return(
                 <img className= 'logoNavBar' src={LogoNav} alt='logoNav'/>
                 <div className="arregloProvisorioNav2"></div>
                 <div>
-                    {localStorage.getItem('authorization', token)? <MiSesionUser/> : <LoginRegister/>}
+                    {localStorage.getItem('authorization', token)? <MiSesion/> : <LoginRegister/>}
                 </div>
                 <Link to="/shoppingCar">
                 <img className='carritoNavBar' src={CarritoNavBar} alt='carritoNav' />

@@ -102,7 +102,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
           ...input,
           [e.target.name]: e.target.value
         }))
-        console.log(input)
+        // console.log(input)
       }
     
        function handleCreate  (e) {
@@ -141,7 +141,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         // // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
         // //   .catch((error) => console.error('rejected', error))
         dispatch(postProduct(formdata))
-        console.log(formdata)
+        // console.log(formdata)
         alert(`Has creado ${input.name}, felicitaciones`)
         // setInput({
         //   name: '',
