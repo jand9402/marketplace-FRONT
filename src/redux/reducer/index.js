@@ -13,6 +13,7 @@ import { GET_ALL_PRODUCTS,
          POST_PRODUCT,
          DETAIL_DELETE,
          GET_DETAIL,
+         ORDERS,
          NAV_BAR_NEW,
          GET_USERS
         } from "../actions";
@@ -33,11 +34,15 @@ const initialState = {
   createProduct: {},
   car: [],
   token: "",
+  userData: localStorage.getItem('userData')
+  ? localStorage.getItem('userData')
+  : null,
   navBarNew: [],
   users: [],
   countries: [],
   userData: localStorage.getItem('userData')?
   localStorage.getItem('userData'): null,
+  cart: {}
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -89,7 +94,11 @@ export default function rootReducer(state = initialState, action) {
       }
     case BRAND_FILTERED:
       const brandProducts = state.allProducts;
-      const brandFiltered = action.payload === "all" ? brandProducts : brandProducts.filter((e) => e.brand === action.payload)
+      const brandFiltered = action.payload === "all" ? brandProducts : brandProducts.sort((a, b) => {
+        if (a.price > b.price) return 1
+        if (b.price > a.price) return -1
+        return 0
+      }).filter((e) => e.brand === action.payload)
       return {
         ...state,
         products: brandFiltered
@@ -126,6 +135,13 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       }
+
+    case ORDERS:
+      return {
+        ...state,
+        cart: action.payload
+      }
+
 
     default:
       return { ...state }

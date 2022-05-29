@@ -14,6 +14,7 @@ export const NAV_BAR_NEW = 'NAV_BAR_NEW'
 export const DETAIL_DELETE = 'DETAIL_DELETE'
 export const GET_DETAIL ='GET_DETAIL'
 export const GET_USERS = 'GET_USERS'
+export const ORDERS = 'ORDERS'
 
 
 
@@ -182,6 +183,13 @@ export function getUsers(token){
       }
     }
   }
+
+  export function orders(payload) {
+    return {
+        type: ORDERS,
+        payload: payload
+    }
+}
 
 
 

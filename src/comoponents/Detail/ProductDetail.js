@@ -34,7 +34,14 @@ export default function ProductDetail (){
                     if (producto._id === test){
                         return(
                             <div className="boxImagenProducto">
+                                <div className="divImagenPrincipal">
                                 <img className="imagenDetailProd" src={producto.image[0]} alt='imagenProducto'/>
+                                </div>
+                                <div className="divImagen">
+                                <a href={producto.image[0]}><img className="imagenSecundaria" src={producto.image[0]} alt='imagenProducto'/></a>
+                                <a href={producto.image[1]}><img className="imagenSecundaria" src={producto.image[1]} alt='imagenProducto'/></a>
+                                <a href={producto.image[2]}><img className="imagenSecundaria" src={producto.image[2]} alt='imagenProducto'/></a>
+                                </div>  
                             </div>
                         )
                     }

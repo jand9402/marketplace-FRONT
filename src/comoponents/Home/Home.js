@@ -21,11 +21,14 @@ export default function Home() {
     }
     // console.log(localStorage.itemCar)
     inicioLocalStorage()
-    
+    // useEffect (()=> {
+//     dispatch(getProducts())
+//     dispatch(getCategorys())
+// }, [dispatch])
     return (
         <div className='home'>
             <NavBarAll />
-            <SearchBar />
+            {/* <SearchBar /> */}
             <div>
                 <CarruselSuperior />
             </div>
