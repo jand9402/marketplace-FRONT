@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { postProduct } from "../../redux/actions/index"
 
+// ESTO ESTÁ CON LA LOÓGICA DEL POST, PERO ES PARA ADELANTAR
+
 export function validate (input) {
     const errors = {}
   
@@ -67,7 +69,7 @@ export function validate (input) {
     return errors
   }
 
-export default function CreateProduct () {
+export default function EditProduct () {
     
       let dispatch = useDispatch()
       // const { errors, handleChange } = useValidateCreateProd()
@@ -181,7 +183,7 @@ export default function CreateProduct () {
         <div>
             <div className='allProductForm'>
                 <form onSubmit={(e) => handleCreate(e)}>
-                    <h1 className='titleProduct'>Nuevo producto</h1>
+                    <h1 className='titleProduct'>Editar producto</h1>
                     {/* <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button> */}
                     <div className="boxColumnas1y2" >
                         <div className="boxColumna1PF">
