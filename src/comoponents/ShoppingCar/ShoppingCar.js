@@ -13,7 +13,6 @@ export const CLEAR_CAR = 'CLEAR_CAR'
 
 export default function ShoppingCar () {
     let infoFromLocalStorage = JSON.parse(localStorage.itemCar)
-    console.log(infoFromLocalStorage)
     const dispatch = useDispatch()
     let history = useHistory()
     const clearCar = () => {

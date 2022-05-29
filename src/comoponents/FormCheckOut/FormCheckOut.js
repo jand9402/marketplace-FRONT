@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 export default function FormCheckOut() {
  
   const dispatch = useDispatch()
-  let infoUser = JSON.parse(localStorage.userData)
+  // let infoUser = JSON.parse(localStorage.userData)
   let infoProducts = JSON.parse(localStorage.itemCar)
   let orderProducts = []
   infoProducts.map(item => {
@@ -138,6 +138,8 @@ export default function FormCheckOut() {
         apartment: ''
       })
     }
+    let estoEstaEnLocalStorage = JSON.parse(localStorage.order)
+    console.log(estoEstaEnLocalStorage)
   }
   
   return (
