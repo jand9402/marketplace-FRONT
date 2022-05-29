@@ -14,13 +14,14 @@ export const NAV_BAR_NEW = 'NAV_BAR_NEW'
 export const DETAIL_DELETE = 'DETAIL_DELETE'
 export const GET_DETAIL ='GET_DETAIL'
 export const GET_USERS = 'GET_USERS'
+export const ORDERS = 'ORDERS'
 
 
 
 export const getProducts = () => async dispatch => {
     return await fetch('https://pf-commerce.herokuapp.com/api/products')
     .then((response) => response.json())
-    .then((json) => {dispatch({ type: GET_ALL_PRODUCTS, payload:json.product})})
+    .then((json) => {dispatch({ type: GET_ALL_PRODUCTS, payload:json.products})})
 };
 
 export const getCountries = () => async dispatch => {
@@ -181,6 +182,13 @@ export function getUsers(token){
       }
     }
   }
+
+  export function orders(payload) {
+    return {
+        type: ORDERS,
+        payload: payload
+    }
+}
 
 
 
