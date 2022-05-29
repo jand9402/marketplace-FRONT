@@ -10,7 +10,7 @@ import CarritoVacioIcono from '../../assets/icons/carritoVacioIconoG.png'
 import { Link, useHistory } from "react-router-dom";
 import IconoCarrito from "./IconoCarrito";
 
-import  MiSesionUser from './MiSesionUser'
+import MiSesion from "./MiSesion";
 import { useSelector } from "react-redux";
 
 
@@ -40,7 +40,7 @@ return(
                 </div>
                 <div>
                     {
-                    localStorage.getItem('authorization', token)? <MiSesionUser/> : <LoginRegister/>
+                    localStorage.getItem('authorization', token)? <MiSesion/> : <LoginRegister/>
                     }
                 </div>
                 <Link to="/shoppingCar">

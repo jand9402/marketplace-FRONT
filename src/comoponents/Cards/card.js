@@ -12,7 +12,7 @@ export default function Card({ id, image, name, price }) {
     
     const dispatch = useDispatch()
     const allProducts = useSelector(state => state.products)
-    console.log(allProducts)
+    // console.log(allProducts)
     const history = useHistory()
     const addToCar = (id) => {
 

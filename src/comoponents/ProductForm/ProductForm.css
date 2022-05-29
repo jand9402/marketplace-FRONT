@@ -19,14 +19,10 @@
 } */
 .allProductForm {
     width: 700px;
-    min-height: 600px;
+    min-height: 550px;
     background-color: rgba(23, 49, 87);
     border-radius: 5px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    /* margin-left: auto;
-    margin-right: auto;
-    margin-top: 200px;
-    margin-bottom: auto;    */
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 .titleProduct {
     width: 362px;
@@ -36,7 +32,7 @@
     font-size: 3rem;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 .botonCerrarCreateForm{
     position: relative;

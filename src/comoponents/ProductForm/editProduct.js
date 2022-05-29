@@ -1,74 +1,84 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { postProduct } from "../../../redux/actions";
+import { postProduct } from "../../redux/actions/index"
 
-export default function ModalFormCreate ({estado, setEstado} ) {
-    function validate (input) {
-        const errors = {}
+// ESTO ESTÁ CON LA LOÓGICA DEL POST, PERO ES PARA ADELANTAR
+
+export function validate (input) {
+    const errors = {}
+  
+    if (!input.name) {
+      errors.name = 'Campo requerido'
+    }
+    // } else if (!/^[A-Za-z0-9\s]{5,100}$/g.test(input.name)) {
+    //   errors.name = 'Ingrese más de 5 caracteres'
+    // }
+    // brand
+    else if (!input.brand) {
+        errors.brand = 'Campo requerido'
+    }  
+    // model
+    else if (!input.model) {
+        errors.model = 'Campo requerido'
+    }
+    //category
+    // else if (!input.categories.lenght) {
+    //     errors.categories = 'Debe seleccionar al menos una categoría '
+    // }
+    else if (!input.screenSize) {
+        errors.screenSize = 'Campo requerido'
+    }
+    //image
+    else if (input.image.length < 3) {
+      errors.image = 'Debe seleccionar 3 imágenes'
+    }
+    // dimensions
+    else if (!input.internalMemory) {
+        errors.internalMemory = 'Campo requerido'
+    } else if (input.internalMemory <= 0) {
+        errors.internalMemory = 'La memoria interna deben ser mayor a 0'
+    }
+    //condition
+    else if (!input.condition) {
+        errors.condition = 'Campo requerido, elija una opción'
+    }
+    // price
+    else if (!input.price) {
+      errors.price = 'Campo requerido'
+     }
+    // } else if (!/^[1-9]*?$/.test(input.price)) {
+    //   errors.price = 'El precio no puede ser menor a 1'
+    // }   
+    // amount
+    else if (!input.amountInStock) {
+      errors.amountInStock = 'Campo requerido'
+    } else if (input.amountInStock <= 0) {
+      errors.amountInStock = 'La cantidad debe ser mayor a 0'
+    }
+
+    // //image
+    // else if (!input.image) {
+    //   errors.image = 'Campo requerido'
+    // }
+    //description
+    else if (!input.description) {
+      errors.description = 'Campo requerido'
+    }
+  
+    return errors
+  }
+
+export default function EditProduct () {
     
-        if (!input.name) {
-          errors.name = 'Campo requerido'
-        } else if (!/^[A-Za-z0-9\s]{5,100}$/g.test(input.name)) {
-          errors.name = 'Ingrese más de 5 caracteres'
-        }
-        // brand
-        else if (!input.brand) {
-            errors.brand = 'Campo requerido'
-        }  
-        // model
-        else if (!input.model) {
-            errors.model = 'Campo requerido'
-        }
-        //category
-        else if (!input.categories) {
-            errors.categories = 'Campo requerido, elija una categoría'
-        }
-        // display hay que hacer una expresion para numeros decimales...
-        else if (!input.screenSize) {
-            errors.screenSize = 'Campo requerido'
-        }
-        //image
-        // dimensions
-        else if (!input.internalMemory) {
-            errors.internalMemory = 'Campo requerido'
-        } else if (input.internalMemory <= 0) {
-            errors.internalMemory = 'La memoria interna deben ser mayor a 0'
-        }
-        //condition
-        else if (!input.condition) {
-            errors.condition = 'Campo requerido, elija una opción'
-        }
-        // price
-        else if (!input.price) {
-          errors.price = 'Campo requerido'
-         }
-        // } else if (!/^[1-9]*?$/.test(input.price)) {
-        //   errors.price = 'El precio no puede ser menor a 1'
-        // }   
-        // amount
-        else if (!input.amountInStock) {
-          errors.amountInStock = 'Campo requerido'
-        } else if (input.amountInStock <= 0) {
-          errors.amountInStock = 'La cantidad debe ser mayor a 0'
-        }
-    
-        // //image
-        // else if (!input.image) {
-        //   errors.image = 'Campo requerido'
-        // }
-        //description
-        else if (!input.description) {
-          errors.description = 'Campo requerido'
-        }
-      
-        return errors
-      }
       let dispatch = useDispatch()
       // const { errors, handleChange } = useValidateCreateProd()
       const [file, setFile] = useState('')
+      const [categorias, setCategorias] = useState('')
     
       // const [createProduct] = postProduct()
+
+    
       const handleFile = (e) => {
         setFile(e.target.files[0])
         setInput({
@@ -88,10 +98,18 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         screenSize: '',
         condition: '',
         internalMemory: '',
-        image: '',
+        image: [],
         description: '',
-        categories: []
+        // categories: []
       })
+
+      // function hadleCategories (e) {
+      //   setCategorias({
+      //     ...categorias,
+      //     categories: [ e.target.value.split(",")]
+      //   }
+      //    )
+      // }
     
       function handleChange (e) {
         setInput({
@@ -120,8 +138,9 @@ export default function ModalFormCreate ({estado, setEstado} ) {
           input.condition === '' &&
           input.model === '' &&
           input.internalMemory === '' &&
-          input.screenSize === '' &&
-          input.categories === '' ) {
+          input.screenSize === '' 
+          // input.categories
+           === '' ) {
          alert ('No puede creear una nueva actividad si no completa el formulario')
       }else {
         const formdata = new window.FormData()
@@ -137,12 +156,12 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         formdata.append('dimensions', input.internalMemory)
         formdata.append('other', input.screenSize)
         formdata.append('category', input.categories)
-        // // e.preventDefault()
-        // // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
-        // //   .catch((error) => console.error('rejected', error))
+        e.preventDefault()
+        // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
+        //   .catch((error) => console.error('rejected', error))
         dispatch(postProduct(formdata))
-        console.log(formdata)
         alert(`Has creado ${input.name}, felicitaciones`)
+        console.log(formdata)
         // setInput({
         //   name: '',
         //   price: '',
@@ -161,12 +180,11 @@ export default function ModalFormCreate ({estado, setEstado} ) {
     }
     return(
         <>
-        {estado && 
-        <div className="overLayCreateProduct">
+        <div>
             <div className='allProductForm'>
                 <form onSubmit={(e) => handleCreate(e)}>
-                    <h1 className='titleProduct'>Nuevo producto</h1>
-                    <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button>
+                    <h1 className='titleProduct'>Editar producto</h1>
+                    {/* <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button> */}
                     <div className="boxColumnas1y2" >
                         <div className="boxColumna1PF">
                             <div className='productDiv'>
@@ -182,26 +200,29 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                                 {errors.name && (
                                 <p className='errosCreateLarge'>{errors.name}</p>
                                 )}
-                         </div>
-                         <div className='productDiv2'>
-                             <label className='titlesNNO' htmlFor=''><b>Modelo:</b></label>
+                            </div>
+                            <div className='productDiv2'>
+                              <label className='titlesNNO' htmlFor=''><b>Modelo:</b></label>
+                              <input
+                              autoComplete='off'
+                              type='text'
+                              className='inputsProductForm'
+                              value={input.model}
+                              name='model'
+                              onChange={(e) => handleChange(e)}
+                              />
+                              {errors.model && (
+                              <p className='errosCreateLarge'>{errors.model}</p>
+                              )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className="titlesNNO" htmlFor=''><b>Display:</b></label>
                              <input
                              autoComplete='off'
-                             type='text'
-                             className='inputsProductForm'
-                             value={input.model}
-                             name='model'
-                             onChange={(e) => handleChange(e)}
-                             />
-                             {errors.model && (
-                             <p className='errosCreateLarge'>{errors.model}</p>
-                             )}
-                         </div>
-                         <div className='productDiv'>
-                           <label className="titlesNNO" htmlFor=''><b>Display:</b></label>
-                           <input
-                             autoComplete='off'
-                             type='text'
+                             type='number'
+                             step="0.01" 
+                             min="0" 
+                             max="10"
                              className='inputsProductForm'
                              value={input.screenSize}
                              name='screenSize'
@@ -210,11 +231,13 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                              {errors.screenSize && (
                              <p className='errosCreateLarge'>{errors.screenSize}</p>
                              )}
-                           {/* ES UN INPUT, QUE PERMITE DECIMALES */}
-                        </div>
-                         <div className='productDiv'>
+                           </div>
+                           <div className='productDiv'>
                              <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
-                             <input  type='file' name="image" onChange={(e) => handleFile(e)} />
+                             <input  type='file' multiple name="image" onChange={handleFile} />
+                             {errors.image && (
+                             <p className='errosCreateLarge'>{errors.image}</p>
+                             )}
                          </div>
                  <div className='productDiv'>
                      <label className='titlesNNO'>Precio:</label>
@@ -267,13 +290,13 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                  </div>
                  <div className='productDiv'>
                      <label className='titlesNNO' htmlFor=''><b>Categoría/s:</b></label>
-                     <select  name='categories' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
+                     {/* <select  name='categories' id='' onChange={hadleCategories}  className='selectForm' >
                          <option disabled selected  value='' >Línea:</option>
                          <option value='art'>No se aún</option>
-                     </select>
-                     {errors.categories && (
+                     </select> */}
+                     {/* {errors.categories && (
                      <p className='errosCreateLarge'>{errors.categories}</p>
-                     )}
+                     )} */}
                  </div>
                  <div className='productDiv'>
                      <label className='titlesNNO' htmlFor=''><b>Memoria interna:</b></label>
@@ -319,7 +342,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         <button type='submit' className='buttonProduct'>Crear</button>
       </form>
     </div>
-  </div> }
+  </div> 
         </>
     )
 }

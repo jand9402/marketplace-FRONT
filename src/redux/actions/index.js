@@ -102,14 +102,23 @@ export const searchByName = (payload) => async dispatch => {
 
 export function postUser (payload){
     return async function (){
-        const response = await axios.post("https://pf-commerce.herokuapp.com/api/users/register",payload)
-        return response
+        try{
+            const response = await axios.post("https://pf-commerce.herokuapp.com/api/users/register", payload)
+            return response
+        }catch (error){
+            console.log(error)
+        }
     }
 }
 export function postProduct (payload) {
+    console.log(payload)
     return async function (dispatch) {
-        const response = await axios.post("https://pf-commerce.herokuapp.com/api/products/post", payload)
-        return response
+        try{
+            const response = await axios.post("https://pf-commerce.herokuapp.com/api/products/post", payload)
+            return response
+        }catch (error){
+            console.log(error)
+        }
     }
 }
 

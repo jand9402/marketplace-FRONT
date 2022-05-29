@@ -3,12 +3,17 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './NavBarAll.css'
 
-const MiSesionUser = () => {
+ export default function  MiSesion () {
 
 const token = useSelector(state => state.token)
+const userData = useSelector(state => state.userData)
+console.log (userData)
+let data =JSON.parse(userData)
+console.log(data)
 
 function handleLogOut (){
     localStorage.removeItem('authorization', token)
+    localStorage.removeItem("userData", userData)
 }
     return(
         <div className='ordenLoginRegister'>
@@ -18,9 +23,14 @@ function handleLogOut (){
                 </Link>
             </div> */}
             <div>
-                <Link to='/miSesion' className='styleLinkNavBar'>
+                {
+                    data.isAdmin? (
+                <Link to='/admin' className='styleLinkNavBar'>
                     <div className='styleLogReg'>Mi sesión</div>
-                </Link>
+                </Link>) : (<Link to='/miSesion' className='styleLinkNavBar'>
+                    <div className='styleLogReg'>Mi sesión</div>
+                </Link>)
+                }
             </div>
             <div>
                 <Link to='/' className='styleLinkNavBar'>
@@ -30,5 +40,3 @@ function handleLogOut (){
         </div>
     )
 }
-
-export default MiSesionUser;

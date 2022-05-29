@@ -1,0 +1,44 @@
+.overLayModal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contenedorModal {
+    width: 700px;
+    min-height: 550px;
+    background-color: rgba(23, 49, 87);
+    position: relative;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    margin-bottom: auto;    */
+}
+.buttonXModal {
+    background-color: rgb(195, 6, 6);
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: .2s ease all;
+}
+.buttonXModal:hover {
+    background-color: #716d6e;
+}
+.orderFormInModal{
+    margin-top: 50px;
+}
