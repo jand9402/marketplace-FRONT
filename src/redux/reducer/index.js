@@ -13,6 +13,7 @@ import { GET_ALL_PRODUCTS,
          POST_PRODUCT,
          DETAIL_DELETE,
          GET_DETAIL,
+         ORDERS,
          NAV_BAR_NEW,
          GET_USERS
         } from "../actions";
@@ -38,7 +39,10 @@ const initialState = {
   : null,
   navBarNew: [],
   users: [],
-  countries: []
+  countries: [],
+  userData: localStorage.getItem('userData')?
+  localStorage.getItem('userData'): null,
+  cart: {}
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -101,11 +105,6 @@ export default function rootReducer(state = initialState, action) {
 
 
       }    
-      case NAV_BAR_NEW:
-        return {
-          ...state,
-          navBarNew: action.payload
-        }
         case DETAIL_DELETE:
         return {
           ...state,
@@ -126,7 +125,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
       }
     case LOGIN_ANSWER:
-      localStorage.setItem("authorization", action.payload)
+      localStorage.setItem("authorization", action.payload.token)
       localStorage.setItem("userData", JSON.stringify(action.payload.rest))
       return {
         ...state,
@@ -136,6 +135,13 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
       }
+
+    case ORDERS:
+      return {
+        ...state,
+        cart: action.payload
+      }
+
 
     default:
       return { ...state }

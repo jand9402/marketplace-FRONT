@@ -5,10 +5,10 @@ export default function Usuarios () {
     return(
         <div className="boxProductsInSesion">
             <div className="orderProdAndName">
-                <Link to='/admin/usuarios' id= 'click'>
+                <Link to='/admin/users' id= 'click'>
                 <button className="buttonUsersS"></button>
                 </Link>
-                <Link to='/admin/usuarios' id= 'click' className="sinLineaVPU">
+                <Link to='/admin/users' id= 'click' className="sinLineaVPU">
                 <div className="nameProductsSesion">Usuarios</div>
                 </Link>
             </div>

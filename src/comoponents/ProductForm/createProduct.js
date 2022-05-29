@@ -1,77 +1,82 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { postProduct } from "../../../redux/actions";
+import { postProduct } from "../../redux/actions/index"
 
-export default function ModalFormCreate ({estado, setEstado} ) {
-    function validate (input) {
-        const errors = {}
+export function validate (input) {
+    const errors = {}
+  
+    if (!input.name) {
+      errors.name = 'Campo requerido'
+    }
+    // } else if (!/^[A-Za-z0-9\s]{5,100}$/g.test(input.name)) {
+    //   errors.name = 'Ingrese más de 5 caracteres'
+    // }
+    // brand
+    else if (!input.brand) {
+        errors.brand = 'Campo requerido'
+    }  
+    // model
+    else if (!input.model) {
+        errors.model = 'Campo requerido'
+    }
+    //category
+    // else if (!input.categories.lenght) {
+    //     errors.categories = 'Debe seleccionar al menos una categoría '
+    // }
+    else if (!input.screenSize) {
+        errors.screenSize = 'Campo requerido'
+    }
+    //image
+    else if (input.image.length < 3) {
+      errors.image = 'Debe seleccionar 3 imágenes'
+    }
+    // dimensions
+    else if (!input.internalMemory) {
+        errors.internalMemory = 'Campo requerido'
+    } else if (input.internalMemory <= 0) {
+        errors.internalMemory = 'La memoria interna deben ser mayor a 0'
+    }
+    //condition
+    else if (!input.condition) {
+        errors.condition = 'Campo requerido, elija una opción'
+    }
+    // price
+    else if (!input.price) {
+      errors.price = 'Campo requerido'
+     }
+    // } else if (!/^[1-9]*?$/.test(input.price)) {
+    //   errors.price = 'El precio no puede ser menor a 1'
+    // }   
+    // amount
+    else if (!input.amountInStock) {
+      errors.amountInStock = 'Campo requerido'
+    } else if (input.amountInStock <= 0) {
+      errors.amountInStock = 'La cantidad debe ser mayor a 0'
+    }
+
+    // //image
+    // else if (!input.image) {
+    //   errors.image = 'Campo requerido'
+    // }
+    //description
+    else if (!input.description) {
+      errors.description = 'Campo requerido'
+    }
+  
+    return errors
+  }
+
+export default function CreateProduct () {
     
-        if (!input.name) {
-          errors.name = 'Campo requerido'
-        } else if (!/^[A-Za-z0-9\s]{5,100}$/g.test(input.name)) {
-          errors.name = 'Ingrese más de 5 caracteres'
-        }
-        // brand
-        else if (!input.brand) {
-            errors.brand = 'Campo requerido'
-        }  
-        // model
-        else if (!input.model) {
-            errors.model = 'Campo requerido'
-        }
-        //category
-        else if (!input.categories) {
-            errors.categories = 'Campo requerido, elija una categoría'
-        }
-        // display hay que hacer una expresion para numeros decimales...
-        else if (!input.screenSize) {
-            errors.screenSize = 'Campo requerido'
-        }
-        //image
-        // dimensions
-        else if (!input.dimensions) {
-            errors.dimensions = 'Campo requerido'
-        } else if (input.dimensions <= 0) {
-            errors.dimensions = 'Las dimenciones deben ser mayores a 0'
-        }
-        //condition
-        else if (!input.condition) {
-            errors.condition = 'Campo requerido, elija una opción'
-        }
-        // price
-        else if (!input.price) {
-          errors.price = 'Campo requerido'
-        } else if (!/^[1-9]*?$/.test(input.price)) {
-          errors.price = 'El precio no puede ser menor a 1'
-        }
-        // offer
-        else if (!input.offer) {
-          errors.offer = 'Campo requerido, seleccione una opción'
-        }    
-        // amount
-        else if (!input.amount) {
-          errors.amount = 'Campo requerido'
-        } else if (input.amount <= 0) {
-          errors.amount = 'La cantidad debe ser mayor a 0'
-        }
-    
-        // //image
-        // else if (!input.image) {
-        //   errors.image = 'Campo requerido'
-        // }
-        //description
-        else if (!input.description) {
-          errors.description = 'Campo requerido'
-        }
-      
-        return errors
-      }
       let dispatch = useDispatch()
       // const { errors, handleChange } = useValidateCreateProd()
       const [file, setFile] = useState('')
+      const [categorias, setCategorias] = useState('')
     
       // const [createProduct] = postProduct()
+
+    
       const handleFile = (e) => {
         setFile(e.target.files[0])
         setInput({
@@ -91,10 +96,18 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         screenSize: '',
         condition: '',
         internalMemory: '',
-        image: '',
+        image: [],
         description: '',
-        categories: []
+        // categories: []
       })
+
+      // function hadleCategories (e) {
+      //   setCategorias({
+      //     ...categorias,
+      //     categories: [ e.target.value.split(",")]
+      //   }
+      //    )
+      // }
     
       function handleChange (e) {
         setInput({
@@ -105,6 +118,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
           ...input,
           [e.target.name]: e.target.value
         }))
+        console.log(input)
       }
     
        function handleCreate  (e) {
@@ -118,13 +132,13 @@ export default function ModalFormCreate ({estado, setEstado} ) {
           input.brand === '' &&
           input.description === '' &&
           input.price === '' && 
-          input.amount === '' &&
+          input.amountInStock === '' &&
           input.condition === '' &&
           input.model === '' &&
-          input.offer === '' && 
-          input.dimensions === '' &&
-          input.other === '' &&
-          input.categories === '' ) {
+          input.internalMemory === '' &&
+          input.screenSize === '' 
+          // input.categories
+           === '' ) {
          alert ('No puede creear una nueva actividad si no completa el formulario')
       }else {
         const formdata = new window.FormData()
@@ -133,19 +147,19 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         formdata.append('brand', input.brand)
         formdata.append('description', input.description)
         formdata.append('price', input.price)
-        formdata.append('amount', input.amount)
+        formdata.append('amount', input.amountInStock)
         formdata.append('condition', input.condition)
         formdata.append('model', input.model)
         formdata.append('offer', input.offer)
-        formdata.append('dimensions', input.dimensions)
-        formdata.append('other', input.other)
+        formdata.append('dimensions', input.internalMemory)
+        formdata.append('other', input.screenSize)
         formdata.append('category', input.categories)
-        // e.preventDefault()
+        e.preventDefault()
         // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
         //   .catch((error) => console.error('rejected', error))
         dispatch(postProduct(formdata))
-        console.log(formdata)
         alert(`Has creado ${input.name}, felicitaciones`)
+        console.log(formdata)
         // setInput({
         //   name: '',
         //   price: '',
@@ -164,12 +178,11 @@ export default function ModalFormCreate ({estado, setEstado} ) {
     }
     return(
         <>
-        {estado && 
-        <div className="overLayCreateProduct">
+        <div>
             <div className='allProductForm'>
                 <form onSubmit={(e) => handleCreate(e)}>
                     <h1 className='titleProduct'>Nuevo producto</h1>
-                    <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button>
+                    {/* <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button> */}
                     <div className="boxColumnas1y2" >
                         <div className="boxColumna1PF">
                             <div className='productDiv'>
@@ -185,26 +198,29 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                                 {errors.name && (
                                 <p className='errosCreateLarge'>{errors.name}</p>
                                 )}
-                         </div>
-                         <div className='productDiv2'>
-                             <label className='titlesNNO' htmlFor=''><b>Modelo:</b></label>
+                            </div>
+                            <div className='productDiv2'>
+                              <label className='titlesNNO' htmlFor=''><b>Modelo:</b></label>
+                              <input
+                              autoComplete='off'
+                              type='text'
+                              className='inputsProductForm'
+                              value={input.model}
+                              name='model'
+                              onChange={(e) => handleChange(e)}
+                              />
+                              {errors.model && (
+                              <p className='errosCreateLarge'>{errors.model}</p>
+                              )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className="titlesNNO" htmlFor=''><b>Display:</b></label>
                              <input
                              autoComplete='off'
-                             type='text'
-                             className='inputsProductForm'
-                             value={input.model}
-                             name='model'
-                             onChange={(e) => handleChange(e)}
-                             />
-                             {errors.model && (
-                             <p className='errosCreateLarge'>{errors.model}</p>
-                             )}
-                         </div>
-                         <div className='productDiv'>
-                           <label className="titlesNNO" htmlFor=''><b>Display:</b></label>
-                           <input
-                             autoComplete='off'
-                             type='text'
+                             type='number'
+                             step="0.01" 
+                             min="0" 
+                             max="10"
                              className='inputsProductForm'
                              value={input.screenSize}
                              name='screenSize'
@@ -213,19 +229,13 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                              {errors.screenSize && (
                              <p className='errosCreateLarge'>{errors.screenSize}</p>
                              )}
-                           {/* ES UN INPUT, QUE PERMITE DECIMALES */}
-                           {/* <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
-                             <option disabled selected  value=''>"</option>
-                             <option  value='new'>Nuevo</option>
-                             <option value='used'>Usado</option>
-                          </select>
-                          {errors.condition && (
-                          <p className='errosCreateLarge'>{errors.condition}</p>
-                          )} */}
-                        </div>
-                         <div className='productDiv'>
+                           </div>
+                           <div className='productDiv'>
                              <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
-                             <input  type='file' onChange={(e) => handleFile(e)} />
+                             <input  type='file' multiple name="image" onChange={handleFile} />
+                             {errors.image && (
+                             <p className='errosCreateLarge'>{errors.image}</p>
+                             )}
                          </div>
                  <div className='productDiv'>
                      <label className='titlesNNO'>Precio:</label>
@@ -248,12 +258,12 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                      autoComplete='off'
                      type='number'
                      className='inputsProductForm'
-                     value={input.amount}
-                     name='amount'
+                     value={input.amountInStock}
+                     name='amountInStock'
                      onChange={(e) => handleChange(e)}
                      />
-                     {errors.amount && (
-                     <p className='errosCreateLarge'>{errors.amount}</p>
+                     {errors.amountInStock && (
+                     <p className='errosCreateLarge'>{errors.amountInStock}</p>
                      )}
                  </div>
              </div>
@@ -278,13 +288,13 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                  </div>
                  <div className='productDiv'>
                      <label className='titlesNNO' htmlFor=''><b>Categoría/s:</b></label>
-                     <select  name='categories' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
+                     {/* <select  name='categories' id='' onChange={hadleCategories}  className='selectForm' >
                          <option disabled selected  value='' >Línea:</option>
                          <option value='art'>No se aún</option>
-                     </select>
-                     {errors.categories && (
+                     </select> */}
+                     {/* {errors.categories && (
                      <p className='errosCreateLarge'>{errors.categories}</p>
-                     )}
+                     )} */}
                  </div>
                  <div className='productDiv'>
                      <label className='titlesNNO' htmlFor=''><b>Memoria interna:</b></label>
@@ -292,60 +302,32 @@ export default function ModalFormCreate ({estado, setEstado} ) {
                      autoComplete='off'
                      type='number'
                      className='inputsProductForm'
-                     value={input.dimensions}
-                     name='dimensions'
+                     value={input.internalMemory}
+                     name='internalMemory'
                      onChange={(e) => handleChange(e)}
                      />
-                     {errors.dimensions && (
-                     <p className='errosCreateLarge'>{errors.dimensions}</p>
+                     {errors.internalMemory && (
+                     <p className='errosCreateLarge'>{errors.internalMemory}</p>
                      )}
                  </div>
                  <div className='productDiv'>
-                     <label htmlFor=''><b>Cámara trasera:</b></label>
-                     <input
-                     autoComplete='off'
-                     type='text'
-                     className='inputsProductForm'
-                     value={input.other}
-                     name='other'
-                     onChange={(e) => handleChange(e)}
-                     />
-                     {errors.other && (
-                     <p className='errosCreateLarge'>{errors.other}</p>
-                     )}
+                    <label className='titlesNNO' htmlFor=''><b>Estado:</b></label>
+                    <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
+                             <option disabled selected  value=''>Estado</option>
+                             <option  value='new'>Nuevo</option>
+                             <option value='used'>Usado</option>
+                          </select>
+                          {errors.condition && (
+                          <p className='errosCreateLarge'>{errors.condition}</p>
+                          )}
                  </div>
                  <div className='productDiv'>
-                     <label className='titlesNNO'>Con descuento:</label>
-                     <select onChange={(e) => handleChange(e)} className='selectForm' name='offer' id=''>
-                         <option disabled selected key='' value=''>Con descuento</option>
-                         <option key='false' value='false'>NO</option>
-                         <option key='5' value='5'>5%</option>
-                         <option key='10' value='10'>10%</option>
-                         <option key='15' value='15'>15%</option>
-                         <option key='20' value='20'>20%</option>
-                         <option key='25' value='25'>25%</option>
-                         <option key='30' value='30'>30%</option>
-                         <option key='35' value='35'>35%</option>
-                         <option key='40' value='40'>40%</option>
-                         <option key='45' value='45'>45%</option>
-                         <option key='50' value='50'>50%</option>
-                         <option key='55' value='55'>55%</option>
-                         <option key='60' value='60'>60%</option>
-                         <option key='65' value='65'>65%</option>
-                         <option key='70' value='70'>70%</option>
-                     </select>
-                     {errors.offer && (
-                     <p className='errosCreateLarge'>{errors.offer}</p>
-                     )}
-                 </div>
-                 
-                 <div className='productDiv'>
-                     <label htmlFor=''><b>Descripción:</b></label>
+                     <label className='titlesNNO' htmlFor=''><b>Descripción:</b></label>
                      <input
                      name='description'
                      value={input.description}
                      id=''
-                     className='inputsProductForm'
+                     className='inputsProductFormDes'
                      onChange={(e) => handleChange(e)}
                      />
                      {errors.description && (
@@ -358,7 +340,7 @@ export default function ModalFormCreate ({estado, setEstado} ) {
         <button type='submit' className='buttonProduct'>Crear</button>
       </form>
     </div>
-  </div> }
+  </div> 
         </>
     )
 }

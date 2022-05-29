@@ -28,12 +28,14 @@
     height: 190px;
 }
 .tituloCardsAdminProducts{
-    margin-top: 20px;
-    margin-left: 30px;
+    /* background-color: aqua; */
+    padding-top: 30px;
+    padding-left: 40px;
     color: rgb(0, 0, 0);
+    width: 350px;
     font-style: Trebuchet;
     font-weight: 600;
-    font-size: 1.5em;
+    font-size: 1.8em;
     line-height : 20px;
 }
 .ordenCardsProdAdmin{

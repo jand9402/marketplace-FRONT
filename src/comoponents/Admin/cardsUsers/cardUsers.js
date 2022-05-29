@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './cardsUsers.css'
 import IconUser from '../../../assets/admin/user.png'
 
-export default function CardUsers({ id, name, phoneNumber, role }) {
+export default function CardUsers({ _id, name, phoneNumber, role }) {
 
     return (
         <div className="boxCardUser">
@@ -15,7 +15,7 @@ export default function CardUsers({ id, name, phoneNumber, role }) {
                 </div>
                 <div className="orderDisplayFlex">
                     <div className="titleUsersNames">ID:</div>
-                    <div className="userData">{id}</div>
+                    <div className="userData">{_id}</div>
                 </div>
                 <div className="orderDisplayFlex">
                     <div className="titleUsersNames">Celular:</div>
@@ -28,9 +28,9 @@ export default function CardUsers({ id, name, phoneNumber, role }) {
             </div>
             
             <div className="orderButtonsUsers">
-                {/* <Link to={'/admin/products/detail/' + id}  id= 'click'> */}
+                <Link to={'/admin/users/buys/' + _id}  id= 'click'>
                 <button className="buttonUsersAll">Detalle compras</button>
-                {/* </Link> */}
+                </Link>
                 {/* <button className="buttonUsersAll">Hacer admin</button> */}
                 {/* <button className="buttonUsersAll">Sacar de admin</button> */}
                 <button className="buttonUsersAll">Password reset</button>

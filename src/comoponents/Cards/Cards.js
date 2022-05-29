@@ -8,7 +8,7 @@ import Paginado from "../Paginado/Paginado";
 
 
 export default function Cards(){
-    
+ 
 const dispatch = useDispatch()
 const allProducts = useSelector(state => state.products)
 const countries = useSelector(state => state.countries)

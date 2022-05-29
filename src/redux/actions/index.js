@@ -14,6 +14,7 @@ export const NAV_BAR_NEW = 'NAV_BAR_NEW'
 export const DETAIL_DELETE = 'DETAIL_DELETE'
 export const GET_DETAIL ='GET_DETAIL'
 export const GET_USERS = 'GET_USERS'
+export const ORDERS = 'ORDERS'
 
 
 
@@ -102,14 +103,23 @@ export const searchByName = (payload) => async dispatch => {
 
 export function postUser (payload){
     return async function (){
-        const response = await axios.post("https://pf-commerce.herokuapp.com/api/users/register",payload)
-        return response
+        try{
+            const response = await axios.post("https://pf-commerce.herokuapp.com/api/users/register", payload)
+            return response
+        }catch (error){
+            console.log(error)
+        }
     }
 }
 export function postProduct (payload) {
+    console.log(payload)
     return async function (dispatch) {
-        const response = await axios.post("https://pf-commerce.herokuapp.com/api/products/post", payload)
-        return response
+        try{
+            const response = await axios.post("https://pf-commerce.herokuapp.com/api/products/post", payload)
+            return response
+        }catch (error){
+            console.log(error)
+        }
     }
 }
 
@@ -126,13 +136,13 @@ export function postLogin(payload){
         return async function(dispatch){
             let login = await axios.post( "https://pf-commerce.herokuapp.com/api/users/login", payload) 
             console.log(login)
-            if(login.data.token){
-                // localStorage.setItem("authorization", login.data)
+            if(login.data){
+                // localStorage.setItem("authorization", login.data.token)
                 alert('Sesión iniciada con exito!')
                 return dispatch(
                     {
                         type: LOGIN_ANSWER,
-                        payload: login.data.token
+                        payload: login.data
                     })
                 }}
     }catch(e) {
@@ -172,6 +182,13 @@ export function getUsers(token){
       }
     }
   }
+
+  export function orders(payload) {
+    return {
+        type: ORDERS,
+        payload: payload
+    }
+}
 
 
 
