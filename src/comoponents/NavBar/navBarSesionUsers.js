@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import LogoNav from '../../assets/logo/log.png'
 import { Link } from "react-router-dom";
 import CarritoNavBar from '../../assets/icons/carritoNav.png'
+import carritoLleno1 from '../../assets/icons/carritoLleno1G.png'
+import CarritoVacioIcono from '../../assets/icons/carritoVacioIconoG.png'
 
 export default function NavBaRSesionUsers (){
 const token = useSelector(state => state.token)
@@ -15,30 +17,35 @@ console.log(data)
 function handleLogOut (){
     localStorage.removeItem('authorization', token)
     localStorage.removeItem("userData", userData)
+    localStorage.removeItem("itemCar")
+    localStorage.removeItem("order")
 }
     return (
-        <div className='boxNavBar'>
-           <nav className= 'ordenNavBar'>
-                <img className= 'logoNavBar' src={LogoNav} alt='logoNav'/>
-                <div className="arregloProvisorioNav2"></div>
-                <div >
+       
+        <nav class="navbar ">
+            <div class="container-fluid">
+            <Link to='/' className='styleLinkNavBar'>
+                <a class="navbar-brand">Storecel</a>
+                </Link>
+                <div className="d-flex">
+            <div >
                 <Link to='/' className='styleLinkNavBar'>
-                    <div className='styleLogReg'>Home</div>
+                <div className='styleLogReg'>Home</div>
                 </Link>
             </div>
-                <div>
+            <div>
                 <Link to='/' className='styleLinkNavBar'>
-                    <div onClick={handleLogOut}>Cerrar sesión</div>
+                <div onClick={handleLogOut}>Crear cuenta</div>
                 </Link>
-                </div>
+            </div>
+            </div>
                 <Link to="/shoppingCar">
-                <img className='carritoNavBar' src={CarritoNavBar} alt='carritoNav' />
-                {
-                   JSON.parse(localStorage.itemCar.length>2)? <IconoCarrito className="iconoDmiracion" />
-                    :<button className="botonParaNada"></button>                 
+               {
+                   JSON.parse(localStorage.itemCar.length>2)? <img className='carritoNavBar' src={carritoLleno1} alt='carritoNav' />
+                    :<img className='carritoNavBar' src={CarritoVacioIcono} alt='carritoNav' />
                 }
                 </Link>
-            </nav> 
-        </div>
+            </div>
+        </nav>
     )
 }

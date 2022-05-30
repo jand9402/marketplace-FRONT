@@ -85,8 +85,7 @@ export default function rootReducer(state = initialState, action) {
         if (a.price > b.price) return 1
         if (b.price > a.price) return -1
         return 0
-      }).filter((e) => e.category === action.payload)
-      console.log(state.products)
+      }).filter((e) => e.model === action.payload)
       return {
         ...state,
         products: categoryFiltered,
@@ -102,8 +101,6 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: brandFiltered
-
-
       }    
         case DETAIL_DELETE:
         return {

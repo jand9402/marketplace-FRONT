@@ -40,7 +40,7 @@ export const getDetail = (payload) => async dispatch => {
 export function getCategorys() {
     return async (dispatch) => {
         let json = await axios.get('https://pf-commerce.herokuapp.com/api/products');
-        let categorys = await json.data.product?.map((c) => c.category);
+        let categorys = await json.data.products?.map((c) => c.model);
         let categoria = [...new Set(categorys)];
         // console.log(categoria)
         return dispatch({
@@ -53,7 +53,7 @@ export function getCategorys() {
 export function getBrand() {
     return async (dispatch) => {
         let json = await axios.get('https://pf-commerce.herokuapp.com/api/products');
-        let brand = await json.data.product?.map((c) => c.brand);
+        let brand = await json.data.products?.map((c) => c.brand);
         let marca = [...new Set(brand)];
         // console.log(marca)
         return dispatch({

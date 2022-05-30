@@ -23,12 +23,10 @@ const SearchBar = () => {
     
 
     return (
-        <div className='positionSearchBar'>
-            <form onSubmit={handleSubmit} >
-                <input value={name} class='inputSearchBar' type='text' autoComplete= 'off' placeholder="Buscar productos" onChange={(e) =>handleSearchName(e)} />
-                <button type='submit' class='botonSearchBar' ></button> 
+            <form className="d-flex" role="search" onSubmit={handleSubmit} >
+                <input value={name} className="form-control me-2" type="search" placeholder="Buscar Producto" aria-label="Search" onChange={(e) =>handleSearchName(e)} />
+                <button className="btn btn-outline-success btn-buscar" type="submit">Buscar</button>
             </form>
-        </div>
     )
 
 }
