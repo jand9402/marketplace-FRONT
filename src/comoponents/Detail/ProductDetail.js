@@ -6,6 +6,7 @@ import { getProducts } from "../../redux/actions";
 import PriceDetail from "./PriceDetail";
 import DescriptionProduct from "./DescriptionProduct";
 import './ProductDetail.css'
+import Modal from "../Admin/Modales/Modal";
 
 export default function ProductDetail (){
     let {id} = useParams()
