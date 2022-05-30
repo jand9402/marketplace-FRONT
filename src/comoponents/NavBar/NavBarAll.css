@@ -1,4 +1,4 @@
-/* NAV.BAR.ALL */
+/* 
 .boxNavBar {
     width: 100%;
     height: 70px;
@@ -30,12 +30,10 @@
     cursor: pointer;
 }
 
-/* FILTERS */
 .boxFilters {
     margin-top: 18px;
 }
 
-/* hay que eliminar la flecha */
 .selectStyle {
     background-color: rgb(24, 49, 87);
     width: 150px;
@@ -49,7 +47,6 @@
     cursor: pointer;
  }
 
-/* LOGIN.REGISTER */
 .ordenLoginRegister {
     display: flex;
     margin-top: 18px
@@ -74,12 +71,86 @@
 }
 
 .arregloProvisorioNav2 {
-    /* background-color: blueviolet; */
     width: 1300px;
 
 }
 
 .sesion {
     position: relative;
-    /* left: 50px; */
+} */
+
+.navbar{
+    background-color: rgb(24, 49, 87);
 }
+
+.navbar-brand{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+}
+
+.link_home{
+    text-decoration: none;
+}
+
+.styleLinkNavBar{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-style: trebuchet;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.styleLogReg {
+    margin-right: 40px;
+}
+
+.selectStyle {
+    background-color: rgb(24, 49, 87);
+    width: 150px;
+    height: 30px;
+    margin-right: 50px;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-style: trebuchet;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+ }
+
+ .form-select{
+     background-color: rgb(24, 49, 87);
+     color: white;
+     border: none;
+     font-style: trebuchet;
+    font-weight: 500;
+    font-size: 1rem;
+ }
+
+ .todo{
+    background-color: rgb(24, 49, 87);
+    width: 150px;
+    height: 30px;
+    margin-right: 120px;
+    margin-top: 4px;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-style: trebuchet;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+
+ }
+
+ .testttt{
+     color: white
+ }
+
+ .btn-buscar{
+     color: white !important;
+     border-color: white !important;
+ }
+
+ .carritoNavBar{
+     height: 70px;
+ }

@@ -5,7 +5,7 @@ import './NavBarAll.css'
 const LoginRegister = () => {
 
     return(
-        <div className='ordenLoginRegister'>
+        <div className="d-flex">
             <div >
                 <Link to='/login' className='styleLinkNavBar'>
                     <div className='styleLogReg'>Iniciar sesión</div>
