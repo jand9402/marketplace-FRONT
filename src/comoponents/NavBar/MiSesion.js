@@ -20,6 +20,7 @@ function handleLogOut (){
     localStorage.removeItem("itemCar")
     localStorage.removeItem("order")
 }
+
     return(
         <div className='ordenLoginRegister'>
             {/* <div >

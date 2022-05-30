@@ -71,21 +71,21 @@ export default function CreateProduct () {
     
       let dispatch = useDispatch()
       // const { errors, handleChange } = useValidateCreateProd()
-      const [file, setFile] = useState([])
+      const [file, setFile] = useState('')
       console.log(file)
       const [categorias, setCategorias] = useState([])
     
       // const [createProduct] = postProduct()
 
     
-      // const handleFile = (e) => {
-      //   setFile(e.target.files)
-      //   setInput({
-      //     ...input,
-      //     [e.target.name]: file
-      //   })
+      const handleFile = (e) => {
+        setFile(e.target.files)
+        // setInput({
+        //   ...input,
+        //   [e.target.name]: file
+        // })
         
-      // }
+      }
       const [errors, setErrors ] = useState({})
     
       const [input, setInput] = useState({
@@ -112,6 +112,11 @@ export default function CreateProduct () {
           [e.target.categories]: [e.target.value.split(",")]
         }
          )
+        //  setFile({
+        //    ...input,
+        //    [e.target.image]: [URL.createObjectURL(e.target.files[0])]
+        // })
+           
         //  setFile ({
         //   ...input,
         //   [e.target.image]: [e.target.value]
@@ -123,8 +128,8 @@ export default function CreateProduct () {
         console.log(input)
       }
     
-       function handleCreate  (e) {
-      //   event.preventDefault()
+      const handleCreate = async  (e) => {
+        e.preventDefault()
       //   if (Object.values(errors).length > 0) {
       //     alert ('Complete toda la información requerida')    
       // }else
@@ -143,24 +148,25 @@ export default function CreateProduct () {
           ) {
          alert ('No puede creear una nueva actividad si no completa el formulario')
       }else {
-        // const formdata = new window.FormData()
-        // formdata.append('name', input.name)
-        // formdata.append('image', file)
-        // formdata.append('brand', input.brand)
-        // formdata.append('description', input.description)
-        // formdata.append('price', input.price)
-        // formdata.append('amount', input.amountInStock)
-        // formdata.append('condition', input.condition)
-        // formdata.append('model', input.model)
-        // formdata.append('dimensions', input.internalMemory)
-        // formdata.append('other', input.screenSize)
-        // formdata.append('category', input.categories)
+        const formdata = new window.FormData()
+        formdata.append('name', input.name)
+        for(let i = 0; i < file.length; i++)
+        formdata.append('image', file[i])
+        formdata.append('brand', input.brand)
+        formdata.append('description', input.description)
+        formdata.append('price', input.price)
+        formdata.append('amountInStock', input.amountInStock)
+        formdata.append('condition', input.condition)
+        formdata.append('model', input.model)
+        formdata.append('internalMemory', input.internalMemory)
+        formdata.append('screenSize', input.screenSize)
+        formdata.append('categories', input.categories)
         e.preventDefault()
         // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
         //   .catch((error) => console.error('rejected', error))
-        dispatch(postProduct(input))
+        dispatch(postProduct(formdata))
+        console.log(formdata)
         alert(`Has creado ${input.name}, felicitaciones`)
-        console.log(input)
         // setInput({
         //   name: '',
         //   price: '',
@@ -235,10 +241,11 @@ export default function CreateProduct () {
                              <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
                              <input  
                              type='file' 
+                             id='file'
                              multiple 
                              name="image" 
-                             value={input.image}
-                            //  onChange={handleFile} 
+                            //  value={input.image}
+                             onChange={handleFile} 
                              />
                              {errors.image && (
                              <p className='errosCreateLarge'>{errors.image}</p>
