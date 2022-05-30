@@ -17,7 +17,6 @@ function handleLogOut (){
     localStorage.removeItem("userData", userData)
     localStorage.removeItem("itemCar")
     localStorage.removeItem("order")
-
 }
     return(
         <div className='ordenLoginRegister'>
