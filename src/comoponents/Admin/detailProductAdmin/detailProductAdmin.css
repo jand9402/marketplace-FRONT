@@ -1,0 +1,101 @@
+.contenedorDetailAdmin{
+    background-color: #f7f5f4;
+    height: 92.5vh;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    /* display: flex; */
+    /* align-items: center;
+    text-align: center; */    
+}
+.imageDetailAdmin{
+    width: 500px;
+    height: 500px;
+}
+.boxDetaiQuePuedoModificar {
+    /* background-color: blue; */
+    display: flex;
+    position: relative;
+    top: 60px;
+    width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
+}
+.boxNBMCDCO {
+    /* background-color: cadetblue; */
+    width: 900px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.detailProductName{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 500px;
+    font-style: trebuchet;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.7em;
+    line-height : 30px
+}
+.editarProdButton{
+    position: relative;
+    background-color:rgba(23, 49, 87);
+    border: none;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    background-color:#114d86;
+    color: white;
+    border-radius: 10px;
+    font-size: large;
+    margin-top: 20px;
+    left: 730px;
+    bottom: 30px;
+}
+.cajasDetailAdmin {
+    position: relative;
+    bottom: 25px;
+    display: flex;
+    /* background-color: aqua; */
+}
+.namesAllDetailAdmin {
+    font-style: Trebuchet;
+    margin-left: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height : 30px
+}
+
+.descriptionDetailAdmin{
+    margin-left: 10px;
+    margin-top: 5px;
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 400;
+    font-size: 1.2em;
+    line-height : 20px;  
+}
+.descriptionDetailAdminDes{
+    margin-left: 15px;
+    margin-right: 20px;
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 400;
+    font-size: 1em;
+    line-height : 20px;  
+}
+.boxDetaiQueNoPuedoModificar {
+    /* background-color: white; */
+    display: flex;
+    position: relative;
+    top: 100px;
+    width: 1400px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
+}

@@ -2,15 +2,16 @@ import "./Cards.css";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./card"
-import { getCategorys, getProducts} from "../../redux/actions";
+import { getCategorys, getProducts, getCountries} from "../../redux/actions";
 import Paginado from "../Paginado/Paginado";
 
 
 
 export default function Cards(){
-    
+ 
 const dispatch = useDispatch()
 const allProducts = useSelector(state => state.products)
+const countries = useSelector(state => state.countries)
 let categorys = useSelector((state) => state.categorys)
 const [currentPage, setCurrentPage] = useState(1)
 const [productsPerPage] = useState(5)
@@ -18,29 +19,11 @@ const indexOfLastCard = currentPage * productsPerPage
 const indexOfFirstCard = indexOfLastCard - productsPerPage
 const currentCards = allProducts.slice(indexOfFirstCard,indexOfLastCard)
 
+
 const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
 }
 
-//     const handleNextPage = () =>{
-//         if(allProducts.length > currentPage + cardsPerPage){
-//             setCurrentPage(currentPage+cardsPerPage)
-//         }
-//         if(allProducts.length>1){
-//             setNumberPage(numberPage+1) 
-//         }
-//     }
-
-//     const handlePrevPage= () =>{    
-//        if(currentPage >0){
-//            setCurrentPage(currentPage-cardsPerPage)  
-//            setNumberPage(numberPage-1)      
-//        }  
-//        if(currentPage>0){
-//         setCurrentPage(currentPage-(cardsPerPage-1))
-//         setNumberPage(numberPage-1)      
-//     }
-// }
 
 useEffect (()=> {
     paginado (1)
@@ -52,7 +35,7 @@ useEffect (()=> {
     dispatch(getCategorys())
 }, [dispatch])
     
-
+// console.log(countries)
     return (
         
         <div>

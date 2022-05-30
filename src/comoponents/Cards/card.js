@@ -4,12 +4,15 @@ import CarritoCard from '../../assets/icons/CarritoCards.png'
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import swal from "sweetalert"
 export const ADD_TO_CAR = 'ADD_TO_CAR'
 
-export default function Card({ id, image, name, price }) {
 
+export default function Card({ id, image, name, price }) {
+    
     const dispatch = useDispatch()
     const allProducts = useSelector(state => state.products)
+    // console.log(allProducts)
     const history = useHistory()
     const addToCar = (id) => {
 
@@ -21,14 +24,27 @@ export default function Card({ id, image, name, price }) {
         function addOrCreate(producto) {
             let agregado = infoFromLocalStorage
             if (producto) {
+                swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Producto agregado',
+                    showConfirmButton: false,
+                    timer: 900
+                  })
                 agregado.map(item =>{
                     if (item._id === newCarItem._id) {
                         item.quantity += 1
                     }
                 }) 
             }else{ 
-                alert('Producto agregado')
-                history.push('/home')
+                swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Producto agregado',
+                    showConfirmButton: false,
+                    timer: 900
+                  })
+                history.push('/')
                 newCarItem.quantity = 1
                 agregado.push(newCarItem)
             }
@@ -41,12 +57,14 @@ export default function Card({ id, image, name, price }) {
 
     }
 
+   
+
     return (
         <div className="boxCard">
             <Link to={'/detailVisit/' + id} className="sinlineaCountCards">
-                <img className="imageTamaño" src={image} alt='imagencard' />
                 <div className="nameCardProd">{name}</div>
-                <div className="priceCardProd" >${price}</div>
+                <img className="imageTamaño" src={image[0]} alt='imagencard'/>
+                <div className="priceCardProd" >US${price}</div>
             </Link>
             <button className="boton_carrito_card" onClick={() => addToCar(id)}></button>
         </div>

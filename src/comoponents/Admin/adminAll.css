@@ -1,0 +1,97 @@
+.contenedorSesionAdmin{
+    background-color: #f7f5f4;
+    height: 92.5vh;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    display: flex;
+    /* align-items: center;
+    text-align: center; */    
+}
+
+.orederSesionAdmin{
+    /* background-color: aqua; */
+    width: 1640px;
+    height: 700px;
+    display: flex;
+    margin-left: 0px;
+    margin-right: auto; 
+    margin-bottom: auto;
+    margin-top: auto;
+}
+.buttonNewProduct {
+    position: relative;
+    left:1600px;
+    width: 200px;
+    height: 50px;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    background-color:#114d86;
+    color: white;
+    border-radius: 10px;
+    transition: 300ms all;
+    border: none;
+    font-size: large;
+    margin-top: 10px;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -ms-transition: 300ms all;
+    -o-transition: 300ms all;
+}
+.miSesionName {
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+/* PRODUCTS */
+.boxProductsInSesion{
+    /* background-color: brown; */
+    width: 700px;
+}
+.orderProdAndName{
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: auto;
+    margin-top: 70px;
+    /* background-color: black; */
+    width: 500px;
+}
+.buttonProductosS{
+    background-image: url('../../assets/admin/buttonProducts2.jpg');
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+}
+.nameProductsSesion{
+    color: rgba(23, 49, 87);
+    text-align: center;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+/* VENTAS */
+.buttonVentasS{
+    background-image: url('../../assets/admin/buttonVentas.jpg');
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+}
+.sinLineaVPU{
+    text-decoration: none;
+}
+
+/* USERS */
+.buttonUsersS{
+    background-image: url('../../assets/admin/buttonUsers.jpg');
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+}

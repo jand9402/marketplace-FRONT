@@ -1,0 +1,83 @@
+.boxCardUser {
+    display: flex;
+    background-color: #FAFBFD;
+    width: 650px;
+    height: 200px;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+}
+.imageCardUser {
+    /* background-color: aqua; */
+    margin-left: 22px;
+    width: 100px;
+    height: 100px;
+}
+.boxInfoUsers {
+    width: 450px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.orderDisplayFlex{
+    display: flex;
+    margin-bottom: 20px;
+}
+.titleUsersNames{
+    color: rgb(28, 28, 28);
+    /* background-color: rgb(32, 155, 149); */
+    line-height: 100px;
+    font-style: Trebuchet;
+    font-weight: 700;
+    font-size: 1.3em;
+    line-height : 15px;
+}
+.userData{
+    margin-left: 7px;
+    color: rgb(62, 62, 62);
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1.3em;
+    line-height : 15px;
+}
+.orderButtonsUsers{
+    position: relative;
+    bottom:5px;
+    right: 15px;
+    margin-right: 20px;
+    width: 130px;
+}
+.buttonUsersAll {
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    width: 150px;
+    height: 35px;
+    background-color:#114d86;
+    color: white;
+    border-radius: 10px;
+    transition: 300ms all;
+    border: none;
+    font-size: large;
+    margin-top: 10px;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -ms-transition: 300ms all;
+    -o-transition: 300ms all;
+}
+
+.buttonDetailProductAdmin:hover{
+    background-color: #6d6f71;
+}
+
+/* CARDS */
+.ordenCardsUsers {
+    margin-top: 100px;
+    margin-left: 270px;
+    margin-right: auto;
+    /* background-color: rgb(139, 67, 67); */
+    width: 1340px;
+    display: grid;
+    grid-template-columns: 690px 80px;
+    /* grid-template-rows: 50px 100px 40px 60px; */
+}

@@ -4,6 +4,7 @@ import LogoProv from '../../assets/logo/LogoProv.png'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { postProduct } from '../../redux/actions'
+// import Modal from '../Admin/Modales/ModalFormCreate'
 
 const ProductForm = () => {
   function validate (input) {
@@ -17,8 +18,8 @@ const ProductForm = () => {
     // price
     else if (!input.price) {
       errors.price = 'Campo requerido'
-    } else if (!/^[0-9]*?$/.test(input.price)) {
-      errors.price = 'Solo números'
+    } else if (!/^[1-9]*?$/.test(input.price)) {
+      errors.price = 'El precio no puede ser menor a 1'
     }
 
     // offer
@@ -113,10 +114,7 @@ const ProductForm = () => {
   }
 
    function handleCreate  (e) {
-  //   event.preventDefault()
-  //   if (Object.values(errors).length > 0) {
-  //     alert ('Complete toda la información requerida')    
-  // }else
+  
    if(
       input.name === '' && 
       input.image === '' &&
@@ -145,83 +143,79 @@ const ProductForm = () => {
     formdata.append('dimensions', input.dimensions)
     formdata.append('other', input.other)
     formdata.append('category', input.category)
-    // e.preventDefault()
-    // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
-    //   .catch((error) => console.error('rejected', error))
+   
     dispatch(postProduct(formdata))
     console.log(formdata)
     alert(`Has creado ${input.name}, felicitaciones`)
-    // setInput({
-    //   name: '',
-    //   price: '',
-    //   offer: '',
-    //   brand: '',
-    //   model: '',
-    //   amount: '',
-    //   dimensions: '',
-    //   condition: '',
-    //   other: '',
-    //   image: '',
-    //   description: '',
-    //   category: ''   
-    //  })
+    
   } 
 }
 
   return (
+    <div>
     <div className='viewportFormCreateProd'>
-      <div className='logoEnCreatePage'>
-        <Link to='/home' id='click'>
-          <img src={LogoProv} className='logoProductForm' alt='logoPag' />
-        </Link>
-      </div>
       <div className='allProductForm'>
-        <form onSubmit={(e) => handleCreate(e)} className='allFormPosition'>
+        <form onSubmit={(e) => handleCreate(e)}>
           <h1 className='titleProduct'>Nuevo producto</h1>
           <div className='contentForm'>
             <div className='productDiv'>
-              <label htmlFor=''><b>Nombre del producto:</b></label>
+              <label className='titlesNNO'>Nombre del producto:</label>
               <input
-                autoComplete='off'
-                type='text'
-                className='inputProduct'
-                value={input.name}
-                name='name'
-                onChange={(e) => handleChange(e)}
+              autoComplete='off'
+              type='text'
+              className='inputProduct'
+              value={input.name}
+              name='name'
+              onChange={(e) => handleChange(e)}
               />
-            {errors.name && (
-              <p className='errosCreateName'>{errors.name}</p>
-            )}
-          </div>
-          <div className='precioDiv'>
-            <label htmlFor=''><b>Precio:</b></label>
+              {errors.name && (
+              <p className='errosCreateLarge'>{errors.name}</p>
+              )}
+            </div>
+            <div className='precioDiv'>
+              <label className='titlesNNO'>Precio:</label>
               <input
-                autoComplete='off'
-                type='number'
-                value={input.price}
-                name='price'
-                className='inputProduct'
-                onChange={(e) => handleChange(e)}
+              placeholder='En US$'
+              autoComplete='off'
+              type='number'
+              value={input.price}
+              name='price'
+              className='inputProduct'
+              onChange={(e) => handleChange(e)}
               />
-            {errors.price && (
-              <p className='errosCreatePrice'>{errors.price}</p>
-            )}
-          </div>
-          <div className='descuentoDiv'>
-            <label htmlFor=''><b>Con descuento:</b></label>
-            <select onChange={(e) => handleChange(e)} className='selectForm' name='offer' id=''>
+              {errors.price && (
+              <p className='errosCreateLarge'>{errors.price}</p>
+              )}
+            </div>
+            <div className='descuentoDiv'>
+              <label className='titlesNNO'>Con descuento:</label>
+              <select onChange={(e) => handleChange(e)} className='selectForm' name='offer' id=''>
                 <option disabled selected key='' value=''>Con descuento</option>
-                <option key='true' value='true'>Sí</option>
-                <option key='false' value='false'>No</option>
+                <option key='false' value='false'>NO</option>
+                <option key='5' value='5'>5%</option>
+                <option key='10' value='10'>10%</option>
+                <option key='15' value='15'>15%</option>
+                <option key='20' value='20'>20%</option>
+                <option key='25' value='25'>25%</option>
+                <option key='30' value='30'>30%</option>
+                <option key='35' value='35'>35%</option>
+                <option key='40' value='40'>40%</option>
+                <option key='45' value='45'>45%</option>
+                <option key='50' value='50'>50%</option>
+                <option key='55' value='55'>55%</option>
+                <option key='60' value='60'>60%</option>
+                <option key='65' value='65'>65%</option>
+                <option key='70' value='70'>70%</option>
               </select>
-            {errors.offer && (
+              {errors.offer && (
               <p className='errosCreateOffer'>{errors.offer}</p>
-            )}
+              )}
             </div>
           </div>
+          
           <div className='contentMMC'>
             <div className='marcaDiv'>
-              <label htmlFor=''><b>Marca:</b></label>
+              <label className='titlesNNO' htmlFor=''><b>Marca:</b></label>
               <input
                 autoComplete='off'
                 type='text'
@@ -348,6 +342,7 @@ const ProductForm = () => {
       </form>
     </div>
   </div>
+    </div>
   )
 }
 

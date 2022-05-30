@@ -43,19 +43,23 @@ export default function DescriptionProduct () {
                 <div className='lineaVerticalDetalle' ></div>
                   <div className='boxDimenEstado'>
                     <div className='boxCardDimenEstado'>
-                      <div className='nameMarcaModel'>Dimensiones:</div>
-                      <div className='nameContenMarcaModel'>{producto.dimensions.$numberDecimal}</div>
+                      <div className='nameMarcaModel'>Display:</div>
+                      <div className='nameContenMarcaModel'>{producto.screenSize.$numberDecimal}"</div>
                     </div>
                     <div className='boxCardDimenEstado'>
                       <div className='nameMarcaModel'>Estado:</div>
                       <div className='nameContenMarcaModel'>{producto.condition}</div>
                     </div>
                   </div>
-                  <div>
-                    <div className='nameMarcaModel'>Otros:</div>
-                    <div>{producto.other}</div>
+                  <div className='boxCaractLadoA'>
+                    <div className='nameMarcaModel'>Memoria interna:</div>
+                    <div className='nameContenMarcaModel'>{producto.internalMemory} GB</div>
                   </div>
               </div>
+                  <div className='boxCardCategories'>
+                    <div className='nameMarcaModel'>Categoría/s:</div>
+                    <div className='nameContenMarcaModel'>{producto.categories}</div>
+                  </div>
             </div>
               
               <div className='boxDetailDescription'>

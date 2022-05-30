@@ -1,0 +1,123 @@
+.contenedorSesionProductAdmin{
+    background-color: #f7f5f4;
+    height: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    /* align-items: center;
+    text-align: center; */    
+}
+.boxCardProductAdmin {
+    display: flex;
+    background-color: #FAFBFD;
+    width: 800px;
+    height: 200px;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+}
+/* .boxCard:hover{
+    transform:scale(1.05)
+} */
+.imageCardAdmin {
+    margin-left: 22px;
+    width: 200px;
+    height: 190px;
+}
+.tituloCardsAdminProducts{
+    /* background-color: aqua; */
+    padding-top: 30px;
+    padding-left: 40px;
+    color: rgb(0, 0, 0);
+    width: 350px;
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1.8em;
+    line-height : 20px;
+}
+.ordenCardsProdAdmin{
+    text-decoration: none;
+    margin-left: 500px;
+}
+
+.boxNamePriceProdAdm {
+    width: 450px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.productAdminName {
+    color: rgb(62, 62, 62);
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 1.3em;
+    line-height : 20px;
+}
+.productAdminPrice {
+    color: rgb(28, 28, 28);
+    /* background-color: rgb(32, 155, 149); */
+    margin-top: 15px;
+    line-height: 100px;
+    font-style: Trebuchet;
+    font-weight: 700;
+    font-size: 1.5em;
+    line-height : 15px;
+}
+
+.orderDeletAndButton{
+    margin-right: 20px;
+    width: 130px;
+}
+.buttonDetailProductAdmin {
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    width: 130px;
+    height: 40px;
+    background-color:#114d86;
+    color: white;
+    border-radius: 10px;
+    transition: 300ms all;
+    border: none;
+    font-size: large;
+    margin-top: 10px;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -ms-transition: 300ms all;
+    -o-transition: 300ms all;
+}
+
+.buttonDetailProductAdmin:hover{
+    background-color: #6d6f71;
+}
+
+
+/* PAGINADO */
+#menu ul li{
+    display: inline-block;
+    list-style: none;
+    height: 46px;
+    margin-top: 5px;  
+}
+.nav-btn{
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+    background-color:rgb(24, 49, 87);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    transition: 300ms all;
+    border: none;
+    margin-right: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.nav-btn:hover{
+    background-color: rgb(107, 104, 100);
+    color: white;
+}

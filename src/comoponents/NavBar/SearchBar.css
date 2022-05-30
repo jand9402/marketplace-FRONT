@@ -1,15 +1,17 @@
-.positionSearchBar {
+/* .positionSearchBar {
     margin-left: 550px;
-    /* background-color: rgb(148, 213, 213); */
+    background-color: rgb(148, 213, 213);
     width: 40%;
     margin-top: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 15px; 
    
-}
+} */
 .inputSearchBar {
-    margin-bottom: 15px;
+    position: relative;
+    /* left: 100px; */
+    /* margin-bottom: 15px; */
     width: 700px;
-    height: 50px;
+    height: 40px;
     border: none;
     font-style: trebuchet;
     font-weight: 500;
@@ -18,7 +20,8 @@
 }
 .botonSearchBar {
     position: relative;
-    top: 16px;
+    top: 12px;
+    /* left: 100px; */
     background-image: url('../../assets/icons/lupa.png');
     background-repeat:no-repeat;
     background-color: white;
@@ -26,6 +29,6 @@
     background-position:center;
     border: none;
     width: 45px;
-    height:48px;
+    height:40px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
