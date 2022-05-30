@@ -244,128 +244,119 @@ export default function CreateProduct () {
                              id='file'
                              multiple 
                              name="image" 
-                            //  value={input.image}
                              onChange={handleFile} 
                              />
                              {errors.image && (
                              <p className='errosCreateLarge'>{errors.image}</p>
                              )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO'>Precio:</label>
+                             <input
+                             placeholder='En US$'
+                             autoComplete='off'
+                             type='number'
+                             value={input.price}
+                             name='price'
+                             className='inputsProductForm'
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.price && (
+                             <p className='errosCreateLarge'>{errors.price}</p>
+                             )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Cantidad:</b></label>
+                             <input
+                             autoComplete='off'
+                             type='number'
+                             className='inputsProductForm'
+                             value={input.amountInStock}
+                             name='amountInStock'
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.amountInStock && (
+                             <p className='errosCreateLarge'>{errors.amountInStock}</p>
+                             )}
+                           </div>
                          </div>
-                 <div className='productDiv'>
-                     <label className='titlesNNO'>Precio:</label>
-                     <input
-                     placeholder='En US$'
-                     autoComplete='off'
-                     type='number'
-                     value={input.price}
-                     name='price'
-                     className='inputsProductForm'
-                     onChange={(e) => handleChange(e)}
-                     />
-                     {errors.price && (
-                     <p className='errosCreateLarge'>{errors.price}</p>
-                     )}
-                 </div>
-                 <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Cantidad:</b></label>
-                     <input
-                     autoComplete='off'
-                     type='number'
-                     className='inputsProductForm'
-                     value={input.amountInStock}
-                     name='amountInStock'
-                     onChange={(e) => handleChange(e)}
-                     />
-                     {errors.amountInStock && (
-                     <p className='errosCreateLarge'>{errors.amountInStock}</p>
-                     )}
-                 </div>
-             </div>
-             <div className="boxColumna2PF">
-                 <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Marca:</b></label>
-                     <select  name='brand' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
-                         <option disabled selected  value=''>Marca</option>
-                         <option value='ALCATEL'>Alcatel</option>
-                         <option value='APPLE'>Apple</option>
-                         <option value='ASUS'>Asus</option>
-                         <option value='HUAWEI'>Huawei</option>
-                         <option value='LG'>LG</option>
-                         <option value='MOTOROLA'>Motorola</option>
-                         <option value='NOKIA'>Nokia</option>
-                         <option value='SAMSUNG'>Samsung</option>
-                         <option value='SONY'>Sony</option>
-                     </select>
-                     {errors.brand && (
-                     <p className='errosCreateLarge'>{errors.brand}</p>
-                     )}
-                 </div>
-                 <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Categoría/s:</b></label>
-                      <input
-                      autoComplete='off'
-                      type='text'
-                      className='inputsProductForm'
-                      name='categories'
-                      value={input.categories}
-                      onChange={(e) => handleChange(e)}
-                      />
-                     {errors.categories && (
-                     <p className='errosCreateLarge'>{errors.categories}</p>
-                     )}
-                     {/* <select  name='categories' id=''  className='selectForm' >
-                         <option disabled selected  value='' >Línea:</option>
-                         <option value=''>No se aún</option>
-                     </select>
-                     {errors.categories && (
-                     <p className='errosCreateLarge'>{errors.categories}</p>
-                     )} */}
-                 </div>
-                 <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Memoria interna:</b></label>
-                     <input
-                     autoComplete='off'
-                     type='number'
-                     className='inputsProductForm'
-                     value={input.internalMemory}
-                     name='internalMemory'
-                     onChange={(e) => handleChange(e)}
-                     />
-                     {errors.internalMemory && (
-                     <p className='errosCreateLarge'>{errors.internalMemory}</p>
-                     )}
-                 </div>
-                 <div className='productDiv'>
-                    <label className='titlesNNO' htmlFor=''><b>Estado:</b></label>
-                    <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
-                             <option disabled selected  value=''>Estado</option>
-                             <option  value='new'>Nuevo</option>
-                             <option value='used'>Usado</option>
-                          </select>
-                          {errors.condition && (
-                          <p className='errosCreateLarge'>{errors.condition}</p>
-                          )}
-                 </div>
-                 <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Descripción:</b></label>
-                     <input
-                     name='description'
-                     value={input.description}
-                     id=''
-                     className='inputsProductFormDes'
-                     onChange={(e) => handleChange(e)}
-                     />
-                     {errors.description && (
-                     <p className='errosCreateLarge'>{errors.description}</p>
-                     )}
-                 </div>
-             </div>
-         </div>
-            
-        <button type='submit' className='buttonProduct'>Crear</button>
-      </form>
-    </div>
-  </div> 
-        </>
+                         <div className="boxColumna2PF">
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Marca:</b></label>
+                             <select  name='brand' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
+                               <option disabled selected  value=''>Marca</option>
+                               <option value='ALCATEL'>Alcatel</option>
+                               <option value='APPLE'>Apple</option>
+                               <option value='ASUS'>Asus</option>
+                               <option value='HUAWEI'>Huawei</option>
+                               <option value='LG'>LG</option>
+                               <option value='MOTOROLA'>Motorola</option>
+                               <option value='NOKIA'>Nokia</option>
+                               <option value='SAMSUNG'>Samsung</option>
+                               <option value='SONY'>Sony</option>
+                             </select>
+                             {errors.brand && (
+                             <p className='errosCreateLarge'>{errors.brand}</p>
+                             )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Categoría/s:</b></label>
+                             <input
+                             autoComplete='off'
+                             type='text'
+                             className='inputsProductForm'
+                             name='categories'
+                             value={input.categories}
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.categories && (
+                             <p className='errosCreateLarge'>{errors.categories}</p>
+                             )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Memoria interna:</b></label>
+                             <input
+                             autoComplete='off'
+                             type='number'
+                             className='inputsProductForm'
+                             value={input.internalMemory}
+                             name='internalMemory'
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.internalMemory && (
+                             <p className='errosCreateLarge'>{errors.internalMemory}</p>
+                             )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Estado:</b></label>
+                             <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
+                               <option disabled selected  value=''>Estado</option>
+                               <option  value='new'>Nuevo</option>
+                               <option value='used'>Usado</option>
+                             </select>
+                               {errors.condition && (
+                               <p className='errosCreateLarge'>{errors.condition}</p>
+                               )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Descripción:</b></label>
+                             <input
+                             name='description'
+                             value={input.description}
+                             id=''
+                             className='inputsProductFormDes'
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.description && (
+                             <p className='errosCreateLarge'>{errors.description}</p>
+                             )}
+                           </div>
+                        </div>
+                    </div>
+                    <button type='submit' className='buttonProduct'>Crear</button>
+                </form>
+            </div>
+        </div> 
+     </>
     )
 }

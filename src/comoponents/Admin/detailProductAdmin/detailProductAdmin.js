@@ -8,6 +8,7 @@ import Modal from "../Modales/Modal";
 import './detailProductAdmin.css'
 // import CreateProduct from "../../ProductForm/createProduct";
 import EditProduct from "../../ProductForm/editProduct";
+// import { deleteProduct } from "../../../redux/actions";
 
 export default function DetailProductAdmin () {
 const dispatch = useDispatch();
@@ -18,6 +19,10 @@ const [stateModalPut, setStateModalPut] = useState (false)
 function handleClickModal (e) {
     setStateModalPut(!stateModalPut)
 }
+// function handleDeletProduct (id) {
+//     console.log(id)
+//     dispatch(deleteProduct(id))
+// }
 
 const {id} = useParams();
 
@@ -41,6 +46,10 @@ useEffect (() => {
                         onClick={handleClickModal} 
                         className="editarProdButton"
                         >Editar producto</button>
+                        {/* <button
+                         onClick={() =>handleDeletProduct (detail._id)}
+                        className="buttonDetailProductAdmin">
+                        Eliminar</button> */}
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">NOMBRE:</div>
                             <div className="descriptionDetailAdmin">{detail.name}</div>

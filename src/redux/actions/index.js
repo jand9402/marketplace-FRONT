@@ -15,6 +15,7 @@ export const DETAIL_DELETE = 'DETAIL_DELETE'
 export const GET_DETAIL ='GET_DETAIL'
 export const GET_USERS = 'GET_USERS'
 export const ORDERS = 'ORDERS'
+export const DELETE_PRODUCT = 'DELETE_PRODUCT'
 
 
 
@@ -123,6 +124,13 @@ export function postProduct (payload) {
         }
     }
 }
+
+export function deleteProduct (payload) {
+    return async function (dispatch) {
+      const deleteProduct = await axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload} `);
+      return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
+    };
+  };
 
 export function locaLSatorage (){
     let productsInLocalStorage = localStorage.getItem('itemCar')

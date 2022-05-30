@@ -14,7 +14,7 @@ import { GET_ALL_PRODUCTS,
          DETAIL_DELETE,
          GET_DETAIL,
          ORDERS,
-         NAV_BAR_NEW,
+         DELETE_PRODUCT,
          GET_USERS
         } from "../actions";
 
@@ -40,8 +40,6 @@ const initialState = {
   navBarNew: [],
   users: [],
   countries: [],
-  userData: localStorage.getItem('userData')?
-  localStorage.getItem('userData'): null,
   cart: {}
 }
 
@@ -138,7 +136,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         cart: action.payload
       }
-
+    case DELETE_PRODUCT:
+      return{
+        ...state
+      }
 
     default:
       return { ...state }

@@ -1,9 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import './cardsProducts.css'
+import { deleteProduct } from "../../../redux/actions";
 
 export default function CardProducts({ id, image, name, price }) {
+    const dispatch = useDispatch()
+
+    // function handleDeletProduct (id) {
+    //     dispatch(deleteProduct(id))
+    // }
 
     return (
         <div className="boxCardProductAdmin">
@@ -14,7 +21,10 @@ export default function CardProducts({ id, image, name, price }) {
             </div>
             
             <div className="orderDeletAndButton">
-                <button className="buttonDetailProductAdmin">Eliminar</button>
+                <button
+                // onClick={() =>handleDeletProduct (id)}
+                 className="buttonDetailProductAdmin">
+                Eliminar</button>
                 <Link to={'/admin/products/detail/' + id}  id= 'click'>
                 <button className="buttonDetailProductAdmin">Ver detalle</button>
                 </Link>
