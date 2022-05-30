@@ -71,20 +71,21 @@ export default function CreateProduct () {
     
       let dispatch = useDispatch()
       // const { errors, handleChange } = useValidateCreateProd()
-      const [file, setFile] = useState('')
-      const [categorias, setCategorias] = useState('')
+      const [file, setFile] = useState([])
+      console.log(file)
+      const [categorias, setCategorias] = useState([])
     
       // const [createProduct] = postProduct()
 
     
-      const handleFile = (e) => {
-        setFile(e.target.files[0])
-        setInput({
-          ...input,
-          [e.target.name]: file
-        })
+      // const handleFile = (e) => {
+      //   setFile(e.target.files)
+      //   setInput({
+      //     ...input,
+      //     [e.target.name]: file
+      //   })
         
-      }
+      // }
       const [errors, setErrors ] = useState({})
     
       const [input, setInput] = useState({
@@ -98,22 +99,23 @@ export default function CreateProduct () {
         internalMemory: '',
         image: [],
         description: '',
-        // categories: []
+        categories: []
       })
-
-      // function hadleCategories (e) {
-      //   setCategorias({
-      //     ...categorias,
-      //     categories: [ e.target.value.split(",")]
-      //   }
-      //    )
-      // }
     
       function handleChange (e) {
         setInput({
           ...input,
           [e.target.name]: e.target.value
         })
+        setCategorias({
+          ...input,
+          [e.target.categories]: [e.target.value.split(",")]
+        }
+         )
+        //  setFile ({
+        //   ...input,
+        //   [e.target.image]: [e.target.value]
+        //  })
         setErrors(validate( {
           ...input,
           [e.target.name]: e.target.value
@@ -136,30 +138,29 @@ export default function CreateProduct () {
           input.condition === '' &&
           input.model === '' &&
           input.internalMemory === '' &&
-          input.screenSize === '' 
-          // input.categories
-           === '' ) {
+          input.screenSize === '' &&
+          input.categories=== '' 
+          ) {
          alert ('No puede creear una nueva actividad si no completa el formulario')
       }else {
-        const formdata = new window.FormData()
-        formdata.append('name', input.name)
-        formdata.append('image', file)
-        formdata.append('brand', input.brand)
-        formdata.append('description', input.description)
-        formdata.append('price', input.price)
-        formdata.append('amount', input.amountInStock)
-        formdata.append('condition', input.condition)
-        formdata.append('model', input.model)
-        formdata.append('offer', input.offer)
-        formdata.append('dimensions', input.internalMemory)
-        formdata.append('other', input.screenSize)
-        formdata.append('category', input.categories)
+        // const formdata = new window.FormData()
+        // formdata.append('name', input.name)
+        // formdata.append('image', file)
+        // formdata.append('brand', input.brand)
+        // formdata.append('description', input.description)
+        // formdata.append('price', input.price)
+        // formdata.append('amount', input.amountInStock)
+        // formdata.append('condition', input.condition)
+        // formdata.append('model', input.model)
+        // formdata.append('dimensions', input.internalMemory)
+        // formdata.append('other', input.screenSize)
+        // formdata.append('category', input.categories)
         e.preventDefault()
         // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
         //   .catch((error) => console.error('rejected', error))
-        dispatch(postProduct(formdata))
+        dispatch(postProduct(input))
         alert(`Has creado ${input.name}, felicitaciones`)
-        console.log(formdata)
+        console.log(input)
         // setInput({
         //   name: '',
         //   price: '',
@@ -232,7 +233,13 @@ export default function CreateProduct () {
                            </div>
                            <div className='productDiv'>
                              <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
-                             <input  type='file' multiple name="image" onChange={handleFile} />
+                             <input  
+                             type='file' 
+                             multiple 
+                             name="image" 
+                             value={input.image}
+                            //  onChange={handleFile} 
+                             />
                              {errors.image && (
                              <p className='errosCreateLarge'>{errors.image}</p>
                              )}
@@ -288,11 +295,22 @@ export default function CreateProduct () {
                  </div>
                  <div className='productDiv'>
                      <label className='titlesNNO' htmlFor=''><b>Categoría/s:</b></label>
-                     {/* <select  name='categories' id='' onChange={hadleCategories}  className='selectForm' >
+                      <input
+                      autoComplete='off'
+                      type='text'
+                      className='inputsProductForm'
+                      name='categories'
+                      value={input.categories}
+                      onChange={(e) => handleChange(e)}
+                      />
+                     {errors.categories && (
+                     <p className='errosCreateLarge'>{errors.categories}</p>
+                     )}
+                     {/* <select  name='categories' id=''  className='selectForm' >
                          <option disabled selected  value='' >Línea:</option>
-                         <option value='art'>No se aún</option>
-                     </select> */}
-                     {/* {errors.categories && (
+                         <option value=''>No se aún</option>
+                     </select>
+                     {errors.categories && (
                      <p className='errosCreateLarge'>{errors.categories}</p>
                      )} */}
                  </div>

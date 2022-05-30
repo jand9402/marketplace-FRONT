@@ -116,6 +116,7 @@ export function postProduct (payload) {
     return async function (dispatch) {
         try{
             const response = await axios.post("https://pf-commerce.herokuapp.com/api/products/post", payload)
+            console.log(response)
             return response
         }catch (error){
             console.log(error)
