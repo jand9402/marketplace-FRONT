@@ -37,9 +37,9 @@ export default function ProductDetail (){
                                 <div className="divImagenPrincipal">
                                 <img className="imagenDetailProd" src={producto.image[0]} alt='imagenProducto'/>
                                 </div>
-                                <div className="divImagen">
+                        { producto.image[1] && producto.image[2] ?       ( <div className="divImagen">
 
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+                               <a data-bs-toggle="modal" data-bs-target="#exampleModal">
   <img className="imagenSecundaria" src={producto.image[0]} alt='imagenProducto'/>
 </a>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -81,9 +81,59 @@ export default function ProductDetail (){
                                 {/* <a href={producto.image[1]}><img className="imagenSecundaria" src={producto.image[1]} alt='imagenProducto'/></a> */}
                                 {/* <a href={producto.image[2]}><img className="imagenSecundaria" src={producto.image[2]} alt='imagenProducto'/></a> */}
                                 </div>  
-                                
+                ) : 
 
-                            </div>
+                 <div className="divImagen">
+
+                               <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <img className="imagenSecundaria" src={producto.image[0]} alt='imagenProducto'/>
+</a>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <img className="imagenModal" src={producto.image[0]} alt='imagenProducto'/>
+      </div>     
+    </div>
+  </div>
+</div>
+
+<a data-bs-toggle="modal" data-bs-target="#imagenModal2">
+  <img className="imagenSecundaria" src={producto.image[1]} alt='imagenProducto'/>
+</a>
+<div class="modal fade" id="imagenModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <img className="imagenModal" src={producto.image[1]} alt='imagenProducto'/>
+      </div>     
+    </div>
+  </div>
+</div>
+
+<a data-bs-toggle="modal" data-bs-target="#imagenModal3">
+  <img className="imagenSecundaria" src="https://i.blogs.es/a24a9c/samsung-galaxy-tab/1366_2000.jpg" alt='imagenProducto'/>
+</a>
+<div class="modal fade" id="imagenModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <img className="imagenModal" src="https://i.blogs.es/a24a9c/samsung-galaxy-tab/1366_2000.jpg" alt='imagenProductoVacio'/>
+      </div>     
+    </div>
+  </div>
+</div>
+                                {/* <a href={producto.image[0]}><img className="imagenSecundaria" src={producto.image[0]} alt='imagenProducto'/></a> */}
+                                {/* <a href={producto.image[1]}><img className="imagenSecundaria" src={producto.image[1]} alt='imagenProducto'/></a> */}
+                                {/* <a href={producto.image[2]}><img className="imagenSecundaria" src={producto.image[2]} alt='imagenProducto'/></a> */}
+                                </div>  
+                
+                
+               
+
+                // <img src="https://media.pasionmovil.com/2012/10/Consumo-de-Energ%C3%ADa-de-Smartphones-y-Tablets.png" alt="Imagen celulares y tablets" />}   
+
+                          }  </div>
                         )
                     }
                 })}
