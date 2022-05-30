@@ -21,13 +21,7 @@ function handleLogOut (){
     localStorage.removeItem("order")
 }
     return(
-        <div className='ordenLoginRegister'>
-            {/* <div >
-                <Link to='/productForm' className='styleLinkNavBar'>
-                    <div className='styleLogReg'>Vender</div>
-                </Link>
-            </div> */}
-            <div>
+        <div class="d-flex">
                 {
                     data.isAdmin? (
                 <Link to='/admin' className='styleLinkNavBar'>
@@ -36,12 +30,9 @@ function handleLogOut (){
                     <div className='styleLogReg'>Mi sesión</div>
                 </Link>)
                 }
-            </div>
-            <div>
                 <Link to='/' className='styleLinkNavBar'>
                     <div onClick={handleLogOut}>Cerrar sesión</div>
                 </Link> 
-            </div>
         </div>
     )
 }

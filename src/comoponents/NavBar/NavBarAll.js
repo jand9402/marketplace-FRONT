@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Filters from "./Filters";
 import LoginRegister from "./LoginRegister";
 import './NavBarAll.css'
@@ -19,46 +19,36 @@ import SearchBar from "./SearchBar";
 
 
 const NavBarAll = () => {
-const[detail, setDetail] = useState(false)
+    const [detail, setDetail] = useState(false)
 
 
-let history = useHistory()
+    let history = useHistory()
 
 
 
-const token = useSelector (state => state.token)
+    const token = useSelector(state => state.token)
 
 
-    
-return(
-        <div className='boxNavBar'>
-            
-            <nav className= 'ordenNavBar'>
-                <img className= 'logoNavBar' src={LogoNav} alt='logoNav'/>
-                <div>
-                    
-                    <Filters/>
-                </div>
-                    <SearchBar/>
-                <div className="sesion">
+
+    return (
+        <nav class="navbar ">
+            <div class="container-fluid">
+            <Link to='/' className='styleLinkNavBar'>
+                <a class="navbar-brand">Storecel</a>
+                </Link>
+                    <Filters />
                     {
-                    localStorage.getItem('authorization', token)? <MiSesion/> : <LoginRegister/>
+                     localStorage.getItem('authorization', token)? <MiSesion/> : <LoginRegister/>
                     }
-                </div>
-                <Link to="/shoppingCar">
-                {
-                    
-                
+                    <SearchBar/>
+                    <Link to="/shoppingCar">
+               {
                    JSON.parse(localStorage.itemCar.length>2)? <img className='carritoNavBar' src={carritoLleno1} alt='carritoNav' />
                     :<img className='carritoNavBar' src={CarritoVacioIcono} alt='carritoNav' />
-                    
-
                 }
                 </Link>
-            </nav>
-
-
-        </div>
+            </div>
+        </nav>
     )
 
 }
