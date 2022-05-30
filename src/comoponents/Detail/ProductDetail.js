@@ -39,10 +39,51 @@ export default function ProductDetail (){
                                 <img className="imagenDetailProd" src={producto.image[0]} alt='imagenProducto'/>
                                 </div>
                                 <div className="divImagen">
-                                <a href={producto.image[0]}><img className="imagenSecundaria" src={producto.image[0]} alt='imagenProducto'/></a>
-                                <a href={producto.image[1]}><img className="imagenSecundaria" src={producto.image[1]} alt='imagenProducto'/></a>
-                                <a href={producto.image[2]}><img className="imagenSecundaria" src={producto.image[2]} alt='imagenProducto'/></a>
+
+                                <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <img className="imagenSecundaria" src={producto.image[0]} alt='imagenProducto'/>
+</a>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <img className="imagenModal" src={producto.image[0]} alt='imagenProducto'/>
+      </div>     
+    </div>
+  </div>
+</div>
+
+<a data-bs-toggle="modal" data-bs-target="#imagenModal2">
+  <img className="imagenSecundaria" src={producto.image[1]} alt='imagenProducto'/>
+</a>
+<div class="modal fade" id="imagenModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <img className="imagenModal" src={producto.image[1]} alt='imagenProducto'/>
+      </div>     
+    </div>
+  </div>
+</div>
+
+<a data-bs-toggle="modal" data-bs-target="#imagenModal3">
+  <img className="imagenSecundaria" src={producto.image[2]} alt='imagenProducto'/>
+</a>
+<div class="modal fade" id="imagenModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <img className="imagenModal" src={producto.image[2]} alt='imagenProducto'/>
+      </div>     
+    </div>
+  </div>
+</div>
+                                {/* <a href={producto.image[0]}><img className="imagenSecundaria" src={producto.image[0]} alt='imagenProducto'/></a> */}
+                                {/* <a href={producto.image[1]}><img className="imagenSecundaria" src={producto.image[1]} alt='imagenProducto'/></a> */}
+                                {/* <a href={producto.image[2]}><img className="imagenSecundaria" src={producto.image[2]} alt='imagenProducto'/></a> */}
                                 </div>  
+                                
+
                             </div>
                         )
                     }

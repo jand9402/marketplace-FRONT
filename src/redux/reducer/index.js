@@ -40,8 +40,8 @@ const initialState = {
   navBarNew: [],
   users: [],
   countries: [],
-  userData: localStorage.getItem('userData')?
-  localStorage.getItem('userData'): null,
+  // userData: localStorage.getItem('userData')?
+  // localStorage.getItem('userData'): null,
   cart: {}
 }
 
