@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './NavBarAll.css'
 
@@ -7,6 +8,7 @@ import './NavBarAll.css'
 
 const token = useSelector(state => state.token)
 const userData = useSelector(state => state.userData)
+const  history = useHistory() 
 
 console.log (userData)
 let data = JSON.parse(userData)
@@ -17,7 +19,6 @@ function handleLogOut (){
     localStorage.removeItem("userData", userData)
     localStorage.removeItem("itemCar")
     localStorage.removeItem("order")
-
 }
     return(
         <div className='ordenLoginRegister'>

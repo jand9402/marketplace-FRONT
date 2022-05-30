@@ -12,7 +12,7 @@ import EditProduct from "../../ProductForm/editProduct";
 export default function DetailProductAdmin () {
 const dispatch = useDispatch();
 const detail = useSelector (state => state.detail)
-// console.log (detail)
+// console.log (detail.image)
 const [stateModalPut, setStateModalPut] = useState (false)
 
 function handleClickModal (e) {
@@ -34,7 +34,7 @@ useEffect (() => {
             <NavBarDetailAdmin/>
             <div key={id} className='contenedorDetailAdmin'>
                 <div className="boxDetaiQuePuedoModificar">
-                    <img  className="imageDetailAdmin" src={detail.image} alt="imageDetailAdmin"/>
+                    <img  className="imageDetailAdmin" src={detail.image ? detail.image[0] : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.clarin.com%2Ftecnologia%2Fbanco-nacion-relanza-venta-celulares-modelos-descuento-18-cuotas-interes_0_QmAUsjhAU.html&psig=AOvVaw1sQbEUoycHdCfckA6AJk7V&ust=1653956093926000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCLiOtd34hfgCFQAAAAAdAAAAABAH" } alt="imageDetailAdmin"/>
                     <div className="boxNBMCDCO">
                         <div className="detailProductName">Detalle del producto</div>
                         <button
@@ -63,7 +63,7 @@ useEffect (() => {
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">DISPLAY:</div>
-                            {/* <div className="descriptionDetailAdmin">{detail.screenSize.$numberDecimal}" </div> */}
+                            <div className="descriptionDetailAdmin">{detail.screenSize ? detail.screenSize.$numberDecimal : "No se encuentra display"}" </div>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">MEMORIA INTERNA:</div>

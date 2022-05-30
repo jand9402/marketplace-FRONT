@@ -71,21 +71,21 @@ export default function CreateProduct () {
     
       let dispatch = useDispatch()
       // const { errors, handleChange } = useValidateCreateProd()
-      const [file, setFile] = useState('')
+      const [file, setFile] = useState([])
       console.log(file)
       const [categorias, setCategorias] = useState([])
     
       // const [createProduct] = postProduct()
 
     
-      const handleFile = (e) => {
-        setFile(e.target.files[0])
-        setInput({
-          ...input,
-          [e.target.name]: file
-        })
+      // const handleFile = (e) => {
+      //   setFile(e.target.files)
+      //   setInput({
+      //     ...input,
+      //     [e.target.name]: file
+      //   })
         
-      }
+      // }
       const [errors, setErrors ] = useState({})
     
       const [input, setInput] = useState({
@@ -97,7 +97,7 @@ export default function CreateProduct () {
         screenSize: '',
         condition: '',
         internalMemory: '',
-        // image: [],
+        image: [],
         description: '',
         categories: []
       })
@@ -112,6 +112,10 @@ export default function CreateProduct () {
           [e.target.categories]: [e.target.value.split(",")]
         }
          )
+        //  setFile ({
+        //   ...input,
+        //   [e.target.image]: [e.target.value]
+        //  })
         setErrors(validate( {
           ...input,
           [e.target.name]: e.target.value
@@ -126,7 +130,7 @@ export default function CreateProduct () {
       // }else
        if(
           input.name === '' && 
-          // input.image === '' &&
+          input.image === '' &&
           input.brand === '' &&
           input.description === '' &&
           input.price === '' && 
@@ -227,13 +231,19 @@ export default function CreateProduct () {
                              <p className='errosCreateLarge'>{errors.screenSize}</p>
                              )}
                            </div>
-                           {/* <div className='productDiv'>
+                           <div className='productDiv'>
                              <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
-                             <input  type='file' multiple name="image" onChange={handleFile} />
+                             <input  
+                             type='file' 
+                             multiple 
+                             name="image" 
+                             value={input.image}
+                            //  onChange={handleFile} 
+                             />
                              {errors.image && (
                              <p className='errosCreateLarge'>{errors.image}</p>
                              )}
-                         </div> */}
+                         </div>
                  <div className='productDiv'>
                      <label className='titlesNNO'>Precio:</label>
                      <input
