@@ -9,7 +9,7 @@ export const ADD_TO_CAR = 'ADD_TO_CAR'
 
 
 export default function Card({ id, image, name, price }) {
-    
+
     const dispatch = useDispatch()
     const allProducts = useSelector(state => state.products)
     // console.log(allProducts)
@@ -17,7 +17,7 @@ export default function Card({ id, image, name, price }) {
     const addToCar = (id) => {
 
         let newCarItem = allProducts.find(allProducts => allProducts._id === id)
-         let infoFromLocalStorage = JSON.parse(localStorage.itemCar)
+        let infoFromLocalStorage = JSON.parse(localStorage.itemCar)
 
         let itemInCar = infoFromLocalStorage.find(item => item._id === newCarItem._id)
 
@@ -30,20 +30,20 @@ export default function Card({ id, image, name, price }) {
                     title: 'Producto agregado',
                     showConfirmButton: false,
                     timer: 900
-                  })
-                agregado.map(item =>{
+                })
+                agregado.map(item => {
                     if (item._id === newCarItem._id) {
                         item.quantity += 1
                     }
-                }) 
-            }else{ 
+                })
+            } else {
                 swal({
                     position: 'top-end',
                     icon: 'success',
                     title: 'Producto agregado',
                     showConfirmButton: false,
                     timer: 900
-                  })
+                })
                 history.push('/')
                 newCarItem.quantity = 1
                 agregado.push(newCarItem)
@@ -57,7 +57,7 @@ export default function Card({ id, image, name, price }) {
 
     }
 
-   
+
 
     return (
         <div className="boxCard">
@@ -68,5 +68,17 @@ export default function Card({ id, image, name, price }) {
             </Link>
             <button className="boton_carrito_card" onClick={() => addToCar(id)}></button>
         </div>
+
+        // <div class="card">
+        //         <h5 class="card-title">{name}</h5>
+        //     <img src={image[0]} class="card-img-top" alt="imagencard"/>
+        //         <div class="card-body">
+        //             <p class="priceCardProd">US${price}</p>
+                    
+        //         </div>
+        //         <div className="divBotonCar">
+        //         <button className="boton_carrito_card" onClick={() => addToCar(id)}></button>
+        //         </div>
+        // </div>
     )
 }

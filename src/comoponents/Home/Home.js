@@ -29,9 +29,9 @@ export default function Home() {
         <div className='home'>
             <NavBarAll />
             {/* <SearchBar /> */}
-            <div>
+            <div  className='container'>
                 <CarruselSuperior />
-            </div>
+        </div>
             <Cards/>
         </div>
     )

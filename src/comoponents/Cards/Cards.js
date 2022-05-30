@@ -49,13 +49,20 @@ useEffect (()=> {
                     )} 
                 )}                
             </div>
-            {/* <div>
-            {allProducts.length && <div className="ordenNextPrev">
-                <div  onClick={handlePrevPage}><button className="buttonPrevCard"></button></div>
-                <div onClick={handleNextPage}><button className="buttonNextCard"></button></div>
-            </div>}
-           </div>   */}
            <Paginado productsPerPage={productsPerPage}  allProducts={allProducts.length} paginado = {paginado}/>  
         </div>
+        // <div>
+        //     <div className="container">Nuestros productos</div>
+        //     <div className="row row-cards">
+        //         { currentCards.map((p)=> {
+        //             return(
+        //             <div className="col" key={p._id}>
+        //                 <Card id={p._id} image={p.image} name={p.name} price={p.price} />
+        //             </div> 
+        //             )} 
+        //         )}                
+        //     </div>
+        //    <Paginado productsPerPage={productsPerPage}  allProducts={allProducts.length} paginado = {paginado}/>  
+        // </div>
     )
 }
