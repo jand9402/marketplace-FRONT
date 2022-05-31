@@ -200,7 +200,7 @@ export default function EditProduct () {
         for (let i =0; i < input.categories.length; i++)
         formdata.append('categories', input.categories[i])
         e.preventDefault()
-        dispatch(postProduct(formdata))
+        dispatch(modifyProduct(formdata))
         alert(`Has creado ${input.name}, felicitaciones`)
         setInput({
           name: '',

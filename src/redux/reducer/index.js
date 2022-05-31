@@ -13,11 +13,12 @@ import {
   DETAIL_DELETE,
   GET_DETAIL,
   ORDERS,
-  NAV_BAR_NEW,
+  // NAV_BAR_NEW,
   GET_USERS,
   POST_ORDER,
   GET_ORDER_DETAIL_USER,
-  GET_CATEGORIES_NEW
+  GET_CATEGORIES_NEW,
+  DELETE_PRODUCT
 } from "../actions";
 
 const initialState = {

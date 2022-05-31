@@ -175,9 +175,10 @@ export function postLogin(payload) {
         "https://pf-commerce.herokuapp.com/api/users/login",
         payload
       );
+    //   localStorage.setItem("authorization", login.data.token);
       console.log(login);
       if (login.data) {
-        alert("Sesión iniciada con exito!");
+        alert("Sesión iniciada con exito1!");
         return dispatch({
           type: LOGIN_ANSWER,
           payload: login.data,
