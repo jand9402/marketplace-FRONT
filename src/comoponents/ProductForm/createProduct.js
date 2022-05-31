@@ -72,7 +72,36 @@ export default function CreateProduct () {
     
       const dispatch = useDispatch()
       const categoriesAll = useSelector(state => state.categoriesNew)
-      console.log(categoriesAll)
+      // console.log(categoriesAll)
+      
+     
+       const aux =[]
+        for (let i =0; i< categoriesAll.length; i++) {
+             var otroArray = categoriesAll[i] && categoriesAll[i].map(e => e)
+             var separado = otroArray.join (", ")
+             aux.push(separado)
+            //  console.log(separado)
+          //    let infoApiTemp = dataApiAll?.map (el => {
+          //     if(!el.temperament) return el.temperament = undefined;
+          // // A todos los demas los spliteo por ", " para añadirlos a un array en la constante aux
+          //     const aux = el.temperament.split(", "); 
+          //     return aux;
+          // });
+      // const ordenSinUnd = infoApiTemp.flat().filter(Boolean).sort();
+      // const stringUnicos = [...new Set(ordenSinUnd)];  
+            //  var separado = otroArray.join (",")
+            //  console.log(separado)
+            //  let stringsCat = [...separado]
+            //  console.log(stringsCat)
+            //  aux.push(stringsCat)
+            }
+       const allCategoriesN = aux
+        // return aux
+    
+    //  console.log(allCategoriesN)
+    
+      // CATEGORIESALL ME TRAE UN ARRAY DE ARRAY... QUE TENGO QUE RECORRE PRIMERO TODO EL ARRAY Y LUEGO, CADA ARRAY PARA SACAR TODOS LOS ELEMENTOS Y TRAERME
+      // UNA ARRAY DE STRINGS...EN MI PI DE DOGS HAY ALGO...
       const [file, setFile] = useState('')
       console.log(file)
       const [categorias, setCategorias] = useState([])
@@ -96,25 +125,28 @@ export default function CreateProduct () {
         categories: []
       })
     
+      function handleSelectCat(e) {
+        setInput({
+          ...input,
+          categories: [...input.categories, e.target.value]     
+            })
+            setErrors(validate( {
+              ...input,
+              [e.target.name]: e.target.value
+            }))
+            console.log(input)
+      };
+
       function handleChange (e) {
         setInput({
           ...input,
           [e.target.name]: e.target.value
         })
-        setCategorias({
-          ...input,
-          [e.target.categories]: [e.target.value.split(",")]
-        }
-         )
-        //  setFile({
-        //    ...input,
-        //    [e.target.image]: [URL.createObjectURL(e.target.files[0])]
-        // })
-           
-        //  setFile ({
+        // setCategorias({
         //   ...input,
-        //   [e.target.image]: [e.target.value]
-        //  })
+        //   [e.target.categories]: [e.target.value.split(",")]
+        // }
+        //  )
         setErrors(validate( {
           ...input,
           [e.target.name]: e.target.value
@@ -154,7 +186,8 @@ export default function CreateProduct () {
         formdata.append('model', input.model)
         formdata.append('internalMemory', input.internalMemory)
         formdata.append('screenSize', input.screenSize)
-        formdata.append('categories', input.categories)
+        for (let i =0; i < input.categories.length; i++)
+        formdata.append('categories', input.categories[i])
         e.preventDefault()
         dispatch(postProduct(formdata))
         alert(`Has creado ${input.name}, felicitaciones`)
@@ -295,13 +328,16 @@ export default function CreateProduct () {
                              )}
                            </div>
                            <div className='productDiv'>
-                             <label className='titlesNNO' htmlFor=''><b>Categoría/s:</b></label>
-                             <select>
-                               <option value="">Tipo de línea</option>
-                               {categoriesAll && categoriesAll.map((c) => (
-                               <option key= {c.id} value= {c.name} >{c.name}</option>
+                             <label className='titlesNNO' name='categories'><b>Categoría/s:</b></label>
+                             <select onChange={handleSelectCat}>
+                               <option disabled selected  value="">Tipo de línea</option>
+                               <option value='PERSONAL'>Personal</option>
+                               <option value='LIBERADO'>Liberado</option>
+                               <option value='CLARO'>Claro</option>
+                               {/* {allCategoriesN && allCategoriesN.map((c) => (
+                               <option key= {c} value= {c} >{c}</option>
                                )
-                               )}
+                               )} */}
                              </select>
                              {/* <input
                              autoComplete='off'

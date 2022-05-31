@@ -13,7 +13,7 @@ import EditProduct from "../../ProductForm/editProduct";
 export default function DetailProductAdmin () {
 const dispatch = useDispatch();
 const detail = useSelector (state => state.detail)
-// console.log (detail.image)
+console.log (detail)
 const [stateModalPut, setStateModalPut] = useState (false)
 
 function handleClickModal (e) {
