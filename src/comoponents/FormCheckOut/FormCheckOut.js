@@ -9,6 +9,8 @@ import { getCountries } from '../../redux/actions';
 import { Dispatch } from 'react';
 import { orders } from '../../redux/actions';
 import { Link } from 'react-router-dom';
+import paypal from '../../assets/icons/paypal.png.png'
+import stripe from '../../assets/icons/stripe.png.png'
 
 export default function FormCheckOut() {
  
@@ -225,9 +227,27 @@ export default function FormCheckOut() {
           
           </form>
         </div>
-        {/* <div className='col-6 col-checkot-img'>
-    imagen
-</div> */}
+        <div className='col-6 col-checkot-img'>
+    <h3 className='mb-4'>Selecciona tu método de pago</h3>
+    <div className='container container_paymentMethod'>
+      <div className='row row_paypal'>
+      <form>
+    <fieldset>
+        <label>
+          <div className="paypal_div">
+            <input type="radio" name="pago" value="paypal"/><img className="logo_paypal" src={paypal} alt='logo paypal'/>
+          </div>
+        </label>
+        <label>
+        <div className="stripe_button">
+            <input type="radio" name="pago" value="stripe"/><img className="logo_stripe" src={stripe} alt='logo stripe'/>
+        </div>
+        </label>
+    </fieldset>
+    </form>
+      </div>
+    </div>
+         </div>
       </div>
     </div>
   )
