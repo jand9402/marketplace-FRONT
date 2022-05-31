@@ -37,7 +37,7 @@ const NavBarAll = () => {
                 </Link>
                     <Filters />
                     {
-                     localStorage.getItem('authorization', token)? <MiSesion/> : <LoginRegister/>
+                     localStorage.getItem('authorization')? <MiSesion/> : <LoginRegister/>
                     }
                     <SearchBar/>
                     <Link to="/shoppingCar">

@@ -84,6 +84,20 @@
     /* padding-bottom: 10px; */
     background-color: rgb(61, 143, 115);
 }
+.listaCountSelD {
+    color:  rgb(255, 255, 255);
+    font-style: Trebuchet;
+    font-weight: 600;
+    font-size: 0.8rem; 
+    line-height : 12px;
+}
+.botonDeletCat{
+    background-color: brown;
+    width: 17px;
+    height: 17px;
+    border: none;
+    color: white;
+}
 
 .titlesNNO{
     color: white;
