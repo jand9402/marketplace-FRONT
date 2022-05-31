@@ -7,3 +7,66 @@
 
 .col-checkot-img{
 }
+
+.container_paymentMethod{
+    height: 80%;
+}
+
+.row_paypal{
+    height: 25%;
+    margin-bottom: 5%;
+    border-bottom: none !important;
+}
+
+.paypal_div{
+    border-radius: 15px;
+    border-top: none;
+    border-left: none;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+    margin-bottom: 20px;
+}
+
+.paypal_div:hover{
+    transform:scale(1.05);
+    -webkit-transform:scale(1.05);
+    -moz-transform:scale(1.05);
+    -ms-transform:scale(1.05);
+    -o-transform:scale(1.05);
+}
+
+.logo_paypal{
+  width: 90%;
+  height: auto;
+}
+
+.row_stripe{
+    height: 5%;
+    margin-bottom: 5%;
+    border-bottom: none !important;
+}
+
+.stripe_button{
+    border-radius: 15px;
+    border-top: none;
+    border-left: none;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+    margin-bottom: 20px;
+}
+
+.stripe_button:hover{
+    transform:scale(1.05);
+    -webkit-transform:scale(1.05);
+    -moz-transform:scale(1.05);
+    -ms-transform:scale(1.05);
+    -o-transform:scale(1.05);
+}
+
+.logo_stripe{
+    width: 55%;
+    height: auto;
+}
+

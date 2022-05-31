@@ -41,7 +41,6 @@ export default function ShoppingCar () {
     
     <div >
     {
-    // data.car.map((product, index) => <CarItem key={index} data={product}/>)
     infoFromLocalStorage.map((product, index) => <CarItem key={index} data={product}/>)
     }
     </div>
