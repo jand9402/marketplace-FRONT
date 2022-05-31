@@ -178,7 +178,7 @@ export function postLogin(payload) {
     //   localStorage.setItem("authorization", login.data.token);
       console.log(login);
       if (login.data) {
-        alert("Sesión iniciada con exito1!");
+        alert("Sesión iniciada con exito!");
         return dispatch({
           type: LOGIN_ANSWER,
           payload: login.data,
