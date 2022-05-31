@@ -21,10 +21,10 @@ export function validate (input) {
     else if (!input.model) {
         errors.model = 'Campo requerido'
     }
-   //categories
-    // else if (!input.categories.lenght) {
-    //     errors.categories = 'Debe seleccionar al menos una categoría '
-    // }
+  //  categories
+    else if (!input.categories.lenght) {
+        errors.categories = 'Debe seleccionar al menos una categoría '
+    }
     else if (!input.screenSize) {
         errors.screenSize = 'Campo requerido'
     }
@@ -153,6 +153,17 @@ export default function CreateProduct () {
         }))
         console.log(input)
       }
+
+      function handleDelet (e) {
+        setInput( (prevInputDel) => {
+            const newInpuDel = {
+                ...prevInputDel,
+                categories : input.categories.filter((c => c !== e.target.id))
+            }
+            console.log(newInpuDel)
+            return newInpuDel
+        } )
+    }
     
       const handleCreate = async  (e) => {
         e.preventDefault()
@@ -161,7 +172,7 @@ export default function CreateProduct () {
       // }else
        if(
           input.name === '' && 
-          input.image === '' &&
+          !input.image.length === '' &&
           input.brand === '' &&
           input.description === '' &&
           input.price === '' && 
@@ -170,7 +181,7 @@ export default function CreateProduct () {
           input.model === '' &&
           input.internalMemory === '' &&
           input.screenSize === '' &&
-          input.categories=== '' 
+          !input.temperament.length 
           ) {
          alert ('No puede creear una nueva actividad si no completa el formulario')
       }else {
@@ -329,7 +340,7 @@ export default function CreateProduct () {
                            </div>
                            <div className='productDiv'>
                              <label className='titlesNNO' name='categories'><b>Categoría/s:</b></label>
-                             <select onChange={handleSelectCat}>
+                             <select className='selectForm' onChange={handleSelectCat}>
                                <option disabled selected  value="">Tipo de línea</option>
                                <option value='PERSONAL'>Personal</option>
                                <option value='LIBERADO'>Liberado</option>
@@ -339,6 +350,9 @@ export default function CreateProduct () {
                                )
                                )} */}
                              </select>
+                             {errors.categories && (
+                             <p className='errosCreateLarge'>{errors.categories}</p>
+                             )}
                              {/* <input
                              autoComplete='off'
                              type='text'
@@ -350,7 +364,16 @@ export default function CreateProduct () {
                              {errors.categories && (
                              <p className='errosCreateLarge'>{errors.categories}</p>
                              )} */}
+                             {input.categories? <div>
+                             {input.categories?.map(c => 
+                             (<div className="listaCountSelD"  key={c}>
+                               <span>{c}</span>
+                                 <button className="botonDeletCat" id={c}  onClick={handleDelet}>x</button>
+                              </div> 
+                            ))}
+                           </div> : null  }
                            </div>
+                           {/* </div> */}
                            <div className='productDiv'>
                              <label className='titlesNNO' htmlFor=''><b>Memoria interna:</b></label>
                              <input

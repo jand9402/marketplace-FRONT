@@ -212,6 +212,16 @@ export function getUsers(token){
     }
 }
 
+export function modifyProduct(id, detailData ,token){
+    return async function (dispatch){
+      const productMod = await axios.put(`https://pf-commerce.herokuapp.com/api/products/update/${id}`, detailData,{
+        headers:{
+          'authorization': `${token}`
+        }
+    })
+    productMod? alert('Producto modificado correctamente') : alert('Producto no encontrado')
+  }
+  }
 
 
 // {
