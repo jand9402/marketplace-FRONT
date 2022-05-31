@@ -12,6 +12,8 @@ export const CLEAR_CAR = 'CLEAR_CAR'
 
 
 export default function ShoppingCar () {
+    let token = localStorage.authorization
+    console.log(token)
     let infoFromLocalStorage = JSON.parse(localStorage.itemCar)
     const dispatch = useDispatch()
     let history = useHistory()
@@ -45,9 +47,13 @@ export default function ShoppingCar () {
     }
     </div>
     <div className="divContinuarCompra">
-     <Link to="/CheckOut"> 
+        {token?<Link to="/CheckOut"> 
         <button className="continuarCompra">Continuar con la compra</button>
-         </Link> 
+     </Link> :
+     <Link to="/register"> 
+     <button className="continuarCompra">Registrarse para comprar</button>
+  </Link> }
+     
     </div>
 </div>:<div className="container containerVacioCarrito">
         
