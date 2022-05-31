@@ -248,3 +248,13 @@ export function getOrderDetailByUser() {
     }
   };
 }
+
+export function deleteProduct(payload) {
+  return async function () {
+    console.log('action')
+    try {axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload}`)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
