@@ -2,6 +2,7 @@ import axios from 'axios';
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
 export const GET_CATEGORIES = 'GET_CATEGORIES'
+export const GET_CATEGORIES_NEW = 'GET_CATEGORIES_NEW'
 export const GET_BRAND = 'GET_BRAND'
 export const CATEGORY_FILTERED = 'CATEGORY_FILTERED'
 export const BRAND_FILTERED = 'BRAND_FILTERED'
@@ -46,6 +47,18 @@ export function getCategorys() {
         // console.log(categoria)
         return dispatch({
             type: GET_CATEGORIES,
+            payload: categoria
+        })
+    }
+}
+
+export function getCategories() {
+    return async (dispatch) => {
+        let json = await axios.get('https://pf-commerce.herokuapp.com/api/products');
+        let categories = await json.data.products?.map((c) => c.categories);
+        let categoria = [...new Set(categories)];
+        return dispatch({
+            type: GET_CATEGORIES_NEW,
             payload: categoria
         })
     }

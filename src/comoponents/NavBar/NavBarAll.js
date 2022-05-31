@@ -6,6 +6,7 @@ import LogoNav from '../../assets/logo/log.png'
 import CarritoNavBar from '../../assets/icons/carritoNav.png'
 import carritoLleno1 from '../../assets/icons/carritoLleno1G.png'
 import CarritoVacioIcono from '../../assets/icons/carritoVacioIconoG.png'
+import isotipo from '../../assets/logo/isotipo.png'
 
 import { Link, useHistory } from "react-router-dom";
 import IconoCarrito from "./IconoCarrito";
@@ -13,8 +14,6 @@ import IconoCarrito from "./IconoCarrito";
 import MiSesion from "./MiSesion";
 import { useSelector } from "react-redux";
 import SearchBar from "./SearchBar";
-
-
 
 
 
@@ -34,7 +33,7 @@ const NavBarAll = () => {
         <nav class="navbar ">
             <div class="container-fluid">
             <Link to='/' className='styleLinkNavBar'>
-                <a class="navbar-brand">Storecel</a>
+                <img src={isotipo} class="navbar-brand"/>
                 </Link>
                     <Filters />
                     {

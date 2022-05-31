@@ -1,17 +1,18 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { postProduct } from "../../redux/actions/index"
+import { postProduct, getCategories } from "../../redux/actions/index"
+
 
 export function validate (input) {
     const errors = {}
   
     if (!input.name) {
       errors.name = 'Campo requerido'
+    } 
+    else if (!/^[a-zA-ZÀ-ÿ0-9_.+-\s]{5,100}$/g.test(input.name)) {
+      errors.name = 'Ingrese más de 5 caracteres'
     }
-    // } else if (!/^[A-Za-z0-9\s]{5,100}$/g.test(input.name)) {
-    //   errors.name = 'Ingrese más de 5 caracteres'
-    // }
     // brand
     else if (!input.brand) {
         errors.brand = 'Campo requerido'
@@ -20,17 +21,17 @@ export function validate (input) {
     else if (!input.model) {
         errors.model = 'Campo requerido'
     }
-    //category
+   //categories
     // else if (!input.categories.lenght) {
     //     errors.categories = 'Debe seleccionar al menos una categoría '
     // }
     else if (!input.screenSize) {
         errors.screenSize = 'Campo requerido'
     }
-    //image
-    else if (input.image.length < 3) {
-      errors.image = 'Debe seleccionar 3 imágenes'
-    }
+    // //image
+    // else if (input.image.length < 3) {
+    //   errors.image = 'Debe seleccionar 3 imágenes'
+    // }
     // dimensions
     else if (!input.internalMemory) {
         errors.internalMemory = 'Campo requerido'
@@ -45,9 +46,9 @@ export function validate (input) {
     else if (!input.price) {
       errors.price = 'Campo requerido'
      }
-    // } else if (!/^[1-9]*?$/.test(input.price)) {
-    //   errors.price = 'El precio no puede ser menor a 1'
-    // }   
+    else if (!/^[1-9]\d*(\.\d+)?$/.test(input.price)) {
+      errors.price = 'El precio no puede ser menor a 1'
+    }   
     // amount
     else if (!input.amountInStock) {
       errors.amountInStock = 'Campo requerido'
@@ -69,22 +70,15 @@ export function validate (input) {
 
 export default function CreateProduct () {
     
-      let dispatch = useDispatch()
-      // const { errors, handleChange } = useValidateCreateProd()
+      const dispatch = useDispatch()
+      const categoriesAll = useSelector(state => state.categoriesNew)
+      console.log(categoriesAll)
       const [file, setFile] = useState('')
       console.log(file)
       const [categorias, setCategorias] = useState([])
-    
-      // const [createProduct] = postProduct()
-
-    
+  
       const handleFile = (e) => {
         setFile(e.target.files)
-        // setInput({
-        //   ...input,
-        //   [e.target.name]: file
-        // })
-        
       }
       const [errors, setErrors ] = useState({})
     
@@ -162,27 +156,28 @@ export default function CreateProduct () {
         formdata.append('screenSize', input.screenSize)
         formdata.append('categories', input.categories)
         e.preventDefault()
-        // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
-        //   .catch((error) => console.error('rejected', error))
         dispatch(postProduct(formdata))
-        console.log(formdata)
         alert(`Has creado ${input.name}, felicitaciones`)
-        // setInput({
-        //   name: '',
-        //   price: '',
-        //   offer: '',
-        //   brand: '',
-        //   model: '',
-        //   amount: '',
-        //   dimensions: '',
-        //   condition: '',
-        //   other: '',
-        //   image: '',
-        //   description: '',
-        //   category: ''   
-        //  })
+        setInput({
+          name: '',
+          price: '',
+          brand: '',
+          model: '',
+          amountInStock: '',
+          screenSize: '',
+          condition: '',
+          internalMemory: '',
+          image: [],
+          description: '',
+          categories: []  
+        })
       } 
     }
+
+    useEffect(() => {
+      dispatch(getCategories())
+   },[dispatch])
+
     return(
         <>
         <div>
@@ -301,7 +296,14 @@ export default function CreateProduct () {
                            </div>
                            <div className='productDiv'>
                              <label className='titlesNNO' htmlFor=''><b>Categoría/s:</b></label>
-                             <input
+                             <select>
+                               <option value="">Tipo de línea</option>
+                               {categoriesAll && categoriesAll.map((c) => (
+                               <option key= {c.id} value= {c.name} >{c.name}</option>
+                               )
+                               )}
+                             </select>
+                             {/* <input
                              autoComplete='off'
                              type='text'
                              className='inputsProductForm'
@@ -311,7 +313,7 @@ export default function CreateProduct () {
                              />
                              {errors.categories && (
                              <p className='errosCreateLarge'>{errors.categories}</p>
-                             )}
+                             )} */}
                            </div>
                            <div className='productDiv'>
                              <label className='titlesNNO' htmlFor=''><b>Memoria interna:</b></label>

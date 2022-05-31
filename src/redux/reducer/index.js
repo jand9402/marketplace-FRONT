@@ -15,7 +15,8 @@ import { GET_ALL_PRODUCTS,
          GET_DETAIL,
          ORDERS,
          DELETE_PRODUCT,
-         GET_USERS
+         GET_USERS,
+         GET_CATEGORIES_NEW
         } from "../actions";
 
 import { ADD_TO_CAR } from "../../comoponents/Cards/card";
@@ -29,6 +30,7 @@ const initialState = {
   allProducts: [],
   detail: [],
   categorys: [],
+  categoriesNew :[],
   brand: [],
   // login: false,
   createProduct: {},
@@ -40,6 +42,8 @@ const initialState = {
   navBarNew: [],
   users: [],
   countries: [],
+  // userData: localStorage.getItem('userData')?
+  // localStorage.getItem('userData'): null,
   cart: {}
 }
 
@@ -69,6 +73,12 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         categorys: action.payload,
+      }
+    case GET_CATEGORIES_NEW:
+      
+      return{
+        ...state,
+        categoriesNew: action.payload
       }
     case GET_BRAND:
       return {

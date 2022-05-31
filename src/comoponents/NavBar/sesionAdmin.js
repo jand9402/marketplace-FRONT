@@ -4,14 +4,17 @@ import { Link } from "react-router-dom";
 import './NavBarAll.css'
 
  export default function SesionAdminNav () {
-
+    const userData = useSelector(state => state.userData)
 const token = useSelector(state => state.token)
 
 function handleLogOut (){
     localStorage.removeItem('authorization', token)
+    localStorage.removeItem("userData", userData)
+    localStorage.removeItem("itemCar")
+    localStorage.removeItem("order")
 }
     return(
-        <div className='ordenLoginRegister'>
+        <div className='d-flex'>
             <div >
                 <Link to='/' className='styleLinkNavBar'>
                     <div className='styleLogReg'>Home</div>
