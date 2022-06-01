@@ -10,6 +10,7 @@ import './detailProductAdmin.css'
 import EditProduct from "../../ProductForm/editProduct";
 
 import cuadroBlanco from "../../../assets/detail/cuadroBlanco.jpg"
+import { Link } from "react-router-dom";
 
 // import { deleteProduct } from "../../../redux/actions";
 
@@ -18,7 +19,7 @@ export default function DetailProductAdmin () {
 const dispatch = useDispatch();
 const detail = useSelector (state => state.detail)
 let data = JSON.parse(localStorage.getItem("userData"))
-// console.log (detail)
+console.log (detail)
 const [stateModalPut, setStateModalPut] = useState (false)
 
 
@@ -39,6 +40,9 @@ useEffect (()=>{
 useEffect (() => {
     return dispatch(deletepreviousdetail())
 }, [dispatch])
+
+let categorySep = Array.isArray(detail.categories) && detail.categories.join(', ')
+console.log(categorySep)
     
     return (
         <div>
@@ -50,10 +54,13 @@ useEffect (() => {
                     <img  className="imageDetailAdmin" src={detail.image ? detail.image[0] : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.clarin.com%2Ftecnologia%2Fbanco-nacion-relanza-venta-celulares-modelos-descuento-18-cuotas-interes_0_QmAUsjhAU.html&psig=AOvVaw1sQbEUoycHdCfckA6AJk7V&ust=1653956093926000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCLiOtd34hfgCFQAAAAAdAAAAABAH" } alt="imageDetailAdmin"/>
                     <div className="boxNBMCDCO">
                         <div className="detailProductName">Detalle del producto</div>
-                        <button
+                        <Link to={'/admin/products/edit/' + id}>
+                          <button className="editarProdButton">Editar producto</button>
+                        </Link>
+                        {/* <button
                         onClick={handleClickModal} 
                         className="editarProdButton"
-                        >Editar producto</button>
+                        >Editar producto</button> */}
                         {/* <button
                          onClick={() =>handleDeletProduct (detail._id)}
                         className="buttonDetailProductAdmin">
@@ -76,7 +83,7 @@ useEffect (() => {
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">CATEGORÍA/S:</div>
-                            <div className="descriptionDetailAdmin">{detail.categories}</div>
+                            <div className="descriptionDetailAdmin">{categorySep}</div>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">DISPLAY:</div>

@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { modifyProduct, getCategories } from "../../redux/actions/index"
+import { modifyProduct, getCategories, getDetail } from "../../redux/actions/index"
+import { useParams } from "react-router-dom";
 import './ProductForm.css'
 
 
@@ -23,9 +24,9 @@ export function validate (input) {
         errors.model = 'Campo requerido'
     }
   //  categories
-    else if (!input.categories.lenght) {
-        errors.categories = 'Debe seleccionar al menos una categoría '
-    }
+    // else if (!input.categories.lenght) {
+    //     errors.categories = 'Debe seleccionar al menos una categoría '
+    // }
     else if (!input.screenSize) {
         errors.screenSize = 'Campo requerido'
     }
@@ -73,7 +74,15 @@ export default function EditProduct () {
     
       const dispatch = useDispatch()
       const categoriesAll = useSelector(state => state.categoriesNew)
+      const detailProduct = useSelector (state => state.detail)
+      const {id} = useParams();
+      console.log(id)
       // console.log(categoriesAll)
+      
+      useEffect(() => {
+        dispatch(getDetail(id))
+        console.log(detailProduct)
+    },[dispatch, id])
       
      
        const aux =[]
@@ -96,7 +105,7 @@ export default function EditProduct () {
             //  console.log(stringsCat)
             //  aux.push(stringsCat)
             }
-       const allCategoriesN = aux
+       const allCategoriesN = aux //['claro', 'personal', '...']
         // return aux
     
     //  console.log(allCategoriesN)
@@ -123,7 +132,8 @@ export default function EditProduct () {
         internalMemory: '',
         image: [],
         description: '',
-        categories: []
+        categories: [],
+        newCategory :''
       })
     
       function handleSelectCat(e) {
@@ -131,27 +141,28 @@ export default function EditProduct () {
           ...input,
           categories: [...input.categories, e.target.value]     
             })
-            setErrors(validate( {
-              ...input,
-              [e.target.name]: e.target.value
-            }))
             console.log(input)
       };
 
       function handleChange (e) {
+        e.preventDefault()
         setInput({
           ...input,
           [e.target.name]: e.target.value
         })
+        // detailProduct = {
+        //   ...detailProduct,
+        //   [e.target.name]: [e.target.value]
+        // }
         // setCategorias({
         //   ...input,
         //   [e.target.categories]: [e.target.value.split(",")]
         // }
         //  )
-        setErrors(validate( {
-          ...input,
-          [e.target.name]: e.target.value
-        }))
+        // setErrors(validate( {
+        //   ...input,
+        //   [e.target.name]: e.target.value
+        // }))
         console.log(input)
       }
 
@@ -186,23 +197,24 @@ export default function EditProduct () {
           ) {
          alert ('No puede creear una nueva actividad si no completa el formulario')
       }else {
-        const formdata = new window.FormData()
-        formdata.append('name', input.name)
-        for(let i = 0; i < file.length; i++)
-        formdata.append('image', file[i])
-        formdata.append('brand', input.brand)
-        formdata.append('description', input.description)
-        formdata.append('price', input.price)
-        formdata.append('amountInStock', input.amountInStock)
-        formdata.append('condition', input.condition)
-        formdata.append('model', input.model)
-        formdata.append('internalMemory', input.internalMemory)
-        formdata.append('screenSize', input.screenSize)
-        for (let i =0; i < input.categories.length; i++)
-        formdata.append('categories', input.categories[i])
+        // const formdata = new window.FormData()
+        // formdata.append('name', input.name)
+        // for(let i = 0; i < file.length; i++)
+        // formdata.append('image', file[i])
+        // formdata.append('brand', input.brand)
+        // formdata.append('description', input.description)
+        // formdata.append('price', input.price)
+        // formdata.append('amountInStock', input.amountInStock)
+        // formdata.append('condition', input.condition)
+        // formdata.append('model', input.model)
+        // formdata.append('internalMemory', input.internalMemory)
+        // formdata.append('screenSize', input.screenSize)
+        // for (let i =0; i < input.categories.length; i++)
+        // formdata.append('categories', input.categories[i])
+        // formdata.append('categories', input.newCategory)
         e.preventDefault()
-        dispatch(modifyProduct(formdata))
-        alert(`Has creado ${input.name}, felicitaciones`)
+        await dispatch(modifyProduct( id, input))
+        alert(`Has Modificado ${input.name}, felicitaciones`)
         setInput({
           name: '',
           price: '',
@@ -214,7 +226,8 @@ export default function EditProduct () {
           internalMemory: '',
           image: [],
           description: '',
-          categories: []  
+          categories: [], 
+          newCategory: ''
         })
       } 
     }
@@ -226,13 +239,13 @@ export default function EditProduct () {
     return(
         <>
         <div>
-            <div className='allProductForm'>
-                <form onSubmit={(e) => handleCreate(e)}>
+            <div className='allProductForm'> 
+                <form key={id} onSubmit={(e) => handleCreate(e)}>
                     <h1 className='titleProduct'>Editar producto</h1>
                     {/* <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button> */}
                     <div className="boxColumnas1y2" >
                         <div className="boxColumna1PF">
-                            <div className='productDiv'>
+                            <div className='productDiv2'>
                                 <label className='titlesNNO'>Nombre del producto:</label>
                                 <input
                                 autoComplete='off'
@@ -279,7 +292,7 @@ export default function EditProduct () {
                            </div>
                            <div className='productDiv'>
                              <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
-                             <input  
+                             <input
                              type='file' 
                              id='file'
                              multiple 
@@ -339,9 +352,9 @@ export default function EditProduct () {
                              <p className='errosCreateLarge'>{errors.brand}</p>
                              )}
                            </div>
-                           <div className='productDiv'>
+                           <div className='productDivC'>
                              <label className='titlesNNO' name='categories'><b>Categoría/s:</b></label>
-                             <select className='selectForm' onChange={handleSelectCat}>
+                             <select className='selectFormC' onChange={handleSelectCat}>
                                <option disabled selected  value="">Tipo de línea</option>
                                <option value='PERSONAL'>Personal</option>
                                <option value='LIBERADO'>Liberado</option>
@@ -349,29 +362,27 @@ export default function EditProduct () {
                                {/* {allCategoriesN && allCategoriesN.map((c) => (
                                <option key= {c} value= {c} >{c}</option>
                                )
-                               )} */}
+                              )} */}
                              </select>
-                             {errors.categories && (
-                             <p className='errosCreateLarge'>{errors.categories}</p>
-                             )}
-                             {/* <input
-                             autoComplete='off'
-                             type='text'
-                             className='inputsProductForm'
-                             name='categories'
-                             value={input.categories}
-                             onChange={(e) => handleChange(e)}
-                             />
-                             {errors.categories && (
-                             <p className='errosCreateLarge'>{errors.categories}</p>
-                             )} */}
                              {input.categories? <div>
                              {input.categories?.map(c => 
-                             (<div className="listaCountSelD"  key={c}>
+                             (<div className="listaCountSelD" key={c}>
                                <span>{c}</span>
                                  <button className="botonDeletCat" id={c}  onClick={handleDelet}>x</button>
                               </div> 
                             ))}
+                             <div className="titlesNewCat" >Si no encuentra la categoría puede agregarla</div>
+                              <input
+                              autoComplete='off'
+                              type='text'
+                              className='inputsProductForm'
+                              name='newCategory'
+                              value={input.newCategory}
+                              onChange={(e) => handleChange(e)}
+                              />
+                             {errors.categories && (
+                             <p className='errosCreateLarge'>{errors.categories}</p>
+                             )}
                            </div> : null  }
                            </div>
                            {/* </div> */}
@@ -415,7 +426,7 @@ export default function EditProduct () {
                            </div>
                         </div>
                     </div>
-                    <button type='submit' className='buttonProduct'>Crear</button>
+                    <button type='submit' className='buttonProduct'>OK</button>
                 </form>
             </div>
         </div> 

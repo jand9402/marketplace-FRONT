@@ -9,7 +9,7 @@ export default function Ventas (){
                 <button className="buttonVentasS"></button>
                 </Link>
                 <Link to='/admin/ventas' id= 'click' className="sinLineaVPU">
-                <div className="nameProductsSesion">Miskk Ventas</div>
+                <div className="nameProductsSesion">Mis órdenes</div>
                 </Link>
             </div>
         </div>

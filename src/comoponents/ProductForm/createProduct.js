@@ -72,36 +72,17 @@ export default function CreateProduct () {
     
       const dispatch = useDispatch()
       const categoriesAll = useSelector(state => state.categoriesNew)
-      // console.log(categoriesAll)
+      console.log(categoriesAll)
       
      
-       const aux =[]
+       let aux =[]
         for (let i =0; i< categoriesAll.length; i++) {
-             var otroArray = categoriesAll[i] && categoriesAll[i].map(e => e)
-             var separado = otroArray.join (", ")
-             aux.push(separado)
-            //  console.log(separado)
-          //    let infoApiTemp = dataApiAll?.map (el => {
-          //     if(!el.temperament) return el.temperament = undefined;
-          // // A todos los demas los spliteo por ", " para añadirlos a un array en la constante aux
-          //     const aux = el.temperament.split(", "); 
-          //     return aux;
-          // });
-      // const ordenSinUnd = infoApiTemp.flat().filter(Boolean).sort();
-      // const stringUnicos = [...new Set(ordenSinUnd)];  
-            //  var separado = otroArray.join (",")
-            //  console.log(separado)
-            //  let stringsCat = [...separado]
-            //  console.log(stringsCat)
-            //  aux.push(stringsCat)
+             aux = aux.concat(categoriesAll[i])
             }
-       const allCategoriesN = aux //['claro', 'personal', '...']
-        // return aux
+       const allCategoriesN = [...new Set(aux)] 
+     console.log(allCategoriesN)
     
-    //  console.log(allCategoriesN)
-    
-      // CATEGORIESALL ME TRAE UN ARRAY DE ARRAY... QUE TENGO QUE RECORRE PRIMERO TODO EL ARRAY Y LUEGO, CADA ARRAY PARA SACAR TODOS LOS ELEMENTOS Y TRAERME
-      // UNA ARRAY DE STRINGS...EN MI PI DE DOGS HAY ALGO...
+
       const [file, setFile] = useState('')
       console.log(file)
       const [categorias, setCategorias] = useState([])
@@ -196,6 +177,7 @@ export default function CreateProduct () {
         formdata.append('screenSize', input.screenSize)
         for (let i =0; i < input.categories.length; i++)
         formdata.append('categories', input.categories[i])
+        input.newCategory !== '' &&
         formdata.append('categories', input.newCategory)
         e.preventDefault()
         dispatch(postProduct(formdata))
@@ -211,7 +193,8 @@ export default function CreateProduct () {
           internalMemory: '',
           image: [],
           description: '',
-          categories: []  
+          categories: [], 
+          newCategory: ''
         })
       } 
     }
@@ -229,7 +212,7 @@ export default function CreateProduct () {
                     {/* <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button> */}
                     <div className="boxColumnas1y2" >
                         <div className="boxColumna1PF">
-                            <div className='productDiv'>
+                            <div className='productDiv2'>
                                 <label className='titlesNNO'>Nombre del producto:</label>
                                 <input
                                 autoComplete='off'
@@ -340,15 +323,22 @@ export default function CreateProduct () {
                              <label className='titlesNNO' name='categories'><b>Categoría/s:</b></label>
                              <select className='selectFormC' onChange={handleSelectCat}>
                                <option disabled selected  value="">Tipo de línea</option>
-                               <option value='PERSONAL'>Personal</option>
+                               {/* <option value='PERSONAL'>Personal</option>
                                <option value='LIBERADO'>Liberado</option>
-                               <option value='CLARO'>Claro</option>
-                               {/* {allCategoriesN && allCategoriesN.map((c) => (
+                               <option value='CLARO'>Claro</option> */}
+                               {allCategoriesN && allCategoriesN.map((c) => (
                                <option key= {c} value= {c} >{c}</option>
                                )
-                              )} */}
+                              )}
                              </select>
-                             <div>Agregar caregorías</div>
+                             {input.categories? <div>
+                             {input.categories?.map(c => 
+                             (<div className="listaCountSelD" key={c}>
+                               <span>{c}</span>
+                                 <button className="botonDeletCat" id={c}  onClick={handleDelet}>x</button>
+                              </div> 
+                            ))}
+                             <div className="titlesNewCat" >Si no encuentra la categoría puede agregarla</div>
                               <input
                               autoComplete='off'
                               type='text'
@@ -360,13 +350,6 @@ export default function CreateProduct () {
                              {errors.categories && (
                              <p className='errosCreateLarge'>{errors.categories}</p>
                              )}
-                             {input.categories? <div>
-                             {input.categories?.map(c => 
-                             (<div className="listaCountSelD"  key={c}>
-                               <span>{c}</span>
-                                 <button className="botonDeletCat" id={c}  onClick={handleDelet}>x</button>
-                              </div> 
-                            ))}
                            </div> : null  }
                            </div>
                            {/* </div> */}

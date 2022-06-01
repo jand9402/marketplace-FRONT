@@ -75,14 +75,14 @@
    margin-bottom: 10px;
     padding-left: 25px;
     /* margin-left: 25px; */
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
 .productDiv2 {
     display: flex;
     flex-wrap: wrap;
     width: 350px;
     max-height: 105px;
-    padding-bottom: 10px;
+    padding-bottom: 25px;
     padding-left: 25px;
     /* background-color: rgb(51, 114, 93); */
 }
@@ -95,6 +95,7 @@
     background-color: rgb(61, 143, 115);
 }
 .listaCountSelD {
+    display: flex;
     color:  rgb(255, 255, 255);
     font-style: Trebuchet;
     font-weight: 600;
@@ -114,6 +115,13 @@
     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
     font-weight: 600;
     font-size: 1rem;
+}
+.titlesNewCat{
+    margin-top: 5px;
+    color: white;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 .inputsProductForm {
     width: 300px;

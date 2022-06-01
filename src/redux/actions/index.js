@@ -275,13 +275,11 @@ export function getOrderDetailByUser() {
 
 
 
-export function modifyProduct(id, detailData ,token){
+export function modifyProduct(id, detailData ){
+  console.log(detailData)
     return async function (dispatch){
-      const productMod = await axios.put(`https://pf-commerce.herokuapp.com/api/products/update/${id}`, detailData,{
-        headers:{
-          'authorization': `${token}`
-        }
-    })
+      const productMod = await axios.put(`https://pf-commerce.herokuapp.com/api/products/update/${id}`, detailData)
+      console.log(productMod)
     productMod? alert('Producto modificado correctamente') : alert('Producto no encontrado')
   }
   }
