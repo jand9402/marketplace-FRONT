@@ -10,15 +10,22 @@ export const ADD_TO_CAR = 'ADD_TO_CAR'
 
 
 export default function CarItem({ data }) {
-    const { _id, name, image, price, quantity } = data
+
+    let { _id, name, image, price, quantity, amountInStock} = data
+    
+    function validateStock(quantity1){
+        if(quantity1 > amountInStock){
+            quantity1 = amountInStock
+        }
+        return quantity1
+    }
+    quantity = validateStock(quantity)
     const dispatch = useDispatch()
     let history = useHistory()
-    console.log(data)
 
     const removeFromCar = (_id, all = false) => {
         if(all){ 
             let todos = JSON.parse(localStorage.itemCar)
-            console.log(todos)
     
             function addQuantity(_id){
                 todos= todos.filter(item => item._id !== _id)
@@ -28,10 +35,8 @@ export default function CarItem({ data }) {
             let producto = addQuantity(_id)
     
             localStorage.setItem("itemCar", JSON.stringify(producto))
-            console.log(JSON.parse(localStorage.itemCar))
             history.push('/shoppingCar')
-        console.log(producto)}
-            else{
+        } else{
                 let todos = JSON.parse(localStorage.itemCar)
                 console.log(todos)
         
@@ -67,6 +72,7 @@ export default function CarItem({ data }) {
         function addQuantity(_id){
             todos.map(item => {
                 if(item._id === _id){
+                    if(item.quantity<amountInStock)
                     item.quantity += 1
                 }
             }
@@ -80,7 +86,6 @@ export default function CarItem({ data }) {
         history.push('/shoppingCar')
         
     }
-
     
 
     return (
@@ -93,7 +98,10 @@ export default function CarItem({ data }) {
             </div>
             <div className='col'>
                 <div className='nameEnCarrito'>{name}</div>
-                <div className='priceEnCarrito'>${price}.00 x {quantity} = ${price*quantity}.00</div>
+                {quantity>amountInStock?
+                <div className='priceEnCarrito'>${price}.00 x {amountInStock} = ${price*amountInStock}.00</div>:
+                <div className='priceEnCarrito'>${price}.00 x {quantity} = ${price*quantity}.00</div>}
+                
             </div>
             <div className='col'>
                 <button  className='botonRemover' onClick={() => removeFromCar(_id)}> - </button><button className='botonAgregar' onClick={() => addToCar(_id)}>+</button>

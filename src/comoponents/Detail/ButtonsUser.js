@@ -6,31 +6,48 @@ import swal from 'sweetalert'
 
 
 export default function ButtonsUser ({id}){
-    const allProducts = useSelector(state => state.products)
+    const allProducts = useSelector(state => state.allProducts2)
     const history = useHistory()
-    const [contador, setContador] = useState(0)
-    
+    const [contador, setContador] = useState(1)
+    const [maximo, setMaximo] = useState(1000000)
+    let newCarItem = allProducts.find(allProducts => allProducts._id === id)
+    localStorage.setItem("maxStock", JSON.stringify(newCarItem))
+    let maxFromLocal = JSON.parse(localStorage.maxStock)
+    maxFromLocal = maxFromLocal.amountInStock
+    console.log(localStorage.maxStock)
+function maximoStock(maximo){
+    if(maximo===1000000){
+    console.log(maxFromLocal)
+    setMaximo(maxFromLocal)
+    }
+}
+maximoStock(maximo)
+
 function handleCompar(e){
     alert('vas a comprar')
 }
 
 function handleContador(e){
 if(e.target.value === "mas"){
-    setContador(contador + 1)
+    if(contador < maximo){
+        setContador(contador+1)
+    }
 }else{
-    if(contador>0){
+    if(contador>1){
         setContador(contador-1)
     }
 }
 }
     
-    const addToCar = (id) => {
+    const addToCar = (id, e) => {    
+    e.preventDefault()
     
         let newCarItem = allProducts.find(allProducts => allProducts._id === id)
          let infoFromLocalStorage = JSON.parse(localStorage.itemCar)
     
         let itemInCar = infoFromLocalStorage.find(item => item._id === newCarItem._id)
-    
+        
+       
         function addOrCreate(producto) {
             let agregado = infoFromLocalStorage
             if (producto) {
@@ -43,7 +60,7 @@ if(e.target.value === "mas"){
                   })
                 agregado.map(item =>{
                     if (item._id === newCarItem._id) {
-                        item.quantity += contador
+                            item.quantity += contador   
                     }
                 }) 
             }else{ 
@@ -58,12 +75,13 @@ if(e.target.value === "mas"){
                 newCarItem.quantity = contador
                 agregado.push(newCarItem)
             }
+            
             return agregado
         }
         let producto = addOrCreate(itemInCar)
-    
+
         localStorage.setItem("itemCar", JSON.stringify(producto))
-        setContador(0)
+        setContador(1)
        
     }
     
@@ -75,7 +93,7 @@ if(e.target.value === "mas"){
                     <button className='botonIncSesDetail' onClick={(e) =>handleCompar(e)}>Comprar</button>
             </div>
             <div>
-                    <button className='botonRegistroDetail' onClick={() => addToCar(id)}>Agregar al carrito</button>
+                    <button className='botonRegistroDetail' onClick={(e) => addToCar(id, e)}>Agregar al carrito</button>
                
             </div>
         </div>
