@@ -154,12 +154,12 @@ export function postProduct(payload) {
   };
 }
 
-// export function deleteProduct (payload) {
-//     return async function (dispatch) {
-//       const deleteProduct = await axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload} `);
-//       return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
-//     };
-//   };
+export function deleteProduct (payload) {
+    return async function (dispatch) {
+      const deleteProduct = await axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload} `);
+      return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
+    };
+  };
 
 export function locaLSatorage() {
   let productsInLocalStorage = localStorage.getItem("itemCar");
@@ -285,12 +285,4 @@ export function modifyProduct(id, detailData ,token){
   }
 
 
-export function deleteProduct(payload) {
-  return async function () {
-    console.log('action')
-    try {axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload}`)
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
+
