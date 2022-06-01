@@ -22,9 +22,9 @@ export function validate (input) {
         errors.model = 'Campo requerido'
     }
   //  categories
-    else if (!input.categories.lenght) {
-        errors.categories = 'Debe seleccionar al menos una categoría '
-    }
+    // else if (!input.categories.lenght) {
+    //     errors.categories = 'Debe seleccionar al menos una categoría '
+    // }
     else if (!input.screenSize) {
         errors.screenSize = 'Campo requerido'
     }
@@ -95,7 +95,7 @@ export default function CreateProduct () {
             //  console.log(stringsCat)
             //  aux.push(stringsCat)
             }
-       const allCategoriesN = aux
+       const allCategoriesN = aux //['claro', 'personal', '...']
         // return aux
     
     //  console.log(allCategoriesN)
@@ -122,7 +122,8 @@ export default function CreateProduct () {
         internalMemory: '',
         image: [],
         description: '',
-        categories: []
+        categories: [],
+        newCategory :''
       })
     
       function handleSelectCat(e) {
@@ -130,10 +131,6 @@ export default function CreateProduct () {
           ...input,
           categories: [...input.categories, e.target.value]     
             })
-            setErrors(validate( {
-              ...input,
-              [e.target.name]: e.target.value
-            }))
             console.log(input)
       };
 
@@ -199,6 +196,7 @@ export default function CreateProduct () {
         formdata.append('screenSize', input.screenSize)
         for (let i =0; i < input.categories.length; i++)
         formdata.append('categories', input.categories[i])
+        formdata.append('categories', input.newCategory)
         e.preventDefault()
         dispatch(postProduct(formdata))
         alert(`Has creado ${input.name}, felicitaciones`)
@@ -338,9 +336,9 @@ export default function CreateProduct () {
                              <p className='errosCreateLarge'>{errors.brand}</p>
                              )}
                            </div>
-                           <div className='productDiv'>
+                           <div className='productDivC'>
                              <label className='titlesNNO' name='categories'><b>Categoría/s:</b></label>
-                             <select className='selectForm' onChange={handleSelectCat}>
+                             <select className='selectFormC' onChange={handleSelectCat}>
                                <option disabled selected  value="">Tipo de línea</option>
                                <option value='PERSONAL'>Personal</option>
                                <option value='LIBERADO'>Liberado</option>
@@ -348,22 +346,20 @@ export default function CreateProduct () {
                                {/* {allCategoriesN && allCategoriesN.map((c) => (
                                <option key= {c} value= {c} >{c}</option>
                                )
-                               )} */}
+                              )} */}
                              </select>
+                             <div>Agregar caregorías</div>
+                              <input
+                              autoComplete='off'
+                              type='text'
+                              className='inputsProductForm'
+                              name='newCategory'
+                              value={input.newCategory}
+                              onChange={(e) => handleChange(e)}
+                              />
                              {errors.categories && (
                              <p className='errosCreateLarge'>{errors.categories}</p>
                              )}
-                             {/* <input
-                             autoComplete='off'
-                             type='text'
-                             className='inputsProductForm'
-                             name='categories'
-                             value={input.categories}
-                             onChange={(e) => handleChange(e)}
-                             />
-                             {errors.categories && (
-                             <p className='errosCreateLarge'>{errors.categories}</p>
-                             )} */}
                              {input.categories? <div>
                              {input.categories?.map(c => 
                              (<div className="listaCountSelD"  key={c}>
