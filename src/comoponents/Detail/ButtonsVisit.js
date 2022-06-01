@@ -7,10 +7,24 @@ import { useState } from "react";
 
 
 export default function ButtonsVisit ({id}){
+    
     const allProducts = useSelector(state => state.products)
     const token = useSelector(state=> state.token)
     const history = useHistory()
-    const [contador, setContador] = useState(0)
+    const [contador, setContador] = useState(1)
+    const [maximo, setMaximo] = useState(1000000)
+    let newCarItem = allProducts.find(allProducts => allProducts._id === id)
+    localStorage.setItem("maxStock", JSON.stringify(newCarItem))
+    let maxFromLocal = JSON.parse(localStorage.maxStock)
+    maxFromLocal = maxFromLocal.amountInStock
+    console.log(localStorage.maxStock)
+function maximoStock(maximo){
+    if(maximo===1000000){
+    console.log(maxFromLocal)
+    setMaximo(maxFromLocal)
+    }
+}
+maximoStock(maximo)
     
 function handleCompar(e){
     if(!token){
@@ -21,14 +35,16 @@ function handleCompar(e){
 }
 
 function handleContador(e){
-if(e.target.value === "mas"){
-    setContador(contador + 1)
-}else{
-    if(contador>0){
-        setContador(contador-1)
+    if(e.target.value === "mas"){
+        if(contador < maximo){
+            setContador(contador+1)
+        }
+    }else{
+        if(contador>1){
+            setContador(contador-1)
+        }
     }
-}
-}
+    }
     
     const addToCar = (id) => {
     
@@ -69,7 +85,7 @@ if(e.target.value === "mas"){
         let producto = addOrCreate(itemInCar)
     
         localStorage.setItem("itemCar", JSON.stringify(producto))
-        setContador(0)
+        setContador(1)
        
     }
 

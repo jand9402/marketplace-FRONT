@@ -23,9 +23,9 @@ function maximoStock(maximo){
 }
 maximoStock(maximo)
 
-function handleCompar(e){
-    alert('vas a comprar')
-}
+// function handleCompar(e){
+//     alert('vas a comprar')
+// }
 
 function handleContador(e){
 if(e.target.value === "mas"){
@@ -90,7 +90,9 @@ if(e.target.value === "mas"){
             <button className="botones_contador_detail_menos" onClick={(e) => handleContador(e)} value="menos"> - </button><div className="contador_carrito">{contador}</div><button className="botones_contador_detail_mas" onClick={(e) => handleContador(e)} value="mas">+</button>
            <br/>
             <div>
-                    <button className='botonIncSesDetail' onClick={(e) =>handleCompar(e)}>Comprar</button>
+            <Link to="/CheckOut"> 
+                    <button className='botonIncSesDetail' >Comprar</button>
+                    </Link>
             </div>
             <div>
                     <button className='botonRegistroDetail' onClick={(e) => addToCar(id, e)}>Agregar al carrito</button>
