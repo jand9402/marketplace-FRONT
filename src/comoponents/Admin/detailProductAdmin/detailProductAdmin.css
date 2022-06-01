@@ -103,4 +103,9 @@
     padding-right: 20px;
     bottom: 25px;
     /* background-color: aqua; */
+ }
+
+.divImagenAdmin {
+    display: block;
+    align-content: center;
 }
