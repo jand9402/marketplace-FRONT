@@ -134,10 +134,12 @@ export function postUser(payload) {
       );
       return response;
     } catch (error) {
-      console.log(error);
+      
+      return error;
     }
   };
 }
+
 export function postProduct(payload) {
   console.log(payload);
   return async function (dispatch) {
@@ -223,6 +225,7 @@ export function getUsers(token) {
     }
   };
 }
+
 
 export function orders(payload) {
   return {
