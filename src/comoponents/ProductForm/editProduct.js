@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { modifyProduct, getCategories } from "../../redux/actions/index"
+import './ProductForm.css'
 
 
 export function validate (input) {

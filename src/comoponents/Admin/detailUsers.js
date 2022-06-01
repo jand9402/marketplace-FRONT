@@ -3,13 +3,16 @@ import NavBarDetailAdmin from "../NavBar/navBarDetaiAdmin";
 import CardsUsers from "./cardsUsers/cardsUsers";
 
 export default function DetailUsers () {
-
+let data = JSON.parse(localStorage.getItem("userData"))
     return(
         <div>
             <NavBarDetailAdmin/>
-            <div className="contenedorSesionAdmin">
-                <CardsUsers/>
-            </div>
+            {
+                data.isAdmin? (
+                <div className="contenedorSesionAdmin">
+                    <CardsUsers/>
+                </div>):(<div>No tiene permitido el acceso</div>)
+            }
         </div>
     )
 }

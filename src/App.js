@@ -9,7 +9,7 @@ import Sesion from "./comoponents/Admin/sesion";
 import SesionProductAdmin from "./comoponents/Admin/sesionProductAdmin";
 import SesionVentasAdmin from "./comoponents/Admin/sesionVentasAdmin";
 import DetailProductAdmin from "./comoponents/Admin/detailProductAdmin/detailProductAdmin";
-import ProductForm from "./comoponents/ProductForm/ProductForm";
+// import ProductForm from "./comoponents/ProductForm/ProductForm";
 import MiSesion from "./comoponents/RegisteredUser/MiSesion";
 import DetailUsers from "./comoponents/Admin/detailUsers";
 import FormCheckOut from "./comoponents/FormCheckOut/FormCheckOut";
@@ -29,16 +29,12 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={RegisterForm} />
           <Route exact path="/detailVisit/:id" component={Detail} />
-          <Route exact path="/productForm" component={ProductForm} />
+          {/* <Route exact path="/productForm" component={ProductForm} /> */}
           <Route exact path="/shoppingCar" component={ShoppingCar} />
           <Route exact path="/admin" component={Sesion} />
-          <Route exact path="/registerForm" component={ProductForm} />
+          {/* <Route exact path="/registerForm" component={ProductForm} /> */}
           <Route exact path="/admin/products" component={SesionProductAdmin} />
-          <Route
-            exact
-            path="/admin/products/detail/:id"
-            component={DetailProductAdmin}
-          />
+          <Route exact path="/admin/products/detail/:id" component={DetailProductAdmin}/>
           <Route exact path="/admin/ventas" component={SesionVentasAdmin} />
           <Route exact path="/admin/users" component={DetailUsers} />
           <Route exact path="/admin/users/buys/:id" component={BuysUser} />
@@ -47,8 +43,6 @@ function App() {
           <Route exact path="/PostOrder" component={PostOrder} />
           <Route exact path="/OrderList" component={OrderList} />
           <Route exact path="/Success" component={Success} />
-
-          <Route exact path="/createProductPrueba" component={CreateProduct} />
         </Switch>
       </div>
     </BrowserRouter>

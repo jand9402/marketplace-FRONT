@@ -13,8 +13,10 @@ import EditProduct from "../../ProductForm/editProduct";
 export default function DetailProductAdmin () {
 const dispatch = useDispatch();
 const detail = useSelector (state => state.detail)
-console.log (detail)
+let data = JSON.parse(localStorage.getItem("userData"))
+// console.log (detail)
 const [stateModalPut, setStateModalPut] = useState (false)
+
 
 function handleClickModal (e) {
     setStateModalPut(!stateModalPut)
@@ -37,6 +39,8 @@ useEffect (() => {
     return (
         <div>
             <NavBarDetailAdmin/>
+            {data.isAdmin?(
+
             <div key={id} className='contenedorDetailAdmin'>
                 <div className="boxDetaiQuePuedoModificar">
                     <img  className="imageDetailAdmin" src={detail.image ? detail.image[0] : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.clarin.com%2Ftecnologia%2Fbanco-nacion-relanza-venta-celulares-modelos-descuento-18-cuotas-interes_0_QmAUsjhAU.html&psig=AOvVaw1sQbEUoycHdCfckA6AJk7V&ust=1653956093926000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCLiOtd34hfgCFQAAAAAdAAAAABAH" } alt="imageDetailAdmin"/>
@@ -78,7 +82,7 @@ useEffect (() => {
                             <div className="namesAllDetailAdmin">MEMORIA INTERNA:</div>
                             <div className="descriptionDetailAdmin">{detail.internalMemory} GB </div>
                         </div>
-                        <div className="cajasDetailAdmin">
+                        <div className="cajasDetailAdminD">
                             <div className="namesAllDetailAdmin">DESCRIPCIÓN:</div>
                             <div className="descriptionDetailAdminDes">{detail.description}</div>
                         </div>
@@ -96,6 +100,7 @@ useEffect (() => {
                     <div className="detailProductName">Valoración del producto</div>
                 </div>
             </div>
+            ):(<div>No tienen permitido el acceso</div>)}
             <Modal
             state= {stateModalPut}
             changeState = {setStateModalPut}
