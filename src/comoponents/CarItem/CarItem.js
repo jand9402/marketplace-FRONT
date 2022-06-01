@@ -13,13 +13,7 @@ export default function CarItem({ data }) {
 
     let { _id, name, image, price, quantity, amountInStock} = data
     
-    function validateStock(quantity1){
-        if(quantity1 > amountInStock){
-            quantity1 = amountInStock
-        }
-        return quantity1
-    }
-    quantity = validateStock(quantity)
+   
     const dispatch = useDispatch()
     let history = useHistory()
 
