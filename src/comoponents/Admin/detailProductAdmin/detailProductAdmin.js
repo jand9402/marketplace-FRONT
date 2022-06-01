@@ -8,7 +8,11 @@ import Modal from "../Modales/Modal";
 import './detailProductAdmin.css'
 // import CreateProduct from "../../ProductForm/createProduct";
 import EditProduct from "../../ProductForm/editProduct";
+
+import cuadroBlanco from "../../../assets/detail/cuadroBlanco.jpg"
+
 // import { deleteProduct } from "../../../redux/actions";
+
 
 export default function DetailProductAdmin () {
 const dispatch = useDispatch();
@@ -90,10 +94,114 @@ useEffect (() => {
                             <div className="namesAllDetailAdmin">CANTIDAD:</div>
                             <div className="descriptionDetailAdmin">{detail.amountInStock} uds.</div>
                         </div>
+                        <div>
+                            <h3>Imagenes del producto</h3>
+
+                            {
+                                detail.image ? (
+                                    <div className="divImagenAdmin">
+
+                               <button data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <img className="imagenSecundaria" src={detail.image[0]} alt='imagenProducto'/>
+</button>
+<div class="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <img className="imagenModal" src={detail.image[0]} alt='imagenProducto'/>
+      </div>     
+    </div>
+  </div>
+</div>
+
+<button data-bs-toggle="modal" data-bs-target="#imagenModal2">
+  <img className="imagenSecundaria" src={detail.image[1] ? detail.image[1] : cuadroBlanco} alt='imagenProducto'/>
+</button>
+<div class="modal fade" id="imagenModal2" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <img className="imagenModal" src={detail.image[1] ? detail.image[1] : cuadroBlanco} alt='imagenProducto'/>
+      </div>     
+    </div>
+  </div>
+</div>
+
+<button data-bs-toggle="modal" data-bs-target="#imagenModal3">
+  <img className="imagenSecundaria" src={detail.image[2] ? detail.image[2] : cuadroBlanco} alt='imagenProducto'/>
+</button>
+<div class="modal fade" id="imagenModal3" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <img className="imagenModal" src={detail.image[2] ? detail.image[2] : cuadroBlanco} alt='imagenProducto'/>
+      </div>     
+    </div>
+  </div>
+</div>
+                                {/* <a href={producto.image[0]}><img className="imagenSecundaria" src={producto.image[0]} alt='imagenProducto'/></a> */}
+                                {/* <a href={producto.image[1]}><img className="imagenSecundaria" src={producto.image[1]} alt='imagenProducto'/></a> */}
+                                {/* <a href={producto.image[2]}><img className="imagenSecundaria" src={producto.image[2]} alt='imagenProducto'/></a> */}
+                                </div>  
+                                ) :
+                                <p>No existe la imagen</p>
+
+//                                 <div className="divImagen">
+
+//                                 <button data-bs-toggle="modal" data-bs-target="#exampleModal">
+//    {/* <img className="imagenSecundaria" src={detail.image[0]} alt='imagenProducto'/> */}
+//    <p>hola</p>
+//  </button>
+//  <div class="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//    <div class="modal-dialog">
+//      <div class="modal-content">
+//        <div class="modal-body">
+//        {/* <img className="imagenModal" src={detail.image[0]} alt='imagenProducto'/> */}
+//        <p>joder</p>
+//        </div>     
+//      </div>
+//    </div>
+//  </div>
+ 
+//  <button data-bs-toggle="modal" data-bs-target="#imagenModal2">
+//    {/* <img className="imagenSecundaria" src={detail.image[1]} alt='imagenProducto'/> */}
+//    <p>prueba</p>
+//  </button>
+//  <div class="modal fade" id="imagenModal2" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//    <div class="modal-dialog">
+//      <div class="modal-content">
+//        <div class="modal-body">
+//        {/* <img className="imagenModal" src={detail.image[1]} alt='imagenProducto'/> */}
+//        <p>otra prueba</p>
+//        </div>     
+//      </div>
+//    </div>
+//  </div>
+ 
+//  <button data-bs-toggle="modal" data-bs-target="#imagenModal3">
+//    <img className="imagenSecundaria" src="https://i.blogs.es/a24a9c/samsung-galaxy-tab/1366_2000.jpg" alt='imagenProducto'/>
+//  </button>
+//  <div class="modal fade" id="imagenModal3" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//    <div class="modal-dialog">
+//      <div class="modal-content">
+//        <div class="modal-body">
+//        <img className="imagenModal" src="https://i.blogs.es/a24a9c/samsung-galaxy-tab/1366_2000.jpg" alt='imagenProductoVacio'/>
+//        </div>     
+//      </div>
+//    </div>
+//  </div>
+//                                  {/* <a href={producto.image[0]}><img className="imagenSecundaria" src={producto.image[0]} alt='imagenProducto'/></a> */}
+//                                  {/* <a href={producto.image[1]}><img className="imagenSecundaria" src={producto.image[1]} alt='imagenProducto'/></a> */}
+//                                  {/* <a href={producto.image[2]}><img className="imagenSecundaria" src={producto.image[2]} alt='imagenProducto'/></a> */}
+//                                  </div>
+                            }
+
+                        </div>
                     </div>
                 </div>
                 <div className="boxDetaiQueNoPuedoModificar">
                     <div className="detailProductName">Valoración del producto</div>
+
                 </div>
             </div>
             <Modal
