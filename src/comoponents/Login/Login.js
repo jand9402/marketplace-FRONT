@@ -101,9 +101,10 @@ const handleSubmit = async (e) => {
               </div>
               <div className='botonesLogin'>
                 <button type='submit' className='button'>Ingresar</button>
-                <Link  to='/' id='click'>
+                <div className='orderButtonGoogle'>
                   <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
-                </Link>
+                  <button className='botonGoogle'></button>
+                </div>
               </div>
             </form>
           </div>
