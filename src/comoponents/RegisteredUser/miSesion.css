@@ -19,7 +19,7 @@
         background-color: #FAFBFD;
         align-items: center;
         justify-content: space-between;
-        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.6);
         transition: transform 0.4s;
         transform-style: preserve-3d;
     }
@@ -37,4 +37,24 @@
 
 .tus_compras{
     margin-top: 30px;
+}
+
+.row_reviews{
+    margin-top: 20px;
+    border-bottom: none;
+}
+
+.col_reviews{
+    margin-top: 40px;
+    min-width: 30% !important;
+}
+
+.text_rates{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+}
+
+.tituloVal{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: xxx-large;
 }
