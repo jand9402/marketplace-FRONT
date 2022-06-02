@@ -8,32 +8,34 @@ import { getCountries } from "../../redux/actions";
 import { Dispatch } from "react";
 import { orders } from "../../redux/actions";
 import { Link } from "react-router-dom";
-import paypal from '../../assets/icons/paypal.png.png'
-import stripe from '../../assets/icons/stripe.png.png'
-
+import paypal from "../../assets/icons/paypal.png.png";
+import stripe from "../../assets/icons/stripe.png.png";
+import NavBarAll from "../NavBar/NavBarAll.js";
 
 export default function FormCheckOut() {
   const dispatch = useDispatch();
   // let infoUser = JSON.parse(localStorage.userData)
   let infoProducts = JSON.parse(localStorage.itemCar);
   let orderProducts = [];
-  if(infoProducts.length>1){infoProducts.map((item) => {
-    let producto = {
-      product: item._id,
-      name: item.name,
-      image: item.image,
-      price: item.price,
-      quantity: item.quantity,
-    };
-    orderProducts.push(producto);
-  })}else{
+  if (infoProducts.length > 1) {
+    infoProducts.map((item) => {
+      let producto = {
+        product: item._id,
+        name: item.name,
+        image: item.image,
+        price: item.price,
+        quantity: item.quantity,
+      };
+      orderProducts.push(producto);
+    });
+  } else {
     let producto = {
       product: infoProducts._id,
       name: infoProducts.name,
       image: infoProducts.image,
       price: infoProducts.price,
       quantity: infoProducts.quantity,
-    }
+    };
     orderProducts.push(producto);
   }
   let itemsPrice = 0;
@@ -108,9 +110,9 @@ export default function FormCheckOut() {
       })
     );
   }
-  function handlePaypal(e){
-    e.preventDefault()
-    alert("esta opción de pago no esta disponible")
+  function handlePaypal(e) {
+    e.preventDefault();
+    alert("esta opción de pago no esta disponible");
   }
 
   function handleSubmit(e) {
@@ -173,205 +175,191 @@ export default function FormCheckOut() {
   }
 
   return (
-    <div className="container">
-      <div className="row row-checkou">
-        <h1 className=" mt-5">Información de envío</h1>
-        <span className=" mb-5">
-          Los campos marcados con * son obligatorios
-        </span>
-        <div className="col-6 col-checkot-form">
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Nombre Completo*
-              </label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="fullName"
-                value={input.fullName}
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
-              {errors.fullName && (
-                <p className="errosRegistro">{errors.fullName}</p>
-              )}
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Dirección de la entrega*
-              </label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="address"
-                value={input.address}
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
-              {errors.address && (
-                <p className="errosRegistro">{errors.address}</p>
-              )}
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Pais*
-              </label>
-              <select
-                name="country"
-                onChange={(e) => handleChange(e)}
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              >
-                <option></option>
-                {paises.map((c) => (
-                  <option key={c} name="country" value={c}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-              {errors.country && (
-                <p className="errosRegistro">{errors.country}</p>
-              )}
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Estado/Provincia*
-              </label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="province"
-                value={input.province}
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
-              {errors.province && (
-                <p className="errosRegistro">{errors.province}</p>
-              )}
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Ciudad*
-              </label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="city"
-                value={input.city}
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
-              {errors.city && <p className="errosRegistro">{errors.city}</p>}
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Calle*
-              </label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="street"
-                value={input.street}
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
-              {errors.street && (
-                <p className="errosRegistro">{errors.street}</p>
-              )}
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Codigo Postal*
-              </label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="postalCode"
-                value={input.postalCode}
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
-              {errors.postalCode && (
-                <p className="errosRegistro">{errors.postalCode}</p>
-              )}
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Edificio
-              </label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="building"
-                value={input.building}
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Piso
-              </label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="floor"
-                value={input.floor}
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
-                Apartamento
-              </label>
-              <input
-                onChange={(e) => handleChange(e)}
-                name="apartment"
-                value={input.apartment}
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
-            </div>
+    <>
+      <NavBarAll />
+      <div className="container">
+        <Link to="/shoppingCar">
+          <button className="btn btn-secondary">Regresar</button>
+        </Link>
+        <div className="row row-checkou">
+          <h1 className=" mt-5">Información de envío</h1>
+          <span className=" mb-5">
+            Los campos marcados con * son obligatorios
+          </span>
+          <div className="col-6 col-checkot-form">
+            <form onSubmit={(e) => handleSubmit(e)}>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Nombre Completo*
+                </label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  name="fullName"
+                  value={input.fullName}
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                {errors.fullName && (
+                  <p className="errosRegistro">{errors.fullName}</p>
+                )}
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Dirección de la entrega*
+                </label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  name="address"
+                  value={input.address}
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                {errors.address && (
+                  <p className="errosRegistro">{errors.address}</p>
+                )}
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Pais*
+                </label>
+                <select
+                  name="country"
+                  onChange={(e) => handleChange(e)}
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                >
+                  <option></option>
+                  {paises.map((c) => (
+                    <option key={c} name="country" value={c}>
+                      {c}
+                    </option>
+                  ))}
+                </select>
+                {errors.country && (
+                  <p className="errosRegistro">{errors.country}</p>
+                )}
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Estado/Provincia*
+                </label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  name="province"
+                  value={input.province}
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                {errors.province && (
+                  <p className="errosRegistro">{errors.province}</p>
+                )}
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Ciudad*
+                </label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  name="city"
+                  value={input.city}
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                {errors.city && <p className="errosRegistro">{errors.city}</p>}
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Calle*
+                </label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  name="street"
+                  value={input.street}
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                {errors.street && (
+                  <p className="errosRegistro">{errors.street}</p>
+                )}
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Codigo Postal*
+                </label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  name="postalCode"
+                  value={input.postalCode}
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                {errors.postalCode && (
+                  <p className="errosRegistro">{errors.postalCode}</p>
+                )}
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Edificio
+                </label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  name="building"
+                  value={input.building}
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Piso
+                </label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  name="floor"
+                  value={input.floor}
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Apartamento
+                </label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  name="apartment"
+                  value={input.apartment}
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
 
-            <button type="submit" class="btn btn-primary">
-              Siguiente
-            </button>
-          </form>
-        </div>
-        <div className='col-6 col-checkot-img'>
-        <div className='container container_paymentMethod'>
-      <div className='row row_paypal'>
-      <form>
-    <fieldset>
-        <label>
-          <div className="paypal_div">
-            <input onClick={e=>handlePaypal(e)} type="radio" name="pago" value="paypal"/><img className="logo_paypal" src={paypal} alt='logo paypal'/>
+              <button type="submit" class="btn btn-primary">
+                Siguiente
+              </button>
+            </form>
           </div>
-        </label>
-        <label>
-        <div className="stripe_button">
-            <input type="radio" name="pago" value="stripe"/><img className="logo_stripe" src={stripe} alt='logo stripe'/>
         </div>
-        </label>
-    </fieldset>
-    </form>
       </div>
-    </div>
-</div>
-      </div>
-    </div>
+    </>
   );
 }

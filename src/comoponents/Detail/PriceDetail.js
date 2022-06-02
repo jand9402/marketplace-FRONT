@@ -27,6 +27,7 @@ export default function PriceDetail() {
       <div className="boxMacroPrice-flx">
         {allProducts?.map((producto) => {
           if (producto._id === test) {
+            amountForButton = producto.amountInStock;
             return (
               <div className="orderNameyotros" key={producto._id}>
                 <div className="princeNameProd">{producto.name}</div>
@@ -36,7 +37,7 @@ export default function PriceDetail() {
                     <>
                       <div className="princeStockName">Stock disponible:</div>
                       <div className="princeStockNumber">
-                        {(amountForButton = producto.amountInStock)}
+                        {producto.amountInStock}
                       </div>
                     </>
                   ) : (
