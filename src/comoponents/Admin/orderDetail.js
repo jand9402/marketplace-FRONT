@@ -6,6 +6,7 @@ import { getOrderByID } from "../../redux/actions/index";
 import { Link } from "react-router-dom";
 import "./orderDetail.css";
 import axios from "axios";
+import NavBarDetailAdmin from "../NavBar/navBarDetaiAdmin";
 // import { setOrderShipped } from "../../redux/actions/index";
 
 export default function OrderDetail() {
@@ -37,11 +38,12 @@ export default function OrderDetail() {
 
   return (
     <div>
+      <NavBarDetailAdmin/>
       <div className="container">
         <div className="d-flex">
           <h1 className="tus_compras font">Tus Compras</h1>
           <Link to="/admin/ventas">
-            <button>Volver</button>
+            <button className="bottonVolODA">Volver</button>
           </Link>
         </div>
         {!data ? (
@@ -50,7 +52,9 @@ export default function OrderDetail() {
           <div>
             {data ? (
               <>
-                <p className="font">Usuario: {console.log(data)}</p>
+                <p className="font font-Style-Order-Detail">
+                  Comprador: {data?.deliveryAddress.fullName}
+                </p>
                 <div className="container container_orders">
                   {
                     <div key={data._id}>
@@ -79,6 +83,10 @@ export default function OrderDetail() {
                             Enviado: NO
                           </p>
                         )}
+                        <p className="col">
+                          Cantidad de productos: {data.orderProducts.length}
+                        </p>
+                        <p className="col">Total: ${data.totalPrice}</p>
                       </div>
                       <div className="row row_productos_order">
                         <h3 className="font">Productos</h3>
@@ -88,11 +96,13 @@ export default function OrderDetail() {
                             key={product._id}
                           >
                             <p className="font">Nombre: {product.name}</p>
-                            <img
-                              src={product.image[0]}
-                              height="150px"
-                              alt="ProductImg"
-                            />
+                            <Link to={`/detailVisit/${product.product}`}>
+                              <img
+                                src={product.image[0]}
+                                height="150px"
+                                alt="ProductImg"
+                              />
+                            </Link>
                           </div>
                         ))}
                         {
@@ -105,16 +115,15 @@ export default function OrderDetail() {
                           </button>
                         )} */
                         }
-                        {data.isDelivered ? (
-                          <p className="col font" style={{ color: "green" }}>
-                            Ya fue enviado
-                          </p>
-                        ) : (
-                          <button onClick={handleSubmit}>
-                            Enviar Producto
-                          </button>
-                        )}
                       </div>
+
+                      {data.isDelivered ? (
+                        <p className="col font" style={{ color: "green" }}>
+                          Ya fue enviado
+                        </p>
+                      ) : (
+                        <button onClick={handleSubmit}>Enviar Producto</button>
+                      )}
                     </div>
                   }
                 </div>

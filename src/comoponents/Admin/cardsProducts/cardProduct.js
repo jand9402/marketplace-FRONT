@@ -30,7 +30,7 @@ function handleDelete(name, id){
             <img className="imageCardAdmin" src={image[0]} alt='imageCardAdmin' />
             <div className="boxNamePriceProdAdm ">
                 <div className="productAdminName">{name}</div>
-                <div className="productAdminPrice">${price}</div>
+                <div className="productAdminPrice">US${price}</div>
             </div>
             
             <div className="orderDeletAndButton">

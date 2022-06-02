@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { postProduct, getCategories } from "../../redux/actions/index"
+import { useHistory } from "react-router-dom";
 
 
 export function validate (input) {
@@ -73,6 +74,7 @@ export default function CreateProduct () {
       const dispatch = useDispatch()
       const categoriesAll = useSelector(state => state.categoriesNew)
       const token = localStorage.getItem('authorization')
+      const history = useHistory()
   
       
      
@@ -197,6 +199,7 @@ export default function CreateProduct () {
           categories: [], 
           newCategory: ''
         })
+        history.push('/admin/products')
       } 
     }
 
