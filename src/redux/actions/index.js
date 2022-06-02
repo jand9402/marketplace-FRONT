@@ -108,8 +108,10 @@ export const searchByName = (payload) => async (dispatch) => {
   console.log(payload);
   return fetch(`https://pf-commerce.herokuapp.com/api/products?name=${payload}`)
     .then((respose) => respose.json())
-    .then((json) => dispatch({ type: SEARCH_BY_NAME, payload: json.products }))
-    .catch(() => alert(`No se encontró ${payload}, intentelo nuevamente`));
+    .then((json) =>
+      dispatch({ type: SEARCH_BY_NAME, payload: [json.products, payload] })
+    );
+  // .catch(() => alert(`No se encontró ${payload}, intentelo nuevamente`));
 };
 
 // export const orderByPrice = (payload) => async dispatch => {
@@ -135,10 +137,11 @@ export function postUser(payload) {
       );
       return response;
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 }
+
 export function postProduct(payload) {
   console.log(payload);
   return async function (dispatch) {

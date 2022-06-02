@@ -26,6 +26,7 @@ const initialState = {
   // loading: false,
   products: [],
   allProducts: [],
+  allProducts2: [],
   detail: [],
   categorys: [],
   categoriesNew: [],
@@ -53,6 +54,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
         allProducts: action.payload,
+        allProducts2: action.payload
       };
     case GET_ALL_COUNTRIES:
       return {
@@ -60,9 +62,26 @@ export default function rootReducer(state = initialState, action) {
         countries: action.payload,
       };
     case SEARCH_BY_NAME:
+      console.log(action.payload)
+      let nombre = action.payload[1]
+      function error(payload){ 
+        console.log(payload)
+        if(payload.length<2){
+          alert('No se encontró ' + nombre + ', intentelo nuevamente')
+        }
+      }
+      error(action.payload[0])
+      function estado (productos){
+        if(productos.length<2){
+          return state.products
+        }else{
+          return action.payload[0]
+        }
+      }
+      let estadoActual = estado(action.payload[0])
       return {
         ...state,
-        products: action.payload,
+        products: estadoActual,
       };
     case GET_CATEGORIES:
       return {

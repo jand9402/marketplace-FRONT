@@ -18,11 +18,16 @@ export default function Card({ id, image, name, price }) {
 
         let newCarItem = allProducts.find(allProducts => allProducts._id === id)
         let infoFromLocalStorage = JSON.parse(localStorage.itemCar)
+        let infoBorrarStock = JSON.parse(localStorage.gestionStock)
 
         let itemInCar = infoFromLocalStorage.find(item => item._id === newCarItem._id)
+        let itemInCarParaStock = infoBorrarStock.find(item => item._id === newCarItem._id)
 
         function addOrCreate(producto) {
+            // console.log(itemInCar.quantity)
+            // console.log(itemInCarParaStock.amountInStock)
             let agregado = infoFromLocalStorage
+            let disminuirStock = infoBorrarStock
             if (producto) {
                 swal({
                     position: 'top-end',
@@ -31,9 +36,15 @@ export default function Card({ id, image, name, price }) {
                     showConfirmButton: false,
                     timer: 900
                 })
+                1>itemInCarParaStock.amountInStock?itemInCar.quantity=itemInCar.amountInStock:
                 agregado.map(item => {
                     if (item._id === newCarItem._id) {
                         item.quantity += 1
+                        disminuirStock.map(item2 => {
+                            if(item2._id === newCarItem._id){
+                                item2.amountInStock = item2.amountInStock -1
+                            }
+                        })
                     }
                 })
             } else {
@@ -47,7 +58,14 @@ export default function Card({ id, image, name, price }) {
                 history.push('/')
                 newCarItem.quantity = 1
                 agregado.push(newCarItem)
+                disminuirStock.map(item2 => {
+                    if(item2._id === newCarItem._id){
+                        item2.amountInStock = item2.amountInStock -1
+                    }
+                })
+                
             }
+            localStorage.setItem("gestionStock", JSON.stringify(disminuirStock))
             return agregado
         }
         let producto = addOrCreate(itemInCar)

@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./RegisterForm.css";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postUser } from "../../redux/actions";
 import NavBarDetail from "../NavBar/NavBaRDetail";
+import { getUsers } from "../../redux/actions";
 
 export default function RegisterForm() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [errors, setErrors] = useState({});
+  const [input, setInput] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    password2: "",
+  });
+  const users = useSelector((state) => state.users);
+  const token = useSelector((state) => state.token);
+
+  useEffect(() => {
+    dispatch(getUsers(localStorage.getItem("authorization")));
+  }, [dispatch]);
+  console.log(token);
+
   function validate(input) {
     const expresiones = {
       nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -30,16 +49,6 @@ export default function RegisterForm() {
     }
     return errors;
   }
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const [errors, setErrors] = useState({});
-  const [input, setInput] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
-    password2: "",
-  });
 
   function handleChange(e) {
     setInput({
@@ -54,7 +63,7 @@ export default function RegisterForm() {
     );
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       input.name === "" &&
@@ -74,8 +83,12 @@ export default function RegisterForm() {
       alert("Debe completar todos los campos");
     } else {
       e.preventDefault();
-      dispatch(postUser(input));
-      alert("Registro exitoso");
+      try {
+        await dispatch(postUser(input));
+        history.push("/login");
+      } catch (error) {
+        alert("El correo ya se encuentra registrado");
+      }
       setInput({
         name: "",
         email: "",
@@ -83,9 +96,8 @@ export default function RegisterForm() {
         password: "",
         password2: "",
       });
-      history.push("/login");
     }
-  }
+  };
 
   return (
     <div>
