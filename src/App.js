@@ -18,8 +18,12 @@ import CreateProduct from "./comoponents/ProductForm/createProduct";
 import PostOrder from "./comoponents/Order/CreateOrder";
 import OrderList from "./comoponents/Order/OrderList";
 import Success from "./comoponents/Order/Success";
+
 // import CreateReviews from "./comoponents/reviews/Wishlist";
 import Wishlist from "./comoponents/wishlist/Wishlist";
+
+import OrderDetail from "./comoponents/Admin/orderDetail";
+
 
 function App() {
   return (
@@ -50,7 +54,7 @@ function App() {
           <Route exact path="/PostOrder" component={PostOrder} />
           <Route exact path="/OrderList" component={OrderList} />
           <Route exact path="/Success" component={Success} />
-
+          <Route exact path="/orderDetail/:id" component={OrderDetail} />
           <Route exact path="/createProductPrueba" component={CreateProduct} />
         </Switch>
       </div>

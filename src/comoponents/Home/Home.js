@@ -19,7 +19,6 @@ export default function Home() {
     localStorage.setItem("itemCar", JSON.stringify(locaS))
     localStorage.setItem("otra", JSON.stringify(otro))}
     }
-    // console.log(localStorage.itemCar)
     inicioLocalStorage()
     // useEffect (()=> {
 //     dispatch(getProducts())

@@ -19,16 +19,19 @@ import {
   GET_ORDER_DETAIL_USER,
   GET_WISHLIST,
   GET_CATEGORIES_NEW,
-  DELETE_PRODUCT
+  DELETE_PRODUCT,
+  GET_ALL_ORDERS,
+  GET_ORDER_BY_ID,
 } from "../actions";
 
 const initialState = {
   // loading: false,
   products: [],
   allProducts: [],
+  allProducts2: [],
   detail: [],
   categorys: [],
-  categoriesNew :[],
+  categoriesNew: [],
   brand: [],
   // login: false,
   createProduct: {},
@@ -43,7 +46,10 @@ const initialState = {
   cart: [],
   orderDetail: [],
   order: [],
-  allWishlist: []
+  allWishlist: [],
+
+  allOrders: [],
+  orderById: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -53,6 +59,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
         allProducts: action.payload,
+        allProducts2: action.payload,
       };
     case GET_ALL_COUNTRIES:
       return {
@@ -60,21 +67,37 @@ export default function rootReducer(state = initialState, action) {
         countries: action.payload,
       };
     case SEARCH_BY_NAME:
+      console.log(action.payload);
+      let nombre = action.payload[1];
+      function error(payload) {
+        console.log(payload);
+        if (payload.length < 2) {
+          alert("No se encontró " + nombre + ", intentelo nuevamente");
+        }
+      }
+      error(action.payload[0]);
+      function estado(productos) {
+        if (productos.length < 2) {
+          return state.products;
+        } else {
+          return action.payload[0];
+        }
+      }
+      let estadoActual = estado(action.payload[0]);
       return {
         ...state,
-        products: action.payload,
+        products: estadoActual,
       };
     case GET_CATEGORIES:
       return {
         ...state,
         categorys: action.payload,
-      }
+      };
     case GET_CATEGORIES_NEW:
-      
-      return{
+      return {
         ...state,
-        categoriesNew: action.payload
-      }
+        categoriesNew: action.payload,
+      };
     case GET_BRAND:
       return {
         ...state,
@@ -149,27 +172,41 @@ export default function rootReducer(state = initialState, action) {
     case ORDERS:
       return {
         ...state,
-        cart: action.payload
-      }
+        cart: action.payload,
+      };
     case DELETE_PRODUCT:
-      return{
-        ...state
-      }
+      return {
+        ...state,
+      };
     case POST_ORDER:
       return {
         ...state,
         order: action.payload,
       };
+
     case GET_ORDER_DETAIL_USER:
       return {
         ...state,
         orderDetail: action.payload,
       };
+
       case GET_WISHLIST:
         return {
           ...state,
           allWishlist: action.payload
         }
+
+    case GET_ALL_ORDERS:
+      return {
+        ...state,
+        allOrders: action.payload,
+      };
+    case GET_ORDER_BY_ID:
+      return {
+        ...state,
+        orderById: action.payload,
+      };
+
 
     default:
       return { ...state };
