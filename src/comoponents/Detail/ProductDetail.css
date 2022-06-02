@@ -75,6 +75,10 @@
 .botonVolverDetail:hover{
     background-color: #6d6f71;
 }
+
+.botonVolverDetailConPad{
+    margin-top:2rem;
+}
 /* DETALLE */
 .lineaDetail{
     height: 2px;
@@ -180,6 +184,14 @@
     width: 500px;
     height: 450px;
 }
+
+.boxMacroPrice-flx {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .orderNameyotros{
     background-color: rgb(245, 245, 243)
 }

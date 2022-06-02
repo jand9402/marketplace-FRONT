@@ -52,7 +52,9 @@ export default function OrderDetail() {
           <div>
             {data ? (
               <>
-                <p className="font">Usuario: {console.log(data)}</p>
+                <p className="font font-Style-Order-Detail">
+                  Comprador: {data?.deliveryAddress.fullName}
+                </p>
                 <div className="container container_orders">
                   {
                     <div key={data._id}>
@@ -81,6 +83,10 @@ export default function OrderDetail() {
                             Enviado: NO
                           </p>
                         )}
+                        <p className="col">
+                          Cantidad de productos: {data.orderProducts.length}
+                        </p>
+                        <p className="col">Total: ${data.totalPrice}</p>
                       </div>
                       <div className="row row_productos_order">
                         <h3 className="font">Productos</h3>
@@ -90,11 +96,13 @@ export default function OrderDetail() {
                             key={product._id}
                           >
                             <p className="font">Nombre: {product.name}</p>
-                            <img
-                              src={product.image[0]}
-                              height="150px"
-                              alt="ProductImg"
-                            />
+                            <Link to={`/detailVisit/${product.product}`}>
+                              <img
+                                src={product.image[0]}
+                                height="150px"
+                                alt="ProductImg"
+                              />
+                            </Link>
                           </div>
                         ))}
                         {
@@ -107,16 +115,15 @@ export default function OrderDetail() {
                           </button>
                         )} */
                         }
-                        {data.isDelivered ? (
-                          <p className="col font" style={{ color: "green" }}>
-                            Ya fue enviado
-                          </p>
-                        ) : (
-                          <button onClick={handleSubmit}>
-                            Enviar Producto
-                          </button>
-                        )}
                       </div>
+
+                      {data.isDelivered ? (
+                        <p className="col font" style={{ color: "green" }}>
+                          Ya fue enviado
+                        </p>
+                      ) : (
+                        <button onClick={handleSubmit}>Enviar Producto</button>
+                      )}
                     </div>
                   }
                 </div>

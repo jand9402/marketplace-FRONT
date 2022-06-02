@@ -156,7 +156,7 @@ export function updateUserByAdmin(id, detailData, token) {
   console.log(detailData, id);
   return async function (dispatch) {
     const userMod = await axios.put(
-      `http://localhost:3001/api/users/update/${id}`,
+      `https://pf-commerce.herokuapp.com/api/users/update/${id}`,
       detailData,
       {
         headers: {
@@ -174,11 +174,14 @@ export function updateUserByAdmin(id, detailData, token) {
 export function getUserById(id) {
   const token = localStorage.getItem("authorization");
   return async function (dispatch) {
-    let response = await axios.get(`http://localhost:3001/api/users/${id}`, {
-      headers: {
-        Authorization: `${token}`,
-      },
-    });
+    let response = await axios.get(
+      `https://pf-commerce.herokuapp.com/api/users/${id}`,
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    );
     if (response) {
       return dispatch({
         type: GET_USER_BY_ID,
