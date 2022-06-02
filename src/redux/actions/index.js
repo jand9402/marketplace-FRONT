@@ -172,14 +172,19 @@ export function postProduct(payload, token) {
     }
   };
 }
-export function postRewies(id, payload) {
+export function postRewies(id, payload, token) {
   console.log(payload);
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        `https://pf-commerce.herokuapp.com/${id}/reviews`,
-        payload
+        `https://pf-commerce.herokuapp.com/api/products/reviews/${id}`,payload,
+        {
+          headers: {
+            authorization: `${token}`,
+          },
+        }
         );
+        alert(`Gracias por valorar el producto`)
       console.log(response);
       return response;
     } catch (error) {

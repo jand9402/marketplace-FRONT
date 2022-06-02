@@ -6,6 +6,7 @@ import NavBarDetail from '../NavBar/NavBaRDetail'
 import { useParams } from "react-router-dom";
 
 export default function PostReviews() {
+  const token = localStorage.getItem("authorization");
     const {id} = useParams();
   function validate(input) {
 
@@ -49,8 +50,8 @@ const history = useHistory()
       window.alert("Debe completar todos los campos");
     } else {
       e.preventDefault()
-        await dispatch(postRewies(id, input))
-        alert(`Gracias por valorar el producto`)
+        await dispatch(postRewies(id, input, token))
+        
   }
 }
 
