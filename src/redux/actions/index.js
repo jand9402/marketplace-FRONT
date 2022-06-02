@@ -134,17 +134,23 @@ export function postUser(payload) {
       );
       return response;
     } catch (error) {
-      console.log(error);
+      
+      return error;
     }
   };
 }
-export function postProduct(payload) {
+
+export function postProduct(payload, token) {
   console.log(payload);
   return async function (dispatch) {
     try {
       const response = await axios.post(
         "https://pf-commerce.herokuapp.com/api/products/post",
-        payload
+        payload,
+        {
+          headers:{
+            'authorization': `${token}`
+          }}
       );
       console.log(response);
       return response;
@@ -224,6 +230,7 @@ export function getUsers(token) {
   };
 }
 
+
 export function orders(payload) {
   return {
     type: ORDERS,
@@ -275,14 +282,20 @@ export function getOrderDetailByUser() {
 
 
 
-export function modifyProduct(id, detailData ){
-  console.log(detailData)
+export function modifyProduct(id, detailData, token){
+  console.log(detailData, id)
     return async function (dispatch){
-      const productMod = await axios.put(`https://pf-commerce.herokuapp.com/api/products/update/${id}`, detailData)
+      const productMod = await axios.put(`https://pf-commerce.herokuapp.com/api/products/update/${id}`, detailData,
+      {
+        headers:{
+          'authorization': `${token}`
+        }} )
       console.log(productMod)
     productMod? alert('Producto modificado correctamente') : alert('Producto no encontrado')
   }
   }
+
+  // export function loginGoogle ()
 
 
 

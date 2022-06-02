@@ -8,16 +8,23 @@ import Paginado from "../Paginado/Paginado";
 
 
 export default function Cards(){
- 
-const dispatch = useDispatch()
-const allProducts = useSelector(state => state.products)
-const countries = useSelector(state => state.countries)
-let categorys = useSelector((state) => state.categorys)
-const [currentPage, setCurrentPage] = useState(1)
-const [productsPerPage] = useState(5)
-const indexOfLastCard = currentPage * productsPerPage
-const indexOfFirstCard = indexOfLastCard - productsPerPage
-const currentCards = allProducts.slice(indexOfFirstCard,indexOfLastCard)
+    const dispatch = useDispatch()
+    const allProducts = useSelector(state => state.products)
+    const countries = useSelector(state => state.countries)
+    let categorys = useSelector((state) => state.categorys)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [productsPerPage] = useState(5)
+    const indexOfLastCard = currentPage * productsPerPage
+    const indexOfFirstCard = indexOfLastCard - productsPerPage
+    const currentCards = allProducts.slice(indexOfFirstCard,indexOfLastCard)
+    function inicioLocalStorage (){
+        if(!localStorage.gestionStock)
+    {
+        localStorage.setItem("gestionStock", JSON.stringify(allProducts))
+    }
+    
+}
+inicioLocalStorage()
 
 
 const paginado = (pageNumber) => {

@@ -73,6 +73,7 @@ export function validate (input) {
 export default function EditProduct () {
     
       const dispatch = useDispatch()
+      const token = localStorage.getItem('authorization')
       const categoriesAll = useSelector(state => state.categoriesNew)
       const detailProduct = useSelector (state => state.detail)
       const {id} = useParams();
@@ -85,33 +86,12 @@ export default function EditProduct () {
     },[dispatch, id])
       
      
-       const aux =[]
-        for (let i =0; i< categoriesAll.length; i++) {
-             var otroArray = categoriesAll[i] && categoriesAll[i].map(e => e)
-             var separado = otroArray.join (", ")
-             aux.push(separado)
-            //  console.log(separado)
-          //    let infoApiTemp = dataApiAll?.map (el => {
-          //     if(!el.temperament) return el.temperament = undefined;
-          // // A todos los demas los spliteo por ", " para añadirlos a un array en la constante aux
-          //     const aux = el.temperament.split(", "); 
-          //     return aux;
-          // });
-      // const ordenSinUnd = infoApiTemp.flat().filter(Boolean).sort();
-      // const stringUnicos = [...new Set(ordenSinUnd)];  
-            //  var separado = otroArray.join (",")
-            //  console.log(separado)
-            //  let stringsCat = [...separado]
-            //  console.log(stringsCat)
-            //  aux.push(stringsCat)
-            }
-       const allCategoriesN = aux //['claro', 'personal', '...']
-        // return aux
-    
-    //  console.log(allCategoriesN)
-    
-      // CATEGORIESALL ME TRAE UN ARRAY DE ARRAY... QUE TENGO QUE RECORRE PRIMERO TODO EL ARRAY Y LUEGO, CADA ARRAY PARA SACAR TODOS LOS ELEMENTOS Y TRAERME
-      // UNA ARRAY DE STRINGS...EN MI PI DE DOGS HAY ALGO...
+    let aux =[]
+    for (let i =0; i< categoriesAll.length; i++) {
+         aux = aux.concat(categoriesAll[i])
+        }
+   const allCategoriesN = [...new Set(aux)] 
+      
       const [file, setFile] = useState('')
       console.log(file)
       const [categorias, setCategorias] = useState([])
@@ -143,6 +123,12 @@ export default function EditProduct () {
             })
             console.log(input)
       };
+      function habdleOnChange (e){
+        detailProduct = {
+          ...detailProduct,
+          [e.target.name]: [e.target.value]
+        }
+      }
 
       function handleChange (e) {
         e.preventDefault()
@@ -150,6 +136,7 @@ export default function EditProduct () {
           ...input,
           [e.target.name]: e.target.value
         })
+        
         // detailProduct = {
         //   ...detailProduct,
         //   [e.target.name]: [e.target.value]
@@ -213,7 +200,7 @@ export default function EditProduct () {
         // formdata.append('categories', input.categories[i])
         // formdata.append('categories', input.newCategory)
         e.preventDefault()
-        await dispatch(modifyProduct( id, input))
+        await dispatch(modifyProduct( id, input, token))
         alert(`Has Modificado ${input.name}, felicitaciones`)
         setInput({
           name: '',
@@ -245,7 +232,7 @@ export default function EditProduct () {
                     {/* <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button> */}
                     <div className="boxColumnas1y2" >
                         <div className="boxColumna1PF">
-                            <div className='productDiv2'>
+                            <div className='productDiv'>
                                 <label className='titlesNNO'>Nombre del producto:</label>
                                 <input
                                 autoComplete='off'
@@ -259,7 +246,7 @@ export default function EditProduct () {
                                 <p className='errosCreateLarge'>{errors.name}</p>
                                 )}
                             </div>
-                            <div className='productDiv2'>
+                            <div className='productDiv'>
                               <label className='titlesNNO' htmlFor=''><b>Modelo:</b></label>
                               <input
                               autoComplete='off'
@@ -297,7 +284,7 @@ export default function EditProduct () {
                              id='file'
                              multiple 
                              name="image" 
-                             onChange={handleFile} 
+                             onChange={habdleOnChange} 
                              />
                              {errors.image && (
                              <p className='errosCreateLarge'>{errors.image}</p>
@@ -354,15 +341,12 @@ export default function EditProduct () {
                            </div>
                            <div className='productDivC'>
                              <label className='titlesNNO' name='categories'><b>Categoría/s:</b></label>
-                             <select className='selectFormC' onChange={handleSelectCat}>
+                             <select  className='selectForm' onChange={handleSelectCat}>
                                <option disabled selected  value="">Tipo de línea</option>
-                               <option value='PERSONAL'>Personal</option>
-                               <option value='LIBERADO'>Liberado</option>
-                               <option value='CLARO'>Claro</option>
-                               {/* {allCategoriesN && allCategoriesN.map((c) => (
+                               {allCategoriesN && allCategoriesN.map((c) => (
                                <option key= {c} value= {c} >{c}</option>
                                )
-                              )} */}
+                              )}
                              </select>
                              {input.categories? <div>
                              {input.categories?.map(c => 
@@ -371,7 +355,7 @@ export default function EditProduct () {
                                  <button className="botonDeletCat" id={c}  onClick={handleDelet}>x</button>
                               </div> 
                             ))}
-                             <div className="titlesNewCat" >Si no encuentra la categoría puede agregarla</div>
+                             {/* <div className="titlesNewCat" >Si no encuentra la categoría puede agregarla</div>
                               <input
                               autoComplete='off'
                               type='text'
@@ -379,7 +363,7 @@ export default function EditProduct () {
                               name='newCategory'
                               value={input.newCategory}
                               onChange={(e) => handleChange(e)}
-                              />
+                              /> */}
                              {errors.categories && (
                              <p className='errosCreateLarge'>{errors.categories}</p>
                              )}

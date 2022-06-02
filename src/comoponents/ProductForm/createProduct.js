@@ -72,7 +72,8 @@ export default function CreateProduct () {
     
       const dispatch = useDispatch()
       const categoriesAll = useSelector(state => state.categoriesNew)
-      console.log(categoriesAll)
+      const token = localStorage.getItem('authorization')
+  
       
      
        let aux =[]
@@ -80,7 +81,7 @@ export default function CreateProduct () {
              aux = aux.concat(categoriesAll[i])
             }
        const allCategoriesN = [...new Set(aux)] 
-     console.log(allCategoriesN)
+     
     
 
       const [file, setFile] = useState('')
@@ -143,25 +144,25 @@ export default function CreateProduct () {
         } )
     }
     
-      const handleCreate = async  (e) => {
+      const handleCreate = async (e) => {
         e.preventDefault()
       //   if (Object.values(errors).length > 0) {
       //     alert ('Complete toda la información requerida')    
       // }else
        if(
-          input.name === '' && 
-          !input.image.length === '' &&
-          input.brand === '' &&
-          input.description === '' &&
-          input.price === '' && 
-          input.amountInStock === '' &&
-          input.condition === '' &&
-          input.model === '' &&
-          input.internalMemory === '' &&
-          input.screenSize === '' &&
-          !input.temperament.length 
+          input.name === '' ||
+          // !input.image.length === '' 
+          input.brand === '' ||
+          input.description === '' ||
+          input.price === '' ||
+          input.amountInStock === '' ||
+          input.condition === '' ||
+          input.model === '' ||
+          input.internalMemory === '' ||
+          input.screenSize === '' ||
+          !input.categories.length 
           ) {
-         alert ('No puede creear una nueva actividad si no completa el formulario')
+         alert ('No puede creear un producto nuevo si no completa el formulario')
       }else {
         const formdata = new window.FormData()
         formdata.append('name', input.name)
@@ -180,7 +181,7 @@ export default function CreateProduct () {
         input.newCategory !== '' &&
         formdata.append('categories', input.newCategory)
         e.preventDefault()
-        dispatch(postProduct(formdata))
+        await dispatch(postProduct(formdata, token))
         alert(`Has creado ${input.name}, felicitaciones`)
         setInput({
           name: '',

@@ -1,8 +1,7 @@
 import './LoginForm.css'
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import LogoProv from '../../assets/logo/LogoProv.png'
+import { useDispatch } from 'react-redux'
 import { postLogin} from '../../redux/actions'
 import NavBarDetail from '../NavBar/NavBaRDetail'
 
@@ -23,8 +22,6 @@ const expresiones = {
 }
 
 const dispatch = useDispatch()
-// const token = useSelector(state => state.token)
-// console.log(token)
 const history = useHistory()
 
 const [errors, setErrors] = useState({})
@@ -62,8 +59,6 @@ const handleSubmit = async (e) => {
       history.push('/')
     } 
   }
-  // LE SAQUE EL TOKEN EN AUTHORIZATION , TOKEN
-  console.log(input)
 }
 
   return (
@@ -101,12 +96,14 @@ const handleSubmit = async (e) => {
               </div>
               <div className='botonesLogin'>
                 <button type='submit' className='button'>Ingresar</button>
-                <div className='orderButtonGoogle'>
-                  <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
-                  <button className='botonGoogle'></button>
-                </div>
               </div>
             </form>
+                <div className='orderButtonGoogle'>
+                  <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
+                  <a  href ="https://pf-commerce.herokuapp.com/google">
+                  <button className='botonGoogle'></button>
+                  </a>
+                </div>
           </div>
         </div>
       </div>
