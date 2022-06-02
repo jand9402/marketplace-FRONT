@@ -28,7 +28,7 @@ const history = useHistory()
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     comment: "",
-    rating: 0,
+    rating: "",
   });
 
   function handleChange(e) {
@@ -53,7 +53,7 @@ const history = useHistory()
     } else {
       e.preventDefault()
         await dispatch(postRewies(id, input, token))
-        alert(`Gracias por valorar el producto`)
+        alert(`Gracias por calificar el producto`)
         history.push('/miSesion')
   }
 }
@@ -66,17 +66,17 @@ const history = useHistory()
         <div className="contenedorReviewsAzul">
           <div className="cardLoginR">
             <div className="tituloLogin">Valorar producto</div>
-                <div>
-                    <label>1</label>
-                    <input onClick={handleChange}  type="radio" name= "rating" value ='1'/>
-                    <label>2</label>
-                    <input onClick={handleChange} type="radio" name= "rating" value ='2'/>
-                    <label>3</label>
-                    <input onClick={handleChange}  type="radio" name= "rating" value ='3'/>
-                    <label>4</label>
-                    <input onClick={handleChange}  type="radio" name= "rating" value ='4'/>
-                    <label>5</label>
-                    <input onClick={handleChange}  type="radio" name= "rating" value ='5'/>
+                <div className="orderinputReviews">
+                    <label className="labelreviews">1</label>
+                    <input  className="inputRadios" onClick={handleChange}  type="radio" name= "rating" value ='1'/>
+                    <label className="labelreviews">2</label>
+                    <input className="inputRadios" onClick={handleChange} type="radio" name= "rating" value ='2'/>
+                    <label className="labelreviews">3</label>
+                    <input  className="inputRadios" onClick={handleChange}  type="radio" name= "rating" value ='3'/>
+                    <label className="labelreviews">4</label>
+                    <input  className="inputRadios" onClick={handleChange}  type="radio" name= "rating" value ='4'/>
+                    <label className="labelreviews">5</label>
+                    <input  className="inputRadios" onClick={handleChange}  type="radio" name= "rating" value ='5'/>
                   {errors.rating && (
                     <p className="errosLoigin">{errors.rating}</p>
                   )}
