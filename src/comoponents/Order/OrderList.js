@@ -7,7 +7,6 @@ import axios from "axios";
 
 export default function CreateOrder() {
   const KEY = process.env.REACT_APP_STRIPE_KEY;
-  console.log(KEY)
   const tokenUser = localStorage.getItem("authorization");
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.orderDetail);
