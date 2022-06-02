@@ -176,7 +176,7 @@ export default function RegisterForm() {
                 </div>
                 <div className="botonRegistro">
                   <button className="buttonRegistro">Registrarse</button>
-                  <a href="http://localhost:3001/google">Google</a>
+                  <a href="http://pf-commerce.herokuapp.com/google">Google</a>
                 </div>
               </form>
             </div>
