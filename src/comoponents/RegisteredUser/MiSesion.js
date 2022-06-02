@@ -55,7 +55,7 @@ export default function MiSesion() {
                           alt="ProductImg"
                         />
                         <br/>
-                        {item.isPaid? <button>Calificar</button>:<br/>}
+                        {item.isPaid?<Link to={`/addReviews/${item._id}`}> <button>Calificar</button></Link>:<br/>}
                         </div>
                       </div>
                     ))}

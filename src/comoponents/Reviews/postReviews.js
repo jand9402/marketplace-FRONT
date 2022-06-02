@@ -6,6 +6,7 @@ import NavBarDetail from '../NavBar/NavBaRDetail'
 import { useParams } from "react-router-dom";
 
 export default function PostReviews() {
+  const token = localStorage.getItem("authorization");
     const {id} = useParams();
     const token = localStorage.getItem('authorization')
   
@@ -52,7 +53,9 @@ const history = useHistory()
     } else {
       e.preventDefault()
         await dispatch(postRewies(id, input, token))
+
         alert(`Gracias por valorar el producto`)
+
   }
 }
 
