@@ -16,6 +16,7 @@ export default function ProductDetail (){
     let test = idProducto.id
     const dispatch = useDispatch()
     let allProducts = useSelector((state) => state.products)
+    console.log (allProducts)
 
   useEffect(() => {
     dispatch(getProducts());
@@ -189,13 +190,7 @@ export default function ProductDetail (){
             </div>
             <div className="boxValoracionesUser">
               <div className="tituloVal">Valoraciones del producto</div>
-<<<<<<< HEAD
-              {/* <CardsReviews /> */}
               {
-=======
-              <CardsReviews id={test}/>
-              {/* {
->>>>>>> 511a700ab4bb6441b103a8884fd68c2bb0af4076
                 allProducts?.map((producto) =>{
                   if (producto._id === test) {
                     return(

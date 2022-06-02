@@ -5,7 +5,7 @@ import { postRewies} from '../../redux/actions'
 import NavBarDetail from '../NavBar/NavBaRDetail'
 import { useParams } from "react-router-dom";
 
-export default function PostRewies() {
+export default function PostReviews() {
     const {id} = useParams();
   function validate(input) {
 

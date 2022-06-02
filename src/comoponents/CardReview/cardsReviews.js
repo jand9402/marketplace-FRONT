@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getProducts } from "../../redux/actions";
 import { useSelector } from "react-redux";
 import CardReviews from "./cardReviews";
-import './cardsReviews.css'
+// import './cardsReviews.css'
 
 export default function CardsReviews(id){
     console.log(id.id)

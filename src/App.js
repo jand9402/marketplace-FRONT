@@ -20,7 +20,7 @@ import OrderList from "./comoponents/Order/OrderList";
 import Success from "./comoponents/Order/Success";
 import EditProduct from "./comoponents/ProductForm/editProduct";
 import PagoOrdenes from "./comoponents/RegisteredUser/PagoOrdenId";
-import PostRewies from "./comoponents/Reviews/postReviews";
+import PostReviews from "./comoponents/Reviews/postReviews";
 // import CreateReviews from "./comoponents/reviews/Wishlist";
 import Wishlist from "./comoponents/wishlist/Wishlist";
 import OrderDetail from "./comoponents/Admin/orderDetail";
@@ -56,7 +56,7 @@ function App() {
           <Route exact path="/pay" component={PagoOrdenes} />
           <Route exact path="/orderDetail/:id" component={OrderDetail} />
           <Route exact path="/createProductPrueba" component={CreateProduct} />
-          <Route exact path="/addRevies/:id" component={PostRewies}/>
+          <Route exact path="/addReviews/:id" component={PostReviews}/>
         </Switch>
       </div>
     </BrowserRouter>

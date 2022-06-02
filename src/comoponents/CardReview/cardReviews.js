@@ -1,5 +1,5 @@
 import React from "react";
-import './cardsReviews.css'
+// import './cardsReviews.css'
 
 
 export default function CardReviews({rating, comment}) {
