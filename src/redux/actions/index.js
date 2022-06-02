@@ -159,6 +159,21 @@ export function postProduct(payload, token) {
     }
   };
 }
+export function postRewies(id, payload) {
+  console.log(payload);
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `https://pf-commerce.herokuapp.com/${id}/reviews`,
+        payload
+        );
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 
 export function deleteProduct (payload) {
     return async function (dispatch) {

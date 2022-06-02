@@ -9,7 +9,7 @@ let data = JSON.parse(localStorage.getItem("userData"))
             <NavBarDetailAdmin/>
             {
                 data.isAdmin? (
-                <div className="contenedorSesionAdmin">
+                <div className="contenedorSesionAdminUsers">
                     <CardsUsers/>
                 </div>):(<div>No tiene permitido el acceso</div>)
             }

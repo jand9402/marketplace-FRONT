@@ -105,9 +105,7 @@ console.log(categorySep)
                             <div className="namesAllDetailAdmin">CANTIDAD:</div>
                             <div className="descriptionDetailAdmin">{detail.amountInStock} uds.</div>
                         </div>
-                        <div>
-                            <h3>Imagenes del producto</h3>
-
+                        <div className="imagenProductosOrder">
                             {
                                 detail.image ? (
                                     <div className="divImagenAdmin">
@@ -210,10 +208,9 @@ console.log(categorySep)
                         </div>
                     </div>
                 </div>
-                <div className="boxDetaiQueNoPuedoModificar">
+                {/* <div className="boxDetaiQueNoPuedoModificar">
                     <div className="detailProductName">Valoración del producto</div>
-
-                </div>
+                </div> */}
             </div>
             ):(<div>No tienen permitido el acceso</div>)}
             <Modal
