@@ -144,8 +144,10 @@ export function postUser(payload) {
         "https://pf-commerce.herokuapp.com/api/users/register",
         payload
       );
+      alert('Registro exitoso')
       return response;
     } catch (error) {
+      alert('El correo ya se encuentra registrado')
       return error;
     }
   };
