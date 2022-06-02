@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 import { getProducts } from "../../redux/actions";
 import PriceDetail from "./PriceDetail";
 import DescriptionProduct from "./DescriptionProduct";
-import './ProductDetail.css'
-import cuadroBlanco from '../../assets/detail/cuadroBlanco.jpg'
+import "./ProductDetail.css";
+import cuadroBlanco from "../../assets/detail/cuadroBlanco.jpg";
 import CardsReviews from "../CardReview/cardsReviews";
 // import Modal from "../Admin/Modales/Modal";
 
-export default function ProductDetail (){
-    let {id} = useParams()
-    let idProducto = {id}
-    let test = idProducto.id
-    const dispatch = useDispatch()
-    let allProducts = useSelector((state) => state.products)
-    console.log (allProducts)
+export default function ProductDetail() {
+  let { id } = useParams();
+  let idProducto = { id };
+  let test = idProducto.id;
+  const dispatch = useDispatch();
+  let allProducts = useSelector((state) => state.products);
+  console.log(allProducts);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -163,6 +163,7 @@ export default function ProductDetail (){
                   //   </div>
                   // </div>
 
+
 // <a data-bs-toggle="modal" data-bs-target="#imagenModal3">
 //   <img className="imagenSecundaria" src="https://i.blogs.es/a24a9c/samsung-galaxy-tab/1366_2000.jpg" alt='imagenProducto'/>
 // </a>
@@ -217,4 +218,5 @@ export default function ProductDetail (){
             </div>
         
     )
+
 }
