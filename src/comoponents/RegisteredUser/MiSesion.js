@@ -48,11 +48,15 @@ export default function MiSesion() {
                     {item.orderProducts.map((product) => (
                       <div className="col col_orders_user" key={product._id}>
                         <p className="font">Nombre: {product.name}</p>
+                        <div>
                         <img
                           src={product.image[0]}
                           height="150px"
                           alt="ProductImg"
                         />
+                        <br/>
+                        {item.isPaid? <button>Calificar</button>:<br/>}
+                        </div>
                       </div>
                     ))}
                     </div>

@@ -10,7 +10,8 @@ export const ADD_TO_CAR = 'ADD_TO_CAR'
 
 
 export default function CarItem({ data }) {
-
+    let data2 = JSON.parse(localStorage.getItem("userData"))
+    console.log(data)
     let { _id, name, image, price, quantity, amountInStock} = data
     
    
@@ -86,6 +87,11 @@ export default function CarItem({ data }) {
         if(!localStorage.itemCar || localStorage.itemCar !== JSON.stringify(este))
     localStorage.setItem("itemCar", JSON.stringify(este))
     }
+    function handleAdmin(e){
+        e.preventDefault()
+        alert('No puedes comprar, sos admin, adios')
+    }
+
     
 
     return (
@@ -106,11 +112,18 @@ export default function CarItem({ data }) {
             <div className='col'>
                 <button  className='botonRemover' onClick={() => removeFromCar(_id)}> - </button><button className='botonAgregar' onClick={() => addToCar(_id)}>+</button>
                 <button className='botonEliminar' onClick={() => removeFromCar(_id, true)}>Eliminar todos</button>
+               
                 <div>
-                    <Link to="CheckOut">
+
+                    {data2.isAdmin?
+                    
+                        <button onClick={e => handleAdmin(e)} className='comprarEsteProducto'>Comprar este producto</button>
+                        :
+                        <Link to="CheckOut">
                         <button onClick={() => comprarEste(_id)} className='comprarEsteProducto'>Comprar este producto</button>
-                        </Link></div>
-            
+                        </Link>
+                   }
+                   </div>
             </div>
             </div>
         </div>
