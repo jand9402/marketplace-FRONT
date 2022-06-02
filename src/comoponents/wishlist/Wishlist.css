@@ -1,0 +1,27 @@
+.title {
+    margin-left: 48%;
+}
+
+.divWishlist {
+    display: flex;
+    background-color: rgb(240, 232, 232);
+    min-width: 42%;
+    max-width: 42%;
+    padding: 30px;
+    margin-left: 50px;
+}
+
+.divContenido {
+    /* margin-left: 50px; */
+    font-size: 30px;
+    /* max-width: 20%;
+    min-width: 20%; */
+    /* background-color: yellow; */
+    /* max-width: 100px;
+    min-height: 100px; */
+    height: 200px;
+}
+
+.divAll {
+    display: block;
+}

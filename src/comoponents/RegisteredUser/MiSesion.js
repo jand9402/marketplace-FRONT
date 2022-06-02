@@ -4,6 +4,8 @@ import { getOrderDetailByUser } from "../../redux/actions/index";
 import NavBaRSesionUsers from "../NavBar/navBarSesionUsers";
 import { Link } from "react-router-dom";
 import './miSesion.css'
+import { Link } from "react-router-dom";
+
 export default function MiSesion() {
   const user = JSON.parse(localStorage.getItem("userData"));
   const dispatch = useDispatch();
@@ -21,7 +23,10 @@ export default function MiSesion() {
     <div>
         <NavBaRSesionUsers/>
       <div className="container">
-        <h1 className="tus_compras_font">Tus Compras</h1>
+
+    <Link to='/user/wishlist'><button className="botonVolverDetail">Wishlist</button></Link>
+        <h1 className="tus_compras font">Tus Compras</h1>
+
         {!data ? (
           <p>Cargando...</p>
         ) : (

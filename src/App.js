@@ -20,6 +20,12 @@ import OrderList from "./comoponents/Order/OrderList";
 import Success from "./comoponents/Order/Success";
 import PagoOrdenes from "./comoponents/RegisteredUser/PagoOrdenId";
 
+// import CreateReviews from "./comoponents/reviews/Wishlist";
+import Wishlist from "./comoponents/wishlist/Wishlist";
+
+import OrderDetail from "./comoponents/Admin/orderDetail";
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -35,6 +41,7 @@ function App() {
           <Route exact path="/admin" component={Sesion} />
           <Route exact path="/registerForm" component={ProductForm} />
           <Route exact path="/admin/products" component={SesionProductAdmin} />
+          <Route exact path="/user/wishlist" component={Wishlist} />
           <Route
             exact
             path="/admin/products/detail/:id"
@@ -48,7 +55,11 @@ function App() {
           <Route exact path="/PostOrder" component={PostOrder} />
           <Route exact path="/OrderList" component={OrderList} />
           <Route exact path="/Success" component={Success} />
+
           <Route exact path="/pay" component={PagoOrdenes} />
+
+
+          <Route exact path="/orderDetail/:id" component={OrderDetail} />
 
           <Route exact path="/createProductPrueba" component={CreateProduct} />
         </Switch>
