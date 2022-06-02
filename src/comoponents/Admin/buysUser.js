@@ -13,6 +13,7 @@ export default function BuysUser() {
   let user = JSON.parse(localStorage.getItem("userData"));
   const data = useSelector((state) => state.userById);
   const result = data?.data.user;
+  console.log(result)
   useEffect(() => {
     dispatch(getUserById(id));
   }, [dispatch, id]);
@@ -26,7 +27,7 @@ export default function BuysUser() {
   });
 
   function handleChange(e) {
-    e.preventDefault();
+    // e.preventDefault();
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -36,10 +37,10 @@ export default function BuysUser() {
   const handleCreate = async (e) => {
     e.preventDefault();
     if (
-      input.name === "" &&
-      input.email === "" &&
-      input.phoneNumber === "" &&
-      input.isDeleted === "" &&
+      input.name === "" ||
+      input.email === "" ||
+      input.phoneNumber === "" ||
+      input.isDeleted === "" ||
       input.isAdmin === ""
     ) {
       alert("Debes completar los campos");
@@ -90,12 +91,12 @@ export default function BuysUser() {
             
               <form key={id} onSubmit={(e) => handleCreate(e)}>
               <div className="row row_edit_user ">
-                <h1 >Editar Usuario</h1>
+                <h1 className="title_edit">Editar Usuario</h1>
                 
                 
                   
                    <div className="col col_edit_user">
-                      <h2 >Nombre del Usuario:</h2>
+                      <h2 className="title_edit">Nombre del Usuario:</h2>
                      
                       <input
                       className="input"
@@ -108,7 +109,7 @@ export default function BuysUser() {
                    <br/> 
                     
                       
-                        <h2>Email:</h2>
+                        <h2 className="title_edit">Email:</h2>
                       
                       <input
                       className="input"
@@ -121,7 +122,7 @@ export default function BuysUser() {
                    
                    
                    <br/> 
-                    <h2>Numero de telefono:</h2>
+                    <h2 className="title_edit">Numero de telefono:</h2>
                    
                     <input
                     className="input"
@@ -135,14 +136,14 @@ export default function BuysUser() {
                   </div> 
                   <div className="col col_edit_user">
                     
-                      <h2>Eliminado:</h2>
+                      <h2 className="title_edit">Eliminado:</h2>
                       
                     <input
                     className="input"
-                      autoComplete="off"
+                      // autoComplete="off"
                       type="checkbox"
-                      checked={input.isDeleted}
-                      value={input.isDeleted}
+                      // checked={input.isDeleted}
+                      // value={input.isDeleted}
                       name="isDeleted"
                       onChange={(e) => handleChange(e)}
                     />
@@ -150,20 +151,20 @@ export default function BuysUser() {
                
                   <br/> 
                   
-                    <h2>Es Administrador:</h2>
+                    <h2 className="title_edit">Es Administrador:</h2>
                   
                   <input
                   className="input"
-                    autoComplete="off"
+                    // autoComplete="off"
                     type="checkbox"
-                    checked={input.isAdmin}
-                    value={input.isAdmin}
+                    // checked={input.isAdmin}
+                    // value={input.isAdmin}
                     name="isAdmin"
                     onChange={(e) => handleChange(e)}
                   />
                </div>
                
-                <button type="submit" >
+                <button className="boton_edit" type="submit" >
                   OK
                 </button>
                 </div>
