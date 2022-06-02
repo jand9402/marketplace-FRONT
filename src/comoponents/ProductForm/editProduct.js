@@ -78,7 +78,7 @@ export default function EditProduct () {
       const detailProduct = useSelector (state => state.detail)
       const {id} = useParams();
       console.log(id)
-      // console.log(categoriesAll)
+      console.log(categoriesAll)
       
       useEffect(() => {
         dispatch(getDetail(id))
@@ -200,6 +200,55 @@ export default function EditProduct () {
         // formdata.append('categories', input.categories[i])
         // formdata.append('categories', input.newCategory)
         e.preventDefault()
+        
+          if (input.name === '') {
+            input.name = detailProduct.name  
+          } 
+          if (input.image === []) {
+            input.image = detailProduct.image
+          } 
+          if (input.brand === '') {
+            input.brand = detailProduct.brand  
+          } 
+          if (input.description === '') {
+            input.description = detailProduct.description  
+          } 
+          if (input.price === '') {
+            input.price = detailProduct.price  
+          } 
+          if (input.amountInStock === '') {
+            input.amountInStock = detailProduct.amountInStock
+          } 
+          if (input.condition === '') {
+            input.condition = detailProduct.condition 
+          } 
+          if (input.model === '') {
+            input.model = detailProduct.model  
+          } 
+          if (input.internalMemory === '') {
+            input.internalMemory = detailProduct.internalMemory 
+          } 
+          if (input.amountInStock === '') {
+            input.amountInStock = detailProduct.amountInStock
+          } 
+          if (input.screenSize === '') {
+            input.screenSize = detailProduct.screenSize.$numberDecimal
+          } 
+          if (input.categories === '') {
+            input.categories = detailProduct.categories  
+          } 
+            
+  
+        // !input.image.length === '' &&
+        //     input.brand === '' &&
+        //     input.description === '' &&
+        //     input.price === '' && 
+        //     input.amountInStock === '' &&
+        //     input.condition === '' &&
+        //     input.model === '' &&
+        //     input.internalMemory === '' &&
+        //     input.screenSize === '' &&
+        //     !input.temperament.length 
         await dispatch(modifyProduct( id, input, token))
         alert(`Has Modificado ${input.name}, felicitaciones`)
         setInput({
@@ -284,7 +333,8 @@ export default function EditProduct () {
                              id='file'
                              multiple 
                              name="image" 
-                             onChange={habdleOnChange} 
+                             value={input.image}
+                             onChange={handleChange} 
                              />
                              {errors.image && (
                              <p className='errosCreateLarge'>{errors.image}</p>

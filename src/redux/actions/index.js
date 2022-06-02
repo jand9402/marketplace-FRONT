@@ -162,7 +162,7 @@ export function postProduct(payload, token) {
 
 export function deleteProduct (payload) {
     return async function (dispatch) {
-      const deleteProduct = await axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload} `);
+      const deleteProduct = await axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload}`);
       return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
     };
   };
