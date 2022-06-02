@@ -188,32 +188,33 @@ export default function ProductDetail (){
             <div>
                 <DescriptionProduct/>
             </div>
-            <div className="boxValoracionesUser">
-              <div className="tituloVal">Valoraciones del producto</div>
+            <div className="container">
+              <div className="tituloVal mt-5">Valoraciones del producto</div>
+              
               {
                 allProducts?.map((producto) =>{
                   if (producto._id === test) {
                     return(
-                      <div>
-                        <div>{producto.reviews.length === 0? 'No tiene valoraciones este producto': producto.reviews.map(e =>{
+                      
+                        <div className="row row_reviews">{producto.reviews.length === 0? 'No tiene valoraciones este producto': producto.reviews.map(e =>{
                           return(
-                            <div>
-                              <div>Puntuación:</div>
-                              <div>{e.rating}</div>
-                              <div>Comentario:</div>
-                              <div>{e.comment} </div>
+                            <div className="col col_reviews">
+                              <div className="text_rates">Puntuación: <d> {e.rating}</d> </div>
+                              
+                              <div className="text_rates">Comentario: <d>{e.comment}</d> </div>
+                              
                             </div>
                           )
                         })}
                         </div>
-                      </div>
                   
                     )
                   }
                 })
               }
+              </div>
               <div></div>
             </div>
-        </div>
+        
     )
 }
