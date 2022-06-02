@@ -4,6 +4,7 @@ import CarritoCard from '../../assets/icons/CarritoCards.png'
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { postWishList } from "../../redux/actions";
 import swal from "sweetalert"
 export const ADD_TO_CAR = 'ADD_TO_CAR'
 
@@ -57,6 +58,10 @@ export default function Card({ id, image, name, price }) {
 
     }
 
+    function handleClicked (e) {
+        e.preventDefault()
+        dispatch(postWishList(id)) 
+    }
 
 
     return (
@@ -67,6 +72,8 @@ export default function Card({ id, image, name, price }) {
                 <div className="priceCardProd" >US${price}</div>
             </Link>
             <button className="boton_carrito_card" onClick={() => addToCar(id)}></button>
+            <button onClick={e => handleClicked(e)}>O</button>
+            <Link to={'/user/wishlist/' + id}>X</Link>
         </div>
 
         // <div class="card">

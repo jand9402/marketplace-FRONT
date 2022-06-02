@@ -17,6 +17,7 @@ import {
   GET_USERS,
   POST_ORDER,
   GET_ORDER_DETAIL_USER,
+  GET_WISHLIST,
 } from "../actions";
 
 const initialState = {
@@ -39,6 +40,7 @@ const initialState = {
   cart: [],
   orderDetail: [],
   order: [],
+  allWishlist: []
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -150,6 +152,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         orderDetail: action.payload,
       };
+      case GET_WISHLIST:
+        return {
+          ...state,
+          allWishlist: action.payload
+        }
 
     default:
       return { ...state };

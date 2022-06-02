@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deletepreviousdetail } from "../../../redux/actions";
 import NavBarDetailAdmin from "../../NavBar/navBarDetaiAdmin";
 import Modal from "../Modales/Modal";
+import { Link } from "react-router-dom";
 import './detailProductAdmin.css'
 // import CreateProduct from "../../ProductForm/createProduct";
 import EditProduct from "../../ProductForm/editProduct";
@@ -33,6 +34,11 @@ useEffect (() => {
     return (
         <div>
             <NavBarDetailAdmin/>
+            <div className="positionButtonVolverDetai">
+                <Link to='/admin/products' id='click'>
+                    <button className="botonVolverDetail">VOLVER</button>
+                </Link>
+            </div>
             <div key={id} className='contenedorDetailAdmin'>
                 <div className="boxDetaiQuePuedoModificar">
                     <img  className="imageDetailAdmin" src={detail.image ? detail.image[0] : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.clarin.com%2Ftecnologia%2Fbanco-nacion-relanza-venta-celulares-modelos-descuento-18-cuotas-interes_0_QmAUsjhAU.html&psig=AOvVaw1sQbEUoycHdCfckA6AJk7V&ust=1653956093926000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCLiOtd34hfgCFQAAAAAdAAAAABAH" } alt="imageDetailAdmin"/>
@@ -188,8 +194,33 @@ useEffect (() => {
                     </div>
                 </div>
                 <div className="boxDetaiQueNoPuedoModificar">
-                    <div className="detailProductName">Valoración del producto</div>
+                    <div className="detailProductName">
+                      <h2>Valoración del producto</h2>
+                      <div className="containerR">
+                            <div className="divTitle">
+                              <h3 className="titleR">Reviews</h3>
+                              <h3 className="titleAR">Among reviews</h3>
+                            </div>
 
+                            <div className="divReviews">
+                              <div className="divUser">
+                              <h5>Usuario: Luis</h5>
+                                <h6 className="productoR"><p>Buen producto</p></h6>
+                                <h5>Estrellas: ****</h5>
+                              </div>
+
+                              <div className="divUser">
+                              <h5>Usuario: Maria</h5>
+                                <h6 className="productoR"><p>Me sirvio el producto</p></h6>
+                                <h5>Estrellas: ***</h5>
+                              </div>
+                            </div>
+
+                            <div className="divAmongReviews">
+                            </div>
+                      </div>
+                      
+                      </div>
                 </div>
             </div>
             <Modal

@@ -68,7 +68,7 @@ export function validate (input) {
   }
 
 export default function CreateProduct () {
-    
+      
       let dispatch = useDispatch()
       // const { errors, handleChange } = useValidateCreateProd()
       const [file, setFile] = useState('')
@@ -146,7 +146,7 @@ export default function CreateProduct () {
           input.screenSize === '' &&
           input.categories=== '' 
           ) {
-         alert ('No puede creear una nueva actividad si no completa el formulario')
+         alert ('No puede crear una nueva actividad si no completa el formulario o coloca un nombre unico')
       }else {
         const formdata = new window.FormData()
         formdata.append('name', input.name)

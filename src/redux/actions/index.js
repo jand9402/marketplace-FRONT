@@ -17,6 +17,7 @@ export const GET_USERS = "GET_USERS";
 export const ORDERS = "ORDERS";
 export const POST_ORDER = "POST_ORDER";
 export const GET_ORDER_DETAIL_USER = "GET_ORDER_DETAIL_USER";
+export const GET_WISHLIST = "GET_WISHLIST";
 
 export const getProducts = () => async (dispatch) => {
   return await fetch("https://pf-commerce.herokuapp.com/api/products")
@@ -258,3 +259,64 @@ export function deleteProduct(payload) {
     }
   };
 }
+
+
+
+export function postWishList(payload) {
+  const token = localStorage.getItem("authorization");
+  return async function () {
+    try {
+      const response = await axios.post(
+        `https://pf-commerce.herokuapp.com/api/wishlist/add/${payload}`,
+        payload,
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+      alert('Producto agregado a la wishlist')
+      console.log(response)
+      return response;
+    } catch (error) {
+      alert('Este producto ya esta en la wishlist')
+     console.log(error)
+    }
+  };
+}
+
+export function getWishList () {
+  const token = localStorage.getItem("authorization");
+  return async function (dispatch) {
+    const response = await axios.get('https://pf-commerce.herokuapp.com/api/wishlist/user',
+    {
+      headers: {
+        Authorization: `${token}`,
+      },
+    })
+    console.log(response.data)
+    return dispatch({
+      type: GET_WISHLIST,
+      payload: response.data.wishlist[0].product
+    })
+  }
+}
+
+// export function getWishList () {
+//   const token = localStorage.getItem("authorization");
+//   return async function (dispatch) {
+//     const response = await axios.get('https://pf-commerce.herokuapp.com/api/wishlist/all',
+//     {
+//       headers: {
+//         Authorization: `${token}`,
+//       },
+//     })
+//     console.log(response.data)
+//     return dispatch({
+//       type: GET_WISHLIST,
+//       payload: response.data
+//     })
+//   }
+// }
+
+
