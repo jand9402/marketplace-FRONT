@@ -1,0 +1,33 @@
+.row_wish{
+    margin-top: 30px;
+    border-bottom: none;
+    background-color: #FAFBFD;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        transition: transform 0.4s;
+        transform-style: preserve-3d;
+}
+
+.row_wish:hover{
+    transform:scale(1.02);
+    -webkit-transform:scale(1.02);
+    -moz-transform:scale(1.02);
+    -ms-transform:scale(1.02);
+    -o-transform:scale(1.02);
+}
+
+.col_wish{
+}
+
+.img_wish{
+    height: 30%;
+}
+
+.text_wish{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.text_wish1{
+    margin-left: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 10;
+}

@@ -1,7 +1,9 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { modifyProduct, getCategories } from "../../redux/actions/index"
+import { modifyProduct, getCategories, getDetail } from "../../redux/actions/index"
+import { useParams } from "react-router-dom";
+import './ProductForm.css'
 
 
 export function validate (input) {
@@ -22,9 +24,9 @@ export function validate (input) {
         errors.model = 'Campo requerido'
     }
   //  categories
-    else if (!input.categories.lenght) {
-        errors.categories = 'Debe seleccionar al menos una categoría '
-    }
+    // else if (!input.categories.lenght) {
+    //     errors.categories = 'Debe seleccionar al menos una categoría '
+    // }
     else if (!input.screenSize) {
         errors.screenSize = 'Campo requerido'
     }
@@ -71,37 +73,25 @@ export function validate (input) {
 export default function EditProduct () {
     
       const dispatch = useDispatch()
+      const token = localStorage.getItem('authorization')
       const categoriesAll = useSelector(state => state.categoriesNew)
-      // console.log(categoriesAll)
+      const detailProduct = useSelector (state => state.detail)
+      const {id} = useParams();
+      console.log(id)
+      console.log(categoriesAll)
+      
+      useEffect(() => {
+        dispatch(getDetail(id))
+        console.log(detailProduct)
+    },[dispatch, id])
       
      
-       const aux =[]
-        for (let i =0; i< categoriesAll.length; i++) {
-             var otroArray = categoriesAll[i] && categoriesAll[i].map(e => e)
-             var separado = otroArray.join (", ")
-             aux.push(separado)
-            //  console.log(separado)
-          //    let infoApiTemp = dataApiAll?.map (el => {
-          //     if(!el.temperament) return el.temperament = undefined;
-          // // A todos los demas los spliteo por ", " para añadirlos a un array en la constante aux
-          //     const aux = el.temperament.split(", "); 
-          //     return aux;
-          // });
-      // const ordenSinUnd = infoApiTemp.flat().filter(Boolean).sort();
-      // const stringUnicos = [...new Set(ordenSinUnd)];  
-            //  var separado = otroArray.join (",")
-            //  console.log(separado)
-            //  let stringsCat = [...separado]
-            //  console.log(stringsCat)
-            //  aux.push(stringsCat)
-            }
-       const allCategoriesN = aux
-        // return aux
-    
-    //  console.log(allCategoriesN)
-    
-      // CATEGORIESALL ME TRAE UN ARRAY DE ARRAY... QUE TENGO QUE RECORRE PRIMERO TODO EL ARRAY Y LUEGO, CADA ARRAY PARA SACAR TODOS LOS ELEMENTOS Y TRAERME
-      // UNA ARRAY DE STRINGS...EN MI PI DE DOGS HAY ALGO...
+    let aux =[]
+    for (let i =0; i< categoriesAll.length; i++) {
+         aux = aux.concat(categoriesAll[i])
+        }
+   const allCategoriesN = [...new Set(aux)] 
+      
       const [file, setFile] = useState('')
       console.log(file)
       const [categorias, setCategorias] = useState([])
@@ -122,7 +112,8 @@ export default function EditProduct () {
         internalMemory: '',
         image: [],
         description: '',
-        categories: []
+        categories: [],
+        newCategory :''
       })
     
       function handleSelectCat(e) {
@@ -130,27 +121,35 @@ export default function EditProduct () {
           ...input,
           categories: [...input.categories, e.target.value]     
             })
-            setErrors(validate( {
-              ...input,
-              [e.target.name]: e.target.value
-            }))
             console.log(input)
       };
+      function habdleOnChange (e){
+        detailProduct = {
+          ...detailProduct,
+          [e.target.name]: [e.target.value]
+        }
+      }
 
       function handleChange (e) {
+        e.preventDefault()
         setInput({
           ...input,
           [e.target.name]: e.target.value
         })
+        
+        // detailProduct = {
+        //   ...detailProduct,
+        //   [e.target.name]: [e.target.value]
+        // }
         // setCategorias({
         //   ...input,
         //   [e.target.categories]: [e.target.value.split(",")]
         // }
         //  )
-        setErrors(validate( {
-          ...input,
-          [e.target.name]: e.target.value
-        }))
+        // setErrors(validate( {
+        //   ...input,
+        //   [e.target.name]: e.target.value
+        // }))
         console.log(input)
       }
 
@@ -185,23 +184,73 @@ export default function EditProduct () {
           ) {
          alert ('No puede creear una nueva actividad si no completa el formulario')
       }else {
-        const formdata = new window.FormData()
-        formdata.append('name', input.name)
-        for(let i = 0; i < file.length; i++)
-        formdata.append('image', file[i])
-        formdata.append('brand', input.brand)
-        formdata.append('description', input.description)
-        formdata.append('price', input.price)
-        formdata.append('amountInStock', input.amountInStock)
-        formdata.append('condition', input.condition)
-        formdata.append('model', input.model)
-        formdata.append('internalMemory', input.internalMemory)
-        formdata.append('screenSize', input.screenSize)
-        for (let i =0; i < input.categories.length; i++)
-        formdata.append('categories', input.categories[i])
+        // const formdata = new window.FormData()
+        // formdata.append('name', input.name)
+        // for(let i = 0; i < file.length; i++)
+        // formdata.append('image', file[i])
+        // formdata.append('brand', input.brand)
+        // formdata.append('description', input.description)
+        // formdata.append('price', input.price)
+        // formdata.append('amountInStock', input.amountInStock)
+        // formdata.append('condition', input.condition)
+        // formdata.append('model', input.model)
+        // formdata.append('internalMemory', input.internalMemory)
+        // formdata.append('screenSize', input.screenSize)
+        // for (let i =0; i < input.categories.length; i++)
+        // formdata.append('categories', input.categories[i])
+        // formdata.append('categories', input.newCategory)
         e.preventDefault()
-        dispatch(modifyProduct(formdata))
-        alert(`Has creado ${input.name}, felicitaciones`)
+        
+          if (input.name === '') {
+            input.name = detailProduct.name  
+          } 
+          if (input.image === []) {
+            input.image = detailProduct.image
+          } 
+          if (input.brand === '') {
+            input.brand = detailProduct.brand  
+          } 
+          if (input.description === '') {
+            input.description = detailProduct.description  
+          } 
+          if (input.price === '') {
+            input.price = detailProduct.price  
+          } 
+          if (input.amountInStock === '') {
+            input.amountInStock = detailProduct.amountInStock
+          } 
+          if (input.condition === '') {
+            input.condition = detailProduct.condition 
+          } 
+          if (input.model === '') {
+            input.model = detailProduct.model  
+          } 
+          if (input.internalMemory === '') {
+            input.internalMemory = detailProduct.internalMemory 
+          } 
+          if (input.amountInStock === '') {
+            input.amountInStock = detailProduct.amountInStock
+          } 
+          if (input.screenSize === '') {
+            input.screenSize = detailProduct.screenSize.$numberDecimal
+          } 
+          if (input.categories === '') {
+            input.categories = detailProduct.categories  
+          } 
+            
+  
+        // !input.image.length === '' &&
+        //     input.brand === '' &&
+        //     input.description === '' &&
+        //     input.price === '' && 
+        //     input.amountInStock === '' &&
+        //     input.condition === '' &&
+        //     input.model === '' &&
+        //     input.internalMemory === '' &&
+        //     input.screenSize === '' &&
+        //     !input.temperament.length 
+        await dispatch(modifyProduct( id, input, token))
+        alert(`Has Modificado ${input.name}, felicitaciones`)
         setInput({
           name: '',
           price: '',
@@ -213,7 +262,8 @@ export default function EditProduct () {
           internalMemory: '',
           image: [],
           description: '',
-          categories: []  
+          categories: [], 
+          newCategory: ''
         })
       } 
     }
@@ -225,8 +275,8 @@ export default function EditProduct () {
     return(
         <>
         <div>
-            <div className='allProductForm'>
-                <form onSubmit={(e) => handleCreate(e)}>
+            <div className='allProductForm'> 
+                <form key={id} onSubmit={(e) => handleCreate(e)}>
                     <h1 className='titleProduct'>Editar producto</h1>
                     {/* <button onClick={()=> setEstado(false)} className="botonCerrarCreateForm">X</button> */}
                     <div className="boxColumnas1y2" >
@@ -245,7 +295,7 @@ export default function EditProduct () {
                                 <p className='errosCreateLarge'>{errors.name}</p>
                                 )}
                             </div>
-                            <div className='productDiv2'>
+                            <div className='productDiv'>
                               <label className='titlesNNO' htmlFor=''><b>Modelo:</b></label>
                               <input
                               autoComplete='off'
@@ -278,12 +328,13 @@ export default function EditProduct () {
                            </div>
                            <div className='productDiv'>
                              <label className="titlesNNO" htmlFor=''><b>Imagen:</b></label>
-                             <input  
+                             <input
                              type='file' 
                              id='file'
                              multiple 
                              name="image" 
-                             onChange={handleFile} 
+                             value={input.image}
+                             onChange={handleChange} 
                              />
                              {errors.image && (
                              <p className='errosCreateLarge'>{errors.image}</p>
@@ -338,39 +389,34 @@ export default function EditProduct () {
                              <p className='errosCreateLarge'>{errors.brand}</p>
                              )}
                            </div>
-                           <div className='productDiv'>
+                           <div className='productDivC'>
                              <label className='titlesNNO' name='categories'><b>Categoría/s:</b></label>
-                             <select className='selectForm' onChange={handleSelectCat}>
+                             <select  className='selectForm' onChange={handleSelectCat}>
                                <option disabled selected  value="">Tipo de línea</option>
-                               <option value='PERSONAL'>Personal</option>
-                               <option value='LIBERADO'>Liberado</option>
-                               <option value='CLARO'>Claro</option>
-                               {/* {allCategoriesN && allCategoriesN.map((c) => (
+                               {allCategoriesN && allCategoriesN.map((c) => (
                                <option key= {c} value= {c} >{c}</option>
                                )
-                               )} */}
+                              )}
                              </select>
-                             {errors.categories && (
-                             <p className='errosCreateLarge'>{errors.categories}</p>
-                             )}
-                             {/* <input
-                             autoComplete='off'
-                             type='text'
-                             className='inputsProductForm'
-                             name='categories'
-                             value={input.categories}
-                             onChange={(e) => handleChange(e)}
-                             />
-                             {errors.categories && (
-                             <p className='errosCreateLarge'>{errors.categories}</p>
-                             )} */}
                              {input.categories? <div>
                              {input.categories?.map(c => 
-                             (<div className="listaCountSelD"  key={c}>
+                             (<div className="listaCountSelD" key={c}>
                                <span>{c}</span>
                                  <button className="botonDeletCat" id={c}  onClick={handleDelet}>x</button>
                               </div> 
                             ))}
+                             {/* <div className="titlesNewCat" >Si no encuentra la categoría puede agregarla</div>
+                              <input
+                              autoComplete='off'
+                              type='text'
+                              className='inputsProductForm'
+                              name='newCategory'
+                              value={input.newCategory}
+                              onChange={(e) => handleChange(e)}
+                              /> */}
+                             {errors.categories && (
+                             <p className='errosCreateLarge'>{errors.categories}</p>
+                             )}
                            </div> : null  }
                            </div>
                            {/* </div> */}
@@ -414,7 +460,7 @@ export default function EditProduct () {
                            </div>
                         </div>
                     </div>
-                    <button type='submit' className='buttonProduct'>Crear</button>
+                    <button type='submit' className='buttonProduct'>OK</button>
                 </form>
             </div>
         </div> 

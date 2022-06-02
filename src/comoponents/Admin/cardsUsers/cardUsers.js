@@ -22,10 +22,6 @@ export default function CardUsers({ _id, name, phoneNumber, role }) {
                     <div className="titleUsersNames">Celular:</div>
                     <div className="userData">{phoneNumber}</div>
                 </div>
-                <div className="orderDisplayFlex">
-                    <div className="titleUsersNames">Rol:</div>
-                    <div className="userData">{role}</div>
-                </div>
             </div>
             
             <div className="orderButtonsUsers">

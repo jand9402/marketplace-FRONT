@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from 'sweetalert'
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const GET_CATEGORIES = "GET_CATEGORIES";
@@ -19,8 +20,15 @@ export const ORDERS = "ORDERS";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const POST_ORDER = "POST_ORDER";
 export const GET_ORDER_DETAIL_USER = "GET_ORDER_DETAIL_USER";
+export const GET_ORDER_DETAIL_ID = "GET_ORDER_DETAIL_ID";
+
+export const GET_WISHLIST = "GET_WISHLIST";
+
+
+
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
 export const GET_ORDER_BY_ID = "GET_ORDER_BY_ID";
+
 
 export const getProducts = () => async (dispatch) => {
   return await fetch("https://pf-commerce.herokuapp.com/api/products")
@@ -136,19 +144,26 @@ export function postUser(payload) {
         "https://pf-commerce.herokuapp.com/api/users/register",
         payload
       );
+      alert('Registro exitoso')
       return response;
     } catch (error) {
+      alert('El correo ya se encuentra registrado')
       return error;
     }
   };
 }
 
-export function postProduct(payload) {
+export function postProduct(payload, token) {
+  console.log(payload);
   return async function (dispatch) {
     try {
       const response = await axios.post(
         "https://pf-commerce.herokuapp.com/api/products/post",
-        payload
+        payload,
+        {
+          headers:{
+            'authorization': `${token}`
+          }}
       );
       console.log(response);
       return response;
@@ -157,6 +172,22 @@ export function postProduct(payload) {
     }
   };
 }
+export function postRewies(id, payload) {
+  console.log(payload);
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `https://pf-commerce.herokuapp.com/${id}/reviews`,
+        payload
+        );
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 
 export function deleteProduct(payload) {
   const token = localStorage.getItem("authorization");
@@ -171,6 +202,7 @@ export function deleteProduct(payload) {
     );
     return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
   };
+
 }
 
 export function locaLSatorage() {
@@ -236,22 +268,23 @@ export function getUsers(token) {
   };
 }
 
-export function modifyProduct(id, detailData, token) {
-  return async function (dispatch) {
-    const productMod = await axios.put(
-      `https://pf-commerce.herokuapp.com/api/products/update/${id}`,
-      detailData,
-      {
-        headers: {
-          authorization: `${token}`,
-        },
-      }
-    );
-    productMod
-      ? alert("Producto modificado correctamente")
-      : alert("Producto no encontrado");
-  };
-}
+
+// export function modifyProduct(id, detailData, token) {
+//   return async function (dispatch) {
+//     const productMod = await axios.put(
+//       `https://pf-commerce.herokuapp.com/api/products/update/${id}`,
+//       detailData,
+//       {
+//         headers: {
+//           authorization: `${token}`,
+//         },
+//       }
+//     );
+//     productMod
+//       ? alert("Producto modificado correctamente")
+//       : alert("Producto no encontrado");
+//   };
+// }
 
 export function orders(payload) {
   return {
@@ -304,6 +337,137 @@ export function getOrderDetailByUser() {
   };
 }
 
+export function getOrderDetailById(payload) {
+  const token = localStorage.getItem("authorization");
+  return async function (dispatch) {
+    let ordersByUser = await axios.get(
+      `https://pf-commerce.herokuapp.com/api/orders/${payload}`,
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    );
+    if (ordersByUser) {
+      return dispatch({
+        type: GET_ORDER_DETAIL_ID,
+        payload: ordersByUser,
+      });
+    } else {
+      alert("No se encontraron ordenes");
+    }
+  };
+}
+
+
+
+
+
+
+export function postWishList(payload) {
+  const token = localStorage.getItem("authorization");
+  return async function () {
+    try {
+      const response = await axios.post(
+        `https://pf-commerce.herokuapp.com/api/wishlist/add/${payload}`,
+        payload,
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+      swal({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Producto agregado',
+        showConfirmButton: false,
+        timer: 1000
+      })
+      console.log(response)
+      return response;
+    } catch (error) {
+      alert('Este producto ya esta en la wishlist')
+     console.log(error)
+    }
+  };
+}
+
+export function deleteWishList(payload) {
+  const token = localStorage.getItem("authorization");
+  return async function () {
+    try {
+      const response = await axios.delete(
+        `https://pf-commerce.herokuapp.com/api/wishlist/delete/${payload}`,
+        
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+      swal({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Producto eliminado',
+        showConfirmButton: false,
+        timer: 500
+      })
+      window.location.reload()
+      console.log(response)
+      return response;
+    } catch (error) {
+      alert('Error')
+     console.log(error)
+    }
+  };
+}
+
+export function getWishList () {
+  const token = localStorage.getItem("authorization");
+  return async function (dispatch) {
+    const response = await axios.get('https://pf-commerce.herokuapp.com/api/wishlist/user',
+    {
+      headers: {
+        Authorization: `${token}`,
+      },
+    })
+    console.log(response.data)
+    return dispatch({
+      type: GET_WISHLIST,
+      payload: response.data.wishlist[0].product
+    })
+  }
+}
+
+// export function getWishList () {
+//   const token = localStorage.getItem("authorization");
+//   return async function (dispatch) {
+//     const response = await axios.get('https://pf-commerce.herokuapp.com/api/wishlist/all',
+//     {
+//       headers: {
+//         Authorization: `${token}`,
+//       },
+//     })
+//     console.log(response.data)
+//     return dispatch({
+//       type: GET_WISHLIST,
+//       payload: response.data
+//     })
+//   }
+// }
+// export function modifyProduct(id, detailData ,token){
+//     return async function (dispatch){
+//       const productMod = await axios.put(`https://pf-commerce.herokuapp.com/api/products/update/${id}`, detailData,{
+//         headers:{
+//           'authorization': `${token}`
+//         }
+//     })
+//     productMod? alert('Producto modificado correctamente') : alert('Producto no encontrado')
+//   }
+//   }
+
+
 export function getOrderByID(id) {
   const token = localStorage.getItem("authorization");
   return async function (dispatch) {
@@ -325,6 +489,24 @@ export function getOrderByID(id) {
     }
   };
 }
+
+
+export function modifyProduct(id, detailData, token){
+  console.log(detailData, id)
+    return async function (dispatch){
+      const productMod = await axios.put(`https://pf-commerce.herokuapp.com/api/products/update/${id}`, detailData,
+      {
+        headers:{
+          'authorization': `${token}`
+        }} )
+      console.log(productMod)
+    productMod? alert('Producto modificado correctamente') : alert('Producto no encontrado')
+  }
+  }
+
+  // export function loginGoogle ()
+
+
 
 export function getAllOrders() {
   const token = localStorage.getItem("authorization");

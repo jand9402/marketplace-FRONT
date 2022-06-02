@@ -130,8 +130,32 @@
     background-color: rgb(177, 173, 173);
 }
 
+.addWishList {
+    position: relative;
+    left: 130px;
+    top: 5px;
+    background-image: url('../../assets/icons/wishlistadd.png');
+    background-repeat:no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    height: 50px;
+    width: 50px
+}
+.myWishList {
+    position: relative;
+    left: 90px;
+    background-image: url('../../assets/icons/wishlistMi.png');
+    background-repeat:no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    background-position:center;
+    border: none;
+    height: 50px;
+    width: 50px
 
-
+}
 
 
 

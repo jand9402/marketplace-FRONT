@@ -1,6 +1,6 @@
 .contenedorDetailAdmin{
     background-color: #f7f5f4;
-    height: 92.5vh;
+    height: 100vh;
     padding-left: 0 !important;
     padding-right: 0 !important;
     width: 100% !important;
@@ -9,6 +9,8 @@
     text-align: center; */    
 }
 .imageDetailAdmin{
+    position: relative;
+    left: 70px;
     width: 500px;
     height: 500px;
 }
@@ -22,9 +24,16 @@
     margin-right: auto;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
+.imagenProductosOrder{
+    position: relative;
+    right: 550px;
+    bottom:110px
+}
 .boxNBMCDCO {
     /* background-color: cadetblue; */
-    width: 900px;
+    /* position: relative;
+    left: 100px; */
+    width: 1100px;
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -32,11 +41,12 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    width: 500px;
+    width: 80%;
     font-style: trebuchet;
     text-align: center;
     font-weight: 600;
     font-size: 1.7em;
+    /* background-color: yellow; */
     line-height : 30px
 }
 .editarProdButton{
@@ -81,7 +91,6 @@
 }
 .descriptionDetailAdminDes{
     margin-left: 15px;
-    margin-right: 20px;
     font-style: Trebuchet;
     text-align: left;
     font-weight: 400;
@@ -92,15 +101,73 @@
     /* background-color: white; */
     display: flex;
     position: relative;
-    top: 100px;
+    top: 80px;
     width: 1400px;
-    height: 200px;
+    /* height: 200px; */
     margin-left: auto;
     margin-right: auto;
+    /* margin-bottom: 100px; */
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
+.cajasDetailAdminD {
+    position: relative;
+    padding-right: 20px;
+    bottom: 25px;
+    /* background-color: aqua; */
+ }
 
 .divImagenAdmin {
     display: block;
     align-content: center;
+}
+
+.divReviews {
+    display: flex;
+     /* background-color: red; */
+     /* align-self: flex-start; */
+     width: 50%;
+}
+
+.titleR {
+    /* align-content: center; */
+    /* background-color: red; */
+    min-width: 600px;
+    max-width: 600px;
+    /* margin-left: 250px; */
+}
+
+.divTitle {
+    display: flex;
+}
+
+.titleAR {
+    min-width: 600px;
+    max-width: 600px;
+}
+
+.divAmongReviews {
+    /* background-color: blue; */
+    /* align-content: flex-end; */
+    width: 50%;
+    
+}
+
+/* .containerR {
+    display: flex; 
+    background-color: green;
+     align-content: space-around;
+} */
+
+.divUser {
+    max-width: 50%;
+    min-width: 50%;
+    /* background-color: blue; */
+}
+
+.productoR {
+    background-color: gray;
+    /* height: 100px; */
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
 }

@@ -1,16 +1,14 @@
 import React, { /*useState*/ } from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './NavBarAll.css'
 
  export default function  MiSesion () {
 
-// const token = useSelector(state => state.token)
-const userData = useSelector(state => state.userData)
-const  history = useHistory() 
+// // const token = useSelector(state => state.token)
+// const userData = useSelector(state => state.userData)
+// const  history = useHistory() 
 
-console.log (userData)
+// console.log (userData)
 // let data = JSON.parse(userData)
 let data = JSON.parse(localStorage.getItem("userData"))
 console.log(data)

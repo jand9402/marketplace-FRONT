@@ -10,6 +10,7 @@ import './detailProductAdmin.css'
 import EditProduct from "../../ProductForm/editProduct";
 
 import cuadroBlanco from "../../../assets/detail/cuadroBlanco.jpg"
+import { Link } from "react-router-dom";
 
 // import { deleteProduct } from "../../../redux/actions";
 
@@ -17,8 +18,10 @@ import cuadroBlanco from "../../../assets/detail/cuadroBlanco.jpg"
 export default function DetailProductAdmin () {
 const dispatch = useDispatch();
 const detail = useSelector (state => state.detail)
+let data = JSON.parse(localStorage.getItem("userData"))
 console.log (detail)
 const [stateModalPut, setStateModalPut] = useState (false)
+
 
 function handleClickModal (e) {
     setStateModalPut(!stateModalPut)
@@ -37,15 +40,28 @@ useEffect (()=>{
 useEffect (() => {
     return dispatch(deletepreviousdetail())
 }, [dispatch])
+
+let categorySep = Array.isArray(detail.categories) && detail.categories.join(', ')
+console.log(categorySep)
     
     return (
         <div>
             <NavBarDetailAdmin/>
+            {data.isAdmin?(
+            <div>
             <div key={id} className='contenedorDetailAdmin'>
+            <div className="positionButtonVolverDetai">
+                <Link to='/admin/products' id='click'>
+                    <button className="botonVolverDetail">VOLVER</button>
+                </Link>
+            </div>
                 <div className="boxDetaiQuePuedoModificar">
                     <img  className="imageDetailAdmin" src={detail.image ? detail.image[0] : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.clarin.com%2Ftecnologia%2Fbanco-nacion-relanza-venta-celulares-modelos-descuento-18-cuotas-interes_0_QmAUsjhAU.html&psig=AOvVaw1sQbEUoycHdCfckA6AJk7V&ust=1653956093926000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCLiOtd34hfgCFQAAAAAdAAAAABAH" } alt="imageDetailAdmin"/>
                     <div className="boxNBMCDCO">
                         <div className="detailProductName">Detalle del producto</div>
+                        {/* <Link to={'/admin/products/edit/' + id}>
+                          <button className="editarProdButton">Editar producto</button>
+                        </Link> */}
                         <button
                         onClick={handleClickModal} 
                         className="editarProdButton"
@@ -72,7 +88,7 @@ useEffect (() => {
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">CATEGORÍA/S:</div>
-                            <div className="descriptionDetailAdmin">{detail.categories}</div>
+                            <div className="descriptionDetailAdmin">{categorySep}</div>
                         </div>
                         <div className="cajasDetailAdmin">
                             <div className="namesAllDetailAdmin">DISPLAY:</div>
@@ -82,7 +98,7 @@ useEffect (() => {
                             <div className="namesAllDetailAdmin">MEMORIA INTERNA:</div>
                             <div className="descriptionDetailAdmin">{detail.internalMemory} GB </div>
                         </div>
-                        <div className="cajasDetailAdmin">
+                        <div className="cajasDetailAdminD">
                             <div className="namesAllDetailAdmin">DESCRIPCIÓN:</div>
                             <div className="descriptionDetailAdminDes">{detail.description}</div>
                         </div>
@@ -94,13 +110,11 @@ useEffect (() => {
                             <div className="namesAllDetailAdmin">CANTIDAD:</div>
                             <div className="descriptionDetailAdmin">{detail.amountInStock} uds.</div>
                         </div>
-                        <div>
-                            <h3>Imagenes del producto</h3>
-
+                        <div >
                             {
                                 detail.image ? (
-                                    <div className="divImagenAdmin">
-
+                                    <div>
+                                      <div className="namesAllDetailAdmin">Imágenes del producto:</div>
                                <button data-bs-toggle="modal" data-bs-target="#exampleModal">
   <img className="imagenSecundaria" src={detail.image[0]} alt='imagenProducto'/>
 </button>
@@ -199,11 +213,12 @@ useEffect (() => {
                         </div>
                     </div>
                 </div>
-                <div className="boxDetaiQueNoPuedoModificar">
+                {/* <div className="boxDetaiQueNoPuedoModificar">
                     <div className="detailProductName">Valoración del producto</div>
-
-                </div>
+                </div> */}
             </div>
+            </div>
+            ):(<div>No tienen permitido el acceso</div>)}
             <Modal
             state= {stateModalPut}
             changeState = {setStateModalPut}

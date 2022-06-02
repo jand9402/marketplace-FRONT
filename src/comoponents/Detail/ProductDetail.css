@@ -192,6 +192,16 @@
     font-size: 2em;
     line-height : 30px;   
 }
+.tituloVal {
+    position: relative;
+    top: 10px;
+    left: 450px;
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 600;
+    font-size: 2em;
+    line-height : 30px;
+}
 .princePrince{
     /* background-color: rgb(141, 131, 92); */
     margin-top: 20px;
@@ -334,4 +344,13 @@
 }
 .botones_contador_detail_menos:hover{
     background-color: #6d6f71;
+}
+
+.boxValoracionesUser{
+    position: relative;
+    margin-top: 30px;
+    left: 305px;
+    background-color: aqua;
+    width: 1300px;
+    
 }
