@@ -1,27 +1,33 @@
-.title {
-    margin-left: 48%;
+.row_wish{
+    margin-top: 30px;
+    border-bottom: none;
+    background-color: #FAFBFD;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        transition: transform 0.4s;
+        transform-style: preserve-3d;
 }
 
-.divWishlist {
-    display: flex;
-    background-color: rgb(240, 232, 232);
-    min-width: 42%;
-    max-width: 42%;
-    padding: 30px;
-    margin-left: 50px;
+.row_wish:hover{
+    transform:scale(1.02);
+    -webkit-transform:scale(1.02);
+    -moz-transform:scale(1.02);
+    -ms-transform:scale(1.02);
+    -o-transform:scale(1.02);
 }
 
-.divContenido {
-    /* margin-left: 50px; */
-    font-size: 30px;
-    /* max-width: 20%;
-    min-width: 20%; */
-    /* background-color: yellow; */
-    /* max-width: 100px;
-    min-height: 100px; */
-    height: 200px;
+.col_wish{
 }
 
-.divAll {
-    display: block;
+.img_wish{
+    height: 30%;
+}
+
+.text_wish{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.text_wish1{
+    margin-left: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 10;
 }

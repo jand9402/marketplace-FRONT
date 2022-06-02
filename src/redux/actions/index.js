@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from 'sweetalert'
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const GET_CATEGORIES = "GET_CATEGORIES";
@@ -354,11 +355,47 @@ export function postWishList(payload) {
           },
         }
       );
-      alert('Producto agregado a la wishlist')
+      swal({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Producto agregado',
+        showConfirmButton: false,
+        timer: 1000
+      })
       console.log(response)
       return response;
     } catch (error) {
       alert('Este producto ya esta en la wishlist')
+     console.log(error)
+    }
+  };
+}
+
+export function deleteWishList(payload) {
+  const token = localStorage.getItem("authorization");
+  return async function () {
+    try {
+      const response = await axios.delete(
+        `https://pf-commerce.herokuapp.com/api/wishlist/delete/${payload}`,
+        
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+      swal({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Producto eliminado',
+        showConfirmButton: false,
+        timer: 500
+      })
+      window.location.reload()
+      console.log(response)
+      return response;
+    } catch (error) {
+      alert('Error')
      console.log(error)
     }
   };
