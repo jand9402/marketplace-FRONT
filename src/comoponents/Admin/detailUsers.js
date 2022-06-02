@@ -2,6 +2,7 @@ import React from "react";
 import NavBarDetailAdmin from "../NavBar/navBarDetaiAdmin";
 import CardsUsers from "./cardsUsers/cardsUsers";
 
+<<<<<<< HEAD
 export default function DetailUsers () {
 let data = JSON.parse(localStorage.getItem("userData"))
     return(
@@ -16,3 +17,15 @@ let data = JSON.parse(localStorage.getItem("userData"))
         </div>
     )
 }
+=======
+export default function DetailUsers() {
+  return (
+    <div>
+      <NavBarDetailAdmin />
+      <div className="contenedorSesionAdmin">
+        <CardsUsers />
+      </div>
+    </div>
+  );
+}
+>>>>>>> 83738ef927a9fed1c27af16977578ce3d6e05172

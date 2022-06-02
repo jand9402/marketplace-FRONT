@@ -1,26 +1,26 @@
-import axios from 'axios';
-export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
-export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
-export const GET_CATEGORIES = 'GET_CATEGORIES'
-export const GET_CATEGORIES_NEW = 'GET_CATEGORIES_NEW'
-export const GET_BRAND = 'GET_BRAND'
-export const CATEGORY_FILTERED = 'CATEGORY_FILTERED'
-export const BRAND_FILTERED = 'BRAND_FILTERED'
-export const LOGIN_ANSWER = 'LOGIN_ANSWER'
-export const POST_USER = 'POST_USER'
-export const ORDER_BY_PRICE = 'ORDER_BY_PRICE' 
-export const POST_PRODUCT = 'POST_PRODUCT'
-export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES'
-export const NAV_BAR_NEW = 'NAV_BAR_NEW'
-export const DETAIL_DELETE = 'DETAIL_DELETE'
-export const GET_DETAIL ='GET_DETAIL'
-export const GET_USERS = 'GET_USERS'
-export const ORDERS = 'ORDERS'
-export const DELETE_PRODUCT = 'DELETE_PRODUCT'
+import axios from "axios";
+export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
+export const GET_CATEGORIES = "GET_CATEGORIES";
+export const GET_CATEGORIES_NEW = "GET_CATEGORIES_NEW";
+export const GET_BRAND = "GET_BRAND";
+export const CATEGORY_FILTERED = "CATEGORY_FILTERED";
+export const BRAND_FILTERED = "BRAND_FILTERED";
+export const LOGIN_ANSWER = "LOGIN_ANSWER";
+export const POST_USER = "POST_USER";
+export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
+export const POST_PRODUCT = "POST_PRODUCT";
+export const GET_ALL_COUNTRIES = "GET_ALL_COUNTRIES";
+export const NAV_BAR_NEW = "NAV_BAR_NEW";
+export const DETAIL_DELETE = "DETAIL_DELETE";
+export const GET_DETAIL = "GET_DETAIL";
+export const GET_USERS = "GET_USERS";
+export const ORDERS = "ORDERS";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const POST_ORDER = "POST_ORDER";
 export const GET_ORDER_DETAIL_USER = "GET_ORDER_DETAIL_USER";
-
-
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
+export const GET_ORDER_BY_ID = "GET_ORDER_BY_ID";
 
 export const getProducts = () => async (dispatch) => {
   return await fetch("https://pf-commerce.herokuapp.com/api/products")
@@ -63,15 +63,17 @@ export function getCategorys() {
 }
 
 export function getCategories() {
-    return async (dispatch) => {
-        let json = await axios.get('https://pf-commerce.herokuapp.com/api/products');
-        let categories = await json.data.products?.map((c) => c.categories);
-        let categoria = [...new Set(categories)];
-        return dispatch({
-            type: GET_CATEGORIES_NEW,
-            payload: categoria
-        })
-    }
+  return async (dispatch) => {
+    let json = await axios.get(
+      "https://pf-commerce.herokuapp.com/api/products"
+    );
+    let categories = await json.data.products?.map((c) => c.categories);
+    let categoria = [...new Set(categories)];
+    return dispatch({
+      type: GET_CATEGORIES_NEW,
+      payload: categoria,
+    });
+  };
 }
 
 export function getBrand() {
@@ -107,8 +109,10 @@ export const searchByName = (payload) => async (dispatch) => {
   console.log(payload);
   return fetch(`https://pf-commerce.herokuapp.com/api/products?name=${payload}`)
     .then((respose) => respose.json())
-    .then((json) => dispatch({ type: SEARCH_BY_NAME, payload: [json.products, payload]}))
-    // .catch(() => alert(`No se encontró ${payload}, intentelo nuevamente`));
+    .then((json) =>
+      dispatch({ type: SEARCH_BY_NAME, payload: [json.products, payload] })
+    );
+  // .catch(() => alert(`No se encontró ${payload}, intentelo nuevamente`));
 };
 
 // export const orderByPrice = (payload) => async dispatch => {
@@ -134,7 +138,6 @@ export function postUser(payload) {
       );
       return response;
     } catch (error) {
-      
       return error;
     }
   };
@@ -175,12 +178,20 @@ export function postRewies(id, payload) {
   };
 }
 
-export function deleteProduct (payload) {
-    return async function (dispatch) {
-      const deleteProduct = await axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload}`);
-      return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
-    };
+export function deleteProduct(payload) {
+  const token = localStorage.getItem("authorization");
+  return async function (dispatch) {
+    const deleteProduct = await axios.delete(
+      `https://pf-commerce.herokuapp.com/api/products/delete/${payload}`,
+      {
+        headers: {
+          authorization: `${token}`,
+        },
+      }
+    );
+    return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
   };
+}
 
 export function locaLSatorage() {
   let productsInLocalStorage = localStorage.getItem("itemCar");
@@ -196,7 +207,7 @@ export function postLogin(payload) {
         "https://pf-commerce.herokuapp.com/api/users/login",
         payload
       );
-    //   localStorage.setItem("authorization", login.data.token);
+      //   localStorage.setItem("authorization", login.data.token);
       console.log(login);
       if (login.data) {
         alert("Sesión iniciada con exito!");
@@ -245,6 +256,22 @@ export function getUsers(token) {
   };
 }
 
+export function modifyProduct(id, detailData, token) {
+  return async function (dispatch) {
+    const productMod = await axios.put(
+      `https://pf-commerce.herokuapp.com/api/products/update/${id}`,
+      detailData,
+      {
+        headers: {
+          authorization: `${token}`,
+        },
+      }
+    );
+    productMod
+      ? alert("Producto modificado correctamente")
+      : alert("Producto no encontrado");
+  };
+}
 
 export function orders(payload) {
   return {
@@ -252,6 +279,8 @@ export function orders(payload) {
     payload: payload,
   };
 }
+
+//// ORDERS
 
 export function postOrder(payload) {
   const token = localStorage.getItem("authorization");
@@ -295,6 +324,27 @@ export function getOrderDetailByUser() {
   };
 }
 
+export function getOrderByID(id) {
+  const token = localStorage.getItem("authorization");
+  return async function (dispatch) {
+    let ordersByUser = await axios.get(
+      `https://pf-commerce.herokuapp.com/api/orders/${id}`,
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    );
+    if (ordersByUser) {
+      return dispatch({
+        type: GET_ORDER_BY_ID,
+        payload: ordersByUser,
+      });
+    } else {
+      alert("No se encontró la orden por id");
+    }
+  };
+}
 
 
 export function modifyProduct(id, detailData, token){
@@ -314,3 +364,21 @@ export function modifyProduct(id, detailData, token){
 
 
 
+export function getAllOrders() {
+  const token = localStorage.getItem("authorization");
+  return async function (dispatch) {
+    let allOrders = await axios.get(`http://localhost:3001/api/orders/`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    });
+    if (allOrders) {
+      return dispatch({
+        type: GET_ALL_ORDERS,
+        payload: allOrders,
+      });
+    } else {
+      alert("No se encontraron todas las ordenes");
+    }
+  };
+}

@@ -19,6 +19,7 @@ import PostOrder from "./comoponents/Order/CreateOrder";
 import OrderList from "./comoponents/Order/OrderList";
 import Success from "./comoponents/Order/Success";
 import EditProduct from "./comoponents/ProductForm/editProduct";
+import OrderDetail from "./comoponents/Admin/orderDetail";
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
           <Route exact path="/OrderList" component={OrderList} />
           <Route exact path="/Success" component={Success} />
           <Route exact path= "/admin/products/edit/:id" component={EditProduct}/>
+          <Route exact path="/orderDetail/:id" component={OrderDetail} />
+          <Route exact path="/createProductPrueba" component={CreateProduct} />
         </Switch>
       </div>
     </BrowserRouter>
