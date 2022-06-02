@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert'
+import {deleteProduct} from '../../../redux/actions/index'
 import { useDispatch } from "react-redux";
 import './cardsProducts.css'
-import { deleteProduct } from "../../../redux/actions";
 
 export default function CardProducts({ id, image, name, price }) {
 const dispatch = useDispatch()

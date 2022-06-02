@@ -151,13 +151,33 @@ export function postUser(payload) {
   };
 }
 
-export function postProduct(payload) {
+export function postProduct(payload, token) {
+  console.log(payload);
   return async function (dispatch) {
     try {
       const response = await axios.post(
         "https://pf-commerce.herokuapp.com/api/products/post",
-        payload
+        payload,
+        {
+          headers:{
+            'authorization': `${token}`
+          }}
       );
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+export function postRewies(id, payload) {
+  console.log(payload);
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `https://pf-commerce.herokuapp.com/${id}/reviews`,
+        payload
+        );
       console.log(response);
       return response;
     } catch (error) {
@@ -247,22 +267,22 @@ export function getUsers(token) {
 }
 
 
-export function modifyProduct(id, detailData, token) {
-  return async function (dispatch) {
-    const productMod = await axios.put(
-      `https://pf-commerce.herokuapp.com/api/products/update/${id}`,
-      detailData,
-      {
-        headers: {
-          authorization: `${token}`,
-        },
-      }
-    );
-    productMod
-      ? alert("Producto modificado correctamente")
-      : alert("Producto no encontrado");
-  };
-}
+// export function modifyProduct(id, detailData, token) {
+//   return async function (dispatch) {
+//     const productMod = await axios.put(
+//       `https://pf-commerce.herokuapp.com/api/products/update/${id}`,
+//       detailData,
+//       {
+//         headers: {
+//           authorization: `${token}`,
+//         },
+//       }
+//     );
+//     productMod
+//       ? alert("Producto modificado correctamente")
+//       : alert("Producto no encontrado");
+//   };
+// }
 
 export function orders(payload) {
   return {
@@ -467,6 +487,23 @@ export function getOrderByID(id) {
     }
   };
 }
+
+
+export function modifyProduct(id, detailData, token){
+  console.log(detailData, id)
+    return async function (dispatch){
+      const productMod = await axios.put(`https://pf-commerce.herokuapp.com/api/products/update/${id}`, detailData,
+      {
+        headers:{
+          'authorization': `${token}`
+        }} )
+      console.log(productMod)
+    productMod? alert('Producto modificado correctamente') : alert('Producto no encontrado')
+  }
+  }
+
+  // export function loginGoogle ()
+
 
 
 export function getAllOrders() {

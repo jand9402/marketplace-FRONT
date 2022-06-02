@@ -1,6 +1,6 @@
 .contenedorDetailAdmin{
     background-color: #f7f5f4;
-    height: 92.5vh;
+    height: 100vh;
     padding-left: 0 !important;
     padding-right: 0 !important;
     width: 100% !important;
@@ -9,6 +9,8 @@
     text-align: center; */    
 }
 .imageDetailAdmin{
+    position: relative;
+    left: 70px;
     width: 500px;
     height: 500px;
 }
@@ -16,15 +18,22 @@
     /* background-color: blue; */
     display: flex;
     position: relative;
-    top: 50px;
+    top: 60px;
     width: 1400px;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
+.imagenProductosOrder{
+    position: relative;
+    right: 550px;
+    bottom:110px
+}
 .boxNBMCDCO {
     /* background-color: cadetblue; */
-    width: 900px;
+    /* position: relative;
+    left: 100px; */
+    width: 1100px;
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -82,7 +91,6 @@
 }
 .descriptionDetailAdminDes{
     margin-left: 15px;
-    margin-right: 20px;
     font-style: Trebuchet;
     text-align: left;
     font-weight: 400;
@@ -101,6 +109,12 @@
     /* margin-bottom: 100px; */
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
+.cajasDetailAdminD {
+    position: relative;
+    padding-right: 20px;
+    bottom: 25px;
+    /* background-color: aqua; */
+ }
 
 .divImagenAdmin {
     display: block;

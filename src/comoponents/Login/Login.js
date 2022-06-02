@@ -1,10 +1,9 @@
-import "./LoginForm.css";
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import LogoProv from "../../assets/logo/LogoProv.png";
-import { postLogin } from "../../redux/actions";
-import NavBarDetail from "../NavBar/NavBaRDetail";
+import './LoginForm.css'
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { postLogin} from '../../redux/actions'
+import NavBarDetail from '../NavBar/NavBaRDetail'
 
 export default function Login() {
   function validate(input) {
@@ -22,10 +21,8 @@ export default function Login() {
     return errors;
   }
 
-  const dispatch = useDispatch();
-  // const token = useSelector(state => state.token)
-  // console.log(token)
-  const history = useHistory();
+const dispatch = useDispatch()
+const history = useHistory()
 
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
@@ -66,9 +63,11 @@ export default function Login() {
         history.push("/");
       }
     }
-    // LE SAQUE EL TOKEN EN AUTHORIZATION , TOKEN
-    console.log(input);
-  };
+    if(localStorage.getItem('authorization')) {
+      history.push('/')
+    } 
+  }
+
 
   return (
     <div>
@@ -101,20 +100,19 @@ export default function Login() {
                   <p className="errosLoigin">{errors.password}</p>
                 )}
               </div>
-              <div className="botonesLogin">
-                <button type="submit" className="button">
-                  Ingresar
-                </button>
-                <Link to="/" id="click">
-                  <div className="recuperarContrasena">
-                    ¿Olvidaste tu contraseña?
-                  </div>
-                </Link>
+              <div className='botonesLogin'>
+                <button type='submit' className='button'>Ingresar</button>
               </div>
             </form>
+                <div className='orderButtonGoogle'>
+                  <div className='recuperarContrasena'>¿Olvidaste tu contraseña?</div>
+                  <a  href ="https://pf-commerce.herokuapp.com/google">
+                  <button className='botonGoogle'></button>
+                  </a>
+                </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+} 

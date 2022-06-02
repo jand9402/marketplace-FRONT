@@ -8,6 +8,16 @@
     /* align-items: center;
     text-align: center; */    
 }
+.contenedorSesionAdminUsers{
+    background-color: #f7f5f4;
+    height: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    display: flex;
+    /* align-items: center;
+    text-align: center; */    
+}
 
 .orederSesionAdmin{
     /* background-color: aqua; */
