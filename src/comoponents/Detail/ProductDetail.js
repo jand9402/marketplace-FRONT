@@ -163,56 +163,60 @@ export default function ProductDetail() {
                   //   </div>
                   // </div>
 
-                  // <a data-bs-toggle="modal" data-bs-target="#imagenModal3">
-                  //   <img className="imagenSecundaria" src="https://i.blogs.es/a24a9c/samsung-galaxy-tab/1366_2000.jpg" alt='imagenProducto'/>
-                  // </a>
-                  // <div class="modal fade" id="imagenModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  //   <div class="modal-dialog">
-                  //     <div class="modal-content">
-                  //       <div class="modal-body">
-                  //       <img className="imagenModal" src="https://i.blogs.es/a24a9c/samsung-galaxy-tab/1366_2000.jpg" alt='imagenProductoVacio'/>
-                  //       </div>
-                  //     </div>
-                  //   </div>
-                  // </div>
-                  //                                 </div>
-                }{" "}
+
+// <a data-bs-toggle="modal" data-bs-target="#imagenModal3">
+//   <img className="imagenSecundaria" src="https://i.blogs.es/a24a9c/samsung-galaxy-tab/1366_2000.jpg" alt='imagenProducto'/>
+// </a>
+// <div class="modal fade" id="imagenModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//   <div class="modal-dialog">
+//     <div class="modal-content">
+//       <div class="modal-body">
+//       <img className="imagenModal" src="https://i.blogs.es/a24a9c/samsung-galaxy-tab/1366_2000.jpg" alt='imagenProductoVacio'/>
+//       </div>     
+//     </div>
+//   </div>
+// </div>
+//                                 </div>  
+                
+                        
+            }  </div>
+            )
+        }
+    })}
+    {/* <img src="https://media.pasionmovil.com/2012/10/Consumo-de-Energ%C3%ADa-de-Smartphones-y-Tablets.png" alt="Imagen celulares y tablets" />}    */}
+                <PriceDetail/>
+            </div>
+            <div>
+                <DescriptionProduct/>
+            </div>
+            <div className="container">
+              <div className="tituloVal mt-5">Valoraciones del producto</div>
+              
+              {
+                allProducts?.map((producto) =>{
+                  if (producto._id === test) {
+                    return(
+                      
+                        <div className="row row_reviews">{producto.reviews.length === 0? 'No tiene valoraciones este producto': producto.reviews.map(e =>{
+                          return(
+                            <div className="col col_reviews">
+                              <div className="text_rates">Puntuación: <d> {e.rating}</d> </div>
+                              
+                              <div className="text_rates">Comentario: <d>{e.comment}</d> </div>
+                              
+                            </div>
+                          )
+                        })}
+                        </div>
+                  
+                    )
+                  }
+                })
+              }
               </div>
-            );
-          }
-        })}
-        {/* <img src="https://media.pasionmovil.com/2012/10/Consumo-de-Energ%C3%ADa-de-Smartphones-y-Tablets.png" alt="Imagen celulares y tablets" />}    */}
-        <PriceDetail />
-      </div>
-      <div>
-        <DescriptionProduct />
-      </div>
-      <div className="boxValoracionesUser">
-        <div className="tituloVal">Valoraciones del producto</div>
-        {allProducts?.map((producto) => {
-          if (producto._id === test) {
-            return (
-              <div>
-                <div>
-                  {producto.reviews.length === 0
-                    ? "No tiene valoraciones este producto"
-                    : producto.reviews.map((e) => {
-                        return (
-                          <div>
-                            <div>Puntuación:</div>
-                            <div>{e.rating}</div>
-                            <div>Comentario:</div>
-                            <div>{e.comment} </div>
-                          </div>
-                        );
-                      })}
-                </div>
-              </div>
-            );
-          }
-        })}
-        <div></div>
-      </div>
-    </div>
-  );
+              <div></div>
+            </div>
+        
+    )
+
 }

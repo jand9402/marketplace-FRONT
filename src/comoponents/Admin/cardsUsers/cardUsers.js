@@ -25,7 +25,7 @@ export default function CardUsers({ _id, name, phoneNumber, role }) {
 
       <div className="orderButtonsUsers">
         <Link to={"/admin/users/buys/" + _id} id="click">
-          <button className="buttonUsersAll">Detalle</button>
+          <button className="buttonUsersAll">Editar</button>
         </Link>
         {/* <button className="buttonUsersAll">Hacer admin</button> */}
         {/* <button className="buttonUsersAll">Sacar de admin</button> */}

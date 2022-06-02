@@ -173,7 +173,6 @@ export function updateUserByAdmin(id, detailData, token) {
 
 export function getUserById(id) {
   const token = localStorage.getItem("authorization");
-  console.log(id);
   return async function (dispatch) {
     let response = await axios.get(`http://localhost:3001/api/users/${id}`, {
       headers: {
@@ -217,15 +216,14 @@ export function postRewies(id, payload, token) {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-
         `https://pf-commerce.herokuapp.com/api/products/reviews/${id}`,
         payload,
         {
-          headers:{
-            'authorization': `${token}`
-          }}
-
-        );
+          headers: {
+            authorization: `${token}`,
+          },
+        }
+      );
       console.log(response);
       return response;
     } catch (error) {
@@ -370,6 +368,8 @@ export function getOrderDetailByUser() {
         },
       }
     );
+    alert('algo')
+    console.log(ordersByUser)
     if (ordersByUser) {
       return dispatch({
         type: GET_ORDER_DETAIL_USER,
