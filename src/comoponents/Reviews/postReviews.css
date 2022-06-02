@@ -1,0 +1,47 @@
+.contenedorReviews{
+    background-color: #f7f5f4;
+    height: 92.5vh;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    display: flex;
+    /* align-items: center;
+    text-align: center; */   
+}
+.contenedorReviewsAzul{
+    display: flex;
+    background-color: rgba(23, 49, 87);
+    border-radius: 20px;
+    width: 800px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: auto;
+    margin-top: auto;
+}
+.cardLoginR{
+    background-color: aquamarine;
+    position: relative;
+    top: 45px;
+    left: 140px;
+    height: 400px;
+}
+.inputDescripción {
+    width: 500px;
+    height: 150px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+}
+.orderinputContraseña{
+    background-color: burlywood;
+    display: flex
+}
+.inputRadios{
+    width: 90%;
+    height: 1.3em;
+}
+.inputRadios{
+    color: azure;
+    margin-right: 10px;
+}
