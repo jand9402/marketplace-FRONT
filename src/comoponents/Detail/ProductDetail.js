@@ -190,8 +190,8 @@ export default function ProductDetail (){
             </div>
             <div className="boxValoracionesUser">
               <div className="tituloVal">Valoraciones del producto</div>
-              <CardsReviews />
-              {/* {
+              {/* <CardsReviews /> */}
+              {
                 allProducts?.map((producto) =>{
                   if (producto._id === test) {
                     return(
@@ -212,7 +212,7 @@ export default function ProductDetail (){
                     )
                   }
                 })
-              } */}
+              }
               <div></div>
             </div>
         </div>
