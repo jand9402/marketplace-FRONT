@@ -266,6 +266,7 @@ export function postLogin(payload) {
         });
       }
     };
+    // eslint-disable-next-line no-unreachable
   } catch (e) {
     console.log("Error", e.response.data);
   }
@@ -546,11 +547,14 @@ export function modifyProduct(id, detailData, token) {
 export function getAllOrders() {
   const token = localStorage.getItem("authorization");
   return async function (dispatch) {
-    let allOrders = await axios.get(`http://localhost:3001/api/orders/`, {
-      headers: {
-        Authorization: `${token}`,
-      },
-    });
+    let allOrders = await axios.get(
+      `https://pf-commerce.herokuapp.com/api/orders/`,
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    );
     if (allOrders) {
       return dispatch({
         type: GET_ALL_ORDERS,
