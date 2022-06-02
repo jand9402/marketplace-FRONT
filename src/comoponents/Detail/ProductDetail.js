@@ -7,6 +7,7 @@ import PriceDetail from "./PriceDetail";
 import DescriptionProduct from "./DescriptionProduct";
 import './ProductDetail.css'
 import cuadroBlanco from '../../assets/detail/cuadroBlanco.jpg'
+import CardsReviews from "../CardReview/cardsReviews";
 // import Modal from "../Admin/Modales/Modal";
 
 export default function ProductDetail (){
@@ -15,6 +16,7 @@ export default function ProductDetail (){
     let test = idProducto.id
     const dispatch = useDispatch()
     let allProducts = useSelector((state) => state.products)
+    console.log (allProducts)
 
     useEffect(() => {
         dispatch(getProducts())
@@ -139,8 +141,33 @@ export default function ProductDetail (){
             <div>
                 <DescriptionProduct/>
             </div>
-            <div> soy las valoraciones del usuario</div>
-            <div>Soy los productos similares-por categoría-</div>
+            <div className="boxValoracionesUser">
+              <div className="tituloVal">Valoraciones del producto</div>
+              <CardsReviews />
+              {/* {
+                allProducts?.map((producto) =>{
+                  if (producto._id === test) {
+                    return(
+                      <div>
+                        <div>{producto.reviews.length === 0? 'No tiene valoraciones este producto': producto.reviews.map(e =>{
+                          return(
+                            <div>
+                              <div>Puntuación:</div>
+                              <div>{e.rating}</div>
+                              <div>Comentario:</div>
+                              <div>{e.comment} </div>
+                            </div>
+                          )
+                        })}
+                        </div>
+                      </div>
+                  
+                    )
+                  }
+                })
+              } */}
+              <div></div>
+            </div>
         </div>
     )
 }
