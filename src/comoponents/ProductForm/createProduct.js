@@ -162,7 +162,11 @@ export default function CreateProduct () {
           input.screenSize === '' ||
           !input.categories.length 
           ) {
+<<<<<<< HEAD
          alert ('No puede creear un producto nuevo si no completa el formulario')
+=======
+         alert ('No puede crear una nueva actividad si no completa el formulario o coloca un nombre unico')
+>>>>>>> 37c1be16f03da1e9b97dabe7f2bd8df1e8c29e4e
       }else {
         const formdata = new window.FormData()
         formdata.append('name', input.name)
