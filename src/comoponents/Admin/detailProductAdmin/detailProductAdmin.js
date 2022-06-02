@@ -42,7 +42,7 @@ useEffect (() => {
 }, [dispatch])
 
 let categorySep = Array.isArray(detail.categories) && detail.categories.join(', ')
-console.log(categorySep)
+// console.log(categorySep)
     
     return (
         <div>

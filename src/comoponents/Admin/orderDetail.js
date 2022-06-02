@@ -6,6 +6,7 @@ import { getOrderByID } from "../../redux/actions/index";
 import { Link } from "react-router-dom";
 import "./orderDetail.css";
 import axios from "axios";
+import NavBarDetailAdmin from "../NavBar/navBarDetaiAdmin";
 // import { setOrderShipped } from "../../redux/actions/index";
 
 export default function OrderDetail() {
@@ -37,11 +38,12 @@ export default function OrderDetail() {
 
   return (
     <div>
+      <NavBarDetailAdmin/>
       <div className="container">
         <div className="d-flex">
           <h1 className="tus_compras font">Tus Compras</h1>
           <Link to="/admin/ventas">
-            <button>Volver</button>
+            <button className="bottonVolODA">Volver</button>
           </Link>
         </div>
         {!data ? (

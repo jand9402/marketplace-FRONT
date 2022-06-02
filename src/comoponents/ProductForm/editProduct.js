@@ -250,7 +250,6 @@ export default function EditProduct () {
         //     input.screenSize === '' &&
         //     !input.temperament.length 
         await dispatch(modifyProduct( id, input, token))
-        alert(`Has Modificado ${input.name}, felicitaciones`)
         setInput({
           name: '',
           price: '',
