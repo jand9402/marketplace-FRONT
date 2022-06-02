@@ -24,7 +24,9 @@ export default function PriceDetail() {
   let amountForButton;
   return (
     <div className="boxMacroPrice">
-      <div className="boxMacroPrice-flx">
+
+  
+    <div className="boxMacroPrice-flx">
         {allProducts?.map((producto) => {
           if (producto._id === test) {
             amountForButton = producto.amountInStock;

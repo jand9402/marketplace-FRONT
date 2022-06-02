@@ -26,7 +26,7 @@ let total2 = 0
       <div className="container">
 <div className="d-flex">
         <h1 className="tus_compras font">Tus Compras</h1>
-    <Link to='/user/wishlist'><button className="">Wishlist</button></Link>
+    <Link to='/user/wishlist'><button className="botonesWishlist">Wishlist</button></Link>
     </div>
         {!data ? (
           <p>Cargando...</p>

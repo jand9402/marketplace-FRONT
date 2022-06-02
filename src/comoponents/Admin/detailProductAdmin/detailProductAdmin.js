@@ -43,11 +43,13 @@ export default function DetailProductAdmin() {
     Array.isArray(detail.categories) && detail.categories.join(", ");
   console.log(categorySep);
 
-  return (
-    <div>
-      <NavBarDetailAdmin />
-      {data.isAdmin ? (
+let categorySep = Array.isArray(detail.categories) && detail.categories.join(', ')
+// console.log(categorySep)
+    
+    return (
         <div>
+        <NavBarDetailAdmin />
+      {data.isAdmin ? (
           <div key={id} className="contenedorDetailAdmin">
             <div className="positionButtonVolverDetai">
               <Link to="/admin/products" id="click">
