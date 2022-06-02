@@ -20,6 +20,7 @@ import {
   GET_CATEGORIES_NEW,
   DELETE_PRODUCT,
   GET_ALL_ORDERS,
+  GET_ORDER_BY_ID,
 } from "../actions";
 
 const initialState = {
@@ -45,6 +46,7 @@ const initialState = {
   orderDetail: [],
   order: [],
   allOrders: [],
+  orderById: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -54,7 +56,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
         allProducts: action.payload,
-        allProducts2: action.payload
+        allProducts2: action.payload,
       };
     case GET_ALL_COUNTRIES:
       return {
@@ -62,23 +64,23 @@ export default function rootReducer(state = initialState, action) {
         countries: action.payload,
       };
     case SEARCH_BY_NAME:
-      console.log(action.payload)
-      let nombre = action.payload[1]
-      function error(payload){ 
-        console.log(payload)
-        if(payload.length<2){
-          alert('No se encontró ' + nombre + ', intentelo nuevamente')
+      console.log(action.payload);
+      let nombre = action.payload[1];
+      function error(payload) {
+        console.log(payload);
+        if (payload.length < 2) {
+          alert("No se encontró " + nombre + ", intentelo nuevamente");
         }
       }
-      error(action.payload[0])
-      function estado (productos){
-        if(productos.length<2){
-          return state.products
-        }else{
-          return action.payload[0]
+      error(action.payload[0]);
+      function estado(productos) {
+        if (productos.length < 2) {
+          return state.products;
+        } else {
+          return action.payload[0];
         }
       }
-      let estadoActual = estado(action.payload[0])
+      let estadoActual = estado(action.payload[0]);
       return {
         ...state,
         products: estadoActual,
@@ -188,6 +190,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         allOrders: action.payload,
+      };
+    case GET_ORDER_BY_ID:
+      return {
+        ...state,
+        orderById: action.payload,
       };
 
     default:

@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { getOrderDetailByUser } from "../../redux/actions/index";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
-import './Order.css'
+import "./Order.css";
 
 export default function CreateOrder() {
   const KEY = process.env.REACT_APP_STRIPE_KEY;
@@ -50,10 +50,10 @@ export default function CreateOrder() {
   return (
     <div className="container mt-5">
       <div className="d-flex">
-      <h1 className="font">Lista de tus ordenes</h1>
-      <Link to="/PostOrder">
-        <button>Regresar</button>
-      </Link>
+        <h1 className="font">Lista de tus ordenes</h1>
+        <Link to="/PostOrder">
+          <button>Regresar</button>
+        </Link>
       </div>
       {!data ? (
         <p>Cargando...</p>
@@ -62,31 +62,33 @@ export default function CreateOrder() {
           {data ? (
             <>
               {data.userOrder?.map((item) => (
-                <div  key={item._id}>
+                <div key={item._id}>
                   <h3>Tus productos</h3>
                   {item.orderProducts.map((product) => (
                     <div className="row row_lista_ordenes" key={product._id}>
                       <div className="col">
-                      <p>Nombre: {product.name}</p>
-                      <img
-                        src={product.image[0]}
-                        height="150px"
-                        alt="ProductImg"
-                      />
+                        <p>Nombre: {product.name}</p>
+                        <img
+                          src={product.image[0]}
+                          height="150px"
+                          alt="ProductImg"
+                        />
                       </div>
                       <div className="col">
-                      <p>Precio: {product.price}</p>
-                      <p>Catidad: {product.quantity}</p>
+                        <p>Precio: {product.price}</p>
+                        <p>Catidad: {product.quantity}</p>
                       </div>
                     </div>
                   ))}
-                  
+
                   <h3 className="font">Tus datos</h3>
-                  <p  className="font">Nombre: {item.deliveryAddress.fullName}</p>
-                  <strong  className="font">Total: ${item.totalPrice}</strong>
-                  </div>
+                  <p className="font">
+                    Nombre: {item.deliveryAddress.fullName}
+                  </p>
+                  <strong className="font">Total: ${item.totalPrice}</strong>
+                </div>
               ))}
-              
+
               <StripeCheckout
                 name="StoreCel"
                 image="https://cdn-icons-png.flaticon.com/512/2097/2097276.png"
@@ -95,7 +97,7 @@ export default function CreateOrder() {
                 token={onToken}
                 stripeKey={KEY}
               >
-                <button  className="font">Pagar</button>
+                <button className="font">Pagar</button>
               </StripeCheckout>
             </>
           ) : (

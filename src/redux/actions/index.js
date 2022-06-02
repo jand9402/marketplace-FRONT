@@ -20,6 +20,7 @@ export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const POST_ORDER = "POST_ORDER";
 export const GET_ORDER_DETAIL_USER = "GET_ORDER_DETAIL_USER";
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
+export const GET_ORDER_BY_ID = "GET_ORDER_BY_ID";
 
 export const getProducts = () => async (dispatch) => {
   return await fetch("https://pf-commerce.herokuapp.com/api/products")
@@ -143,7 +144,6 @@ export function postUser(payload) {
 }
 
 export function postProduct(payload) {
-  console.log(payload);
   return async function (dispatch) {
     try {
       const response = await axios.post(
@@ -159,9 +159,15 @@ export function postProduct(payload) {
 }
 
 export function deleteProduct(payload) {
+  const token = localStorage.getItem("authorization");
   return async function (dispatch) {
     const deleteProduct = await axios.delete(
-      `https://pf-commerce.herokuapp.com/api/products/delete/${payload} `
+      `https://pf-commerce.herokuapp.com/api/products/delete/${payload}`,
+      {
+        headers: {
+          authorization: `${token}`,
+        },
+      }
     );
     return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
   };
@@ -230,12 +236,31 @@ export function getUsers(token) {
   };
 }
 
+export function modifyProduct(id, detailData, token) {
+  return async function (dispatch) {
+    const productMod = await axios.put(
+      `https://pf-commerce.herokuapp.com/api/products/update/${id}`,
+      detailData,
+      {
+        headers: {
+          authorization: `${token}`,
+        },
+      }
+    );
+    productMod
+      ? alert("Producto modificado correctamente")
+      : alert("Producto no encontrado");
+  };
+}
+
 export function orders(payload) {
   return {
     type: ORDERS,
     payload: payload,
   };
 }
+
+//// ORDERS
 
 export function postOrder(payload) {
   const token = localStorage.getItem("authorization");
@@ -279,20 +304,25 @@ export function getOrderDetailByUser() {
   };
 }
 
-export function modifyProduct(id, detailData, token) {
+export function getOrderByID(id) {
+  const token = localStorage.getItem("authorization");
   return async function (dispatch) {
-    const productMod = await axios.put(
-      `https://pf-commerce.herokuapp.com/api/products/update/${id}`,
-      detailData,
+    let ordersByUser = await axios.get(
+      `https://pf-commerce.herokuapp.com/api/orders/${id}`,
       {
         headers: {
-          authorization: `${token}`,
+          Authorization: `${token}`,
         },
       }
     );
-    productMod
-      ? alert("Producto modificado correctamente")
-      : alert("Producto no encontrado");
+    if (ordersByUser) {
+      return dispatch({
+        type: GET_ORDER_BY_ID,
+        payload: ordersByUser,
+      });
+    } else {
+      alert("No se encontró la orden por id");
+    }
   };
 }
 
