@@ -44,6 +44,7 @@ let total2 = 0
                     {item.isPaid ? <p className="col pagado_order font">Pagado: SI</p> : <p className="col Spagado_order font">Pagado: NO</p> }
                    
                 <div>Valor total de esta orden: {total= total + item.totalPrice}</div>
+                <p className="blanco">{total= 0}</p>
                     {item.isDelivered ? <p className="col font">Enviado: SI</p> : <p  className="col font">Enviado: NO</p>}
                     {item.isPaid ? <p className="col pagado_order font">Pago realizacdo con exito</p> : <Link to="/pay"><button value={item._id} onClick={e => handlePay(e)} className="col pagado_order font">Pagar ahora</button></Link> }
                     </div>
