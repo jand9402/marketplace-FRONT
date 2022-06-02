@@ -8,7 +8,9 @@ import { useParams } from "react-router-dom";
 export default function PostReviews() {
   const token = localStorage.getItem("authorization");
     const {id} = useParams();
-  function validate(input) {
+    const token = localStorage.getItem('authorization')
+  
+    function validate(input) {
 
     const errors = {};
     if (!input.rating) {
@@ -26,7 +28,7 @@ const history = useHistory()
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     comment: "",
-    rating: "",
+    rating: 0,
   });
 
   function handleChange(e) {
@@ -51,7 +53,9 @@ const history = useHistory()
     } else {
       e.preventDefault()
         await dispatch(postRewies(id, input, token))
-        
+
+        alert(`Gracias por valorar el producto`)
+
   }
 }
 
@@ -85,8 +89,8 @@ const history = useHistory()
                   <input onClick={handleChange}  className="radios" type="radio" name= "rating" value ='4'/>
                   <label>5</label>
                   <input onClick={handleChange}  className="radios" type="radio" name= "rating" value ='5'/>
-                {errors.password && (
-                  <p className="errosLoigin">{errors.password}</p>
+                {errors.rating && (
+                  <p className="errosLoigin">{errors.rating}</p>
                 )}
               </div>
               <div className='botonesLogin'>
