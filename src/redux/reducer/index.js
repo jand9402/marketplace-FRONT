@@ -19,13 +19,11 @@ import {
   GET_ORDER_DETAIL_USER,
   GET_WISHLIST,
   GET_CATEGORIES_NEW,
-
   GET_ORDER_DETAIL_ID,
-
   DELETE_PRODUCT,
   GET_ALL_ORDERS,
   GET_ORDER_BY_ID,
-
+  GET_USER_BY_ID,
 } from "../actions";
 
 const initialState = {
@@ -194,17 +192,17 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         orderDetail: action.payload,
       };
-      case GET_ORDER_DETAIL_ID:
+    case GET_ORDER_DETAIL_ID:
       return {
         ...state,
         orderDetail2: action.payload,
       };
 
-      case GET_WISHLIST:
-        return {
-          ...state,
-          allWishlist: action.payload
-        }
+    case GET_WISHLIST:
+      return {
+        ...state,
+        allWishlist: action.payload,
+      };
 
     case GET_ALL_ORDERS:
       return {
@@ -216,8 +214,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         orderById: action.payload,
       };
-
-
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        userById: action.payload,
+      };
     default:
       return { ...state };
   }
