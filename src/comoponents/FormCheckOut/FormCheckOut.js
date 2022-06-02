@@ -17,7 +17,7 @@ export default function FormCheckOut() {
   // let infoUser = JSON.parse(localStorage.userData)
   let infoProducts = JSON.parse(localStorage.itemCar);
   let orderProducts = [];
-  infoProducts.map((item) => {
+  if(infoProducts.length>1){infoProducts.map((item) => {
     let producto = {
       product: item._id,
       name: item.name,
@@ -26,7 +26,16 @@ export default function FormCheckOut() {
       quantity: item.quantity,
     };
     orderProducts.push(producto);
-  });
+  })}else{
+    let producto = {
+      product: infoProducts._id,
+      name: infoProducts.name,
+      image: infoProducts.image,
+      price: infoProducts.price,
+      quantity: infoProducts.quantity,
+    }
+    orderProducts.push(producto);
+  }
   let itemsPrice = 0;
   orderProducts.map((item) => {
     itemsPrice = itemsPrice + item.price * item.quantity;
