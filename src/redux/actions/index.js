@@ -263,22 +263,22 @@ export function getUsers(token) {
 }
 
 
-export function modifyProduct(id, detailData, token) {
-  return async function (dispatch) {
-    const productMod = await axios.put(
-      `https://pf-commerce.herokuapp.com/api/products/update/${id}`,
-      detailData,
-      {
-        headers: {
-          authorization: `${token}`,
-        },
-      }
-    );
-    productMod
-      ? alert("Producto modificado correctamente")
-      : alert("Producto no encontrado");
-  };
-}
+// export function modifyProduct(id, detailData, token) {
+//   return async function (dispatch) {
+//     const productMod = await axios.put(
+//       `https://pf-commerce.herokuapp.com/api/products/update/${id}`,
+//       detailData,
+//       {
+//         headers: {
+//           authorization: `${token}`,
+//         },
+//       }
+//     );
+//     productMod
+//       ? alert("Producto modificado correctamente")
+//       : alert("Producto no encontrado");
+//   };
+// }
 
 export function orders(payload) {
   return {
@@ -427,7 +427,6 @@ export function getOrderByID(id) {
 }
 
 
-<<<<<<< HEAD
 export function modifyProduct(id, detailData, token){
   console.log(detailData, id)
     return async function (dispatch){
@@ -445,8 +444,6 @@ export function modifyProduct(id, detailData, token){
 
 
 
-=======
->>>>>>> 37c1be16f03da1e9b97dabe7f2bd8df1e8c29e4e
 export function getAllOrders() {
   const token = localStorage.getItem("authorization");
   return async function (dispatch) {

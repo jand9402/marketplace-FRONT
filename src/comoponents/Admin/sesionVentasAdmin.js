@@ -6,22 +6,6 @@ import { getAllOrders } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 
-<<<<<<< HEAD
-export default function SesionVentasAdmin () {
-
-let data = JSON.parse(localStorage.getItem("userData"))
-    return(
-        <div>
-            {
-                data.isAdmin? (
-                    <div>soy mis ventas...</div>
-    
-                ):(<div>No tiene permitido el acceso</div>)
-            }
-        </div>
-    )
-}
-=======
 // 2.  Poder filtrar las órdenes por su estado (creada, procesando, cancelada, completa) (admin).
 
 export default function SesionVentasAdmin() {
@@ -70,4 +54,3 @@ export default function SesionVentasAdmin() {
     </div>
   );
 }
->>>>>>> 83738ef927a9fed1c27af16977578ce3d6e05172
