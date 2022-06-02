@@ -18,6 +18,7 @@ import {
   POST_ORDER,
   GET_ORDER_DETAIL_USER,
   GET_CATEGORIES_NEW,
+  GET_ORDER_DETAIL_ID,
   DELETE_PRODUCT
 } from "../actions";
 
@@ -42,6 +43,7 @@ const initialState = {
   countries: [],
   cart: [],
   orderDetail: [],
+  orderDetail2: [],
   order: [],
 };
 
@@ -181,6 +183,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         orderDetail: action.payload,
+      };
+      case GET_ORDER_DETAIL_ID:
+      return {
+        ...state,
+        orderDetail2: action.payload,
       };
 
     default:

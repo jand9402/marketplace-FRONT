@@ -19,6 +19,7 @@ export const ORDERS = 'ORDERS'
 export const DELETE_PRODUCT = 'DELETE_PRODUCT'
 export const POST_ORDER = "POST_ORDER";
 export const GET_ORDER_DETAIL_USER = "GET_ORDER_DETAIL_USER";
+export const GET_ORDER_DETAIL_ID = "GET_ORDER_DETAIL_ID";
 
 
 
@@ -156,12 +157,20 @@ export function postProduct(payload) {
   };
 }
 
-export function deleteProduct (payload) {
-    return async function (dispatch) {
-      const deleteProduct = await axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload} `);
-      return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
-    };
-  };
+// export function deleteProduct (payload) {
+//     return async function (dispatch) {
+//       const deleteProduct = await axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload} `);
+//       return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
+//     };
+//   };
+
+export function deleteProduct (payload){
+  return async function (){
+    try{axios.delete(`https://pf-commerce.herokuapp.com/api/products/delete/${payload} `)
+    }catch (error) {
+    }
+  }
+}
 
 export function locaLSatorage() {
   let productsInLocalStorage = localStorage.getItem("itemCar");
@@ -268,6 +277,28 @@ export function getOrderDetailByUser() {
     if (ordersByUser) {
       return dispatch({
         type: GET_ORDER_DETAIL_USER,
+        payload: ordersByUser,
+      });
+    } else {
+      alert("No se encontraron ordenes");
+    }
+  };
+}
+
+export function getOrderDetailById(payload) {
+  const token = localStorage.getItem("authorization");
+  return async function (dispatch) {
+    let ordersByUser = await axios.get(
+      `https://pf-commerce.herokuapp.com/api/orders/${payload}`,
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    );
+    if (ordersByUser) {
+      return dispatch({
+        type: GET_ORDER_DETAIL_ID,
         payload: ordersByUser,
       });
     } else {

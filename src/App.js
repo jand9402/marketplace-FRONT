@@ -18,6 +18,7 @@ import CreateProduct from "./comoponents/ProductForm/createProduct";
 import PostOrder from "./comoponents/Order/CreateOrder";
 import OrderList from "./comoponents/Order/OrderList";
 import Success from "./comoponents/Order/Success";
+import PagoOrdenes from "./comoponents/RegisteredUser/PagoOrdenId";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route exact path="/PostOrder" component={PostOrder} />
           <Route exact path="/OrderList" component={OrderList} />
           <Route exact path="/Success" component={Success} />
+          <Route exact path="/pay" component={PagoOrdenes} />
 
           <Route exact path="/createProductPrueba" component={CreateProduct} />
         </Switch>
