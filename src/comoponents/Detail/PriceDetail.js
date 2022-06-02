@@ -27,7 +27,7 @@ export default function PriceDetail() {
           return (
             <div className="orderNameyotros" key={producto._id}>
               <div className="princeNameProd">{producto.name}</div>
-              <div className="princePrince">${producto.price}</div>
+              <div className="princePrince">US${producto.price}</div>
               <div className="boxPriceStock">
                 <div className="princeStockName">Stock disponible:</div>
                 <div className="princeStockNumber">

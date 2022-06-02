@@ -65,6 +65,25 @@
     -ms-transition: 300ms all;
     -o-transition: 300ms all;
 }
+.buttonUsersAll2 {
+    position: relative;
+    left:1600px;
+    top: 40px;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    width: 130px;
+    height: 50px;
+    background-color:#114d86;
+    color: white;
+    border-radius: 10px;
+    transition: 300ms all;
+    border: none;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -ms-transition: 300ms all;
+    -o-transition: 300ms all;
+}
 
 .buttonDetailProductAdmin:hover{
     background-color: #6d6f71;

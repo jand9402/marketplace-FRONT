@@ -5,6 +5,7 @@ import "./widgetLg.css";
 import { getAllOrders } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
+import NavBarDetailAdmin from "../NavBar/navBarDetaiAdmin";
 
 export default function SesionVentasAdmin() {
   const dispatch = useDispatch();
@@ -20,10 +21,13 @@ export default function SesionVentasAdmin() {
   //     })
   //   );
   return (
+    <div>
+      <NavBarDetailAdmin/>
+
     <div className="widgetLg">
-      <Link to="/admin/">
+      {/* <Link to="/admin/">
         <button>Volver</button>
-      </Link>
+      </Link> */}
       <h3 className="widgetLgTitle">Ordenes</h3>
       <table className="widgetLgTable">
         <tr className="widgetLgTr">
@@ -65,6 +69,7 @@ export default function SesionVentasAdmin() {
           </tr>
         ))}
       </table>
+    </div>
     </div>
   );
 }

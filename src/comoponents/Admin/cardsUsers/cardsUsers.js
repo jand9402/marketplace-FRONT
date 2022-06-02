@@ -36,7 +36,7 @@ export default function CardsUsers() {
   return (
     <div>
       <Link to="/admin/">
-        <button className="orderButtonsUsers">Volver</button>
+        <button className="buttonUsersAll2">Volver</button>
       </Link>
       <div className="ordenCardsUsers">
         {users.user?.map((p) => {

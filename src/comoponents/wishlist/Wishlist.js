@@ -6,6 +6,7 @@ import './Wishlist.css'
 import { postWishList } from "../../redux/actions";
 import NavBaRSesionUsers from "../NavBar/navBarSesionUsers";
 import { deleteWishList } from "../../redux/actions";
+import { Link } from "react-router-dom";
 
 
 
@@ -35,6 +36,9 @@ console.log(wishlist)
             <NavBaRSesionUsers/>
             <div className="container">
             <h1 className="title">Wishlist</h1>
+            <Link to='/miSesion'>
+            <button className="butonDeletWLD">Volver</button>
+            </Link>
             {
                 wishlist.map(w => {
                    return (
@@ -48,7 +52,7 @@ console.log(wishlist)
                            <div className="d-flex"><h3 className="text_wish">Marca:  </h3><h3 className="text_wish1"> {w.brand}</h3></div>
                            </div>
                            <div className="col col_wish">
-                               <button onClick={(e) => handleDelete(e, w._id) }>Eliminar</button>
+                               <button className="butonDeletWL" onClick={(e) => handleDelete(e, w._id) }>Eliminar</button>
                                </div>
 
                        </div>

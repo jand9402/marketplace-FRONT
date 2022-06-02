@@ -62,3 +62,19 @@
 .blanco{
     color: white;
 }
+.botonesWishlist{
+    position: relative;
+    top:40px;
+    left: 900px;
+    background-color: rgb(24, 49, 87);
+    color: white;
+    height: 50px;
+    border: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-style: Trebuchet;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2em;
+    cursor: pointer;
+}

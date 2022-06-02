@@ -4,7 +4,7 @@ import { useState } from "react";
 import { modifyProduct, getCategories, getDetail } from "../../redux/actions/index"
 import { useParams } from "react-router-dom";
 import './ProductForm.css'
-
+import { useHistory } from "react-router-dom";
 
 export function validate (input) {
     const errors = {}
@@ -71,7 +71,8 @@ export function validate (input) {
   }
 
 export default function EditProduct () {
-    
+
+      const history = useHistory()
       const dispatch = useDispatch()
       const token = localStorage.getItem('authorization')
       const categoriesAll = useSelector(state => state.categoriesNew)
@@ -93,7 +94,7 @@ export default function EditProduct () {
    const allCategoriesN = [...new Set(aux)] 
       
       const [file, setFile] = useState('')
-      console.log(file)
+      // console.log(file)
       const [categorias, setCategorias] = useState([])
   
       const handleFile = (e) => {
@@ -204,7 +205,7 @@ export default function EditProduct () {
           if (input.name === '') {
             input.name = detailProduct.name  
           } 
-          if (input.image === []) {
+          if (input.image.length < 2) {
             input.image = detailProduct.image
           } 
           if (input.brand === '') {
@@ -234,7 +235,7 @@ export default function EditProduct () {
           if (input.screenSize === '') {
             input.screenSize = detailProduct.screenSize.$numberDecimal
           } 
-          if (input.categories === '') {
+          if (input.categories.length === 0) {
             input.categories = detailProduct.categories  
           } 
             
@@ -250,7 +251,6 @@ export default function EditProduct () {
         //     input.screenSize === '' &&
         //     !input.temperament.length 
         await dispatch(modifyProduct( id, input, token))
-        alert(`Has Modificado ${input.name}, felicitaciones`)
         setInput({
           name: '',
           price: '',
@@ -265,6 +265,7 @@ export default function EditProduct () {
           categories: [], 
           newCategory: ''
         })
+        history.push('/admin/products')
       } 
     }
 
