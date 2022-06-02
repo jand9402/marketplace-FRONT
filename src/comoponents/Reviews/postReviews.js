@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 export default function PostReviews() {
   const token = localStorage.getItem("authorization");
     const {id} = useParams();
-    const token = localStorage.getItem('authorization')
   
     function validate(input) {
 
