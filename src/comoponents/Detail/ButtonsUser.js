@@ -6,6 +6,8 @@ import swal from 'sweetalert'
 
 
 export default function ButtonsUser ({id}){
+    let data = JSON.parse(localStorage.getItem("userData"))
+    console.log(data)
     const allProducts = useSelector(state => state.allProducts2)
     const history = useHistory()
     const [contador, setContador] = useState(1)
@@ -113,15 +115,23 @@ if(e.target.value === "mas"){
         setContador(1)
        
     }
+    function handleAdmin(e){
+        e.preventDefault()
+        alert('No puedes comprar, sos admin, adios')
+    }
     
     return(
         <div className="boxBotonesDetalle">
             <button className="botones_contador_detail_menos" onClick={(e) => handleContador(e)} value="menos"> - </button><div className="contador_carrito">{contador}</div><button className="botones_contador_detail_mas" onClick={(e) => handleContador(e)} value="mas">+</button>
            <br/>
             <div>
-            <Link to="/CheckOut"> 
+                {data.isAdmin?
+                    
+                    <button onClick={e => handleAdmin(e)} className='botonIncSesDetail' >Comprar</button>
+                    :<Link to="/CheckOut"> 
                     <button className='botonIncSesDetail' >Comprar</button>
                     </Link>
+                }
             </div>
             <div>
                     <button className='botonRegistroDetail' onClick={(e) => addToCar(id, e)}>Agregar al carrito</button>

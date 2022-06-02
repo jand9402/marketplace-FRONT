@@ -12,6 +12,8 @@ export const CLEAR_CAR = 'CLEAR_CAR'
 
 
 export default function ShoppingCar () {
+    let data = JSON.parse(localStorage.getItem("userData"))
+console.log(data)
     let token = localStorage.authorization
     console.log(token)
     let infoFromLocalStorage = JSON.parse(localStorage.itemCar)
@@ -21,6 +23,10 @@ export default function ShoppingCar () {
     let locaS = []
     localStorage.setItem("itemCar", JSON.stringify(locaS))
     history.push('/shoppingCar')
+    }
+    function handleAdmin(e){
+        e.preventDefault()
+        alert('No puedes comprar, sos admin, adios')
     }
 
     return (
@@ -47,9 +53,12 @@ export default function ShoppingCar () {
     }
     </div>
     <div className="divContinuarCompra">
-        {token?<Link to="/CheckOut"> 
+        {token?
+        data.isAdmin?
+        <button className="continuarCompra" onClick={e => handleAdmin(e)}>Continuar con la compra</button>:<Link to="/CheckOut"> 
         <button className="continuarCompra">Continuar con la compra</button>
-     </Link> :
+     </Link>
+      :
      <Link to="/register"> 
      <button className="continuarCompra">Registrarse para comprar</button>
   </Link> }
