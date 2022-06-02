@@ -187,7 +187,6 @@ export function postRewies(id, payload, token) {
           }}
 
         );
-        alert(`Gracias por valorar el producto`)
       console.log(response);
       return response;
     } catch (error) {
