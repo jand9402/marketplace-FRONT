@@ -1,17 +1,18 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { postProduct } from "../../redux/actions/index"
+import { postProduct, getCategories } from "../../redux/actions/index"
+
 
 export function validate (input) {
     const errors = {}
   
     if (!input.name) {
       errors.name = 'Campo requerido'
+    } 
+    else if (!/^[a-zA-ZÀ-ÿ0-9_.+-\s]{5,100}$/g.test(input.name)) {
+      errors.name = 'Ingrese más de 5 caracteres'
     }
-    // } else if (!/^[A-Za-z0-9\s]{5,100}$/g.test(input.name)) {
-    //   errors.name = 'Ingrese más de 5 caracteres'
-    // }
     // brand
     else if (!input.brand) {
         errors.brand = 'Campo requerido'
@@ -20,17 +21,17 @@ export function validate (input) {
     else if (!input.model) {
         errors.model = 'Campo requerido'
     }
-    //category
-    // else if (!input.categories.lenght) {
-    //     errors.categories = 'Debe seleccionar al menos una categoría '
-    // }
+  //  categories
+    else if (!input.categories.lenght) {
+        errors.categories = 'Debe seleccionar al menos una categoría '
+    }
     else if (!input.screenSize) {
         errors.screenSize = 'Campo requerido'
     }
-    //image
-    else if (input.image.length < 3) {
-      errors.image = 'Debe seleccionar 3 imágenes'
-    }
+    // //image
+    // else if (input.image.length < 3) {
+    //   errors.image = 'Debe seleccionar 3 imágenes'
+    // }
     // dimensions
     else if (!input.internalMemory) {
         errors.internalMemory = 'Campo requerido'
@@ -45,9 +46,9 @@ export function validate (input) {
     else if (!input.price) {
       errors.price = 'Campo requerido'
      }
-    // } else if (!/^[1-9]*?$/.test(input.price)) {
-    //   errors.price = 'El precio no puede ser menor a 1'
-    // }   
+    else if (!/^[1-9]\d*(\.\d+)?$/.test(input.price)) {
+      errors.price = 'El precio no puede ser menor a 1'
+    }   
     // amount
     else if (!input.amountInStock) {
       errors.amountInStock = 'Campo requerido'
@@ -68,23 +69,45 @@ export function validate (input) {
   }
 
 export default function CreateProduct () {
+    
+      const dispatch = useDispatch()
+      const categoriesAll = useSelector(state => state.categoriesNew)
+      // console.log(categoriesAll)
       
-      let dispatch = useDispatch()
-      // const { errors, handleChange } = useValidateCreateProd()
+     
+       const aux =[]
+        for (let i =0; i< categoriesAll.length; i++) {
+             var otroArray = categoriesAll[i] && categoriesAll[i].map(e => e)
+             var separado = otroArray.join (", ")
+             aux.push(separado)
+            //  console.log(separado)
+          //    let infoApiTemp = dataApiAll?.map (el => {
+          //     if(!el.temperament) return el.temperament = undefined;
+          // // A todos los demas los spliteo por ", " para añadirlos a un array en la constante aux
+          //     const aux = el.temperament.split(", "); 
+          //     return aux;
+          // });
+      // const ordenSinUnd = infoApiTemp.flat().filter(Boolean).sort();
+      // const stringUnicos = [...new Set(ordenSinUnd)];  
+            //  var separado = otroArray.join (",")
+            //  console.log(separado)
+            //  let stringsCat = [...separado]
+            //  console.log(stringsCat)
+            //  aux.push(stringsCat)
+            }
+       const allCategoriesN = aux
+        // return aux
+    
+    //  console.log(allCategoriesN)
+    
+      // CATEGORIESALL ME TRAE UN ARRAY DE ARRAY... QUE TENGO QUE RECORRE PRIMERO TODO EL ARRAY Y LUEGO, CADA ARRAY PARA SACAR TODOS LOS ELEMENTOS Y TRAERME
+      // UNA ARRAY DE STRINGS...EN MI PI DE DOGS HAY ALGO...
       const [file, setFile] = useState('')
       console.log(file)
       const [categorias, setCategorias] = useState([])
-    
-      // const [createProduct] = postProduct()
-
-    
+  
       const handleFile = (e) => {
         setFile(e.target.files)
-        // setInput({
-        //   ...input,
-        //   [e.target.name]: file
-        // })
-        
       }
       const [errors, setErrors ] = useState({})
     
@@ -102,31 +125,45 @@ export default function CreateProduct () {
         categories: []
       })
     
+      function handleSelectCat(e) {
+        setInput({
+          ...input,
+          categories: [...input.categories, e.target.value]     
+            })
+            setErrors(validate( {
+              ...input,
+              [e.target.name]: e.target.value
+            }))
+            console.log(input)
+      };
+
       function handleChange (e) {
         setInput({
           ...input,
           [e.target.name]: e.target.value
         })
-        setCategorias({
-          ...input,
-          [e.target.categories]: [e.target.value.split(",")]
-        }
-         )
-        //  setFile({
-        //    ...input,
-        //    [e.target.image]: [URL.createObjectURL(e.target.files[0])]
-        // })
-           
-        //  setFile ({
+        // setCategorias({
         //   ...input,
-        //   [e.target.image]: [e.target.value]
-        //  })
+        //   [e.target.categories]: [e.target.value.split(",")]
+        // }
+        //  )
         setErrors(validate( {
           ...input,
           [e.target.name]: e.target.value
         }))
         console.log(input)
       }
+
+      function handleDelet (e) {
+        setInput( (prevInputDel) => {
+            const newInpuDel = {
+                ...prevInputDel,
+                categories : input.categories.filter((c => c !== e.target.id))
+            }
+            console.log(newInpuDel)
+            return newInpuDel
+        } )
+    }
     
       const handleCreate = async  (e) => {
         e.preventDefault()
@@ -135,7 +172,7 @@ export default function CreateProduct () {
       // }else
        if(
           input.name === '' && 
-          input.image === '' &&
+          !input.image.length === '' &&
           input.brand === '' &&
           input.description === '' &&
           input.price === '' && 
@@ -144,7 +181,7 @@ export default function CreateProduct () {
           input.model === '' &&
           input.internalMemory === '' &&
           input.screenSize === '' &&
-          input.categories=== '' 
+          !input.temperament.length 
           ) {
          alert ('No puede crear una nueva actividad si no completa el formulario o coloca un nombre unico')
       }else {
@@ -160,29 +197,31 @@ export default function CreateProduct () {
         formdata.append('model', input.model)
         formdata.append('internalMemory', input.internalMemory)
         formdata.append('screenSize', input.screenSize)
-        formdata.append('categories', input.categories)
+        for (let i =0; i < input.categories.length; i++)
+        formdata.append('categories', input.categories[i])
         e.preventDefault()
-        // createProduct(formdata).unwrap().then((payload) => console.log('fulfilled', payload))
-        //   .catch((error) => console.error('rejected', error))
         dispatch(postProduct(formdata))
-        console.log(formdata)
         alert(`Has creado ${input.name}, felicitaciones`)
-        // setInput({
-        //   name: '',
-        //   price: '',
-        //   offer: '',
-        //   brand: '',
-        //   model: '',
-        //   amount: '',
-        //   dimensions: '',
-        //   condition: '',
-        //   other: '',
-        //   image: '',
-        //   description: '',
-        //   category: ''   
-        //  })
+        setInput({
+          name: '',
+          price: '',
+          brand: '',
+          model: '',
+          amountInStock: '',
+          screenSize: '',
+          condition: '',
+          internalMemory: '',
+          image: [],
+          description: '',
+          categories: []  
+        })
       } 
     }
+
+    useEffect(() => {
+      dispatch(getCategories())
+   },[dispatch])
+
     return(
         <>
         <div>
@@ -244,128 +283,141 @@ export default function CreateProduct () {
                              id='file'
                              multiple 
                              name="image" 
-                            //  value={input.image}
                              onChange={handleFile} 
                              />
                              {errors.image && (
                              <p className='errosCreateLarge'>{errors.image}</p>
                              )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO'>Precio:</label>
+                             <input
+                             placeholder='En US$'
+                             autoComplete='off'
+                             type='number'
+                             value={input.price}
+                             name='price'
+                             className='inputsProductForm'
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.price && (
+                             <p className='errosCreateLarge'>{errors.price}</p>
+                             )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Cantidad:</b></label>
+                             <input
+                             autoComplete='off'
+                             type='number'
+                             className='inputsProductForm'
+                             value={input.amountInStock}
+                             name='amountInStock'
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.amountInStock && (
+                             <p className='errosCreateLarge'>{errors.amountInStock}</p>
+                             )}
+                           </div>
                          </div>
-                 <div className='productDiv'>
-                     <label className='titlesNNO'>Precio:</label>
-                     <input
-                     placeholder='En US$'
-                     autoComplete='off'
-                     type='number'
-                     value={input.price}
-                     name='price'
-                     className='inputsProductForm'
-                     onChange={(e) => handleChange(e)}
-                     />
-                     {errors.price && (
-                     <p className='errosCreateLarge'>{errors.price}</p>
-                     )}
-                 </div>
-                 <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Cantidad:</b></label>
-                     <input
-                     autoComplete='off'
-                     type='number'
-                     className='inputsProductForm'
-                     value={input.amountInStock}
-                     name='amountInStock'
-                     onChange={(e) => handleChange(e)}
-                     />
-                     {errors.amountInStock && (
-                     <p className='errosCreateLarge'>{errors.amountInStock}</p>
-                     )}
-                 </div>
-             </div>
-             <div className="boxColumna2PF">
-                 <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Marca:</b></label>
-                     <select  name='brand' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
-                         <option disabled selected  value=''>Marca</option>
-                         <option value='ALCATEL'>Alcatel</option>
-                         <option value='APPLE'>Apple</option>
-                         <option value='ASUS'>Asus</option>
-                         <option value='HUAWEI'>Huawei</option>
-                         <option value='LG'>LG</option>
-                         <option value='MOTOROLA'>Motorola</option>
-                         <option value='NOKIA'>Nokia</option>
-                         <option value='SAMSUNG'>Samsung</option>
-                         <option value='SONY'>Sony</option>
-                     </select>
-                     {errors.brand && (
-                     <p className='errosCreateLarge'>{errors.brand}</p>
-                     )}
-                 </div>
-                 <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Categoría/s:</b></label>
-                      <input
-                      autoComplete='off'
-                      type='text'
-                      className='inputsProductForm'
-                      name='categories'
-                      value={input.categories}
-                      onChange={(e) => handleChange(e)}
-                      />
-                     {errors.categories && (
-                     <p className='errosCreateLarge'>{errors.categories}</p>
-                     )}
-                     {/* <select  name='categories' id=''  className='selectForm' >
-                         <option disabled selected  value='' >Línea:</option>
-                         <option value=''>No se aún</option>
-                     </select>
-                     {errors.categories && (
-                     <p className='errosCreateLarge'>{errors.categories}</p>
-                     )} */}
-                 </div>
-                 <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Memoria interna:</b></label>
-                     <input
-                     autoComplete='off'
-                     type='number'
-                     className='inputsProductForm'
-                     value={input.internalMemory}
-                     name='internalMemory'
-                     onChange={(e) => handleChange(e)}
-                     />
-                     {errors.internalMemory && (
-                     <p className='errosCreateLarge'>{errors.internalMemory}</p>
-                     )}
-                 </div>
-                 <div className='productDiv'>
-                    <label className='titlesNNO' htmlFor=''><b>Estado:</b></label>
-                    <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
-                             <option disabled selected  value=''>Estado</option>
-                             <option  value='new'>Nuevo</option>
-                             <option value='used'>Usado</option>
-                          </select>
-                          {errors.condition && (
-                          <p className='errosCreateLarge'>{errors.condition}</p>
-                          )}
-                 </div>
-                 <div className='productDiv'>
-                     <label className='titlesNNO' htmlFor=''><b>Descripción:</b></label>
-                     <input
-                     name='description'
-                     value={input.description}
-                     id=''
-                     className='inputsProductFormDes'
-                     onChange={(e) => handleChange(e)}
-                     />
-                     {errors.description && (
-                     <p className='errosCreateLarge'>{errors.description}</p>
-                     )}
-                 </div>
-             </div>
-         </div>
-            
-        <button type='submit' className='buttonProduct'>Crear</button>
-      </form>
-    </div>
-  </div> 
-        </>
+                         <div className="boxColumna2PF">
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Marca:</b></label>
+                             <select  name='brand' id='' onChange={(e) => handleChange(e)}  className='selectForm' >
+                               <option disabled selected  value=''>Marca</option>
+                               <option value='ALCATEL'>Alcatel</option>
+                               <option value='APPLE'>Apple</option>
+                               <option value='ASUS'>Asus</option>
+                               <option value='HUAWEI'>Huawei</option>
+                               <option value='LG'>LG</option>
+                               <option value='MOTOROLA'>Motorola</option>
+                               <option value='NOKIA'>Nokia</option>
+                               <option value='SAMSUNG'>Samsung</option>
+                               <option value='SONY'>Sony</option>
+                             </select>
+                             {errors.brand && (
+                             <p className='errosCreateLarge'>{errors.brand}</p>
+                             )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO' name='categories'><b>Categoría/s:</b></label>
+                             <select className='selectForm' onChange={handleSelectCat}>
+                               <option disabled selected  value="">Tipo de línea</option>
+                               <option value='PERSONAL'>Personal</option>
+                               <option value='LIBERADO'>Liberado</option>
+                               <option value='CLARO'>Claro</option>
+                               {/* {allCategoriesN && allCategoriesN.map((c) => (
+                               <option key= {c} value= {c} >{c}</option>
+                               )
+                               )} */}
+                             </select>
+                             {errors.categories && (
+                             <p className='errosCreateLarge'>{errors.categories}</p>
+                             )}
+                             {/* <input
+                             autoComplete='off'
+                             type='text'
+                             className='inputsProductForm'
+                             name='categories'
+                             value={input.categories}
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.categories && (
+                             <p className='errosCreateLarge'>{errors.categories}</p>
+                             )} */}
+                             {input.categories? <div>
+                             {input.categories?.map(c => 
+                             (<div className="listaCountSelD"  key={c}>
+                               <span>{c}</span>
+                                 <button className="botonDeletCat" id={c}  onClick={handleDelet}>x</button>
+                              </div> 
+                            ))}
+                           </div> : null  }
+                           </div>
+                           {/* </div> */}
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Memoria interna:</b></label>
+                             <input
+                             autoComplete='off'
+                             type='number'
+                             className='inputsProductForm'
+                             value={input.internalMemory}
+                             name='internalMemory'
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.internalMemory && (
+                             <p className='errosCreateLarge'>{errors.internalMemory}</p>
+                             )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Estado:</b></label>
+                             <select className='selectForm' name='condition' id='' onChange={(e) => handleChange(e)}>
+                               <option disabled selected  value=''>Estado</option>
+                               <option  value='new'>Nuevo</option>
+                               <option value='used'>Usado</option>
+                             </select>
+                               {errors.condition && (
+                               <p className='errosCreateLarge'>{errors.condition}</p>
+                               )}
+                           </div>
+                           <div className='productDiv'>
+                             <label className='titlesNNO' htmlFor=''><b>Descripción:</b></label>
+                             <input
+                             name='description'
+                             value={input.description}
+                             id=''
+                             className='inputsProductFormDes'
+                             onChange={(e) => handleChange(e)}
+                             />
+                             {errors.description && (
+                             <p className='errosCreateLarge'>{errors.description}</p>
+                             )}
+                           </div>
+                        </div>
+                    </div>
+                    <button type='submit' className='buttonProduct'>Crear</button>
+                </form>
+            </div>
+        </div> 
+     </>
     )
 }

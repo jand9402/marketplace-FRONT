@@ -1,6 +1,6 @@
-import React  from "react";
+import React, {useEffect}  from "react";
 import IconoCarrito from "./IconoCarrito";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LogoNav from '../../assets/logo/log.png'
 import { Link } from "react-router-dom";
 import CarritoNavBar from '../../assets/icons/carritoNav.png'
@@ -9,6 +9,7 @@ import CarritoVacioIcono from '../../assets/icons/carritoVacioIconoG.png'
 import isotipo from '../../assets/logo/isotipo.png'
 
 export default function NavBaRSesionUsers (){
+const dispatch = useDispatch()
 const token = useSelector(state => state.token)
 const userData = useSelector(state => state.userData)
 console.log (userData)

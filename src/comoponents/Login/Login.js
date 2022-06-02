@@ -23,8 +23,8 @@ const expresiones = {
 }
 
 const dispatch = useDispatch()
-const token = useSelector(state => state.token)
-console.log(token)
+// const token = useSelector(state => state.token)
+// console.log(token)
 const history = useHistory()
 
 const [errors, setErrors] = useState({})
@@ -44,7 +44,7 @@ function handleChange (e) {
   }))
 }
 
- async function handleSubmit (e) {
+const handleSubmit = async (e) => {
   e.preventDefault()
   if (input.email === '' && input.password === '') {
     window.alert('Debe completar todos los campos')
@@ -58,10 +58,11 @@ function handleChange (e) {
      alert("No se encuentra registrado, o tiene un error en el e-mail o contraseña")
      history.push('/')
     }
-    if(localStorage.getItem('authorization', token)) {
+    if(localStorage.getItem('authorization')) {
       history.push('/')
     } 
   }
+  // LE SAQUE EL TOKEN EN AUTHORIZATION , TOKEN
   console.log(input)
 }
 

@@ -13,11 +13,13 @@ import {
   DETAIL_DELETE,
   GET_DETAIL,
   ORDERS,
-  NAV_BAR_NEW,
+  // NAV_BAR_NEW,
   GET_USERS,
   POST_ORDER,
   GET_ORDER_DETAIL_USER,
   GET_WISHLIST,
+  GET_CATEGORIES_NEW,
+  DELETE_PRODUCT
 } from "../actions";
 
 const initialState = {
@@ -26,6 +28,7 @@ const initialState = {
   allProducts: [],
   detail: [],
   categorys: [],
+  categoriesNew :[],
   brand: [],
   // login: false,
   createProduct: {},
@@ -65,7 +68,13 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         categorys: action.payload,
-      };
+      }
+    case GET_CATEGORIES_NEW:
+      
+      return{
+        ...state,
+        categoriesNew: action.payload
+      }
     case GET_BRAND:
       return {
         ...state,
@@ -140,8 +149,12 @@ export default function rootReducer(state = initialState, action) {
     case ORDERS:
       return {
         ...state,
-        cart: action.payload,
-      };
+        cart: action.payload
+      }
+    case DELETE_PRODUCT:
+      return{
+        ...state
+      }
     case POST_ORDER:
       return {
         ...state,
