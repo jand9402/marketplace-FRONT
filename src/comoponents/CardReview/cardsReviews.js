@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 import CardReviews from "./cardReviews";
 import './cardsReviews.css'
 
-export default function CardsReviews(){
-    
+export default function CardsReviews(id){
+    console.log(id.id)
 const dispatch = useDispatch()
 // const [currentPage, setCurrentPage] = useState(1)
 // const [productsPerPage] = useState(5)
@@ -22,9 +22,11 @@ const dispatch = useDispatch()
 // useEffect (()=> {
 //     paginado (1)
 // },[allProducts])
+let esteId = id.id
 const product = useSelector (state => state.allProducts)
-
-console.log(product)
+let esteEs = product.find(item => item._id === esteId)
+console.log(esteEs)
+let reviwes = esteEs.reviews
 
 useEffect (()=>{
     dispatch(getProducts())
@@ -39,10 +41,10 @@ useEffect (()=>{
         
         <div>
             <div className="ordenCardsUsers">
-                { product?.map((p)=> {
+                { reviwes?.map((p)=> {
                     return(
                     <div key={p._id}>
-                        <CardReviews rating={p.rating} comment={p.comment}/>
+                        <CardReviews rating={p.rating}  comment={p.comment}/>
                     </div> 
                     )} 
                 )}                
