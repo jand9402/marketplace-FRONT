@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,12 +9,12 @@ import './ProductDetail.css'
 import cuadroBlanco from '../../assets/detail/cuadroBlanco.jpg'
 // import Modal from "../Admin/Modales/Modal";
 
-export default function ProductDetail (){
-    let {id} = useParams()
-    let idProducto = {id}
-    let test = idProducto.id
-    const dispatch = useDispatch()
-    let allProducts = useSelector((state) => state.products)
+export default function ProductDetail() {
+  let { id } = useParams();
+  let idProducto = { id };
+  let test = idProducto.id;
+  const dispatch = useDispatch();
+  let allProducts = useSelector((state) => state.products);
 
     useEffect(() => {
         dispatch(getProducts())
@@ -41,18 +41,9 @@ export default function ProductDetail (){
                                 </div>
                         { producto.image ?       ( <div className="divImagen">
 
-                               <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-  <img className="imagenSecundaria" src={producto.image[0]} alt='imagenProducto'/>
-</a>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-      <img className="imagenModal" src={producto.image[0]} alt='imagenProducto'/>
-      </div>     
-    </div>
-  </div>
-</div>
+  // useEffect (() => {
+  //     return dispatch(deletepreviousdetail())
+  //  }, [dispatch])
 
 <a data-bs-toggle="modal" data-bs-target="#imagenModal2">
   <img className="imagenSecundaria" src={producto.image[1] ? producto.image[1] : cuadroBlanco} alt='imagenProducto'/>
