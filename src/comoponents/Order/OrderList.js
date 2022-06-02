@@ -11,10 +11,11 @@ export default function CreateOrder() {
   const tokenUser = localStorage.getItem("authorization");
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.orderDetail);
+  console.log({data})
   useEffect(() => {
     dispatch(getOrderDetailByUser());
   }, [dispatch]);
-console.log({data})
+// console.log({data})
   const [stripeToken, setStripeToken] = useState(null);
   const history = useHistory();
 

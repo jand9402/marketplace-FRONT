@@ -4,6 +4,7 @@ import NavBarDetailAdmin from "../NavBar/navBarDetaiAdmin";
 import { getUserById, updateUserByAdmin } from "../../redux/actions/index";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import './adminAll.css'
 
 export default function BuysUser() {
   const dispatch = useDispatch();
@@ -78,92 +79,98 @@ export default function BuysUser() {
     <div>
       <NavBarDetailAdmin />
       {user.isAdmin ? (
-        <div className="contenedorSesionAdmin">
+        <div className="container">
           <Link to="/admin/users">
             <button>VOLVER</button>
           </Link>
 
-          <div>soy las ordenes del usriario</div>
 
-          <div>
-            <div className="allProductForm">
+         
+        
+            
               <form key={id} onSubmit={(e) => handleCreate(e)}>
-                <h1 className="titleProduct">Editar Usuario</h1>
-                <div className="boxColumnas1y2">
-                  <div className="boxColumna1PF">
-                    <div className="productDiv">
-                      <label className="titlesNNO">Nombre del Usuario:</label>
+              <div className="row row_edit_user ">
+                <h1 >Editar Usuario</h1>
+                
+                
+                  
+                   <div className="col col_edit_user">
+                      <h2 >Nombre del Usuario:</h2>
+                     
                       <input
+                      className="input"
                         autoComplete="off"
                         type="text"
-                        className="inputsProductForm"
                         value={input.name}
                         name="name"
                         onChange={(e) => handleChange(e)}
                       />
-                    </div>
-                    <div className="productDiv">
-                      <label className="titlesNNO" htmlFor="">
-                        <b>Email:</b>
-                      </label>
+                   <br/> 
+                    
+                      
+                        <h2>Email:</h2>
+                      
                       <input
+                      className="input"
                         autoComplete="off"
                         type="text"
-                        className="inputsProductForm"
                         value={input.email}
                         name="email"
                         onChange={(e) => handleChange(e)}
                       />
-                    </div>
-                  </div>
-                  <div className="productDiv">
-                    <label className="titlesNNO">Numero de telefono:</label>
+                   
+                   
+                   <br/> 
+                    <h2>Numero de telefono:</h2>
+                   
                     <input
+                    className="input"
                       placeholder="+1"
                       autoComplete="off"
                       type="number"
                       value={input.phoneNumber}
                       name="phoneNumber"
-                      className="inputsProductForm"
                       onChange={(e) => handleChange(e)}
                     />
-                  </div>
-                  <div className="productDiv">
-                    <label className="titlesNNO">
-                      <b>Eliminado:</b>
-                    </label>
+                  </div> 
+                  <div className="col col_edit_user">
+                    
+                      <h2>Eliminado:</h2>
+                      
                     <input
+                    className="input"
                       autoComplete="off"
                       type="checkbox"
                       checked={input.isDeleted}
-                      className="inputsProductForm"
                       value={input.isDeleted}
                       name="isDeleted"
                       onChange={(e) => handleChange(e)}
                     />
-                  </div>
-                </div>
-                <div className="productDiv">
-                  <label className="titlesNNO">
-                    <b>Es Administrador:</b>
-                  </label>
+                  
+               
+                  <br/> 
+                  
+                    <h2>Es Administrador:</h2>
+                  
                   <input
+                  className="input"
                     autoComplete="off"
                     type="checkbox"
                     checked={input.isAdmin}
-                    className="inputsProductForm"
                     value={input.isAdmin}
                     name="isAdmin"
                     onChange={(e) => handleChange(e)}
                   />
-                </div>
-                <button type="submit" className="buttonProduct">
+               </div>
+               
+                <button type="submit" >
                   OK
                 </button>
+                </div>
               </form>
             </div>
-          </div>
-        </div>
+          
+      
       ) : (
         <div>No tiene acceso</div>
       )}
