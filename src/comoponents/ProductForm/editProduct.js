@@ -204,7 +204,7 @@ export default function EditProduct () {
           if (input.name === '') {
             input.name = detailProduct.name  
           } 
-          if (input.image === []) {
+          if (input.image.length < 2) {
             input.image = detailProduct.image
           } 
           if (input.brand === '') {
@@ -234,7 +234,7 @@ export default function EditProduct () {
           if (input.screenSize === '') {
             input.screenSize = detailProduct.screenSize.$numberDecimal
           } 
-          if (input.categories === '') {
+          if (input.categories.length === 0) {
             input.categories = detailProduct.categories  
           } 
             
