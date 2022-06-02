@@ -138,30 +138,24 @@ export default function BuysUser() {
                     
                       <h2 className="title_edit">Eliminado:</h2>
                       
-                    <input
-                    className="input"
-                      // autoComplete="off"
-                      type="checkbox"
-                      // checked={input.isDeleted}
-                      // value={input.isDeleted}
-                      name="isDeleted"
-                      onChange={(e) => handleChange(e)}
-                    />
+                    <select
+                    onChange={(e) => handleChange(e)}
+                    name="isDeleted">
+                      <option value="true">Si</option>
+                      <option value="false">No</option>
+                    </select>
                   
                
                   <br/> 
                   
                     <h2 className="title_edit">Es Administrador:</h2>
                   
-                  <input
-                  className="input"
-                    // autoComplete="off"
-                    type="checkbox"
-                    // checked={input.isAdmin}
-                    // value={input.isAdmin}
-                    name="isAdmin"
+                    <select
                     onChange={(e) => handleChange(e)}
-                  />
+                    name="isAdmin">
+                      <option value="true">Si</option>
+                      <option value="false">No</option>
+                    </select>
                </div>
                
                 <button className="boton_edit" type="submit" >

@@ -108,6 +108,7 @@ export default function ButtonsUser({ id }) {
       localStorage.setItem("gestionStock", JSON.stringify(disminuirStock));
       return agregado;
     }
+
     let producto = addOrCreate(itemInCar);
 
     localStorage.setItem("itemCar", JSON.stringify(producto));
@@ -117,6 +118,12 @@ export default function ButtonsUser({ id }) {
     e.preventDefault();
     alert("No puedes comprar, sos admin, adios");
   }
+function comprarEste(id){
+        let infoDeLocal = JSON.parse(localStorage.itemCar)
+        let este = allProducts.find(item => item._id === id)
+        if(!localStorage.itemCar || localStorage.itemCar !== JSON.stringify(este))
+    localStorage.setItem("itemCar", JSON.stringify([este]))
+    }
 
   return (
     <div className="boxBotonesDetalle">
@@ -138,15 +145,13 @@ export default function ButtonsUser({ id }) {
       </button>
       <br />
       <div>
-        {data.isAdmin ? (
-          <button onClick={(e) => handleAdmin(e)} className="botonIncSesDetail">
-            Comprar
-          </button>
-        ) : (
-          <Link to="/CheckOut">
-            <button className="botonIncSesDetail">Comprar</button>
-          </Link>
-        )}
+         {data.isAdmin?
+                    
+                    <button onClick={e => handleAdmin(e)} className='botonIncSesDetail' >Comprar</button>
+                    :<Link to="/CheckOut"> 
+                    <button onClick={() => comprarEste(id)} className='botonIncSesDetail' >Comprar</button>
+                    </Link>
+                }
       </div>
       <div>
         <button
@@ -159,3 +164,4 @@ export default function ButtonsUser({ id }) {
     </div>
   );
 }
+

@@ -17,18 +17,18 @@ export default function FormCheckOut() {
   // let infoUser = JSON.parse(localStorage.userData)
   let infoProducts = JSON.parse(localStorage.itemCar);
   let orderProducts = [];
-  if (infoProducts.length > 1) {
-    infoProducts.map((item) => {
-      let producto = {
-        product: item._id,
-        name: item.name,
-        image: item.image,
-        price: item.price,
-        quantity: item.quantity,
-      };
-      orderProducts.push(producto);
-    });
-  } else {
+
+  if(infoProducts.length>=1){infoProducts.map((item) => {
+    let producto = {
+      product: item._id,
+      name: item.name,
+      image: item.image,
+      price: item.price,
+      quantity: item.quantity,
+    };
+    orderProducts.push(producto);
+  })}else{
+
     let producto = {
       product: infoProducts._id,
       name: infoProducts.name,
@@ -147,6 +147,7 @@ export default function FormCheckOut() {
         shippingPrice: shippingPrice,
         totalPrice: totalPrice,
       };
+      console.log(test)
       function orderLocalStorage() {
         if (!localStorage.order) {
           localStorage.setItem("order", JSON.stringify(test));
@@ -353,12 +354,14 @@ export default function FormCheckOut() {
                 />
               </div>
 
-              <button type="submit" class="btn btn-primary">
-                Siguiente
-              </button>
-            </form>
-          </div>
+
+            <button type="submit" class="btn btn-primary">
+              Siguiente
+            </button>
+          </form>
         </div>
+      
+
       </div>
     </>
   );

@@ -14,6 +14,7 @@ export default function CreateOrder() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postOrder(orderData));
+    localStorage.setItem('itemCar', JSON.stringify([]))
     history.push("/OrderList");
   };
 
