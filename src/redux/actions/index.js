@@ -344,3 +344,23 @@ export function getAllOrders() {
     }
   };
 }
+
+// export function setOrderShipped(id) {
+//   const token = localStorage.getItem("authorization");
+//   console.log(token);
+//   return async function () {
+//     try {
+//       const response = await axios.put(
+//         `http://localhost:3001/api/orders/${id}/`,
+//         {
+//           headers: {
+//             Authorization: `${token}`,
+//           },
+//         }
+//       );
+//       return response;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }

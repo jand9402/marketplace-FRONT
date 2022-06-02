@@ -5,12 +5,31 @@ import { useParams } from "react-router-dom";
 import { getOrderByID } from "../../redux/actions/index";
 import { Link } from "react-router-dom";
 import "./orderDetail.css";
+import axios from "axios";
+// import { setOrderShipped } from "../../redux/actions/index";
 
 export default function OrderDetail() {
   let { id } = useParams();
-  const user = JSON.parse(localStorage.getItem("userData"));
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.orderById);
+
+  function setOrderShipped() {
+    return async function () {
+      try {
+        const response = await axios.put(
+          `https://pf-commerce.herokuapp.com/api/orders/send/${id}`
+        );
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setOrderShipped(id));
+  };
 
   useEffect(() => {
     dispatch(getOrderByID(id));
@@ -31,20 +50,34 @@ export default function OrderDetail() {
           <div>
             {data ? (
               <>
-                <p className="font">Usuario: {user.name}</p>
+                <p className="font">Usuario: {console.log(data)}</p>
                 <div className="container container_orders">
                   {
                     <div key={data._id}>
                       <div className="row row_otra">
                         {data.isPaid ? (
-                          <p className="col pagado_order font">Pagado: SI</p>
+                          <p
+                            className="col pagado_order font"
+                            style={{ color: "green" }}
+                          >
+                            Pagado: SI
+                          </p>
                         ) : (
-                          <p className="col Spagado_order font">Pagado: NO</p>
+                          <p
+                            className="col Spagado_order font"
+                            style={{ color: "red" }}
+                          >
+                            Pagado: NO
+                          </p>
                         )}
                         {data.isDelivered ? (
-                          <p className="col font">Enviado: SI</p>
+                          <p className="col font" style={{ color: "green" }}>
+                            Enviado: SI
+                          </p>
                         ) : (
-                          <p className="col font">Enviado: NO</p>
+                          <p className="col font" style={{ color: "red" }}>
+                            Enviado: NO
+                          </p>
                         )}
                       </div>
                       <div className="row row_productos_order">
@@ -62,11 +95,23 @@ export default function OrderDetail() {
                             />
                           </div>
                         ))}
-                        {data.isPaid ? (
+                        {
+                          // PARA PAGAR LAS ORDENES DE LOS ADMINS
+                          /* {data.isPaid ? (
                           <p className="col pagado_order font">Pagado</p>
                         ) : (
                           <button className="my-super-cool-button">
                             Pagar
+                          </button>
+                        )} */
+                        }
+                        {data.isDelivered ? (
+                          <p className="col font" style={{ color: "green" }}>
+                            Ya fue enviado
+                          </p>
+                        ) : (
+                          <button onClick={handleSubmit}>
+                            Enviar Producto
                           </button>
                         )}
                       </div>

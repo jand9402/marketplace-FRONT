@@ -6,15 +6,19 @@ import { getAllOrders } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 
-// 2.  Poder filtrar las órdenes por su estado (creada, procesando, cancelada, completa) (admin).
-
 export default function SesionVentasAdmin() {
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.allOrders);
   useEffect(() => {
     dispatch(getAllOrders());
   }, [dispatch]);
-
+  //
+  //   const result = data?.map((value) => value.isDelivered);
+  //   console.log(
+  //     result.sort(function (x, y) {
+  //       return x === y ? 0 : x ? -1 : 1;
+  //     })
+  //   );
   return (
     <div className="widgetLg">
       <Link to="/admin/">
@@ -44,9 +48,19 @@ export default function SesionVentasAdmin() {
 
             <td className="widgetLgDate">{format(order.createdAt)}</td>
             <td className="widgetLgAmount">${order.totalPrice}</td>
-            <td className="widgetLgStatus">{order.isPaid ? "SI" : "NO"}</td>
             <td className="widgetLgStatus">
-              {order.isDelivered ? "Enviado" : "Pendiente"}
+              {order.isPaid ? (
+                <p style={{ color: "#177117" }}>SI</p>
+              ) : (
+                <p style={{ color: "#b31313" }}>NO</p>
+              )}
+            </td>
+            <td className="widgetLgStatus">
+              {order.isDelivered ? (
+                <p style={{ color: "#177117" }}>Enviado</p>
+              ) : (
+                <p style={{ color: "#b31313" }}>Pendiente </p>
+              )}
             </td>
           </tr>
         ))}
