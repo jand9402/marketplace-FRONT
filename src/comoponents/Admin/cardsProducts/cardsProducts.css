@@ -121,3 +121,7 @@
     background-color: rgb(107, 104, 100);
     color: white;
 }
+.ordenPagCarAdmin {
+    position: relative;
+    right: 60px;
+}

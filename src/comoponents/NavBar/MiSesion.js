@@ -1,25 +1,27 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React, { /*useState*/ } from "react";
 import { Link } from "react-router-dom";
 import './NavBarAll.css'
 
  export default function  MiSesion () {
 
-const token = useSelector(state => state.token)
-const userData = useSelector(state => state.userData)
-const  history = useHistory() 
+// // const token = useSelector(state => state.token)
+// const userData = useSelector(state => state.userData)
+// const  history = useHistory() 
 
-console.log (userData)
-let data = JSON.parse(userData)
+// console.log (userData)
+// let data = JSON.parse(userData)
+let data = JSON.parse(localStorage.getItem("userData"))
 console.log(data)
 
+// Le SAQUÉ EL TOKEN 
+
 function handleLogOut (){
-    localStorage.removeItem('authorization', token)
-    localStorage.removeItem("userData", userData)
+    localStorage.removeItem('authorization')
+    localStorage.removeItem("userData")
     localStorage.removeItem("itemCar")
     localStorage.removeItem("order")
 }
+
     return(
         <div class="d-flex">
                 {

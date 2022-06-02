@@ -19,7 +19,6 @@ export default function Home() {
     localStorage.setItem("itemCar", JSON.stringify(locaS))
     localStorage.setItem("otra", JSON.stringify(otro))}
     }
-    // console.log(localStorage.itemCar)
     inicioLocalStorage()
     // useEffect (()=> {
 //     dispatch(getProducts())
@@ -29,9 +28,9 @@ export default function Home() {
         <div className='home'>
             <NavBarAll />
             {/* <SearchBar /> */}
-            <div>
+            <div  className='container'>
                 <CarruselSuperior />
-            </div>
+        </div>
             <Cards/>
         </div>
     )

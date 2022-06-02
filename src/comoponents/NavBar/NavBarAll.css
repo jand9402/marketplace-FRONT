@@ -80,7 +80,7 @@
 } */
 
 .navbar{
-    background-color: rgb(24, 49, 87);
+    background-color: #183157;
 }
 
 .navbar-brand{
@@ -152,5 +152,9 @@
  }
 
  .carritoNavBar{
-     height: 70px;
+    height: 50px !important;
+ }
+
+ .navbar-brand{
+     height: 60px !important;
  }

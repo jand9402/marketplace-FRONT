@@ -35,7 +35,13 @@
     height: 180px;
     background-color: rgba(221, 213, 213, 0.4);
     margin-bottom: 5px;
+    cursor: pointer;
     /* margin-right: 150px; */
+}
+
+.imagenModal {
+    width: 100%;
+    height: 100%;
 }
 
 /* .imagenSecundaria:hover {
@@ -68,6 +74,10 @@
 }
 .botonVolverDetail:hover{
     background-color: #6d6f71;
+}
+
+.botonVolverDetailConPad{
+    margin-top:2rem;
 }
 /* DETALLE */
 .lineaDetail{
@@ -174,6 +184,14 @@
     width: 500px;
     height: 450px;
 }
+
+.boxMacroPrice-flx {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .orderNameyotros{
     background-color: rgb(245, 245, 243)
 }
@@ -185,6 +203,16 @@
     font-weight: 600;
     font-size: 2em;
     line-height : 30px;   
+}
+.tituloVal {
+    position: relative;
+    top: 10px;
+    left: 450px;
+    font-style: Trebuchet;
+    text-align: left;
+    font-weight: 600;
+    font-size: 2em;
+    line-height : 30px;
 }
 .princePrince{
     /* background-color: rgb(141, 131, 92); */
@@ -328,4 +356,13 @@
 }
 .botones_contador_detail_menos:hover{
     background-color: #6d6f71;
+}
+
+.boxValoracionesUser{
+    position: relative;
+    margin-top: 30px;
+    left: 305px;
+    background-color: aqua;
+    width: 1300px;
+    
 }

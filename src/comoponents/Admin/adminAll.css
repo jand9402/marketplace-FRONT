@@ -8,6 +8,16 @@
     /* align-items: center;
     text-align: center; */    
 }
+.contenedorSesionAdminUsers{
+    background-color: #f7f5f4;
+    height: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    display: flex;
+    /* align-items: center;
+    text-align: center; */    
+}
 
 .orederSesionAdmin{
     /* background-color: aqua; */
@@ -89,9 +99,40 @@
 /* USERS */
 .buttonUsersS{
     background-image: url('../../assets/admin/buttonUsers.jpg');
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 2px 1px #00000033;
     border: none;
     border-radius: 50%;
     width: 500px;
     height: 500px;
+}
+
+.row_edit_user{
+    border-bottom: none;
+    text-align: center;
+    background-color: #183157;
+    min-height: 600px;
+}
+
+.col_edit_user{
+    min-width: 45%;
+    text-align: left;
+}
+
+.input{
+    margin-top: 10px;
+}
+
+.title_edit{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+.boton_edit{
+    background-color: #ef3d52;
+    border: none;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: xx-large;
 }
