@@ -17,7 +17,7 @@ export default function FormCheckOut() {
   // let infoUser = JSON.parse(localStorage.userData)
   let infoProducts = JSON.parse(localStorage.itemCar);
   let orderProducts = [];
-  if(infoProducts.length>1){infoProducts.map((item) => {
+  if(infoProducts.length>=1){infoProducts.map((item) => {
     let producto = {
       product: item._id,
       name: item.name,
@@ -145,6 +145,7 @@ export default function FormCheckOut() {
         shippingPrice: shippingPrice,
         totalPrice: totalPrice,
       };
+      console.log(test)
       function orderLocalStorage() {
         if (!localStorage.order) {
           localStorage.setItem("order", JSON.stringify(test));
@@ -351,26 +352,7 @@ export default function FormCheckOut() {
             </button>
           </form>
         </div>
-        <div className='col-6 col-checkot-img'>
-        <div className='container container_paymentMethod'>
-      <div className='row row_paypal'>
-      <form>
-    <fieldset>
-        <label>
-          <div className="paypal_div">
-            <input onClick={e=>handlePaypal(e)} type="radio" name="pago" value="paypal"/><img className="logo_paypal" src={paypal} alt='logo paypal'/>
-          </div>
-        </label>
-        <label>
-        <div className="stripe_button">
-            <input type="radio" name="pago" value="stripe"/><img className="logo_stripe" src={stripe} alt='logo stripe'/>
-        </div>
-        </label>
-    </fieldset>
-    </form>
-      </div>
-    </div>
-</div>
+      
       </div>
     </div>
   );

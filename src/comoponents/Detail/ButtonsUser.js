@@ -119,6 +119,12 @@ if(e.target.value === "mas"){
         e.preventDefault()
         alert('No puedes comprar, sos admin, adios')
     }
+    function comprarEste(id){
+        let infoDeLocal = JSON.parse(localStorage.itemCar)
+        let este = allProducts.find(item => item._id === id)
+        if(!localStorage.itemCar || localStorage.itemCar !== JSON.stringify(este))
+    localStorage.setItem("itemCar", JSON.stringify([este]))
+    }
     
     return(
         <div className="boxBotonesDetalle">
@@ -129,7 +135,7 @@ if(e.target.value === "mas"){
                     
                     <button onClick={e => handleAdmin(e)} className='botonIncSesDetail' >Comprar</button>
                     :<Link to="/CheckOut"> 
-                    <button className='botonIncSesDetail' >Comprar</button>
+                    <button onClick={() => comprarEste(id)} className='botonIncSesDetail' >Comprar</button>
                     </Link>
                 }
             </div>

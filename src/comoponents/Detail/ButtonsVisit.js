@@ -117,7 +117,7 @@ function handleContador(e){
                 </Link>
             </div>
             <div>
-                    <button className='botonRegistroDetail'  onClick={() => addToCar(id)}>Agregar al carrito</button>
+                    <button className='botonRegistroDetail'  onClick={(e) => addToCar(id, e)}>Agregar al carrito</button>
                
             </div>
         </div>
