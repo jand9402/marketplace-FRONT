@@ -19,6 +19,7 @@ import PostOrder from "./comoponents/Order/CreateOrder";
 import OrderList from "./comoponents/Order/OrderList";
 import Success from "./comoponents/Order/Success";
 import EditProduct from "./comoponents/ProductForm/editProduct";
+import PagoOrdenes from "./comoponents/RegisteredUser/PagoOrdenId";
 
 // import CreateReviews from "./comoponents/reviews/Wishlist";
 import Wishlist from "./comoponents/wishlist/Wishlist";
@@ -57,7 +58,12 @@ function App() {
           <Route exact path="/OrderList" component={OrderList} />
           <Route exact path="/Success" component={Success} />
           <Route exact path= "/admin/products/edit/:id" component={EditProduct}/>
+
+          <Route exact path="/pay" component={PagoOrdenes} />
+
+
           <Route exact path="/orderDetail/:id" component={OrderDetail} />
+
           <Route exact path="/createProductPrueba" component={CreateProduct} />
         </Switch>
       </div>

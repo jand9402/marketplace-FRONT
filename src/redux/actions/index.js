@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from 'sweetalert'
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const GET_CATEGORIES = "GET_CATEGORIES";
@@ -19,6 +20,7 @@ export const ORDERS = "ORDERS";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const POST_ORDER = "POST_ORDER";
 export const GET_ORDER_DETAIL_USER = "GET_ORDER_DETAIL_USER";
+export const GET_ORDER_DETAIL_ID = "GET_ORDER_DETAIL_ID";
 
 export const GET_WISHLIST = "GET_WISHLIST";
 
@@ -184,6 +186,7 @@ export function postRewies(id, payload) {
   };
 }
 
+
 export function deleteProduct(payload) {
   const token = localStorage.getItem("authorization");
   return async function (dispatch) {
@@ -197,6 +200,7 @@ export function deleteProduct(payload) {
     );
     return dispatch({ type: DELETE_PRODUCT, payload: deleteProduct });
   };
+
 }
 
 export function locaLSatorage() {
@@ -331,6 +335,28 @@ export function getOrderDetailByUser() {
   };
 }
 
+export function getOrderDetailById(payload) {
+  const token = localStorage.getItem("authorization");
+  return async function (dispatch) {
+    let ordersByUser = await axios.get(
+      `https://pf-commerce.herokuapp.com/api/orders/${payload}`,
+      {
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
+    );
+    if (ordersByUser) {
+      return dispatch({
+        type: GET_ORDER_DETAIL_ID,
+        payload: ordersByUser,
+      });
+    } else {
+      alert("No se encontraron ordenes");
+    }
+  };
+}
+
 
 
 
@@ -349,11 +375,47 @@ export function postWishList(payload) {
           },
         }
       );
-      alert('Producto agregado a la wishlist')
+      swal({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Producto agregado',
+        showConfirmButton: false,
+        timer: 1000
+      })
       console.log(response)
       return response;
     } catch (error) {
       alert('Este producto ya esta en la wishlist')
+     console.log(error)
+    }
+  };
+}
+
+export function deleteWishList(payload) {
+  const token = localStorage.getItem("authorization");
+  return async function () {
+    try {
+      const response = await axios.delete(
+        `https://pf-commerce.herokuapp.com/api/wishlist/delete/${payload}`,
+        
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        }
+      );
+      swal({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Producto eliminado',
+        showConfirmButton: false,
+        timer: 500
+      })
+      window.location.reload()
+      console.log(response)
+      return response;
+    } catch (error) {
+      alert('Error')
      console.log(error)
     }
   };

@@ -90,9 +90,8 @@ export default function Card({ id, image, name, price }) {
                 <div className="priceCardProd" >US${price}</div>
             </Link>
             <button className="boton_carrito_card" onClick={() => addToCar(id)}></button>
-            <button className="addWishList" onClick={e => handleClicked(e)}></button>
             <Link to={'/user/wishlist/' + id}>
-                <button className="myWishList"></button>
+            <button className="addWishList" onClick={e => handleClicked(e)}></button>
             </Link>
         </div>
 

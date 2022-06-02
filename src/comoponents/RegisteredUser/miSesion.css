@@ -23,13 +23,13 @@
         transition: transform 0.4s;
         transform-style: preserve-3d;
     }
-    .row_productos_order:hover{
+    /* .row_productos_order:hover{
         transform:scale(1.05);
         -webkit-transform:scale(1.05);
         -moz-transform:scale(1.05);
         -ms-transform:scale(1.05);
         -o-transform:scale(1.05);
-    }
+    } */
 
 .font{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { locaLSatorage } from "../../redux/actions";
 import './CarItem.css'
 export const REMOVE_ALL_FROM_CAR = 'REMOVE_ALL_FROM_CAR'
@@ -80,6 +80,12 @@ export default function CarItem({ data }) {
         history.push('/shoppingCar')
         
     }
+    function comprarEste(id){
+        let infoDeLocal = JSON.parse(localStorage.itemCar)
+        let este = infoDeLocal.find(item => item._id === id)
+        if(!localStorage.itemCar || localStorage.itemCar !== JSON.stringify(este))
+    localStorage.setItem("itemCar", JSON.stringify(este))
+    }
     
 
     return (
@@ -100,7 +106,11 @@ export default function CarItem({ data }) {
             <div className='col'>
                 <button  className='botonRemover' onClick={() => removeFromCar(_id)}> - </button><button className='botonAgregar' onClick={() => addToCar(_id)}>+</button>
                 <button className='botonEliminar' onClick={() => removeFromCar(_id, true)}>Eliminar todos</button>
-                <div><button className='comprarEsteProducto'>Comprar este producto</button></div>
+                <div>
+                    <Link to="CheckOut">
+                        <button onClick={() => comprarEste(_id)} className='comprarEsteProducto'>Comprar este producto</button>
+                        </Link></div>
+            
             </div>
             </div>
         </div>
