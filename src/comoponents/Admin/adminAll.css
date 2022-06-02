@@ -105,3 +105,21 @@
     width: 500px;
     height: 500px;
 }
+
+.row_edit_user{
+    border-bottom: none;
+    border: solid 2px green;
+    text-align: center;
+    background-color: red;
+    min-height: 600px;
+}
+
+.col_edit_user{
+    border: solid 2px rgb(128, 9, 0);
+    min-width: 45%;
+    text-align: left;
+}
+
+.input{
+    margin-top: 10px;
+}
