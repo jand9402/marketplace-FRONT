@@ -371,7 +371,6 @@ export function getOrderDetailByUser() {
         },
       }
     );
-    alert('algo')
     console.log(ordersByUser)
     if (ordersByUser) {
       return dispatch({
