@@ -18,7 +18,12 @@ import CreateProduct from "./comoponents/ProductForm/createProduct";
 import PostOrder from "./comoponents/Order/CreateOrder";
 import OrderList from "./comoponents/Order/OrderList";
 import Success from "./comoponents/Order/Success";
+
+// import CreateReviews from "./comoponents/reviews/Wishlist";
+import Wishlist from "./comoponents/wishlist/Wishlist";
+
 import OrderDetail from "./comoponents/Admin/orderDetail";
+
 
 function App() {
   return (
@@ -35,6 +40,7 @@ function App() {
           <Route exact path="/admin" component={Sesion} />
           <Route exact path="/registerForm" component={ProductForm} />
           <Route exact path="/admin/products" component={SesionProductAdmin} />
+          <Route exact path="/user/wishlist" component={Wishlist} />
           <Route
             exact
             path="/admin/products/detail/:id"

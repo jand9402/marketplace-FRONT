@@ -183,7 +183,7 @@ export default function CreateProduct () {
           input.screenSize === '' &&
           !input.temperament.length 
           ) {
-         alert ('No puede creear una nueva actividad si no completa el formulario')
+         alert ('No puede crear una nueva actividad si no completa el formulario o coloca un nombre unico')
       }else {
         const formdata = new window.FormData()
         formdata.append('name', input.name)

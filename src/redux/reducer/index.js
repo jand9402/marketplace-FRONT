@@ -17,6 +17,7 @@ import {
   GET_USERS,
   POST_ORDER,
   GET_ORDER_DETAIL_USER,
+  GET_WISHLIST,
   GET_CATEGORIES_NEW,
   DELETE_PRODUCT,
   GET_ALL_ORDERS,
@@ -45,6 +46,8 @@ const initialState = {
   cart: [],
   orderDetail: [],
   order: [],
+  allWishlist: [],
+
   allOrders: [],
   orderById: [],
 };
@@ -186,6 +189,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         orderDetail: action.payload,
       };
+
+      case GET_WISHLIST:
+        return {
+          ...state,
+          allWishlist: action.payload
+        }
+
     case GET_ALL_ORDERS:
       return {
         ...state,
@@ -196,6 +206,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         orderById: action.payload,
       };
+
 
     default:
       return { ...state };
