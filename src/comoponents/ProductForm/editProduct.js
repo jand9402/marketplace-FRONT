@@ -4,7 +4,7 @@ import { useState } from "react";
 import { modifyProduct, getCategories, getDetail } from "../../redux/actions/index"
 import { useParams } from "react-router-dom";
 import './ProductForm.css'
-
+import { useHistory } from "react-router-dom";
 
 export function validate (input) {
     const errors = {}
@@ -71,7 +71,8 @@ export function validate (input) {
   }
 
 export default function EditProduct () {
-    
+
+      const history = useHistory()
       const dispatch = useDispatch()
       const token = localStorage.getItem('authorization')
       const categoriesAll = useSelector(state => state.categoriesNew)
@@ -93,7 +94,7 @@ export default function EditProduct () {
    const allCategoriesN = [...new Set(aux)] 
       
       const [file, setFile] = useState('')
-      console.log(file)
+      // console.log(file)
       const [categorias, setCategorias] = useState([])
   
       const handleFile = (e) => {
@@ -264,6 +265,7 @@ export default function EditProduct () {
           categories: [], 
           newCategory: ''
         })
+        history.push('/admin/products')
       } 
     }
 
