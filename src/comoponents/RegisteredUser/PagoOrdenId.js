@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getOrderDetailById } from "../../redux/actions/index";
 import StripeCheckout from "react-stripe-checkout";
+import NavBaRSesionUsers from "../NavBar/navBarSesionUsers";
 import axios from "axios";
 import './miSesion.css'
 
@@ -54,11 +55,13 @@ console.log({data})
     localStorage.setItem("itemCar", JSON.stringify(locaS))
 
   return (
+    <>
+      <NavBaRSesionUsers/>
     <div className="container mt-5">
       <div className="d-flex">
       <h1 className="font">Lista de tus ordenes</h1>
       <Link to="/PostOrder">
-        <button>Regresar</button>
+        <button className="buttonVolOrd">Volver</button>
       </Link>
       </div>
       {!data ? (
@@ -89,7 +92,7 @@ console.log({data})
                   
                   <h3 className="font">Tus datos</h3>
                   <p  className="font">Nombre: {data.deliveryAddress.fullName}</p>
-                  <strong  className="font">Total: ${data.totalPrice}</strong>
+                  <strong  className="font">Total: US${data.totalPrice}</strong>
                   </div>
               }
               
@@ -110,5 +113,6 @@ console.log({data})
         </>
       )}
     </div>
+    </>
   );
 }

@@ -11,6 +11,10 @@
 
 .pagado_order{
     margin-right: 10px;
+    border: none;
+    background-color:rgb(24, 49, 87);
+    color: white;
+    height: 40px;
 }
 
 .row_productos_order{
@@ -66,15 +70,41 @@
     position: relative;
     top:40px;
     left: 900px;
-    background-color: rgb(24, 49, 87);
-    color: white;
-    height: 50px;
+    background-image: url('../../assets/icons/wishlistMi.png');
+    /* background-color: rgb(24, 49, 87); */
+    background-repeat:no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    background-position:center;
+    height: 130px;
+    width: 130px;
     border: none;
-    padding-left: 8px;
-    padding-right: 8px;
+}
+.titel_Wishlist{
+    position: relative;
+    left: 900px;
+    top: 20px;
     font-style: Trebuchet;
     text-align: center;
-    font-weight: 600;
-    font-size: 1.2em;
+    font-weight: 800;
+    font-size: 1.4em;
+    color: rgb(24, 49, 87);
     cursor: pointer;
+}
+.sinLineaWish {
+    text-decoration: none;
+}
+
+.buttonVolOrd {
+    background-color:rgb(24, 49, 87) ;
+    position: relative;
+    left: 900px;
+    top: 20px;
+    font-style: Trebuchet;
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.4em;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    border: none;
 }

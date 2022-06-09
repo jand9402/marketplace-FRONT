@@ -35,13 +35,33 @@
     width: 200px;
     height: 50px;
     font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
-    background-color:#114d86;
+    background-color: rgba(23, 49, 87);
     color: white;
     border-radius: 10px;
     transition: 300ms all;
     border: none;
     font-size: large;
     margin-top: 10px;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -ms-transition: 300ms all;
+    -o-transition: 300ms all;
+}
+.buttonVolBuy {
+    position: relative;
+    left:1300px;
+    width: 150px;
+    height: 50px;
+    font-family: 'Trebuchet MS', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+    background-color: rgba(23, 49, 87);
+    color: white;
+    border-radius: 10px;
+    transition: 300ms all;
+    border: none;
+    font-weight: 700;
+    font-size: 1.7rem;
+    margin-top: 20px;
+    margin-bottom: 30px;
     -webkit-transition: 300ms all;
     -moz-transition: 300ms all;
     -ms-transition: 300ms all;
@@ -107,30 +127,45 @@
 }
 
 .row_edit_user{
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
     border-bottom: none;
     text-align: center;
     background-color: #183157;
+    border-radius: 15px;
+    width: 900px;
     min-height: 600px;
 }
 
 .col_edit_user{
+    position: relative;
+    left: 100px;
     min-width: 45%;
     text-align: left;
 }
 
 .input{
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .title_edit{
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-
+.title_title_edit{
+    padding-top: 20px;
+    font-size: 3rem ;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 .boton_edit{
     background-color: #ef3d52;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     border: none;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
