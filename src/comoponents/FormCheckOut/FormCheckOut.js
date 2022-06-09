@@ -360,9 +360,9 @@ export default function FormCheckOut() {
             </button>
           </form>
         </div>
-      
-
       </div>
+
+      </div> 
     </>
-  );
-}
+  )
+} 

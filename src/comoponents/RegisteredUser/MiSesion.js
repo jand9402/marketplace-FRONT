@@ -26,7 +26,10 @@ let total2 = 0
       <div className="container">
 <div className="d-flex">
         <h1 className="tus_compras font">Tus Compras</h1>
-    <Link to='/user/wishlist'><button className="botonesWishlist">Wishlist</button></Link>
+    <Link className="sinLineaWish " to='/user/wishlist'>
+      <button className="botonesWishlist"></button>
+      <div className="titel_Wishlist">Wishlist</div>
+    </Link>
     </div>
         {!data ? (
           <p>Cargando...</p>
@@ -43,7 +46,7 @@ let total2 = 0
                     <div className="row row_otra">
                     {item.isPaid ? <p className="col pagado_order font">Pagado: SI</p> : <p className="col Spagado_order font">Pagado: NO</p> }
                    
-                <div>Valor total de esta orden: {total= total + item.totalPrice}</div>
+                <div>Valor total de esta orden: US$ {total= total + item.totalPrice}</div>
                 <p className="blanco">{total= 0}</p>
                     {item.isDelivered ? <p className="col font">Enviado: SI</p> : <p  className="col font">Enviado: NO</p>}
                     {item.isPaid ? <p className="col pagado_order font">Pago realizacdo con exito</p> : <Link to="/pay"><button value={item._id} onClick={e => handlePay(e)} className="col pagado_order font">Pagar ahora</button></Link> }
@@ -53,9 +56,9 @@ let total2 = 0
                     {item.orderProducts.map((product) => (
                       <div className="col col_orders_user" key={product._id}>
                         <p className="font">Nombre: {product.name}</p>
-                        <p>Valor: {product.price}</p>
+                        <p>Valor: US${product.price}</p>
                         <p>Cantidad: {product.quantity}</p>
-                        <p>Total: ${product.quantity * product.price}</p>
+                        <p>Total: US${product.quantity * product.price}</p>
                         <div>
                         <img
                           src={product.image[0]}

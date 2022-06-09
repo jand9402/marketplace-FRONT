@@ -177,4 +177,5 @@ export default function ButtonsVisit({ id }) {
         </div>
     )
 
+} 
 }

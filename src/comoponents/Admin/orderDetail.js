@@ -122,7 +122,7 @@ export default function OrderDetail() {
                           Ya fue enviado
                         </p>
                       ) : (
-                        <button onClick={handleSubmit}>Enviar Producto</button>
+                        <button className="bottonEnviar" onClick={handleSubmit}>Enviar Producto</button>
                       )}
                     </div>
                   }
