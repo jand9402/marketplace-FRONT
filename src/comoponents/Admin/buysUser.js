@@ -82,7 +82,7 @@ export default function BuysUser() {
       {user.isAdmin ? (
         <div className="container">
           <Link to="/admin/users">
-            <button>VOLVER</button>
+            <button className="buttonVolBuy">VOLVER</button>
           </Link>
 
 
@@ -90,8 +90,8 @@ export default function BuysUser() {
         
             
               <form key={id} onSubmit={(e) => handleCreate(e)}>
-              <div className="row row_edit_user ">
-                <h1 className="title_edit">Editar Usuario</h1>
+              <div className="row row_edit_user">
+                <h1 className="title_title_edit">Editar Usuario</h1>
                 
                 
                   
@@ -122,7 +122,7 @@ export default function BuysUser() {
                    
                    
                    <br/> 
-                    <h2 className="title_edit">Numero de telefono:</h2>
+                    <h2 className="title_edit">Número de teléfono:</h2>
                    
                     <input
                     className="input"

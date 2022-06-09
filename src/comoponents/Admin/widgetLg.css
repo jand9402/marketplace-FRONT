@@ -9,8 +9,10 @@
 }
 
 .widgetLgTitle {
-  font-size: 22px;
-  font-weight: 600;
+  position: relative;
+  right: 60px;
+  font-size: 2.3rem;
+  font-weight:700;
 }
 
 .widgetLgTable{
